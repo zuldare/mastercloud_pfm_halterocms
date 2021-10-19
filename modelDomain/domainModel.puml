@@ -49,7 +49,7 @@ object Null
 object Rejected
 
 ' Competition acts
-object CompetitionActs
+object CompetitionAct
 object ClassificationAct
 object WeightAct
 
@@ -66,8 +66,9 @@ Status <|-- Rejected
 
 Competition *-- "1..n" Batch
 Batch *-- "1..n" Athlete
-Competition o-- CompetitionActs
-CompetitionActs <|-- ClassificationAct
+Competition o-- CompetitionAct
+CompetitionAct <|-- ClassificationAct
+CompetitionAct <|-- WeightAct
 
 
 Gender <|-- Male
