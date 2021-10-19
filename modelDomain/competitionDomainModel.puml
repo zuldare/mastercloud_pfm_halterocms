@@ -9,6 +9,7 @@ object Gender
 object Male
 object Female
 
+object CompetitionDraw
 
 ' Category
 object Category {
@@ -36,7 +37,6 @@ object Color
 object Collars
 object Position
 
-
 ' Lifts
 object Lift
 object Type
@@ -47,11 +47,41 @@ object Pending
 object Valid
 object Null
 object Rejected
+object Countdown
+object "60 seconds" as 60s
+object "120 seconds" as 120s
 
 ' Competition acts
 object CompetitionAct
 object ClassificationAct
 object WeightAct
+
+' Weighing
+object Weighing
+object AthleteBodyWeight
+object Opener
+object OpenerSnatch
+object OpenerCleanJerk
+
+' Technical officers
+object "Technical officers" as TC
+object Judge
+object Marshall
+object CompetitionSecretary
+
+
+Competition *-- TC
+TC <|-- "3..6" Judge
+TC <|-- "0..1" Marshall
+TC <|-- "1" CompetitionSecretary
+
+
+
+Weighing *-- AthleteBodyWeight
+Weighing *-- Opener
+Opener <|-- OpenerSnatch
+Opener <|-- OpenerCleanJerk
+
 
 Lift *-- Type
 Type *-- Snatch
@@ -62,13 +92,19 @@ Status <|-- Pending
 Status <|-- Valid
 Status <|-- Null
 Status <|-- Rejected
+Lift *-- Countdown
+Countdown <|-- 60s
+Countdown <|-- 120s
 
 
+
+Competition *-- Weighing
 Competition *-- "1..n" Batch
 Batch *-- "1..n" Athlete
-Competition o-- CompetitionAct
+Competition *-- CompetitionAct
 CompetitionAct <|-- ClassificationAct
 CompetitionAct <|-- WeightAct
+Competition *-- CompetitionDraw
 
 
 Gender <|-- Male
@@ -89,6 +125,7 @@ AgeCategory *-- Sub17 :"Age 13-17"
 AgeCategory *-- Junior :"Age 13-20"
 AgeCategory *-- Senior :"Age >13"
 AgeCategory *-- Master :"Age \n[35-40]\n[40-45]\n...[+80]"
+
 
 Athlete o-- Category
 
