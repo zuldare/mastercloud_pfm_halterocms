@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object Competition
+object Batch
+
+object Athlete
+object Gender
+object Male
+object Female
+
+
+object Category {
+  example: [M35-109, Sub19 M-94..]
+}
+
+object BodyWeightCategory
+object AgeCategory
+object MinBodyWeightCategory
+object MaxBodyWeightCategory
+
+
+
+Competition *-- Batch
+Batch *-- Athlete
+
+Gender <-- Male
+Gender <-- Female
+
+Category *-- "1-3" AgeCategory
+Category *-- Gender
+'AgeCategory *-- BodyWeightCategory
+BodyWeightCategory *-- MinBodyWeightCategory
+BodyWeightCategory *-- MaxBodyWeightCategory
+
+
+Athlete o-- "label" Category
+
+
+@enduml
