@@ -20,11 +20,10 @@ NextLift o-- Athlete
 FollowingLift o-- Athlete
 
 
-
 Competition *-- Batch
 Batch *-- "1..n" Iteration
-Iteration *-- BarAnnouncement
-barAnnouncement *-- AthleteAnouncement
+Iteration --> BarAnnouncement
+BarAnnouncement --> AthleteAnouncement
 AthleteAnouncement *-- LiftChangeTime
 
 
