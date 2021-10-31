@@ -7,7 +7,7 @@
 
     1.2 [Halterofilia](#intro_haltero)
 
-2. [Modelo de dominio](#domainModel1)
+2. [Modelo del dominio](#domainModel)
 3. [Conclusiones](#conclusions)
 4. [Autores](#authors)
 5. [Bibliografía](#biblio)
@@ -51,7 +51,18 @@ Más información
 
 [Vídeo_3](https://www.youtube.com/watch?v=UcWjOqbZuo0&t=144s)
 
-## 2. Modelo del dominio <a name="domainModel1"/>
+## 2. Modelo de dominio <a name="domainModel"/>
+
+## 3. Disciplina de requisitos
+### 3.1 Actores y casos de uso
+## 4. Disciplina de análisis
+
+## 5. Disciplina de diseño
+
+## 6. Disciplina de implementación
+
+## 7. Disciplina de pruebas
+ 
 
 ## Conclusiones <a name="conclusions"/>
 ## Autores <a name="authors"/>
