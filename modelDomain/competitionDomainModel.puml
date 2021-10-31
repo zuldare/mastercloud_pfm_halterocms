@@ -68,13 +68,14 @@ object "Technical officers" as TC
 object Judge
 object Marshall
 object CompetitionSecretary
+object TimeJudge
 
 
 Competition *-- TC
 TC <|-- "3..6" Judge
 TC <|-- "0..1" Marshall
 TC <|-- "1" CompetitionSecretary
-
+TC <|-- "0..1" TimeJudge
 
 
 Weighing *-- AthleteBodyWeight
