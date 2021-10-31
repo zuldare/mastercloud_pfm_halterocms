@@ -38,19 +38,17 @@ Existen dos modalidades de competición *arrancada(snatch)* y *dos tiempos(clean
 
 Se divide en categoría masculina y femenina. A su vez, ambas se subdividen en distintas categorías de acuerdo a la masa corporal y edad del atleta.
 
+Más información
+
+[Vídeo 1](https://www.youtube.com/watch?v=-zJeDy-gBr4)
+
+[Vídeo_2](https://www.youtube.com/watch?v=l8oxCtwQdm0)
+
+[Vídeo_3](https://www.youtube.com/watch?v=UcWjOqbZuo0&t=144s)
 
 
 ## Autores <a name="authors"/>
 
 👤 **Natalia Roales**
 
-👤 **Jaime Hernández**
-
-
-----------
-
-
-Vídeo demos:  
-https://www.youtube.com/watch?v=-zJeDy-gBr4
-https://www.youtube.com/watch?v=l8oxCtwQdm0
-https://www.youtube.com/watch?v=UcWjOqbZuo0&t=144s
+👤 **Jaime Hernández** 
