@@ -1,0 +1,26 @@
+@startuml
+
+
+Organizer as Organizer
+
+note right of Organizer
+This is the competition organizer, tasks:
+    sets number of bounds,
+    sets classification methods,
+    sets competition data such as date, location, etc
+end note
+
+:Club delegate: as ClubDelegate
+
+
+note right of Admin : This is an example.
+
+note right of (Use)
+A note can also
+be on several lines
+end note
+
+note "This note is connected\nto several objects." as N2
+(Start) .. N2
+N2 .. (Use)
+@enduml

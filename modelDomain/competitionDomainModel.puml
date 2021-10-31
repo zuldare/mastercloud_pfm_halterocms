@@ -3,7 +3,10 @@
 
 object Competition
 object Batch
-object Organizer
+object "Signup phase" as signup
+object "Fill forms" as fillForms
+object "Set date" as setDate
+object "Set place" as setPlace
 
 object Athlete
 object Gender
@@ -105,7 +108,10 @@ Countdown <|-- 60s
 Countdown <|-- 120s
 
 
-Competition *-- "DUDA\n ¿admin?" Organizer
+Competition *-- signup
+signup *-- fillForms
+signup *-- setDate
+signup *-- setPlace
 Competition *-- Weighing
 Competition *-- "1..n" Batch
 Batch *-- "1..n" Athlete
