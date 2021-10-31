@@ -3,6 +3,7 @@
 
 object Competition
 object Batch
+object Organizer
 
 object Athlete
 object Gender
@@ -56,6 +57,12 @@ object CompetitionAct
 object ClassificationAct
 object WeightAct
 
+' Clasification Acts
+object CategoryClassification
+object SinclairClassification
+object SinclairMaloneClassification
+object EliteClassification
+
 ' Weighing
 object Weighing
 object AthleteBodyWeight
@@ -98,7 +105,7 @@ Countdown <|-- 60s
 Countdown <|-- 120s
 
 
-
+Competition *-- "DUDA\n ¿admin?" Organizer
 Competition *-- Weighing
 Competition *-- "1..n" Batch
 Batch *-- "1..n" Athlete
@@ -106,6 +113,12 @@ Competition *-- CompetitionAct
 CompetitionAct <|-- ClassificationAct
 CompetitionAct <|-- WeightAct
 Competition *-- CompetitionDraw
+
+
+ClassificationAct <|-- CategoryClassification
+ClassificationAct <|-- SinclairClassification
+ClassificationAct <|-- SinclairMaloneClassification
+ClassificationAct <|-- EliteClassification
 
 
 Gender <|-- Male
@@ -133,13 +146,13 @@ Athlete o-- Category
 Bar <|-- FemaleBar
 Bar <|-- MaleBar
 Bar *-- Plates
-Bar *-- Collars
+Bar *-- "2 [2.5kg\n each]" Collars
 Plates *-- Weight
 Plates *-- Color
 Plates *-- Position
 
 
-Athlete o-- "6[3snatch - 3clean&jerk]" Lift
+Athlete o-- "6\n[3snatch \n3clean&jerk]" Lift
 
 
 @enduml
