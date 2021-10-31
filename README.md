@@ -6,6 +6,7 @@
     1.1 [Objetivos](#goals)
 
     1.2 [Halterofilia](#intro_haltero)
+
 2. [Modelo de dominio](#domainModel1)
 3. [Conclusiones](#conclusions)
 4. [Autores](#authors)
@@ -60,8 +61,16 @@ Más información
 
 ## Bibliografía <a name="biblio"/>
 
+[1] Kanban proyecto [webpage online]. Available: https://github.com/zuldare/mastercloud_pfm_halterocms/projects/1
 
 [1] Github actions [webpage online]. Available: https://github.com/features/actions
 
 [2] PlantUml [webpage online]. Available:
 [https://plantuml.com/es/](https://plantuml.com/es/)
+
+
+-----------------------------------------------------------------
+## Nivel de compromiso:
+
+Jaime: yo hasta fin de año le puedo dedicar 3-4 horas diarias
+Natalia: 
