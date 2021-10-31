@@ -73,5 +73,6 @@ Más información
 -----------------------------------------------------------------
 ## Nivel de compromiso:
 
-Jaime: yo hasta fin de año le puedo dedicar 3-4 horas diarias
-Natalia: 
+Jaime: yo hasta fin de año le puedo dedicar 3-4 horas diarias.
+
+Natalia: entre 6 y 8 horas semanales.
