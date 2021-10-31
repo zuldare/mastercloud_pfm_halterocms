@@ -5,8 +5,11 @@
 
     1.1 [Objetivos](#goals)
 
-    1.2 [Halterofilia](#intro_haltero)  
-2. [Autores](#authors)
+    1.2 [Halterofilia](#intro_haltero)
+2. [Modelo de dominio](#domainModel1)
+3. [Conclusiones](#conclusions)
+4. [Autores](#authors)
+5. [Bibliografía](#biblio)
 
 ## 1. Introducción<a name="intro"/>
 
@@ -27,7 +30,7 @@ Los subojetivos del proyecto son:
     * Git como gestor de versiones
     * Github como repositorio (tanto de código como de artefactos)
     * Github Actions como herramienta de integración continua
-* Despliegue de una aplicación en la nube mediante el proveedor AWS
+* Despliegue de una aplicación en la nube mediante el proveedor AWS/Heroku *(!! TO BE DECIDED )*
 
 ### 1.2 ¿Qué es la halterofilia? <a name="intro_haltero"/>
 La halterofilia es un deporte que consiste en el levantamiento del máximo peso posible de una barra a cuyos extremos se fijan varios discos de distinto peso.
@@ -46,9 +49,19 @@ Más información
 
 [Vídeo_3](https://www.youtube.com/watch?v=UcWjOqbZuo0&t=144s)
 
+## 2. Modelo del dominio <a name="domainModel1"/>
 
+## Conclusiones <a name="conclusions"/>
 ## Autores <a name="authors"/>
 
 👤 **Natalia Roales**
 
 👤 **Jaime Hernández** 
+
+## Bibliografía <a name="biblio"/>
+
+
+[1] Github actions [webpage online]. Available: https://github.com/features/actions
+
+[2] PlantUml [webpage online]. Available:
+[https://plantuml.com/es/](https://plantuml.com/es/)
