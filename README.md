@@ -30,6 +30,7 @@ Los subojetivos del proyecto son:
 * Implementar un entorno de integración y despliegue continuos mediante el uso de:
     * Git como gestor de versiones
     * Github como repositorio (tanto de código como de artefactos)
+    * Github project como administrador/organizador de tareas
     * Github Actions como herramienta de integración continua
 * Despliegue de una aplicación en la nube mediante el proveedor AWS/Heroku *(!! TO BE DECIDED )*
 
