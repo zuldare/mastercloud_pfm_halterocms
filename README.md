@@ -38,8 +38,8 @@ Los subojetivos del proyecto son:
 La halterofilia es un deporte que consiste en el levantamiento del máximo peso posible de una barra a cuyos extremos se fijan varios discos de distinto peso.
 Existen dos modalidades de competición *arrancada(snatch)* y *dos tiempos(clean&jerk)*
 
-![snatch](./docs/Snatch2.gif)
-![clean&jekr](./docs/Pscleanjerk.gif)
+![snatch](images/Snatch2.gif)
+![clean&jekr](images/Pscleanjerk.gif)
 
 Se divide en categoría masculina y femenina. A su vez, ambas se subdividen en distintas categorías de acuerdo a la masa corporal y edad del atleta.
 
