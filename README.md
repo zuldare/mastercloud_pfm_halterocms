@@ -26,7 +26,7 @@ Los subojetivos del proyecto son:
 * Realizar un proyecto focalizado en:  
     * Afianzar el correcto análisis y diseño
     * Aplicación correcta de diversos patrones
-* Aplicación de un modelo de desarrollo basado en *Trunk based development*
+* Aplicación de un modelo de desarrollo basado en *Gitflow*
 * Implementar un entorno de integración y despliegue continuos mediante el uso de:
     * Git como gestor de versiones
     * Github como repositorio (tanto de código como de artefactos)
