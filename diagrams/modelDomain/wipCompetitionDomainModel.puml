@@ -8,7 +8,8 @@ class Winner {
 
 class Member
 class Athlete {
-  category : Category
+  age : Integer
+  corporalWeight: Float
 }
 class Male
 class Female
@@ -77,8 +78,10 @@ class Red
 ' Categories and parameters
 
 class Category {
-  age : Integer
-  weight : Float
+  minAge : Integer
+  maxAge : Integer
+  minWeight : Float
+  maxWeight : Float
 }
 
 class AthleteAge
