@@ -83,7 +83,9 @@ class Category {
 
 class AthleteAge
 
-class Weight
+class Weight {
+  athlete : Athlete
+}
 class BodyWeight
 class Opener
 class OlympicTotal
@@ -106,6 +108,8 @@ Member <|-- Athlete
 Athlete <|-- Male
 Athlete <|-- Female
 Athlete "1" --> "n" Lift
+Athlete "n" --> "1" Category
+Athlete "1" --> "1" Weight
 Member <|-- Judge
 Member <|-- CompetitionSecretary
 Phase <|-- Weighing
