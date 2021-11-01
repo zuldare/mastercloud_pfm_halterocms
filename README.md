@@ -8,9 +8,22 @@
     1.2 [Halterofilia](#intro_haltero)
 
 2. [Modelo del dominio](#domainModel)
-3. [Conclusiones](#conclusions)
-4. [Autores](#authors)
-5. [Bibliografía](#biblio)
+3. [Disciplina de requisitos](#requirements)
+
+    3.1 [Actores y casos de uso](#actors)
+
+    3.2 [Especificación de casos de uso](#useCases)
+
+    3.3 [Prototipado interfaz de usuario](#prototype)
+        
+5. [Disciplina de análisis](#analisis)
+7. [Disciplina de diseño](#design)
+8. [Disciplina de implementación](#implementation)
+9. [Disciplina de pruebas](#tests)
+
+10. [Conclusiones](#conclusions)
+11. [Autores](#authors)
+12. [Bibliografía](#biblio)
 
 ## 1. Introducción<a name="intro"/>
 
@@ -53,15 +66,18 @@ Más información
 
 ## 2. Modelo de dominio <a name="domainModel"/>
 
-## 3. Disciplina de requisitos
-### 3.1 Actores y casos de uso
-## 4. Disciplina de análisis
+## 3. Disciplina de requisitos <a name="requirements"/>
+### 3.1 Actores y casos de uso <a name="actors"/>
+### 3.2 Especificación de casos de uso <a name="useCases"/>
+### 3.3 Prototipado interfaz de usuario <a name="prototype"/>
 
-## 5. Disciplina de diseño
+## 4. Disciplina de análisis <a name="analisis"/>
 
-## 6. Disciplina de implementación
+## 5. Disciplina de diseño <a name="design"/>
 
-## 7. Disciplina de pruebas
+## 6. Disciplina de implementación <a name="implementation"/>
+
+## 7. Disciplina de pruebas <a name="tests"/>
  
 
 ## Conclusiones <a name="conclusions"/>
