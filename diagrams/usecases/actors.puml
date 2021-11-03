@@ -8,6 +8,10 @@ This is the competition organizer, tasks:
     sets competition data such as date, location, etc
 end note
 
+Organizer -> (Set competition location)
+Organizer -> (Set competition dates)
+Organizer -> (Open/close inscriptions)
+
 
 Inscriber as Inscriber
 note top of Inscriber

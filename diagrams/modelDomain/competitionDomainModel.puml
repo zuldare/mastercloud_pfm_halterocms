@@ -170,11 +170,11 @@ object NextLift
 object FollowingLift
 
 Competition *-- Inscription
-Inscription *-- Athlete
+Inscription "1..*"  *-- Athlete
 Athlete <-- Gender
-Club *-- Athlete
+Club "1..*" *-- Athlete
 Competition *-- CompetitionDraw
-Competition *-- "1..*" Batch
+Competition "1..*" *--  Batch
 Competition *-- ClassificationAct
 ClassificationAct <|-- CategoryClassification
 ClassificationAct <|-- SinclairClassification
@@ -189,7 +189,7 @@ CompetitionDraw -right-> "next" Batch
 
 Batch *-- Weighing
 Batch *-- "1..2" Platform
-Batch *--- "1..*" Athlete
+Batch "1..*" *---  Athlete
 Batch *--- TC
 
 TC *-- "3..6" Judge
@@ -197,8 +197,8 @@ TC *-- CompetitionSecretary
 TC *-- "0..1" Marshall
 TC *-- "0..1" TimeJudge
 
-Platform *--- "1..n" Iteration
-Iteration *-- Announcement
+Platform "1..*" *---  Iteration
+Iteration "1..*" *--  Announcement
 Announcement *-- NextLift
 Announcement *-- FollowingLift
 NextLift "next" --> FollowingLift
