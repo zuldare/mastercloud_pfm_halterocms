@@ -11,6 +11,7 @@ end note
 Organizer -> (Set competition location)
 Organizer -> (Set competition dates)
 Organizer -> (Open/close inscriptions)
+Organizer -> (Set competition type [master, senior])
 
 
 Inscriber as Inscriber
