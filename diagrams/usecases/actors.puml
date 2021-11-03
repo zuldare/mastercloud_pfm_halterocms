@@ -24,4 +24,10 @@ end note
 
 CompetitionSecretary as CompetitionSecretary
 
+Spectator as Spectator
+
+' inscriber can share classifications, etc
+' le puede llegar automáticamente la info
+
+
 @enduml

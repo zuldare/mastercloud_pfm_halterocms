@@ -9,7 +9,10 @@ object "Set date" as setDate
 object "Set place" as setPlace
 
 object Athlete
-object Gender
+enum Gender {
+  MALE
+  FEMALE
+}
 object Male
 object Female
 
@@ -43,17 +46,25 @@ object Position
 
 ' Lifts
 object Lift
-object Type
-object Snatch
-object Clean_Jerk
-object Status
-object Pending
-object Valid
-object Null
-object Rejected
-object Countdown
-object "60 seconds" as 60s
-object "120 seconds" as 120s
+enum Type {
+  SNATCH
+  CLEAN_&_JERK
+}
+
+enum Status {
+PENDING
+VALID
+NULL
+REJECTED
+}
+
+enum Countdown {
+60_SECONDS
+120_SECONDS
+}
+
+' object "60 seconds" as 60s
+' object "120 seconds" as 120s
 
 ' Competition acts
 object CompetitionAct
@@ -67,11 +78,15 @@ object SinclairMaloneClassification
 object EliteClassification
 
 ' Weighing
-object Weighing
+object Weighing {
+AthleteBodyWeight
+SnatchOpener
+CleanJerkOpener
+}
 object AthleteBodyWeight
-object Opener
-object OpenerSnatch
-object OpenerCleanJerk
+'object Opener
+'object OpenerSnatch
+'object OpenerCleanJerk
 
 ' Technical officers
 object "Technical officers" as TC
@@ -88,24 +103,24 @@ TC <|-- "1" CompetitionSecretary
 TC <|-- "0..1" TimeJudge
 
 
-Weighing *-- AthleteBodyWeight
-Weighing *-- Opener
-Opener <|-- OpenerSnatch
-Opener <|-- OpenerCleanJerk
+' Weighing *-- AthleteBodyWeight
+' Weighing *-- Opener
+' Opener <|-- OpenerSnatch
+' Opener <|-- OpenerCleanJerk
 
 
 Lift *-- Type
-Type *-- Snatch
-Type *-- Clean_Jerk
+'Type *-- Snatch
+'Type *-- Clean_Jerk
 Lift o-- Bar
 Lift *-- Status
-Status <|-- Pending
-Status <|-- Valid
-Status <|-- Null
-Status <|-- Rejected
+'Status <|-- Pending
+'Status <|-- Valid
+'Status <|-- Null
+'Status <|-- Rejected
 Lift *-- Countdown
-Countdown <|-- 60s
-Countdown <|-- 120s
+'Countdown <|-- 60s
+'Countdown <|-- 120s
 
 
 Competition *-- signup
@@ -127,8 +142,8 @@ ClassificationAct <|-- SinclairMaloneClassification
 ClassificationAct <|-- EliteClassification
 
 
-Gender <|-- Male
-Gender <|-- Female
+'Gender <|-- Male
+'Gender <|-- Female
 
 Category *-- "1-3" AgeCategory
 Category *-- Gender
