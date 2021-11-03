@@ -52,11 +52,9 @@ object BarSet
 object Bar
 object FemaleBar {
   weight: 15kg
-  Object[] meassures
 }
 object MaleBar {
   weight: 20kg
-  Object[] meassures
 }
 object Plates
 enum Plate {
@@ -149,7 +147,7 @@ enum Standar_M {
 85
 94
 105
-+105
+105_PLUS
 }
 
 enum Standar_W {
@@ -160,7 +158,7 @@ enum Standar_W {
 69
 75
 90
-+90
+90_PLUS
 }
 
 Competition *-- Inscription
@@ -221,5 +219,5 @@ Senior <-- Standar_W
 Master <-- Standar_M
 Master <-- Standar_W
 
-
+Athlete *-- Category
 @enduml
