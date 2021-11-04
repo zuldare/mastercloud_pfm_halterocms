@@ -26,7 +26,10 @@ object Platform {
   name
 }
 object Club
-object Athlete
+object Athlete {
+  name
+  birthYear
+}
 enum Gender {
   MALE
   FEMALE
