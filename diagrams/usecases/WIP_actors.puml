@@ -1,72 +1,125 @@
 @startuml
 
-'left to right direction
-top to bottom direction
-
-Organizer as Organizer
-Inscriber as Inscriber
-
-package Inscriptions {
-  (Create Inscription) as createInscription
-  (Open Inscription Period) as openInscription
-  (Close Inscription Period) as closeInscription
-  (Inscribe athlete) as inscribeAthlete
-  (Check Inscription) as checkInscription
-  (Delete Inscription) as deleteInscription
-}
-
-Organizer --> createInscription
-Organizer --> openInscription
-Organizer --> closeInscription
-Organizer --> inscribeAthlete
-Organizer --> checkInscription
-Organizer --> deleteInscription
-Inscriber ---> inscribeAthlete
-Inscriber --> checkInscription
-Inscriber --> deleteInscription
+Organizer as organizer
+Inscriber as inscriber
+Admin as admin
+Time as time
+TimeJudge as timeJudge
+Spectator as spectator
+CompetitionSecretary as cs
 
 newpage
-'left to right direction
-top to bottom direction
-package Competition {
-  (Set competition dates) as setCompetitionDates
-  (Set competition location) as setCompetitionLocation
-  (Set competition name) as setCompetitionName
 
-  (Set competition categories) as setCompetitionCategories
-  (Set competition platforms) as setCompetitionPlatforms
+left to right direction
+(Create competition)
+(Set competition date)
+(Set competition location)
 
-  (Set competition data) as setCompetitionData
+usecase setCompetitionType as "Set competition type"
 
-  setCompetitionData -right-> setCompetitionDates
-  setCompetitionData -right-> setCompetitionLocation
-  setCompetitionData -right-> setCompetitionName
-}
-
-Organizer -> setCompetitionData
+note right of setCompetitionType : Junior, Master, Senior...
+(Set number of bounds)
+(Delete competition)
+(Visualize competition data)
+(Inscribe athlete)
+(Uninscribe athlete)
 
 
 newpage
 left to right direction
-TimeJudge as TJ
-package Timer {
-  (Start Timer) as startTimer
-  (Restart Timer) as restartTimer
-  (Pause Timer) as pauseTimer
-  (Stop timer) as stopTimer
-  (Set timer) as setTimer
-}
+(Create bound)
+(Delete bound)
+(Set bound data) --> (Set date)
+(Set bound data) --> (Set location)
+(Set bound data) --> (Set number of platforms)
+(Set bound data) --> (Set gender)
+(Assign athlete to bound)
+(Unassigned athlete to bound)
 
-TJ -> startTimer
-TJ -> restartTimer
-TJ -> stopTimer
-TJ -> setTimer
-TJ -> pauseTimer
+Organizer --> (Set bound data)
 
-Time as Time
-Time --> (Cancel lift)
+Organizer --> (Assign athlete to bound)
+Organizer --> (Unassigned athlete to bound)
 
-Spectator as Spectator
-CompetitionSecretary as CS
+newpage
+left to right direction
+
+timeJudge --> (Start timer)
+timeJudge --> (Pause timer)
+timeJudge --> (Resume timer)
+timeJudge --> (Stop timer)
+(Set timer duration) as setTimerDuration
+timeJudge --> setTimerDuration
+
+note right of setTimerDuration: 60s / 120s
+
+''left to right direction
+'top to bottom direction
+'
+'Organizer as Organizer
+'Inscriber as Inscriber
+'
+'package Inscriptions {
+'  (Create Inscription) as createInscription
+'  (Open Inscription Period) as openInscription
+'  (Close Inscription Period) as closeInscription
+'  (Inscribe athlete) as inscribeAthlete
+'  (Check Inscription) as checkInscription
+'  (Delete Inscription) as deleteInscription
+'}
+'
+'Organizer --> createInscription
+'Organizer --> openInscription
+'Organizer --> closeInscription
+'Organizer --> inscribeAthlete
+'Organizer --> checkInscription
+'Organizer --> deleteInscription
+'Inscriber ---> inscribeAthlete
+'Inscriber --> checkInscription
+'Inscriber --> deleteInscription
+'
+'newpage
+''left to right direction
+'top to bottom direction
+'package Competition {
+'  (Set competition dates) as setCompetitionDates
+'  (Set competition location) as setCompetitionLocation
+'  (Set competition name) as setCompetitionName
+'
+'  (Set competition categories) as setCompetitionCategories
+'  (Set competition platforms) as setCompetitionPlatforms
+'
+'  (Set competition data) as setCompetitionData
+'
+'  setCompetitionData -right-> setCompetitionDates
+'  setCompetitionData -right-> setCompetitionLocation
+'  setCompetitionData -right-> setCompetitionName
+'}
+'
+'Organizer -> setCompetitionData
+'
+'
+'newpage
+'left to right direction
+'TimeJudge as TJ
+'package Timer {
+'  (Start Timer) as startTimer
+'  (Restart Timer) as restartTimer
+'  (Pause Timer) as pauseTimer
+'  (Stop timer) as stopTimer
+'  (Set timer) as setTimer
+'}
+'
+'TJ -> startTimer
+'TJ -> restartTimer
+'TJ -> stopTimer
+'TJ -> setTimer
+'TJ -> pauseTimer
+'
+'Time as Time
+'Time --> (Cancel lift)
+'
+'Spectator as Spectator
+'CompetitionSecretary as CS
 
 @enduml
