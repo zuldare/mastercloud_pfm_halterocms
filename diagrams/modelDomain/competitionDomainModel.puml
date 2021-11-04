@@ -101,6 +101,9 @@ object Master {
   age: 35_Plus
 }
 
+Sub15 "includes" --right-> Sub17
+Sub17 "includes" --right-> Junior
+Junior "includes" --> Senior
 enum Sub15_M {
   45
   50
@@ -123,6 +126,8 @@ enum Sub15_W {
  75_PLUS
 }
 
+note bottom of Sub15_W : "Un chica de 48kg SUB15, en una competición oficial, \nsu marca puede ser válida para \n 48-Sub15 \n 48-Sub17 \n 48-Junior \n 48Senior"
+
 enum Sub17_M {
   50
   56
@@ -135,14 +140,13 @@ enum Sub17_M {
 }
 
 enum Sub17_W {
- 50
- 56
- 62
+ 44
+ 48
+ 53
+ 5863
  69
- 77
- 85
- 94
- 94_PLUS
+ 75
+ 75_PLUS
 }
 
 enum Common_M {
@@ -220,11 +224,12 @@ Bar <|-- FemaleBar
 Bar <|-- MaleBar
 Plates *-- Plate
 
+Category <|-- Master
 Category <|-- Sub15
 Category <|-- Sub17
 Category <|-- Junior
 Category <|-- Senior
-Category <|-- Master
+
 
 Sub15 <-- Sub15_W
 Sub15 <-- Sub15_M
