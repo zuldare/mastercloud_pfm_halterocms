@@ -7,10 +7,12 @@ object Competition
 object "Inscription phase" as Inscription {
   Date
   Place
+  CompetitionType: Category
 }
 object CompetitionDraw
 object Batch
 object Weighing {
+  Athlete identification
   AthleteBodyWeight
   SnatchOpener
   CleanJerkOpener
@@ -82,7 +84,7 @@ object Category {
 }
 
 object Sub15 {
-  age: 13-15
+
 }
 
 object Sub17 {
@@ -101,10 +103,14 @@ object Master {
   age: 35_Plus
 }
 
-Sub15 "includes" --right-> Sub17
-Sub17 "includes" --right-> Junior
-Junior "includes" --> Senior
+'Sub15 "includes" --> Sub17
+'Sub17 "includes" --> Junior
+'Junior "includes" --> Senior
 enum Sub15_M {
+   age: 13-15
+   --
+   bodyweight_limits: bodyWeightSub15W
+
   45
   50
   56
@@ -115,7 +121,13 @@ enum Sub15_M {
   85_PLUS
 }
 
-enum Sub15_W {
+object Sub15_W {
+ age: 13-15
+ --
+ bodyweight_limits: bodyWeightSub15W
+}
+
+enum BodyWeightSub15W {
  44
  48
  53
@@ -126,8 +138,19 @@ enum Sub15_W {
  75_PLUS
 }
 
-note bottom of Sub15_W : "Un chica de 48kg SUB15, en una competición oficial, \nsu marca puede ser válida para \n 48-Sub15 \n 48-Sub17 \n 48-Junior \n 48Senior"
+enum BodyWeightSub15M {
+  45
+  50
+  56
+  62
+  69
+  77
+  85
+  85_PLUS
+ }
 
+Sub15_W --> BodyWeightSub15W
+Sub15_M --> BodyWeightSub15M
 enum Sub17_M {
   50
   56
@@ -173,8 +196,8 @@ enum Common_W {
 
 object Iteration
 object Announcement
-object NextLift
-object FollowingLift
+object NextLifter
+object FollowingLifter
 
 Competition *-- Inscription
 Inscription "1..*"  *-- Athlete
@@ -190,12 +213,24 @@ ClassificationAct <|-- EliteClassification
 EliteClassification *-- EliteSpreadsheetMale
 EliteClassification *-- EliteSpreadsheetFemale
 
-Batch "next" -right-> ClassificationAct
-Inscription -right-> "next" CompetitionDraw
-CompetitionDraw -right-> "next" Batch
+
+object "Sinclair Coeficcient" as sc {
+  Note: relates bodyweight with lift weight
+}
+
+object "SinclairMalone Coeficcient" as scm {
+  Note: relates bodyweight with lift weight and age
+}
+
+SinclairClassification *-- sc
+SinclairMaloneClassification *-- scm
+
+Batch "next" --> ClassificationAct
+Inscription --> "next" CompetitionDraw
+CompetitionDraw --> "next" Batch
 
 Batch *-- Weighing
-Batch *-- "1..2" Platform
+Batch o-- "1..2" Platform
 Batch "1..*" *---  Athlete
 Batch *--- TC
 
@@ -206,12 +241,12 @@ TC *-- "0..1" TimeJudge
 
 Platform "1..*" *---  Iteration
 Iteration "1..*" *--  Announcement
-Announcement *-- NextLift
-Announcement *-- FollowingLift
-NextLift "next" --> FollowingLift
-NextLift --right-> Lift
-NextLift *-- Athlete
-FollowingLift *-- Athlete
+Announcement *-- NextLifter
+Announcement *-- FollowingLifter
+NextLifter "next" --> FollowingLifter
+NextLifter ---> Lift
+NextLifter <-- "preguntar a luis\n orden cardinales \nflechas" Athlete
+FollowingLifter <-- Athlete
 
 Lift *-- Type
 Lift *-- LiftStatus
@@ -224,23 +259,18 @@ Bar <|-- FemaleBar
 Bar <|-- MaleBar
 Plates *-- Plate
 
-Category <|-- Master
-Category <|-- Sub15
-Category <|-- Sub17
-Category <|-- Junior
-Category <|-- Senior
-
-
-Sub15 <-- Sub15_W
-Sub15 <-- Sub15_M
-Sub17 <-- Sub17_W
-Sub17 <-- Sub17_M
-Junior <-- Common_M
-Junior <-- Common_W
-Senior <-- Common_M
-Senior <-- Common_W
-Master <-- Common_M
-Master <-- Common_W
+Category *-- Sub15_W
+Category *-- Sub15_M
+Category *-- Sub17_W
+Category *-- Sub17_M
+Category *-- Common_M
+Category *-- Common_W
+Category *-- Common_M
+Category *-- Common_W
+Category *-- Common_M
+Category *-- Common_W
 
 Athlete *-- Category
+
+
 @enduml
