@@ -1,5 +1,4 @@
 @startuml
-
 Organizer as organizer
 Inscriber as inscriber
 Admin as admin
@@ -43,6 +42,13 @@ Organizer --> (Delete bound)
 Organizer --> (Assign athlete to bound)
 Organizer --> (Unassigned athlete to bound)
 
+
+newpage
+left to right direction
+(Create category)
+(Modify category)
+(Toggle category availability)
+
 newpage
 left to right direction
 
@@ -74,4 +80,12 @@ left to right direction
 Admin --> (Manage organizers)
 Admin --> (Manage inscribers)
 Admin --> (Manage clubs)
+
+newpage
+left to right direction
+CompetitionSecretary --> (Set lift status)
+CompetitionSecretary --> (Set lift value)
+
+CompetitionSecretary --> (Generate bound act)
+Organizer --> (Generate bound act)
 @enduml
