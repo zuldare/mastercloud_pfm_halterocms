@@ -1,48 +1,48 @@
 @startuml
 'https://plantuml.com/state-diagram
-scale 1024 width
 
-STATE REHACER
-'
-'state Iteration {
-'  state "Bar announcement" as barAnnouncement
-'  barAnnouncement : Just a test
-'
-'  [*] --> barAnnouncement
-'  barAnnouncement --> barAnnouncement : Bar not loaded
-'  barAnnouncement --> athleteAnnouncement : Bar loaded
-'  athleteAnnouncement ---> athleteWeightOfLiftChange
-'
-'  athleteWeightOfLiftChange --> barAnnouncement : change in bar weight
-'
-'  athleteWeightOfLiftChange ----> startTimer : no changes
-'  athleteWeightOfLiftChange --> athleteAnnouncement : bar weight remains\n but athlete lift \n weight change
-'  startTimer --> lift
-'  startTimer --> athleteWeightOfLiftChange : if time < 30s
-'  lift --> stopTimer
-'  stopTimer --> judgeLift
-'  judgeLift --> barAnnouncement
-'  judgeLift --> [*] : no more competitors left
-'}
-'
-'
-'state NextMovement {
-'  checkStatusCleanAndJerk ---> Iteration : cleanAndJerk not started
-'  checkStatusCleanAndJerk -> [*] : cleanAndJek finished
-'}
-'
-'[*] --> Competition
-'
-'Competition --> Batch : "1..n"
-'
-'Batch --> Iteration
-'
-'Iteration --> NextMovement : snatch finished
-'
-'NextMovement --> Competition : cleanAndJek finished
-'
-'Competition ---> [*] : no more batches
-'
-'
-'}
+
+'STATE REHACER
+
+state Iteration {
+  state "Bar announcement" as barAnnouncement
+  barAnnouncement : Just a test
+
+  [*] --> barAnnouncement
+  barAnnouncement --> barAnnouncement : Bar not loaded
+  barAnnouncement --> athleteAnnouncement : Bar loaded
+  athleteAnnouncement ---> athleteWeightOfLiftChange
+
+  athleteWeightOfLiftChange --> barAnnouncement : change in bar weight
+
+  athleteWeightOfLiftChange ----> startTimer : no changes
+  athleteWeightOfLiftChange --> athleteAnnouncement : bar weight remains\n but athlete lift \n weight change
+  startTimer --> lift
+  startTimer --> athleteWeightOfLiftChange : if time < 30s
+  lift --> stopTimer
+  stopTimer --> judgeLift
+  judgeLift --> barAnnouncement
+  judgeLift --> [*] : no more competitors left
+}
+
+
+state NextMovement {
+  checkStatusCleanAndJerk ---> Iteration : cleanAndJerk not started
+  checkStatusCleanAndJerk -> [*] : cleanAndJek finished
+}
+
+[*] --> CompetitionPlay
+
+CompetitionPlay --> Batch : "1..n"
+
+Batch --> Iteration
+
+Iteration --> NextMovement : snatch finished
+
+NextMovement --> CompetitionPlay : cleanAndJek finished
+
+CompetitionPlay ---> [*] : no more batches
+
+
+}
 @enduml

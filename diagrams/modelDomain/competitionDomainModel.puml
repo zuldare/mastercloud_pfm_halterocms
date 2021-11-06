@@ -83,13 +83,6 @@ object Category {
   Gender
 }
 
-object Sub15 {
-
-}
-
-object Sub17 {
-  age: 13-17
-}
 
 object Junior {
   age: 13-20
@@ -103,29 +96,18 @@ object Master {
   age: 35_Plus
 }
 
-'Sub15 "includes" --> Sub17
-'Sub17 "includes" --> Junior
-'Junior "includes" --> Senior
-enum Sub15_M {
+
+object Sub15 {
    age: 13-15
-   --
-   bodyweight_limits: bodyWeightSub15W
-
-  45
-  50
-  56
-  62
-  69
-  77
-  85
-  85_PLUS
 }
 
-object Sub15_W {
- age: 13-15
- --
- bodyweight_limits: bodyWeightSub15W
+
+object Sub17 {
+   age: 13-17
 }
+
+
+
 
 enum BodyWeightSub15W {
  44
@@ -149,9 +131,9 @@ enum BodyWeightSub15M {
   85_PLUS
  }
 
-Sub15_W --> BodyWeightSub15W
-Sub15_M --> BodyWeightSub15M
-enum Sub17_M {
+
+
+enum BodyWeightSub17M {
   50
   56
   62
@@ -162,11 +144,12 @@ enum Sub17_M {
   94_PLUS
 }
 
-enum Sub17_W {
+enum BodyWeightSub17W {
  44
  48
  53
- 5863
+ 58
+ 63
  69
  75
  75_PLUS
@@ -192,6 +175,19 @@ enum Common_W {
 75
 90
 90_PLUS
+}
+
+enum MasterAgeLimits {
+  35-39
+  40-44
+  45-49
+  50-54
+  55-59
+  60-64
+  65-69
+  70-74
+  75-79
+  80_PLUS
 }
 
 object Iteration
@@ -259,16 +255,27 @@ Bar <|-- FemaleBar
 Bar <|-- MaleBar
 Plates *-- Plate
 
-Category *-- Sub15_W
-Category *-- Sub15_M
-Category *-- Sub17_W
-Category *-- Sub17_M
-Category *-- Common_M
-Category *-- Common_W
-Category *-- Common_M
-Category *-- Common_W
-Category *-- Common_M
-Category *-- Common_W
+Category *-- Sub15
+Category *-- Sub17
+Category *-- Junior
+Category *-- Senior
+Category *-- Master
+
+Sub15 --> BodyWeightSub15W
+Sub15 --> BodyWeightSub15M
+
+Sub17 --> BodyWeightSub17W
+Sub17 --> BodyWeightSub17M
+
+Junior --> Common_M
+Junior --> Common_W
+
+Senior --> Common_M
+Senior --> Common_W
+
+Master --> MasterAgeLimits
+Master --> Common_M
+Master --> Common_W
 
 Athlete *-- Category
 
