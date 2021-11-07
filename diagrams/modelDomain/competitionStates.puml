@@ -1,0 +1,26 @@
+@startuml
+state "Pending new athletes to register" as PendingAthletesToRegister
+state "More athletes to register pending?" as MoreAthletesToRegister <<choice>>
+state "Registered athletes" as RegisteredAthletes
+state "Competition order drawn" as CompetitionOrderDrawn
+state "Pending new batches" as PendingNewBatch
+state "More batches pending?" as MoreBatches <<choice>>
+state "Completed batches" as CompletedBatches
+state "Classified athletes" as ClassifiedAthletes
+
+
+[*] --> PendingAthletesToRegister
+PendingAthletesToRegister --> MoreAthletesToRegister : New athlete registered
+MoreAthletesToRegister --> PendingAthletesToRegister : Athletes remain to be registered
+MoreAthletesToRegister --> RegisteredAthletes : All athletes are registered
+RegisteredAthletes --> CompetitionOrderDrawn
+CompetitionOrderDrawn --> PendingNewBatch
+
+PendingNewBatch --> MoreBatches : New batch completed
+
+MoreBatches --> PendingNewBatch : There are batches to be completed
+MoreBatches --> CompletedBatches : All batches are completed
+
+CompletedBatches --> ClassifiedAthletes
+ClassifiedAthletes --> [*]
+@enduml
