@@ -1,0 +1,21 @@
+@startuml
+state "Pending weighing" as PendingWeighing
+state "More weigh-ins pending?" as MoreWeighin <<choice>>
+state "Ready for Snatch" as ReadyForSnatch
+state "More Snatch iterations pending?" as MoreSnatchIteration <<choice>>
+state "Ready for Clean & Jerk" as ReadyForCleanAndJerk
+state "More Clean & Jerk iterations pending?" as MoreCleanAndJerkIteration <<choice>>
+state "Finalized batch iterations" as FinalizedBatchIterations
+
+[*] --> PendingWeighing
+PendingWeighing --> MoreWeighin : An athlete performs weigh-in
+MoreWeighin --> PendingWeighing : Athletes pending weigh-in
+MoreWeighin --> ReadyForSnatch : All athletes have weigh-in
+ReadyForSnatch --> MoreSnatchIteration : A Snatch lift iteration is performed
+MoreSnatchIteration --> ReadyForSnatch : Pending any Snatch lift iteration
+MoreSnatchIteration --> ReadyForCleanAndJerk : All Snatch lift iterations are performed
+ReadyForCleanAndJerk --> MoreCleanAndJerkIteration : A Clean & Jerk lift iteration is performed
+MoreCleanAndJerkIteration --> ReadyForCleanAndJerk : Pending any Clean & Jerk lift iteration
+MoreCleanAndJerkIteration --> FinalizedBatchIterations : All Clean & Jerk lift iterations are performed
+FinalizedBatchIterations --> [*]
+@enduml
