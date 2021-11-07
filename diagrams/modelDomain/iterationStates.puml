@@ -1,0 +1,53 @@
+@startuml
+state "Bar pending to be charged" as BarPendingToBeCharged
+state "Bar charged" as ChargedBar 
+state "Next and following lifters are announced" as NextAndFollowingLiftersAnnounced
+
+state "Was there a change in the lift weight?" as ChangeInLiftWeightCHC <<choice>>
+state "Does the athlete have any lift weight change attempt?" as AnyChangeAttemptCHC <<choice>>
+
+state "The athlete lift weight change\nattempts decreased by 1" as AttemptsDecreased
+state "Does the bar weight remain?" as BarWeightRemainsCHC <<choice>>
+
+state "Does the athlete decide to perform its lift?" as IsLiftGoingToBeRejectedCHC <<choice>>
+state "The timer started" as TimerStarted
+state "Did the athlete perform its lift?" as WasLiftPerformedCHC <<choice>>
+state "Was there a change in the lift weight?" as ChangeInLiftWeightAfterTimerCHC <<choice>>
+state "Does the athlete have any lift weight change attempt?" as AnyChangeAttemptAfterTimerCHC <<choice>>
+state "The lift was performed" as LiftWasPerformed
+state "The timer stopped" as TimerStopped
+state "Rejected lift" as RejectedLift
+state "Was the lift valid?" as WasLiftValidCHC <<choice>>
+state "Valid lift" as ValidLift
+state "Null lift" as NullLift
+
+
+[*] --> BarPendingToBeCharged
+BarPendingToBeCharged --> ChargedBar
+ChargedBar --> NextAndFollowingLiftersAnnounced
+NextAndFollowingLiftersAnnounced --> ChangeInLiftWeightCHC
+ChangeInLiftWeightCHC --> AnyChangeAttemptCHC : The athlete tries to make\na lift weight change
+AnyChangeAttemptCHC --> IsLiftGoingToBeRejectedCHC : The athlete has no more attempts\nat lift weight change
+AnyChangeAttemptCHC --> AttemptsDecreased : The athlete still has any\nlift weight change attempt
+AttemptsDecreased --> BarWeightRemainsCHC
+BarWeightRemainsCHC --> ChargedBar : The bar weight remains
+BarWeightRemainsCHC --> BarPendingToBeCharged : The bar weight changes
+ChangeInLiftWeightCHC --> IsLiftGoingToBeRejectedCHC : The athlete keeps\nits lift weight
+IsLiftGoingToBeRejectedCHC --> TimerStarted : The athlete decides to\nperform its lift
+IsLiftGoingToBeRejectedCHC --> RejectedLift : The athlete rejected its lift
+RejectedLift --> [*]
+TimerStarted --> WasLiftPerformedCHC
+WasLiftPerformedCHC --> LiftWasPerformed : The athlete performed its lift
+WasLiftPerformedCHC --> TimerStopped : The athlete didn't\nperform its lift
+WasLiftPerformedCHC --> ChangeInLiftWeightAfterTimerCHC : The athlete tries to make\na lift weight change
+ChangeInLiftWeightAfterTimerCHC --> WasLiftPerformedCHC : The timer started more\nthan 30 seconds ago
+ChangeInLiftWeightAfterTimerCHC --> AnyChangeAttemptAfterTimerCHC : The timer started less\nthan 30 seconds ago
+AnyChangeAttemptAfterTimerCHC --> WasLiftPerformedCHC : The athlete has no more attempts\nat lift weight change
+AnyChangeAttemptAfterTimerCHC --> AttemptsDecreased : The athlete still has any\nlift weight change attempt
+LiftWasPerformed --> TimerStopped
+TimerStopped --> WasLiftValidCHC
+WasLiftValidCHC --> ValidLift : The lift was judged\nas valid
+WasLiftValidCHC --> NullLift : The lift was judged\nas null
+ValidLift --> [*]
+NullLift --> [*]
+@enduml
