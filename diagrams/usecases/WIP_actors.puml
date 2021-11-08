@@ -56,7 +56,7 @@ package COMPETITION_BUROCRACY {
   usecase "Set number of bounds" as setNumberOfBounds
   usecase "Set inscription period" as setInscriptionPeriod
 
-  createCompetition --> setCompetitionDate
+  createCompetition ---> setCompetitionDate
   createCompetition --> setInscriptionPeriod
   createCompetition ---> setCompetitionLocation
   createCompetition ---> setNumberOfBounds
@@ -67,8 +67,8 @@ package COMPETITION_BUROCRACY {
   usecase "Uninscribe athlete" as uninscribeAthlete
 }
 
-manageCompetition --> deleteCompetition
 manageCompetition --> createCompetition
+manageCompetition --> deleteCompetition
 Organizer --> manageCompetition
 Organizer --> toggle
 Inscriber --> inscribeAthlete
@@ -76,22 +76,32 @@ Inscriber --> uninscribeAthlete
 
 package BOUND_MANAGEMENT {
   usecase "Create/Modify bound" as createBound
+  usecase "Set date" as setBoundDate
+  usecase "Delete bound" as deleteBound
+  usecase "Set location" as setBoundLocation
+  usecase "Set number of platforms" as platformNumber
+  usecase "Set gender" as setGender
+
+  createBound --> setBoundDate
+  createBound --> setBoundLocation
+  createBound --> platformNumber
+  createBound --> setGender
+
+  usecase "Assign athlete to bound" as assignAthleteToBound
+  usecase "Unassign athlete to bound" as unassignAthleteToBound
+  usecase "Pass weighin info to act" as weighToAct
 }
 
 Organizer --> createBound
+Organizer --> assignAthleteToBound
+Organizer --> unassignAthleteToBound
+Organizer --> deleteBound
+CompetitionSecretary --> weighToAct
 
-'
-'
-'package BOUND_BUROCRACY {
-'  Organizer --> (Create bound)
-'  (Create bound) --> (Set date)
-'  (Create bound) --> (Set location)
-'  (Create bound) --> (Set number of platforms)
-'  (Create bound) --> (Set gender)
-'  Organizer --> (Assign athlete to bound)
-'  Organizer --> (Delete bound)
-'  Organizer --> (Unassigned athlete to bound)
-'}
+
+package SPECTATOR_VIEW {
+  usecase show
+}
 '
 'package SPECTATOR_VIEW {
 '  (View competition data)
@@ -135,5 +145,13 @@ TimeJudge --> resumeTimer
 TimeJudge --> stopTimer
 TimeJudge --> setTimerDuration
 Time --> stopTimer
+
+
+
+CompetitionSecretary ---> startTimer
+CompetitionSecretary ---> pauseTimer
+CompetitionSecretary ---> resumeTimer
+CompetitionSecretary ---> stopTimer
+CompetitionSecretary ---> setTimerDuration
 
 @enduml
