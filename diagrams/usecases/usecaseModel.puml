@@ -56,80 +56,64 @@ package COMPETITION_BUROCRACY {
   usecase "Set number of bounds" as setNumberOfBounds
   usecase "Set inscription period" as setInscriptionPeriod
 
-  createCompetition ---> setCompetitionDate
+  createCompetition --> setCompetitionDate
   createCompetition --> setInscriptionPeriod
-  createCompetition ---> setCompetitionLocation
-  createCompetition ---> setNumberOfBounds
+  createCompetition --> setCompetitionLocation
+  createCompetition --> setNumberOfBounds
   createCompetition --> setCompetitionType
 
   usecase "Toggle competition visibility data" as toggle
   usecase "Inscribe athlete" as inscribeAthlete
   usecase "Uninscribe athlete" as uninscribeAthlete
+
+  usecase "Generate classification" as generateClassification
 }
 
-manageCompetition --> createCompetition
-manageCompetition --> deleteCompetition
 Organizer --> manageCompetition
 Organizer --> toggle
+manageCompetition --> deleteCompetition
+manageCompetition --> createCompetition
 Inscriber --> inscribeAthlete
 Inscriber --> uninscribeAthlete
+Organizer --> generateClassification
 
-package BOUND_MANAGEMENT {
+package BOUND {
   usecase "Create/Modify bound" as createBound
-  usecase "Set date" as setBoundDate
   usecase "Delete bound" as deleteBound
+  usecase "Set date" as setBoundDate
   usecase "Set location" as setBoundLocation
-  usecase "Set number of platforms" as platformNumber
   usecase "Set gender" as setGender
+  usecase "Set number of platforms" as platformNumber
 
+  createBound ---> setBoundLocation
+  createBound ----> platformNumber
   createBound --> setBoundDate
-  createBound --> setBoundLocation
-  createBound --> platformNumber
-  createBound --> setGender
+  createBound ---> setGender
 
   usecase "Assign athlete to bound" as assignAthleteToBound
-  usecase "Unassign athlete to bound" as unassignAthleteToBound
-  usecase "Pass weighin info to act" as weighToAct
+  usecase "Unassign athlete to bound" as unassignedAthleteToBound
+
+  usecase "Pass weighin info to competition-secretary board" as weighToAct
+  usecase "Write down athlete name" as writeDownAthleteName
+  usecase "Write down athlete bodyweight" as writeDownAthleteBodyWeight
+  usecase "Calculate athlete category" as calculateAthleteCategory
+  usecase "Set lift status" as setLiftStatus
+  usecase "Set lift value" as setLiftValue
+
+  weighToAct --> writeDownAthleteName
+  weighToAct --> writeDownAthleteBodyWeight
+  weighToAct --> calculateAthleteCategory
+
 }
 
 Organizer --> createBound
 Organizer --> assignAthleteToBound
-Organizer --> unassignAthleteToBound
+Organizer --> unassignedAthleteToBound
 Organizer --> deleteBound
 CompetitionSecretary --> weighToAct
-
-
-package SPECTATOR_VIEW {
-  usecase show
-}
-'
-'package SPECTATOR_VIEW {
-'  (View competition data)
-'  (View bound data)
-'  (View bound play)
-'  note right of (View bound play): Spectator can see the development of a competition on air
-'
-'  (View bound results)
-'  (View classifications)
-'  (Download classifications)
-'  (View weightin act)
-'}
-'
-'Spectator --> (View competition data)
-'Spectator --> (View bound data)
-'Spectator --> (View bound play)
-'
-'Spectator --> (View bound results)
-'Spectator --> (View classifications)
-'Spectator --> (Download classifications)
-'Spectator --> (View weightin act)
-'
-'left to right direction
-'CompetitionSecretary --> (Set lift status)
-'CompetitionSecretary --> (Set lift value)
-'
-'CompetitionSecretary --> (Generate bound act)
-'Organizer --> (Generate bound act)
+CompetitionSecretary --> setLiftStatus
+CompetitionSecretary --> setLiftValue
+CompetitionSecretary --> createBoundAct
 
 package TIMER {
   usecase "Start timer" as startTimer
@@ -146,12 +130,27 @@ TimeJudge --> stopTimer
 TimeJudge --> setTimerDuration
 Time --> stopTimer
 
-
-
 CompetitionSecretary ---> startTimer
 CompetitionSecretary ---> pauseTimer
 CompetitionSecretary ---> resumeTimer
 CompetitionSecretary ---> stopTimer
 CompetitionSecretary ---> setTimerDuration
 
+
+package SPECTATOR_VIEW {
+  usecase "Show competition inscription" as showCompetitionData
+  usecase "Show bound inscriptions" as showBoundInscriptions
+  usecase "Show bound weighins" as showBoundWeighins
+  usecase "Show bound results" as showFinishedBoundsData
+  usecase "Show live bound in play" as showLiveBoundInPlay
+  usecase "Show results" as showResults
+  usecase "Download results" as downloadResults
+}
+Spectator --> showCompetitionData
+Spectator --> showBoundInscriptions
+Spectator --> showBoundWeighins
+Spectator --> showFinishedBoundsData
+Spectator --> showLiveBoundInPlay
+Spectator --> showResults
+Spectator --> downloadResults
 @enduml
