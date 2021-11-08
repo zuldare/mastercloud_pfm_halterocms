@@ -1,7 +1,7 @@
 @startuml
 state "Pending new athletes to register" as PendingAthletesToRegister
 state "More athletes to register pending?" as MoreAthletesToRegister <<choice>>
-state "Registered athletes" as RegisteredAthletes
+state "Registered athletes/Inscription time run out" as RegisteredAthletes
 state "Competition order drawn" as CompetitionOrderDrawn
 state "Pending new batches" as PendingNewBatch
 state "More batches pending?" as MoreBatches <<choice>>
@@ -11,8 +11,8 @@ state "Classified athletes" as ClassifiedAthletes
 
 [*] --> PendingAthletesToRegister
 PendingAthletesToRegister --> MoreAthletesToRegister : New athlete registered
-MoreAthletesToRegister --> PendingAthletesToRegister : Athletes remain to be registered
-MoreAthletesToRegister --> RegisteredAthletes : All athletes are registered
+MoreAthletesToRegister --> PendingAthletesToRegister : Athletes remain to be registered or inscription time runs out
+MoreAthletesToRegister --> RegisteredAthletes : All athletes are registered or inscription time runs out
 RegisteredAthletes --> CompetitionOrderDrawn : The draw takes place
 CompetitionOrderDrawn --> PendingNewBatch : The development of the competition begins
 

@@ -1,91 +1,139 @@
 @startuml
-Organizer as organizer
-Inscriber as inscriber
-Admin as admin
-Time as time
-TimeJudge as timeJudge
-Spectator as spectator
-CompetitionSecretary as cs
-
-newpage
-
 left to right direction
 
-Organizer --> (Create competition)
-(Create competition) --> (Set competition date)
-(Create competition) --> (Set competition location)
-(Create competition) --> (Set number of bounds)
-(Create competition) --> (Set inscription period)
-Organizer --> (Delete competition)
+actor Organizer as Organizer
+actor Inscriber as Inscriber
+actor Admin as Admin
+actor Time as Time
+actor TimeJudge as TimeJudge
+actor Spectator as Spectator
+actor CompetitionSecretary as CompetitionSecretary
 
-usecase setCompetitionType as "Set competition type"
-Organizer --> setCompetitionType
-note right of setCompetitionType : Junior, Master, Senior...
+package Admin_Management {
+  usecase "Create/Modify club" as createClub
+  usecase "Delete club" as deleteClub
+  usecase "Manage clubs" as manageClubs
 
-Organizer --> (Toggle competition visibility data)
+  usecase "Create/Modify organizer" as createOrganizer
+  usecase "Delete organizer" as deleteOrganizer
+  usecase "Manage organizers" as manageOrganizers
 
-Inscriber --> (Inscribe athlete)
-Inscriber --> (Uninscribe athlete)
+  usecase "Delete inscriber" as deleteInscriber
+  usecase "Create/Modify inscriber" as createInscriber
+  usecase "Manage inscribers" as manageInscribers
 
-Organizer --> (Inscribe athlete)
-Organizer --> (Uninscribe athlete)
+  usecase "Toggle category availability" as toggleCategory
+  usecase "Delete category" as deleteCategory
+  usecase "Create/Modify category" as createCategory
+  usecase "Manage categories" as manageCategories
+}
 
+manageClubs --> createClub
+manageClubs --> deleteClub
+Admin --> manageClubs
 
-newpage
-left to right direction
-Organizer --> (Create bound)
-Organizer --> (Delete bound)
-(Create bound) --> (Set date)
-(Create bound) --> (Set location)
-(Create bound) --> (Set number of platforms)
-(Create bound) --> (Set gender)
-Organizer --> (Assign athlete to bound)
-Organizer --> (Unassigned athlete to bound)
+manageOrganizers --> deleteOrganizer
+manageOrganizers --> createOrganizer
+Admin --> manageOrganizers
 
+manageInscribers --> deleteInscriber
+manageInscribers --> createInscriber
+Admin --> manageInscribers
 
-newpage
-left to right direction
-(Create category)
-(Modify category)
-(Toggle category availability)
+manageCategories --> deleteCategory
+manageCategories --> createCategory
+manageCategories --> toggleCategory
+Admin --> manageCategories
 
-newpage
-left to right direction
+package COMPETITION_BUROCRACY {
+  usecase "Create/Modify competition" as createCompetition
+  usecase "Delete competition" as deleteCompetition
+  usecase "Manage competition" as manageCompetition
 
-timeJudge --> (Start timer)
-timeJudge --> (Pause timer)
-timeJudge --> (Resume timer)
-timeJudge --> (Stop timer)
-(Set timer duration) as setTimerDuration
-timeJudge --> setTimerDuration
+  usecase "setCompetitionType" as setCompetitionType
+  usecase "Set competition date" as setCompetitionDate
+  usecase "Set competition location" as setCompetitionLocation
+  usecase "Set number of bounds" as setNumberOfBounds
+  usecase "Set inscription period" as setInscriptionPeriod
 
-note right of setTimerDuration: 60s / 120s
+  createCompetition --> setCompetitionDate
+  createCompetition --> setInscriptionPeriod
+  createCompetition ---> setCompetitionLocation
+  createCompetition ---> setNumberOfBounds
+  createCompetition --> setCompetitionType
 
-newpage
-left to right direction
+  usecase "Toggle competition visibility data" as toggle
+  usecase "Inscribe athlete" as inscribeAthlete
+  usecase "Uninscribe athlete" as uninscribeAthlete
+}
 
-Spectator --> (View competition data)
-Spectator --> (View bound data)
-Spectator --> (View bound play)
-note right of (View bound play): Spectator can see the development of a competition on air
+manageCompetition --> deleteCompetition
+manageCompetition --> createCompetition
+Organizer --> manageCompetition
+Organizer --> toggle
+Inscriber --> inscribeAthlete
+Inscriber --> uninscribeAthlete
 
-Spectator --> (View bound results)
-Spectator --> (View classifications)
-Spectator --> (Download classifications)
-Spectator --> (View weightin act)
+package BOUND_MANAGEMENT {
+  usecase "Create/Modify bound" as createBound
+}
 
+Organizer --> createBound
 
-newpage
-left to right direction
-Admin --> (Manage organizers)
-Admin --> (Manage inscribers)
-Admin --> (Manage clubs)
+'
+'
+'package BOUND_BUROCRACY {
+'  Organizer --> (Create bound)
+'  (Create bound) --> (Set date)
+'  (Create bound) --> (Set location)
+'  (Create bound) --> (Set number of platforms)
+'  (Create bound) --> (Set gender)
+'  Organizer --> (Assign athlete to bound)
+'  Organizer --> (Delete bound)
+'  Organizer --> (Unassigned athlete to bound)
+'}
+'
+'package SPECTATOR_VIEW {
+'  (View competition data)
+'  (View bound data)
+'  (View bound play)
+'  note right of (View bound play): Spectator can see the development of a competition on air
+'
+'  (View bound results)
+'  (View classifications)
+'  (Download classifications)
+'  (View weightin act)
+'}
+'
+'Spectator --> (View competition data)
+'Spectator --> (View bound data)
+'Spectator --> (View bound play)
+'
+'Spectator --> (View bound results)
+'Spectator --> (View classifications)
+'Spectator --> (Download classifications)
+'Spectator --> (View weightin act)
+'
+'left to right direction
+'CompetitionSecretary --> (Set lift status)
+'CompetitionSecretary --> (Set lift value)
+'
+'CompetitionSecretary --> (Generate bound act)
+'Organizer --> (Generate bound act)
 
-newpage
-left to right direction
-CompetitionSecretary --> (Set lift status)
-CompetitionSecretary --> (Set lift value)
+package TIMER {
+  usecase "Start timer" as startTimer
+  usecase "Pause timer" as pauseTimer
+  usecase "Resume timer" as resumeTimer
+  usecase "Set timer duration" as setTimerDuration
+  usecase "Stop timer" as stopTimer
+}
 
-CompetitionSecretary --> (Generate bound act)
-Organizer --> (Generate bound act)
+TimeJudge --> startTimer
+TimeJudge --> pauseTimer
+TimeJudge --> resumeTimer
+TimeJudge --> stopTimer
+TimeJudge --> setTimerDuration
+Time --> stopTimer
+
 @enduml
