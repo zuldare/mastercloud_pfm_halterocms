@@ -50,48 +50,59 @@ package COMPETITION_BUROCRACY {
   usecase "Delete competition" as deleteCompetition
   usecase "Manage competition" as manageCompetition
 
+  usecase "Draw athletes" as drawAthletes
   usecase "setCompetitionType" as setCompetitionType
   usecase "Set competition date" as setCompetitionDate
   usecase "Set competition location" as setCompetitionLocation
-  usecase "Set number of bounds" as setNumberOfBounds
+  usecase "Set number of batchs" as setNumberOfBatchs
   usecase "Set inscription period" as setInscriptionPeriod
+
+  usecase "Toggle competition visibility data" as toggle
+  note right of toggle : Allows to see all athleted inscribed \nor just inscriber's club athletes
+
+  usecase "Inscribe athlete" as inscribeAthlete
+  usecase "Uninscribe athlete" as uninscribeAthlete
+  usecase "Show inscribed athletes" as showInscribedAthletes
+  usecase "Generate classification" as generateClassification
+
+  usecase "Manage athlete inscriptions" as manageAthleteInscriptions
 
   createCompetition --> setCompetitionDate
   createCompetition --> setInscriptionPeriod
   createCompetition --> setCompetitionLocation
-  createCompetition --> setNumberOfBounds
+  createCompetition --> setNumberOfBatchs
   createCompetition --> setCompetitionType
 
-  usecase "Toggle competition visibility data" as toggle
-  usecase "Inscribe athlete" as inscribeAthlete
-  usecase "Uninscribe athlete" as uninscribeAthlete
+  manageCompetition --> toggle
+  manageCompetition ---> drawAthletes
+  manageCompetition ---> deleteCompetition
+  manageCompetition ----> createCompetition
 
-  usecase "Generate classification" as generateClassification
+  manageAthleteInscriptions --> inscribeAthlete
+  manageAthleteInscriptions --> uninscribeAthlete
+  manageAthleteInscriptions --> showInscribedAthletes
 }
 
+Organizer --> manageAthleteInscriptions
+Inscriber --> manageAthleteInscriptions
 Organizer --> manageCompetition
-Organizer --> toggle
-manageCompetition --> deleteCompetition
-manageCompetition --> createCompetition
-Inscriber --> inscribeAthlete
-Inscriber --> uninscribeAthlete
 Organizer --> generateClassification
 
-package BOUND {
-  usecase "Create/Modify bound" as createBound
-  usecase "Delete bound" as deleteBound
-  usecase "Set date" as setBoundDate
-  usecase "Set location" as setBoundLocation
+package BATCH {
+  usecase "Create/Modify batch" as createBatch
+  usecase "Delete batch" as deleteBatch
+  usecase "Set date" as setBatchDate
+  usecase "Set location" as setBatchLocation
   usecase "Set gender" as setGender
   usecase "Set number of platforms" as platformNumber
 
-  createBound ---> setBoundLocation
-  createBound ----> platformNumber
-  createBound --> setBoundDate
-  createBound ---> setGender
+  createBatch ---> setBatchLocation
+  createBatch ----> platformNumber
+  createBatch --> setBatchDate
+  createBatch ---> setGender
 
-  usecase "Assign athlete to bound" as assignAthleteToBound
-  usecase "Unassign athlete to bound" as unassignedAthleteToBound
+  usecase "Assign athlete to batch" as assignAthleteToBatch
+  usecase "Unassign athlete to batch" as unassignedAthleteToBatch
 
   usecase "Pass weighin info to competition-secretary board" as weighToAct
   usecase "Write down athlete name" as writeDownAthleteName
@@ -100,20 +111,20 @@ package BOUND {
   usecase "Set lift status" as setLiftStatus
   usecase "Set lift value" as setLiftValue
   usecase "Set lift weight change" as setLiftWeightChange
-
+  usecase "Generate batch act" as generateBatchAct
   weighToAct --> writeDownAthleteName
   weighToAct --> writeDownAthleteBodyWeight
   weighToAct --> calculateAthleteCategory
 }
 
-Organizer --> createBound
-Organizer --> assignAthleteToBound
-Organizer --> unassignedAthleteToBound
-Organizer --> deleteBound
+Organizer --> createBatch
+Organizer --> assignAthleteToBatch
+Organizer --> unassignedAthleteToBatch
+Organizer --> deleteBatch
 CompetitionSecretary --> weighToAct
 CompetitionSecretary --> setLiftStatus
 CompetitionSecretary --> setLiftValue
-CompetitionSecretary --> createBoundAct
+CompetitionSecretary --> generateBatchAct
 CompetitionSecretary --> setLiftWeightChange
 
 package TIMER {
@@ -140,18 +151,18 @@ CompetitionSecretary ---> setTimerDuration
 
 package SPECTATOR_VIEW {
   usecase "Show competition inscription" as showCompetitionData
-  usecase "Show bound inscriptions" as showBoundInscriptions
-  usecase "Show bound weighins" as showBoundWeighins
-  usecase "Show bound results" as showFinishedBoundsData
-  usecase "Show live bound in play" as showLiveBoundInPlay
+  usecase "Show batch inscriptions" as showBatchInscriptions
+  usecase "Show batch weighins" as showBatchWeighins
+  usecase "Show batch results" as showFinishedBatchsData
+  usecase "Show live batch in play" as showLiveBatchInPlay
   usecase "Show results" as showResults
   usecase "Download results" as downloadResults
 }
 Spectator --> showCompetitionData
-Spectator --> showBoundInscriptions
-Spectator --> showBoundWeighins
-Spectator --> showFinishedBoundsData
-Spectator --> showLiveBoundInPlay
+Spectator --> showBatchInscriptions
+Spectator --> showBatchWeighins
+Spectator --> showFinishedBatchsData
+Spectator --> showLiveBatchInPlay
 Spectator --> showResults
 Spectator --> downloadResults
 @enduml
