@@ -64,7 +64,6 @@ package COMPETITION_BUROCRACY {
   usecase "Uninscribe athlete" as uninscribeAthlete
   usecase "Show inscribed athletes" as showInscribedAthletes
   usecase "Generate classification" as generateClassification
-
   usecase "Manage athlete inscriptions" as manageAthleteInscriptions
 
   createCompetition --> setCompetitionDate
@@ -96,10 +95,10 @@ package BATCH {
   usecase "Set gender" as setGender
   usecase "Set number of platforms" as platformNumber
 
-  createBatch ---> setBatchLocation
+  createBatch ----> setBatchLocation
   createBatch ----> platformNumber
-  createBatch --> setBatchDate
-  createBatch ---> setGender
+  createBatch ----> setBatchDate
+  createBatch ----> setGender
 
   usecase "Assign athlete to batch" as assignAthleteToBatch
   usecase "Unassign athlete to batch" as unassignedAthleteToBatch
@@ -112,6 +111,13 @@ package BATCH {
   usecase "Set lift value" as setLiftValue
   usecase "Set lift weight change" as setLiftWeightChange
   usecase "Generate batch act" as generateBatchAct
+  usecase "Upload batch handwritten acts" as uploadActs
+  usecase "Upload batch handwritten weighing act" as uploadWeightAct
+  usecase "Upload batch handwritten lifts" as uploadPlays
+
+  uploadActs ---> uploadWeightAct
+  uploadActs --> uploadPlays
+
   weighToAct --> writeDownAthleteName
   weighToAct --> writeDownAthleteBodyWeight
   weighToAct --> calculateAthleteCategory
@@ -121,6 +127,7 @@ Organizer --> createBatch
 Organizer --> assignAthleteToBatch
 Organizer --> unassignedAthleteToBatch
 Organizer --> deleteBatch
+Organizer --> uploadActs
 CompetitionSecretary --> weighToAct
 CompetitionSecretary --> setLiftStatus
 CompetitionSecretary --> setLiftValue
