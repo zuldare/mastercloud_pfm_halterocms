@@ -7,6 +7,7 @@ state "Registration time is over" as RegistrationTimeOver
 state "Is there any athlete registered?" as AnyAthletesRegisteredCHC <<choice>>
 state "Competition order drawn" as CompetitionOrderDrawn
 state "Pending new batches" as PendingNewBatch
+state "A new batch started" as StartedNewBatch
 state "More batches pending?" as MoreBatchesCHC <<choice>>
 state "Completed batches" as CompletedBatches
 state "Classified athletes" as ClassifiedAthletes
@@ -25,7 +26,8 @@ AnyAthletesRegisteredCHC --> CompetitionOrderDrawn : The draw takes place
 AnyAthletesRegisteredCHC --> [*] : No athlete has signed up
 CompetitionOrderDrawn --> PendingNewBatch : The development of the\ncompetition begins
 
-PendingNewBatch --> MoreBatchesCHC : New batch completed
+PendingNewBatch --> StartedNewBatch
+StartedNewBatch --> MoreBatchesCHC : New batch completed
 
 MoreBatchesCHC --> PendingNewBatch : There are batches\nto be completed
 MoreBatchesCHC --> CompletedBatches : All batches are completed
