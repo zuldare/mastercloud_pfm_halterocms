@@ -1,25 +1,34 @@
 @startuml
 state "Pending new athletes to register" as PendingAthletesToRegister
-state "More athletes to register pending?" as MoreAthletesToRegister <<choice>>
-state "Registered athletes/Inscription time run out" as RegisteredAthletes
+state "Is the registration time still open?" as IsRegistrationOpenCHC <<choice>>
+state "More athletes to register pending?" as MoreAthletesToRegisterCHC <<choice>>
+state "A new athlete was registered" as NewAthleteRegistered
+state "Registration time is over" as RegistrationTimeOver
+state "Is there any athlete registered?" as AnyAthletesRegisteredCHC <<choice>>
 state "Competition order drawn" as CompetitionOrderDrawn
 state "Pending new batches" as PendingNewBatch
-state "More batches pending?" as MoreBatches <<choice>>
+state "More batches pending?" as MoreBatchesCHC <<choice>>
 state "Completed batches" as CompletedBatches
 state "Classified athletes" as ClassifiedAthletes
 
 
 [*] --> PendingAthletesToRegister
-PendingAthletesToRegister --> MoreAthletesToRegister : New athlete registered
-MoreAthletesToRegister --> PendingAthletesToRegister : Athletes remain to be registered or inscription time runs out
-MoreAthletesToRegister --> RegisteredAthletes : All athletes are registered or inscription time runs out
-RegisteredAthletes --> CompetitionOrderDrawn : The draw takes place
-CompetitionOrderDrawn --> PendingNewBatch : The development of the competition begins
+PendingAthletesToRegister --> IsRegistrationOpenCHC : A new athlete tries\nto be registered
+IsRegistrationOpenCHC --> RegistrationTimeOver : Registration time\nran out
+IsRegistrationOpenCHC --> NewAthleteRegistered : The registration period\nis still open
+NewAthleteRegistered --> MoreAthletesToRegisterCHC
+MoreAthletesToRegisterCHC --> PendingAthletesToRegister : Athletes remain to\nbe registered
+MoreAthletesToRegisterCHC --> RegistrationTimeOver : All athletes are\nregistered
+PendingAthletesToRegister --> RegistrationTimeOver : Registration time\nran out
+RegistrationTimeOver --> AnyAthletesRegisteredCHC
+AnyAthletesRegisteredCHC --> CompetitionOrderDrawn : The draw takes place
+AnyAthletesRegisteredCHC --> [*] : No athlete has signed up
+CompetitionOrderDrawn --> PendingNewBatch : The development of the\ncompetition begins
 
-PendingNewBatch --> MoreBatches : New batch completed
+PendingNewBatch --> MoreBatchesCHC : New batch completed
 
-MoreBatches --> PendingNewBatch : There are batches to be completed
-MoreBatches --> CompletedBatches : All batches are completed
+MoreBatchesCHC --> PendingNewBatch : There are batches\nto be completed
+MoreBatchesCHC --> CompletedBatches : All batches are completed
 
 CompletedBatches --> ClassifiedAthletes : Score is calculated
 ClassifiedAthletes --> [*] : Winners are determined
