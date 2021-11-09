@@ -65,11 +65,31 @@ Más información
 [Vídeo_3](https://www.youtube.com/watch?v=UcWjOqbZuo0&t=144s)
 
 ## 2. Modelo de dominio <a name="domainModel"/>
+[Modelo del dominio](diagrams/modelDomain/competitionDomainModel.puml)
 
 ## 3. Disciplina de requisitos <a name="requirements"/>
 ### 3.1 Actores y casos de uso <a name="actors"/>
 ### 3.2 Especificación de casos de uso <a name="useCases"/>
 ### 3.3 Prototipado interfaz de usuario <a name="prototype"/>
+
+#### Vista de espectador
+![Vista de espectador](diagrams/prototypes/spectatorboutview.png)
+
+#### Vista de secretario de competición
+![Vista de secretario de competición](diagrams/prototypes/competitionsecretaryview.png)
+
+#### Vista de calentamiento
+![Vista área calentamiento](diagrams/prototypes/athletewarmupareaview.png)
+
+#### Vista de levantamiento
+![Vista de secretario de levantamiento](diagrams/prototypes/liftview.png)
+
+#### Vista de temporizador
+![Vista de secretario de temporizador](diagrams/prototypes/timerview.png)
+
+#### Vista de organizador
+![Vista de secretario de organizador](diagrams/prototypes/organizerview.png)
+
 
 ## 4. Disciplina de análisis <a name="analisis"/>
 
