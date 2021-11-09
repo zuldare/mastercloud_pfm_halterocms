@@ -113,9 +113,9 @@ Más información
 
 [1] Github actions [webpage online]. Available: https://github.com/features/actions
 
-[2] PlantUml [webpage online]. Available:
-[https://plantuml.com/es/](https://plantuml.com/es/)
+[1] PlantUml [webpage online]. Available: [https://plantuml.com/es/](https://plantuml.com/es/)
 
+[1] Pencil [herramienta]. Available: [https://pencil.evolus.vn/](https://pencil.evolus.vn/)
 
 -----------------------------------------------------------------
 ## Nivel de compromiso:
