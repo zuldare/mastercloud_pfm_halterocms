@@ -5,7 +5,7 @@ actor Organizer as Organizer
 actor Inscriber as Inscriber
 actor Admin as Admin
 actor Time as Time
-actor TimeJudge as TimeJudge
+actor TimeKeeper as TimeKeeper
 actor Spectator as Spectator
 actor CompetitionSecretary as CompetitionSecretary
 
@@ -56,7 +56,7 @@ package COMPETITION_BUROCRACY {
   usecase "Set competition location" as setCompetitionLocation
   usecase "Set number of batchs" as setNumberOfBatchs
   usecase "Set inscription period" as setInscriptionPeriod
-
+  usecase "Set competition organizer" as setOrganizer
   usecase "Toggle competition visibility data" as toggle
   note right of toggle : Allows to see all athleted inscribed \nor just inscriber's club athletes
 
@@ -71,6 +71,7 @@ package COMPETITION_BUROCRACY {
   createCompetition --> setCompetitionLocation
   createCompetition --> setNumberOfBatchs
   createCompetition --> setCompetitionType
+  createCompetition --> setOrganizer
 
   manageCompetition --> toggle
   manageCompetition ---> drawAthletes
@@ -90,15 +91,19 @@ Organizer --> generateClassification
 package BATCH {
   usecase "Create/Modify batch" as createBatch
   usecase "Delete batch" as deleteBatch
-  usecase "Set date" as setBatchDate
+  usecase "Set weighin time" as setBatchWeightInDate
+  usecase "Set start time" as setBatchStartTime
   usecase "Set location" as setBatchLocation
   usecase "Set gender" as setGender
   usecase "Set number of platforms" as platformNumber
+  usecase "Set technical officers" as setTecnicalOfficers
 
-  createBatch ----> setBatchLocation
-  createBatch ----> platformNumber
-  createBatch ----> setBatchDate
-  createBatch ----> setGender
+  createBatch ---> setBatchLocation
+  createBatch ---> platformNumber
+  createBatch ---> setBatchWeightInDate
+  createBatch ---> setBatchStartTime
+  createBatch ---> setGender
+  createBatch ---> setTecnicalOfficers
 
   usecase "Assign athlete to batch" as assignAthleteToBatch
   usecase "Unassign athlete to batch" as unassignedAthleteToBatch
@@ -142,11 +147,11 @@ package TIMER {
   usecase "Stop timer" as stopTimer
 }
 
-TimeJudge --> startTimer
-TimeJudge --> pauseTimer
-TimeJudge --> resumeTimer
-TimeJudge --> stopTimer
-TimeJudge --> setTimerDuration
+TimeKeeper --> startTimer
+TimeKeeper --> pauseTimer
+TimeKeeper --> resumeTimer
+TimeKeeper --> stopTimer
+TimeKeeper --> setTimerDuration
 Time --> stopTimer
 
 CompetitionSecretary ---> startTimer

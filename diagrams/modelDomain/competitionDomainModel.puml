@@ -40,7 +40,7 @@ object "Technical officers" as TC
 object Judge
 object Marshall
 object CompetitionSecretary
-object TimeJudge
+object Timekeeper
 object Lift
 enum Type {
   SNATCH
@@ -233,7 +233,7 @@ Batch *--- TC
 TC *-- "3..6" Judge
 TC *-- CompetitionSecretary
 TC *-- "0..1" Marshall
-TC *-- "0..1" TimeJudge
+TC *-- "0..1" Timekeeper
 
 Platform "1..*" *---  Iteration
 Iteration "1..*" *--  Announcement
