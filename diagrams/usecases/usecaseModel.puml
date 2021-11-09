@@ -99,11 +99,11 @@ package BOUND {
   usecase "Calculate athlete category" as calculateAthleteCategory
   usecase "Set lift status" as setLiftStatus
   usecase "Set lift value" as setLiftValue
+  usecase "Set lift weight change" as setLiftWeightChange
 
   weighToAct --> writeDownAthleteName
   weighToAct --> writeDownAthleteBodyWeight
   weighToAct --> calculateAthleteCategory
-
 }
 
 Organizer --> createBound
@@ -114,6 +114,7 @@ CompetitionSecretary --> weighToAct
 CompetitionSecretary --> setLiftStatus
 CompetitionSecretary --> setLiftValue
 CompetitionSecretary --> createBoundAct
+CompetitionSecretary --> setLiftWeightChange
 
 package TIMER {
   usecase "Start timer" as startTimer
