@@ -3,8 +3,6 @@ state "Classification is open" as OpenClassification
 state "Calculated new athlete score" as CalculatedAthleteScore
 state "Are there any scores pending to be calculated?" as AnyScoresPendingCHC <<choice>>
 state "All scores have been calculated" as AllScoresCalculated
-state "Determined the winner of a new category" as DeterminedWinnerCategory
-state "Are there any categories pending to determine its winner?" as AnyCategoriesPendingCHC <<choice>>
 
 state "Classification completed" as CompletedClassification
 
@@ -14,9 +12,6 @@ CalculatedAthleteScore --> AnyScoresPendingCHC : Are there any scores pending\nt
 AnyScoresPendingCHC --> OpenClassification : Some score remains\nto be calculated
 AnyScoresPendingCHC --> AllScoresCalculated : The last of the athlete\nscores is calculated
 
-AllScoresCalculated --> DeterminedWinnerCategory
-DeterminedWinnerCategory --> AnyCategoriesPendingCHC : Are there any categories pending\nto determine its winner?
-AnyCategoriesPendingCHC --> AllScoresCalculated : Some category remains to\ndetermine its winner
-AnyCategoriesPendingCHC --> CompletedClassification : The winner is determined for\nthe last of the categories
+AllScoresCalculated --> CompletedClassification : Determined the winner of\nthe batch category
 CompletedClassification --> [*]
 @enduml
