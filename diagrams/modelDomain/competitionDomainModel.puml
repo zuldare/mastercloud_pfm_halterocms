@@ -281,18 +281,17 @@ Athlete *-- Category
 
 
 object CategoryOption2
-object AgeGroupCategory {
+object AgeGroupAndCategory {
   minAge
   maxAge
   gender
-  active
 }
-object BodyWeightGroup {
+object BodyWeightCategory {
   minWeight
   maxWeight
 }
 
 Athlete *----- "*preguntar a LUIS\n consultar categoryView prototype\n para ver ejemplo" CategoryOption2
-CategoryOption2 *-- AgeGroupCategory
-CategoryOption2 *-- BodyWeightGroup
+CategoryOption2 o-- AgeGroupAndCategory
+AgeGroupAndCategory o-- BodyWeightCategory
 @enduml
