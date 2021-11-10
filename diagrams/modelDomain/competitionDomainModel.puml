@@ -280,4 +280,19 @@ Master --> Common_W
 Athlete *-- Category
 
 
+object CategoryOption2
+object AgeGroupAndCategory {
+  minAge
+  maxAge
+  gender
+  active
+}
+object BodyWeightCategory {
+  minWeight
+  maxWeight
+}
+
+Athlete *----- "*preguntar a LUIS\n consultar categoryView prototype\n para ver ejemplo" CategoryOption2
+CategoryOption2 *-- AgeGroupAndCategory
+AgeGroupAndCategory *-- BodyWeightCategory
 @enduml
