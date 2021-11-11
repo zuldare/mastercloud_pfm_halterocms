@@ -3,52 +3,56 @@ left to right direction
 
 actor Organizer as Organizer
 actor Inscriber as Inscriber
-actor Admin as Admin
+actor OrganizationSecretary as OrganizationSecretary
 actor Time as Time
 actor TimeKeeper as TimeKeeper
 actor Spectator as Spectator
 actor CompetitionSecretary as CompetitionSecretary
+actor User
+
 
 package Admin_Management {
   usecase "Create/Modify club" as createClub
   usecase "Delete club" as deleteClub
   usecase "Manage clubs" as manageClubs
 
-  usecase "Create/Modify organizer" as createOrganizer
+  usecase "Edit organizer" as createOrganizer
   usecase "Delete organizer" as deleteOrganizer
-  usecase "Manage organizers" as manageOrganizers
+  usecase "Show organizers" as manageOrganizers
 
   usecase "Delete inscriber" as deleteInscriber
   usecase "Create/Modify inscriber" as createInscriber
   usecase "Manage inscribers" as manageInscribers
-
+' falta el caso de uso visualizar TODO
   usecase "Toggle category availability" as toggleCategory
   usecase "Delete category" as deleteCategory
-  usecase "Create/Modify category" as createCategory
-  usecase "Manage categories" as manageCategories
+  usecase "Edit category" as createCategory
+  usecase "Show categories" as manageCategories
 }
 
 manageClubs --> createClub
 manageClubs --> deleteClub
-Admin --> manageClubs
+OrganizationSecretary --> manageClubs
 
 manageOrganizers --> deleteOrganizer
 manageOrganizers --> createOrganizer
-Admin --> manageOrganizers
+OrganizationSecretary --> manageOrganizers
 
 manageInscribers --> deleteInscriber
 manageInscribers --> createInscriber
-Admin --> manageInscribers
+OrganizationSecretary --> manageInscribers
 
-manageCategories --> deleteCategory
-manageCategories --> createCategory
-manageCategories --> toggleCategory
-Admin --> manageCategories
+OrganizationSecretary --> deleteCategory
+OrganizationSecretary --> createCategory
+OrganizationSecretary --> toggleCategory
+OrganizationSecretary --> manageCategories
 
 package COMPETITION_BUROCRACY {
-  usecase "Create/Modify competition" as createCompetition
+  usecase "Open competition" as createCompetition
+  ' Time lanza CerrarCompeticion
   usecase "Delete competition" as deleteCompetition
   usecase "Manage competition" as manageCompetition
+
 
   usecase "Draw athletes" as drawAthletes
   usecase "setCompetitionType" as setCompetitionType
@@ -61,7 +65,7 @@ package COMPETITION_BUROCRACY {
   note right of toggle : Allows to see all athleted inscribed \nor just inscriber's club athletes
 
   usecase "Inscribe athlete" as inscribeAthlete
-  usecase "Uninscribe athlete" as uninscribeAthlete
+  usecase "Delete athlete" as uninscribeAthlete
   usecase "Show inscribed athletes" as showInscribedAthletes
   usecase "Generate classification" as generateClassification
   usecase "Manage athlete inscriptions" as manageAthleteInscriptions
@@ -89,7 +93,9 @@ Organizer --> manageCompetition
 Organizer --> generateClassification
 
 package BATCH {
-  usecase "Create/Modify batch" as createBatch
+  usecase "Configure batches" as createBatch
+  'TODO quitar las flechas y set tecniacl officers etc etc lo llevas a un diagrama de estados
+  'TODO meter la configuración de los atletas en esta parte
   usecase "Delete batch" as deleteBatch
   usecase "Set weighin time" as setBatchWeightInDate
   usecase "Set start time" as setBatchStartTime
@@ -108,18 +114,21 @@ package BATCH {
   usecase "Assign athlete to batch" as assignAthleteToBatch
   usecase "Unassign athlete to batch" as unassignedAthleteToBatch
 
-  usecase "Pass weighin info to competition-secretary board" as weighToAct
-  usecase "Write down athlete name" as writeDownAthleteName
+  usecase "Weighin introduction" as weighToAct
+  usecase "Show athlete category" as showAthleteCategory
+  usecase "Select athlete name" as writeDownAthleteName
   usecase "Write down athlete bodyweight" as writeDownAthleteBodyWeight
   usecase "Calculate athlete category" as calculateAthleteCategory
   usecase "Set lift status" as setLiftStatus
   usecase "Set lift value" as setLiftValue
+  'son acciones
   usecase "Set lift weight change" as setLiftWeightChange
   usecase "Generate batch act" as generateBatchAct
   usecase "Upload batch handwritten acts" as uploadActs
   usecase "Upload batch handwritten weighing act" as uploadWeightAct
   usecase "Upload batch handwritten lifts" as uploadPlays
-
+  usecase "Open batch"
+  usecase "Play"
   uploadActs ---> uploadWeightAct
   uploadActs --> uploadPlays
 
@@ -177,4 +186,6 @@ Spectator --> showFinishedBatchsData
 Spectator --> showLiveBatchInPlay
 Spectator --> showResults
 Spectator --> downloadResults
+
+'secretario ponerle como herencia de timekeerper y quitar las relaciones com time
 @enduml

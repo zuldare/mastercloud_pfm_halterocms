@@ -1,41 +1,56 @@
 @startuml
-skinparam nodesep 45
-' CONTROLS node horizontal separation
-' skinparam ranksep 60 CONTROLS vertical separation
 
-object Competition
-object "Inscription phase" as Inscription {
+object Competition {
+   type: CompetitionType
+}
+
+class CompetitionType {
+  name
+}
+
+Competition --> CompetitionType
+object "Inscription" as Inscription {
   Date
   Place
-  CompetitionType: Category
 }
+
 object CompetitionDraw
 object Batch
 object Weighing {
-  Athlete identification
-  AthleteBodyWeight
+  Lifter identification
+  LifterBodyWeight
   SnatchOpener
   CleanJerkOpener
 }
 object ClassificationAct
 object CategoryClassification
-object SinclairClassification
-object SinclairMaloneClassification
-object EliteClassification
-object EliteSpreadsheetMale
-object EliteSpreadsheetFemale
+object SinclairClassification {
+  coefficient: SinclairCoefficient
+}
+object SinclairMaloneClassification {
+  coefficient: SinclairMaloneCoefficient
+}
+object EliteClassification {
+  coefficientsMales: [EliteCoefficientMale]
+  coefficientsMales: [EliteCoefficientFemale]
+}
+
 object Platform {
   name
 }
+
 object Club
-object Athlete {
+
+object Lifter {
   name
   birthYear
 }
+
 enum Gender {
-  MALE
-  FEMALE
+  MALE(M)
+  FEMALE(F)
 }
+
 object "Technical officers" as TC
 object Judge
 object Marshall
@@ -53,152 +68,41 @@ enum LiftStatus {
   REJECTED
 }
 enum Countdown {
-  60_SECONDS
-  120_SECONDS
+  1_MINUTES(1)
+  2_MINUTES(2)
 }
 object BarSet
-object Bar
-object FemaleBar {
-  weight: 15kg
+enum Bar {
+  FEMALE (15kg)
+  MALE (20kg)
 }
-object MaleBar {
-  weight: 20kg
-}
+
+
 object Plates
 enum Plate {
-  25-RED
-  15-YELLOW
-  10-GREEN
-  5-WHITE
-  2.5-RED
-  1.5-YELLOW
-  1-GREEN
-  0.5-WHITE
-}
-object Collar {
-  weight: 2.5kg
-}
-
-object Category {
-  Gender
+  BIG_RED (25KG)
+  BIG_BLUE (20KG)
+  BIG_YELLOW (15KG)
+  BIG_GREEN (10KG)
+  BIG_WHITE (5)
+  SMALL_RED (2.5KG)
+  SMALL_BLUE (2KG)
+  SMALL_YELLOW (1.5KG)
+  SMALL_GREEN (1KG)
+  SMALL_WHITE (0.5KG)
 }
 
-
-object Junior {
-  age: 13-20
-}
-
-object Senior {
-  age: 13_Plus
-}
-
-object Master {
-  age: 35_Plus
-}
-
-
-object Sub15 {
-   age: 13-15
-}
-
-
-object Sub17 {
-   age: 13-17
-}
-
-
-
-
-enum BodyWeightSub15W {
- 44
- 48
- 53
- 58
- 63
- 69
- 75
- 75_PLUS
-}
-
-enum BodyWeightSub15M {
-  45
-  50
-  56
-  62
-  69
-  77
-  85
-  85_PLUS
- }
-
-
-
-enum BodyWeightSub17M {
-  50
-  56
-  62
-  69
-  77
-  85
-  94
-  94_PLUS
-}
-
-enum BodyWeightSub17W {
- 44
- 48
- 53
- 58
- 63
- 69
- 75
- 75_PLUS
-}
-
-enum Common_M {
-56
-62
-69
-77
-85
-94
-105
-105_PLUS
-}
-
-enum Common_W {
-48
-53
-58
-63
-69
-75
-90
-90_PLUS
-}
-
-enum MasterAgeLimits {
-  35-39
-  40-44
-  45-49
-  50-54
-  55-59
-  60-64
-  65-69
-  70-74
-  75-79
-  80_PLUS
+enum Collar {
+  COLLAR(2.5KG)
 }
 
 object Iteration
 object Announcement
-object NextLifter
-object FollowingLifter
 
 Competition *-- Inscription
-Inscription "1..*"  *-- Athlete
-Athlete <-- Gender
-Club "1..*" *-- Athlete
+Inscription "1..*"  *-- Lifter
+Lifter *--> Gender
+Club "1..*" o-- Lifter
 Competition *-- CompetitionDraw
 Competition "1..*" *--  Batch
 Competition *-- ClassificationAct
@@ -206,20 +110,7 @@ ClassificationAct <|-- CategoryClassification
 ClassificationAct <|-- SinclairClassification
 ClassificationAct <|-- SinclairMaloneClassification
 ClassificationAct <|-- EliteClassification
-EliteClassification *-- EliteSpreadsheetMale
-EliteClassification *-- EliteSpreadsheetFemale
 
-
-object "Sinclair Coeficcient" as sc {
-  Note: relates bodyweight with lift weight
-}
-
-object "SinclairMalone Coeficcient" as scm {
-  Note: relates bodyweight with lift weight and age
-}
-
-SinclairClassification *-- sc
-SinclairMaloneClassification *-- scm
 
 Batch "next" --> ClassificationAct
 Inscription --> "next" CompetitionDraw
@@ -227,7 +118,7 @@ CompetitionDraw --> "next" Batch
 
 Batch *-- Weighing
 Batch o-- "1..2" Platform
-Batch "1..*" *---  Athlete
+Batch "1..*" *---  Lifter
 Batch *--- TC
 
 TC *-- "3..6" Judge
@@ -237,12 +128,11 @@ TC *-- "0..1" Timekeeper
 
 Platform "1..*" *---  Iteration
 Iteration "1..*" *--  Announcement
-Announcement *-- NextLifter
-Announcement *-- FollowingLifter
-NextLifter "next" --> FollowingLifter
-NextLifter ---> Lift
-NextLifter <-- "preguntar a luis\n orden cardinales \nflechas" Athlete
-FollowingLifter <-- Athlete
+Announcement -- Lifter : next
+Announcement -- Lifter : following
+
+Lifter o---> Lift
+
 
 Lift *-- Type
 Lift *-- LiftStatus
@@ -251,47 +141,37 @@ Lift o-- BarSet
 BarSet *-- Bar
 BarSet *-- Plates
 BarSet *-- "2" Collar
-Bar <|-- FemaleBar
-Bar <|-- MaleBar
 Plates *-- Plate
 
-Category *-- Sub15
-Category *-- Sub17
-Category *-- Junior
-Category *-- Senior
-Category *-- Master
-
-Sub15 --> BodyWeightSub15W
-Sub15 --> BodyWeightSub15M
-
-Sub17 --> BodyWeightSub17W
-Sub17 --> BodyWeightSub17M
-
-Junior --> Common_M
-Junior --> Common_W
-
-Senior --> Common_M
-Senior --> Common_W
-
-Master --> MasterAgeLimits
-Master --> Common_M
-Master --> Common_W
-
-Athlete *-- Category
+Lifter *-- Category
 
 
-object CategoryOption2
-object AgeGroupAndCategory {
+object Category {
   minAge
   maxAge
-  gender
-}
-object BodyWeightCategory {
-  minWeight
-  maxWeight
+  gender: Gender
 }
 
-Athlete *----- "*preguntar a LUIS\n consultar categoryView prototype\n para ver ejemplo" CategoryOption2
-CategoryOption2 o-- AgeGroupAndCategory
-AgeGroupAndCategory o-- BodyWeightCategory
+Category -> Gender
+
+object AgeRange {
+  min
+  max
+}
+
+Category *-- AgeRange
+
+object BodyWeightRange {
+  min
+  max
+}
+
+Lifter *----- Category
+Category o-- "1..*" BodyWeightRange
+
+
+
+
+' 'TODO USAR CLASES EN VEZ DE OBJECTS CUANDO CORRESPONDA
+
 @enduml

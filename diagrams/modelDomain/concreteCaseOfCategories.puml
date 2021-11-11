@@ -1,0 +1,135 @@
+@startuml
+object Category {
+  Gender
+}
+
+
+object Junior {
+  age: 13-20
+}
+
+object Senior {
+  age: 13_Plus
+}
+
+object Master {
+  age: 35_Plus
+}
+
+
+object Sub15 {
+   age: 13-15
+}
+
+
+object Sub17 {
+   age: 13-17
+}
+
+
+
+
+enum BodyWeightSub15W {
+ 44
+ 48
+ 53
+ 58
+ 63
+ 69
+ 75
+ 75_PLUS
+}
+
+enum BodyWeightSub15M {
+  45
+  50
+  56
+  62
+  69
+  77
+  85
+  85_PLUS
+ }
+
+
+
+enum BodyWeightSub17M {
+  50
+  56
+  62
+  69
+  77
+  85
+  94
+  94_PLUS
+}
+
+enum BodyWeightSub17W {
+ 44
+ 48
+ 53
+ 58
+ 63
+ 69
+ 75
+ 75_PLUS
+}
+
+enum Common_M {
+56
+62
+69
+77
+85
+94
+105
+105_PLUS
+}
+
+enum Common_W {
+48
+53
+58
+63
+69
+75
+90
+90_PLUS
+}
+
+enum MasterAgeLimits {
+  35-39
+  40-44
+  45-49
+  50-54
+  55-59
+  60-64
+  65-69
+  70-74
+  75-79
+  80_PLUS
+}
+
+Category *-- Sub15
+Category *-- Sub17
+Category *-- Junior
+Category *-- Senior
+Category *-- Master
+
+Sub15 --> BodyWeightSub15W
+Sub15 --> BodyWeightSub15M
+
+Sub17 --> BodyWeightSub17W
+Sub17 --> BodyWeightSub17M
+
+Junior --> Common_M
+Junior --> Common_W
+
+Senior --> Common_M
+Senior --> Common_W
+
+Master --> MasterAgeLimits
+Master --> Common_M
+Master --> Common_W
+
+@enduml
