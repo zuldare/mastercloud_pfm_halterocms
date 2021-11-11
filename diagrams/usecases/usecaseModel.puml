@@ -1,5 +1,4 @@
 @startuml
-left to right direction
 
 actor Organizer as Organizer
 actor Inscriber as Inscriber
@@ -10,146 +9,145 @@ actor Spectator as Spectator
 actor CompetitionSecretary as CompetitionSecretary
 actor User
 
-package Login {
+package Log {
+  usecase Login as login
+  usecase Logout as logout
 }
 
+User --> login
+User --> logout
 
-package Admin_Management {
-  usecase "Create/Modify club" as createClub
-  usecase "Delete club" as deleteClub
-  usecase "Manage clubs" as manageClubs
+User <|-- Organizer
+User <|-- OrganizationSecretary
+User <|-- CompetitionSecretary
+CompetitionSecretary <|-- TimeKeeper
+Organizer <|-- Inscriber
 
-  usecase "Edit organizer" as createOrganizer
-  usecase "Delete organizer" as deleteOrganizer
-  usecase "Show organizers" as manageOrganizers
+newpage
+left to right direction
 
-  usecase "Delete inscriber" as deleteInscriber
-  usecase "Create/Modify inscriber" as createInscriber
-  usecase "Manage inscribers" as manageInscribers
-' falta el caso de uso visualizar TODO
-  usecase "Toggle category availability" as toggleCategory
-  usecase "Delete category" as deleteCategory
-  usecase "Edit category" as createCategory
-  usecase "Show categories" as manageCategories
+package AdminManagement {
+
+  package Clubs_Management {
+      usecase "Show clubs" as showClubs
+      usecase "Edit club" as editClub
+      usecase "Delete club" as deleteClub
+  }
+
+  package OrganizersManagement {
+    usecase "Show organizers" as showOrganizers
+    usecase "Edit organizer" as editOrganizer
+    usecase "Delete organizer" as deleteOrganizer
+  }
+
+  package InscribersManagement {
+    usecase "Show inscribers" as showInscribers
+    usecase "Delete inscriber" as deleteInscriber
+    usecase "Edit inscriber" as editInscriber
+  }
+
+  package CategoryManagement {
+    usecase "Toggle category availability" as toggleCategory
+    usecase "Delete category" as deleteCategory
+    usecase "Edit category" as editCategory
+    usecase "Show categories" as showCategories
+  }
 }
 
-manageClubs --> createClub
-manageClubs --> deleteClub
-OrganizationSecretary --> manageClubs
+OrganizationSecretary --> showClubs
+OrganizationSecretary --> editClub
+OrganizationSecretary --> deleteClub
 
-manageOrganizers --> deleteOrganizer
-manageOrganizers --> createOrganizer
-OrganizationSecretary --> manageOrganizers
+OrganizationSecretary --> showOrganizers
+OrganizationSecretary --> editOrganizer
+OrganizationSecretary --> deleteOrganizer
+OrganizationSecretary --> showOrganizers
 
-manageInscribers --> deleteInscriber
-manageInscribers --> createInscriber
-OrganizationSecretary --> manageInscribers
+OrganizationSecretary --> deleteInscriber
+OrganizationSecretary --> editInscriber
+OrganizationSecretary --> showInscribers
 
 OrganizationSecretary --> deleteCategory
-OrganizationSecretary --> createCategory
+OrganizationSecretary --> editCategory
 OrganizationSecretary --> toggleCategory
-OrganizationSecretary --> manageCategories
+OrganizationSecretary --> showCategories
 
-package COMPETITION_BUROCRACY {
-  usecase "Open competition" as createCompetition
-  ' Time lanza CerrarCompeticion
+newpage
+left to right direction
+
+package COMPETITION_BUREAUCRACY {
+  usecase "Open inscriptions" as openInscriptions
+  usecase "Close inscriptions" as closeInscriptions
+
   usecase "Delete competition" as deleteCompetition
-  usecase "Manage competition" as manageCompetition
+  usecase "Edit competition" as editCompetition
+  note right of editCompetition: Actions in state diagram would be \n -Set competition organizer \n -Set inscription period \n -Set number of batches \n -Set location \n -Set date \n - Set type
 
-
-  usecase "Draw athletes" as drawAthletes
-  usecase "setCompetitionType" as setCompetitionType
-  usecase "Set competition date" as setCompetitionDate
-  usecase "Set competition location" as setCompetitionLocation
-  usecase "Set number of batchs" as setNumberOfBatchs
-  usecase "Set inscription period" as setInscriptionPeriod
-  usecase "Set competition organizer" as setOrganizer
-  usecase "Toggle competition visibility data" as toggle
-  note right of toggle : Allows to see all athleted inscribed \nor just inscriber's club athletes
-
-  usecase "Inscribe athlete" as inscribeAthlete
-  usecase "Delete athlete" as uninscribeAthlete
-  usecase "Show inscribed athletes" as showInscribedAthletes
-  usecase "Generate classification" as generateClassification
-  usecase "Manage athlete inscriptions" as manageAthleteInscriptions
-
-  createCompetition --> setCompetitionDate
-  createCompetition --> setInscriptionPeriod
-  createCompetition --> setCompetitionLocation
-  createCompetition --> setNumberOfBatchs
-  createCompetition --> setCompetitionType
-  createCompetition --> setOrganizer
-
-  manageCompetition --> toggle
-  manageCompetition ---> drawAthletes
-  manageCompetition ---> deleteCompetition
-  manageCompetition ----> createCompetition
-
-  manageAthleteInscriptions --> inscribeAthlete
-  manageAthleteInscriptions --> uninscribeAthlete
-  manageAthleteInscriptions --> showInscribedAthletes
+  usecase "Draw lifters" as drawLifters
+  usecase "Inscribe lifter" as inscribeLifter
+  usecase "Delete lifter" as uninscribeLifter
+  usecase "Show inscribed lifters" as showInscribedLifter
+  usecase "Generate classifications" as generateClassification
 }
 
-Organizer --> manageAthleteInscriptions
-Inscriber --> manageAthleteInscriptions
-Organizer --> manageCompetition
+Time --> closeInscriptions
+Organizer --> closeInscriptions
+Organizer --> openInscriptions
+Organizer --> drawLifters
+Organizer --> deleteCompetition
+Organizer --> editCompetition
 Organizer --> generateClassification
 
+Inscriber --> inscribeLifter
+Inscriber --> uninscribeLifter
+Inscriber --> showInscribedLifter
+
+
+newpage
+left to right direction
+
 package BATCH {
-  usecase "Configure batches" as createBatch
-  'TODO quitar las flechas y set tecniacl officers etc etc lo llevas a un diagrama de estados
-  'TODO meter la configuración de los atletas en esta parte
+  usecase "Show batches" as showBatches
+  usecase "Edit batch" as editBatch
+  note right of editBatch : Actions to state diagram \n -Set location \n -Set start time \n -Set weighin time \n -Set technical officers \n -Set platform numbers \n -Set gender
+
   usecase "Delete batch" as deleteBatch
-  usecase "Set weighin time" as setBatchWeightInDate
-  usecase "Set start time" as setBatchStartTime
-  usecase "Set location" as setBatchLocation
-  usecase "Set gender" as setGender
-  usecase "Set number of platforms" as platformNumber
-  usecase "Set technical officers" as setTecnicalOfficers
+  usecase "Assign lifter to batch" as assignLifterToBatch
+  usecase "Unassign lifter to batch" as unassignedLifterToBatch
 
-  createBatch ---> setBatchLocation
-  createBatch ---> platformNumber
-  createBatch ---> setBatchWeightInDate
-  createBatch ---> setBatchStartTime
-  createBatch ---> setGender
-  createBatch ---> setTecnicalOfficers
-
-  usecase "Assign athlete to batch" as assignAthleteToBatch
-  usecase "Unassign athlete to batch" as unassignedAthleteToBatch
-
-  usecase "Weighin introduction" as weighToAct
   usecase "Show athlete category" as showAthleteCategory
-  usecase "Select athlete name" as writeDownAthleteName
-  usecase "Write down athlete bodyweight" as writeDownAthleteBodyWeight
-  usecase "Calculate athlete category" as calculateAthleteCategory
   usecase "Set lift status" as setLiftStatus
   usecase "Set lift value" as setLiftValue
-  'son acciones
-  usecase "Set lift weight change" as setLiftWeightChange
-  usecase "Generate batch act" as generateBatchAct
-  usecase "Upload batch handwritten acts" as uploadActs
-  usecase "Upload batch handwritten weighing act" as uploadWeightAct
-  usecase "Upload batch handwritten lifts" as uploadPlays
-  usecase "Open batch"
-  usecase "Play"
-  uploadActs ---> uploadWeightAct
-  uploadActs --> uploadPlays
 
-  weighToAct --> writeDownAthleteName
-  weighToAct --> writeDownAthleteBodyWeight
-  weighToAct --> calculateAthleteCategory
+  usecase "Set lift weight change" as setLiftWeightChange
+  usecase "Generate act" as generateBatchAct
+  usecase "Download act" as downloadAct
+  usecase "Edit lifter's with weighin data" as editLiftersWithWeighinData
+  note right of editLiftersWithWeighinData: After weighin \n-opening snatch \n -clean&jerk \n -bodyweight \n must be edited
+
+  usecase "Init Play" as initPlay
+  usecase "Finish play" as finishPlay
+
 }
 
-Organizer --> createBatch
-Organizer --> assignAthleteToBatch
-Organizer --> unassignedAthleteToBatch
+Organizer --> showBatches
+Organizer --> editBatch
+Organizer --> assignLifterToBatch
+Organizer --> unassignedLifterToBatch
 Organizer --> deleteBatch
-Organizer --> uploadActs
-CompetitionSecretary --> weighToAct
+Organizer --> editLiftersWithWeighinData
+Organizer --> downloadAct
+
 CompetitionSecretary --> setLiftStatus
 CompetitionSecretary --> setLiftValue
 CompetitionSecretary --> generateBatchAct
 CompetitionSecretary --> setLiftWeightChange
+CompetitionSecretary --> showAthleteCategory
+CompetitionSecretary --> initPlay
+CompetitionSecretary --> finishPlay
+
+newpage
+left to right direction
 
 package TIMER {
   usecase "Start timer" as startTimer
@@ -166,12 +164,9 @@ TimeKeeper --> stopTimer
 TimeKeeper --> setTimerDuration
 Time --> stopTimer
 
-CompetitionSecretary ---> startTimer
-CompetitionSecretary ---> pauseTimer
-CompetitionSecretary ---> resumeTimer
-CompetitionSecretary ---> stopTimer
-CompetitionSecretary ---> setTimerDuration
 
+newpage
+left to right direction
 
 package SPECTATOR_VIEW {
   usecase "Show competition inscription" as showCompetitionData
