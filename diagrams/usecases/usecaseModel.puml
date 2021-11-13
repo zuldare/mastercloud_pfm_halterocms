@@ -88,6 +88,7 @@ package COMPETITION_BUREAUCRACY {
   usecase "Delete lifter" as uninscribeLifter
   usecase "Show inscribed lifters" as showInscribedLifter
   usecase "Generate classifications" as generateClassification
+  usecase "Show classifications" as showClassifications
 }
 
 Time --> closeInscriptions
@@ -97,6 +98,7 @@ Organizer --> drawLifters
 Organizer --> deleteCompetition
 Organizer --> editCompetition
 Organizer --> generateClassification
+Organizer --> showClassifications
 
 Inscriber --> inscribeLifter
 Inscriber --> uninscribeLifter
