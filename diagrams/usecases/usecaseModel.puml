@@ -14,15 +14,15 @@ package Log {
   usecase Logout as logout
 }
 
-User --> login
+User -> login
 User --> logout
 
-User <|-- Organizer
-User <|-- OrganizationSecretary
-User <|-- CompetitionSecretary
-User <|-- Spectator
-CompetitionSecretary <|-- TimeKeeper
-Organizer <|-- Inscriber
+User <|--- Organizer
+User <|--- OrganizationSecretary
+User <|--- CompetitionSecretary
+User <|--- Spectator
+CompetitionSecretary <|--- TimeKeeper
+Organizer <|--- Inscriber
 
 newpage
 left to right direction
