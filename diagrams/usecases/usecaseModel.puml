@@ -10,8 +10,8 @@ actor CompetitionSecretary as CompetitionSecretary
 actor User
 
 package Log {
-  usecase Login as login
-  usecase Logout as logout
+  usecase login
+  usecase logout
 }
 
 User -> login
@@ -27,33 +27,29 @@ Organizer <|--- Inscriber
 newpage
 left to right direction
 
-'package AdminManagement {
+package Clubs_Management {
+    usecase "showClubs" as showClubs
+    usecase "editClub" as editClub
+    usecase "deleteClub" as deleteClub
+}
 
-  package Clubs_Management {
-      usecase "Show clubs" as showClubs
-      usecase "Edit club" as editClub
-      usecase "Delete club" as deleteClub
-  }
+package OrganizersManagement {
+  usecase "showOrganizers" as showOrganizers
+  usecase "editOrganizer" as editOrganizer
+  usecase "deleteOrganizer" as deleteOrganizer
+}
 
-  package OrganizersManagement {
-    usecase "Show organizers" as showOrganizers
-    usecase "Edit organizer" as editOrganizer
-    usecase "Delete organizer" as deleteOrganizer
-  }
+package InscribersManagement {
+  usecase "showInscribers" as showInscribers
+  usecase "deleteInscriber" as deleteInscriber
+  usecase "editInscriber" as editInscriber
+}
 
-  package InscribersManagement {
-    usecase "Show inscribers" as showInscribers
-    usecase "Delete inscriber" as deleteInscriber
-    usecase "Edit inscriber" as editInscriber
-  }
-
-  package CategoryManagement {
-    usecase "Toggle category availability" as toggleCategory
-    usecase "Delete category" as deleteCategory
-    usecase "Edit category" as editCategory
-    usecase "Show categories" as showCategories
-  }
-'}
+package CategoryManagement {
+  usecase "deleteCategory" as deleteCategory
+  usecase "editCategory" as editCategory
+  usecase "showCategories" as showCategories
+}
 
 OrganizationSecretary --> showClubs
 OrganizationSecretary --> editClub
@@ -70,26 +66,25 @@ OrganizationSecretary --> showInscribers
 
 OrganizationSecretary --> deleteCategory
 OrganizationSecretary --> editCategory
-OrganizationSecretary --> toggleCategory
 OrganizationSecretary --> showCategories
 
 newpage
 left to right direction
 
 package COMPETITION_BUREAUCRACY {
-  usecase "Open inscriptions" as openInscriptions
-  usecase "Close inscriptions" as closeInscriptions
+  usecase openInscriptions
+  usecase closeInscriptions
 
-  usecase "Delete competition" as deleteCompetition
-  usecase "Edit competition" as editCompetition
+  usecase deleteCompetition
+  usecase editCompetition
   note right of editCompetition: Actions in state diagram would be \n -Set competition organizer \n -Set inscription period \n -Set number of batches \n -Set location \n -Set date \n - Set type
 
-  usecase "Draw lifters" as drawLifters
-  usecase "Inscribe lifter" as inscribeLifter
-  usecase "Delete lifter" as uninscribeLifter
-  usecase "Show inscribed lifters" as showInscribedLifter
-  usecase "Generate classifications" as generateClassification
-  usecase "Show classifications" as showClassifications
+  usecase drawLifters
+  usecase inscribeLifter
+  usecase uninscribeLifter
+  usecase showInscribedLifters
+  usecase generateClassifications
+  usecase showClassifications
 }
 
 Time --> closeInscriptions
@@ -98,7 +93,7 @@ Organizer --> openInscriptions
 Organizer --> drawLifters
 Organizer --> deleteCompetition
 Organizer --> editCompetition
-Organizer --> generateClassification
+Organizer --> generateClassifications
 Organizer --> showClassifications
 
 Inscriber --> inscribeLifter
@@ -110,26 +105,26 @@ newpage
 left to right direction
 
 package BATCH {
-  usecase "Show batches" as showBatches
-  usecase "Edit batch" as editBatch
+  usecase showBatches
+  usecase editBatch
   note right of editBatch : Actions to state diagram \n -Set location \n -Set start time \n -Set weighin time \n -Set technical officers \n -Set platform numbers \n -Set gender
 
-  usecase "Delete batch" as deleteBatch
-  usecase "Assign lifter to batch" as assignLifterToBatch
-  usecase "Unassign lifter to batch" as unassignedLifterToBatch
+  usecase deleteBatch
+  usecase assignLifterToBatch
+  usecase unassignedLifterToBatch
 
-  usecase "Show athlete category" as showAthleteCategory
-  usecase "Set lift status" as setLiftStatus
-  usecase "Set lift value" as setLiftValue
+  usecase showAthleteCategory
+  usecase setLiftStatus
+  usecase setLiftValue
 
-  usecase "Set lift weight change" as setLiftWeightChange
-  usecase "Generate act" as generateBatchAct
-  usecase "Download act" as downloadAct
-  usecase "Introduce weighin data" as introduceWeighinData
+  usecase setLiftWeightChange
+  usecase generateBatchAct
+  usecase downloadAct
+  usecase introduceWeighinData
   note right of introduceWeighinData: After weighin \n-opening snatch \n -clean&jerk \n -bodyweight \n must be edited
 
-  usecase "Init Play" as initPlay
-  usecase "Finish play" as finishPlay
+  usecase initPlay
+  usecase finishPlay
 
 }
 
@@ -172,21 +167,20 @@ newpage
 left to right direction
 
 package SPECTATOR_VIEW {
-  usecase "Show competition inscription" as showCompetitionData
-  usecase "Show batch inscriptions" as showBatchInscriptions
-  usecase "Show batch weighins" as showBatchWeighins
-  usecase "Show batch results" as showFinishedBatchsData
-  usecase "Show live batch in play" as showLiveBatchInPlay
-  usecase "Show results" as showResults
-  usecase "Download results" as downloadResults
+  usecase showCompetition
+  usecase showBatchInscriptions
+  usecase showBatchWeighins
+  usecase showFinishedBatchs
+  usecase showLiveBatchInPlay
+  usecase showResults
+  usecase downloadResults
 }
-Spectator --> showCompetitionData
+Spectator --> showCompetition
 Spectator --> showBatchInscriptions
 Spectator --> showBatchWeighins
-Spectator --> showFinishedBatchsData
+Spectator --> showFinishedBatchs
 Spectator --> showLiveBatchInPlay
 Spectator --> showResults
 Spectator --> downloadResults
 
-'secretario ponerle como herencia de timekeerper y quitar las relaciones com time
 @enduml
