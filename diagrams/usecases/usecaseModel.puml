@@ -77,12 +77,12 @@ package COMPETITION_BUREAUCRACY {
 
   usecase deleteCompetition
   usecase editCompetition
-  note right of editCompetition: Actions in state diagram would be \n -Set competition organizer \n -Set inscription period \n -Set number of batches \n -Set location \n -Set date \n - Set type
 
   usecase drawLifters
   usecase inscribeLifter
   usecase uninscribeLifter
   usecase showInscribedLifters
+
   usecase generateClassifications
   usecase showClassifications
 }
@@ -107,7 +107,6 @@ left to right direction
 package BATCH {
   usecase showBatches
   usecase editBatch
-  note right of editBatch : Actions to state diagram \n -Set location \n -Set start time \n -Set weighin time \n -Set technical officers \n -Set platform numbers \n -Set gender
 
   usecase deleteBatch
   usecase assignLifterToBatch
