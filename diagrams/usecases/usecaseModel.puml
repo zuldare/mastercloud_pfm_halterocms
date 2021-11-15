@@ -77,6 +77,7 @@ package COMPETITION_BUREAUCRACY {
 
   usecase deleteCompetition
   usecase editCompetition
+  usecase showCompetitions
 
   usecase drawLifters
   usecase inscribeLifter
@@ -94,6 +95,7 @@ Organizer --> openInscriptions
 Organizer --> drawLifters
 Organizer --> deleteCompetition
 Organizer --> editCompetition
+Organizer --> showCompetitions
 Organizer --> createClassifications
 Organizer --> showClassifications
 Organizer --> downloadClassifications
@@ -115,10 +117,10 @@ package BATCHES_BUREAUCRACY {
   usecase unassignLifterToBatch
 
   usecase showLifterCategory
-  usecase setLiftStatus
-  usecase setLiftValue
+  usecase editLiftStatus
+  usecase editLiftValue
 
-  usecase setLiftWeightChange
+  usecase editLiftWeightChange
   usecase generateAct
   usecase downloadAct
   usecase introduceWeighinData
@@ -135,10 +137,10 @@ Organizer --> deleteBatch
 Organizer --> introduceWeighinData
 Organizer --> downloadAct
 
-CompetitionSecretary --> setLiftStatus
-CompetitionSecretary --> setLiftValue
+CompetitionSecretary --> editLiftStatus
+CompetitionSecretary --> editLiftValue
 CompetitionSecretary --> generateAct
-CompetitionSecretary --> setLiftWeightChange
+CompetitionSecretary --> editLiftWeightChange
 CompetitionSecretary --> showLifterCategory
 CompetitionSecretary --> initPlay
 CompetitionSecretary --> finishPlay
