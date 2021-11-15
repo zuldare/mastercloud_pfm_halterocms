@@ -121,6 +121,7 @@ package BATCH {
   usecase downloadAct
   usecase introduceWeighinData
   note right of introduceWeighinData: After weighin \n-opening snatch \n -clean&jerk \n -bodyweight \n must be edited
+  note right of introduceWeighinData: After weighin \n-opening snatch \n -clean&jerk \n -bodyweight \n must be edited
 
   usecase initPlay
   usecase finishPlay
