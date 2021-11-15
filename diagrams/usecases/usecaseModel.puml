@@ -83,7 +83,8 @@ package COMPETITION_BUREAUCRACY {
   usecase uninscribeLifter
   usecase showInscribedLifters
 
-  usecase generateClassifications
+  usecase createClassifications
+  usecase downloadClassifications
   usecase showClassifications
 }
 
@@ -93,12 +94,13 @@ Organizer --> openInscriptions
 Organizer --> drawLifters
 Organizer --> deleteCompetition
 Organizer --> editCompetition
-Organizer --> generateClassifications
+Organizer --> createClassifications
 Organizer --> showClassifications
+Organizer --> downloadClassifications
 
 Inscriber --> inscribeLifter
 Inscriber --> uninscribeLifter
-Inscriber --> showInscribedLifter
+Inscriber --> showInscribedLifters
 
 
 newpage
