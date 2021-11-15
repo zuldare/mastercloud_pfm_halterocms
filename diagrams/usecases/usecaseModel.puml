@@ -147,11 +147,11 @@ newpage
 left to right direction
 
 package TIMER {
-  usecase "Start timer" as startTimer
-  usecase "Pause timer" as pauseTimer
-  usecase "Resume timer" as resumeTimer
-  usecase "Set timer duration" as setTimerDuration
-  usecase "Stop timer" as stopTimer
+  usecase startTimer
+  usecase pauseTimer
+  usecase resumeTimer
+  usecase setTimerDuration
+  usecase stopTimer
 }
 
 TimeKeeper --> startTimer
