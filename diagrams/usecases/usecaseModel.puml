@@ -20,13 +20,14 @@ User --> logout
 User <|-- Organizer
 User <|-- OrganizationSecretary
 User <|-- CompetitionSecretary
+User <|-- Spectator
 CompetitionSecretary <|-- TimeKeeper
 Organizer <|-- Inscriber
 
 newpage
 left to right direction
 
-package AdminManagement {
+'package AdminManagement {
 
   package Clubs_Management {
       usecase "Show clubs" as showClubs
@@ -52,7 +53,7 @@ package AdminManagement {
     usecase "Edit category" as editCategory
     usecase "Show categories" as showCategories
   }
-}
+'}
 
 OrganizationSecretary --> showClubs
 OrganizationSecretary --> editClub
