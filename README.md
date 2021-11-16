@@ -7,28 +7,61 @@
 
     1.2 [Halterofilia](#intro_haltero)
 
-2. [Modelo del dominio](#domainModel)
-3. [Disciplina de requisitos](#requirements)
+2. [Proceso unificado de desarrollo (RUP)](#rup)
+
+3. [Modelo del dominio](#domainModel)
+4. [Disciplina de requisitos](#requirements)
 
     3.1 [Actores y casos de uso](#actors)
 
     3.2 [Especificación de casos de uso](#useCases)
 
     3.3 [Prototipado interfaz de usuario](#prototype)
-        
-5. [Disciplina de análisis](#analisis)
-7. [Disciplina de diseño](#design)
-8. [Disciplina de implementación](#implementation)
-9. [Disciplina de pruebas](#tests)
 
-10. [Conclusiones](#conclusions)
-11. [Autores](#authors)
-12. [Bibliografía](#biblio)
+[comment]: <> (Encontrar Actores y Casos de Uso)
+[comment]: <> (Priorizar Casos de Uso)
+[comment]: <> (Detallar Caso de Uso)
+[comment]: <> (Estructurar Casos de Uso)
+[comment]: <> (PrototiparInterfaz de Usuario)
+        
+6. [Disciplina de análisis](#analisis) 
+
+[comment]: <> ( Análisis de la Arquitectura)
+[comment]: <> ( Análisis de Caso de Uso7. [Disciplina de diseño]&#40;#design&#41;)
+[comment]: <> ( Análisis de Clase8. [Disciplina de implementación]&#40;#implementation&#41;)
+[comment]: <> ( Análisis de Paquete9. [Disciplina de pruebas]&#40;#tests&#41;)
+              
+7. Disciplina de Diseño
+[comment]: <> ( Diseño de la Arquitectura)
+[comment]: <> ( Diseño de Caso de Uso)
+[comment]: <> ( Diseño de Clase)
+[comment]: <> ( Diseño de Paquete)
+
+8. Disciplina de Implementación
+[comment]: <> ( Implementar la Arquitectura)
+[comment]: <> ( Integración de Sistemas)
+[comment]: <> ( Implementar Clase)
+[comment]: <> ( Pruebas Unitarias)
+[comment]: <> ( Implementar Subsistema)
+
+9. Disciplina de Pruebas
+[comment]: <> ( Planificar Pruebas)
+[comment]: <> ( Diseñar Pruebas)
+[comment]: <> ( Implementar Pruebas)
+[comment]: <> ( Realizar Pruebas de Integración)
+[comment]: <> ( Realizar Pruebas de Sistemas)
+[comment]: <> ( Evaluar Pruebas)
+
+
+8. [Bibliografía](#biblio)
 
 ## 1. Introducción<a name="intro"/>
 
-El objetivo principal de este proyecto es el desarrollo de una aplicación para la creación y gestión integral de una competición de halterofilia, según la normativa de la Federación Española de Halterofilia (FEH), dirigido mediante el proceso de desarrollo RUP.
+El objetivo principal de este proyecto es el desarrollo de una aplicación para la creación y gestión integral de una competición de halterofilia, 
+según la normativa de la Federación Española de Halterofilia (FEH), dirigido mediante el proceso de desarrollo RUP.
 
+En los últimos años el deporte de la halterofilia ha crecido exponencialmente, debido a esto, es necesario que la gestión de competiciones se automatice
+y se facilite todo lo posible tanto a jueces, espectadores, levantadores, etc el seguimiento de la competición.
 
 ### 1.1 Objetivos<a name="goals"/>
 
@@ -64,7 +97,27 @@ Más información
 
 [Vídeo_3](https://www.youtube.com/watch?v=UcWjOqbZuo0&t=144s)
 
-## 2. Modelo de dominio <a name="domainModel"/>
+## 2. Proceso unificado de desarrollo (RUP)
+
+El proceso unificado de desarrollo o RUP (Rational Unified Process)  es un proceso iterativo de desarrollo de software basado en componentes interconectados 
+y bien definidos vía sus interfaces. RUP es un marco de trabajo que puede utilizarse en todo tipo de desarrollos.
+
+Las tres principales características de RUP son las siguientes son (1) dirgido por casos de uso, (2) centrado en la arquitectura y (3) proceso iterativo incremental.
+
+(1) Los casos de uso son la piedra angular para establecer el comportamiento deseado del sistema y cómo comunicar este comportamiento entre los diferentes implicados en el sistema. 
+Nos sirven para capturar los requisitos funcionales correctamente representados, etc
+
+(2) La arquitectura es usada como artefacto primordial para la conceptualización, construcción, gestión y evolución del sistema en desarrollo
+
+(3) Iterativo implica que el proceso involucra un flujo de entregas ejecutables e incremental ya que con cada nueva entrega se proporciona un incremento respecto a la anterior
+
+Las 5 disciplinas o flujos de trabajo de RUP son Requisitos, Análisis, Diseño, Implementación y Pruebas
+![5_disciplines](images/RUP_1.png)
+y cada una se divide en 4 fases: Inicio, Elaboración, Construcción y Transición. El esfuerzo dedicado a la realización de las actividades de las 
+diferentes disciplinas depende del momento del proyecto en el que estemos
+![Phases](images/RUP_2.png)
+
+## 3. Modelo de dominio <a name="domainModel"/>
 [Modelo del dominio](diagrams/modelDomain/competitionDomainModel.puml)
 
 ## 3. Disciplina de requisitos <a name="requirements"/>
