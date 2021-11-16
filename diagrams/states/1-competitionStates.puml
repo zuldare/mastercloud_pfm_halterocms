@@ -1,10 +1,10 @@
 @startuml
-state "Pending new athletes to register" as PendingAthletesToRegister
+state "Pending new lifters to register" as PendingLiftersToRegister
 state "Is the registration time still open?" as IsRegistrationOpenCHC <<choice>>
-state "More athletes to register pending?" as MoreAthletesToRegisterCHC <<choice>>
-state "A new athlete was registered" as NewAthleteRegistered
+state "More lifters to register pending?" as MoreLiftersToRegisterCHC <<choice>>
+state "A new lifter was registered" as NewLifterRegistered
 state "Registration time is over" as RegistrationTimeOver
-state "Is there any athlete registered?" as AnyAthletesRegisteredCHC <<choice>>
+state "Is there any lifter registered?" as AnyLiftersRegisteredCHC <<choice>>
 state "Competition order drawn" as CompetitionOrderDrawn
 state "Pending new batches" as PendingNewBatch
 state "A new category from a\ncertain batch started" as StartedNewBatchCategory
@@ -14,17 +14,17 @@ state "Classification completed" as CompletedClassification
 state "More batches from other categories pending?" as MoreBatchesCHC <<choice>>
 state "All batches are completed" as CompletedBatches
 
-[*] --> PendingAthletesToRegister
-PendingAthletesToRegister --> IsRegistrationOpenCHC : A new athlete tries\nto be registered
+[*] --> PendingLiftersToRegister
+PendingLiftersToRegister --> IsRegistrationOpenCHC : A new lifter tries\nto be registered
 IsRegistrationOpenCHC --> RegistrationTimeOver : Registration time\nran out
-IsRegistrationOpenCHC --> NewAthleteRegistered : The registration period\nis still open
-NewAthleteRegistered --> MoreAthletesToRegisterCHC
-MoreAthletesToRegisterCHC --> PendingAthletesToRegister : Athletes remain to\nbe registered
-MoreAthletesToRegisterCHC --> RegistrationTimeOver : All athletes are\nregistered
-PendingAthletesToRegister --> RegistrationTimeOver : Registration time\nran out
-RegistrationTimeOver --> AnyAthletesRegisteredCHC
-AnyAthletesRegisteredCHC --> CompetitionOrderDrawn : The draw takes place
-AnyAthletesRegisteredCHC --> [*] : No athlete has signed up
+IsRegistrationOpenCHC --> NewLifterRegistered : The registration period\nis still open
+NewLifterRegistered --> MoreLiftersToRegisterCHC
+MoreLiftersToRegisterCHC --> PendingLiftersToRegister : Lifters remain to\nbe registered
+MoreLiftersToRegisterCHC --> RegistrationTimeOver : All lifters are\nregistered
+PendingLiftersToRegister --> RegistrationTimeOver : Registration time\nran out
+RegistrationTimeOver --> AnyLiftersRegisteredCHC
+AnyLiftersRegisteredCHC --> CompetitionOrderDrawn : The draw takes place
+AnyLiftersRegisteredCHC --> [*] : No lifter has signed up
 CompetitionOrderDrawn --> PendingNewBatch : The development of the\ncompetition begins
 
 PendingNewBatch --> StartedNewBatchCategory
