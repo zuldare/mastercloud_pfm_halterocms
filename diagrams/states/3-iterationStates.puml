@@ -10,16 +10,16 @@ state "Bar charged" as ChargedBar
 state "Next and following lifters are announced" as NextAndFollowingLiftersAnnounced
 
 state "Was there a change in the lift weight?" as ChangeInLiftWeightCHC <<choice>>
-state "Does the athlete have any lift weight change attempt?" as AnyChangeAttemptCHC <<choice>>
+state "Does the lifter have any lift weight change attempt?" as AnyChangeAttemptCHC <<choice>>
 
-state "The athlete lift weight change\nattempts decreased by 1" as AttemptsDecreased
+state "The lifter lift weight change\nattempts decreased by 1" as AttemptsDecreased
 state "Does the bar weight remain?" as BarWeightRemainsCHC <<choice>>
-state "Does the athlete decide to perform its lift?" as IsLiftGoingToBeRejectedCHC <<choice>>
+state "Does the lifter decide to perform its lift?" as IsLiftGoingToBeRejectedCHC <<choice>>
 
 state "The timer started" as TimerStarted
-state "Did the athlete perform its lift?" as WasLiftPerformedCHC <<choice>>
+state "Did the lifter perform its lift?" as WasLiftPerformedCHC <<choice>>
 state "Was there a change in the lift weight?" as ChangeInLiftWeightAfterTimerCHC <<choice>>
-state "Does the athlete have any lift weight change attempt?" as AnyChangeAttemptAfterTimerCHC <<choice>>
+state "Does the lifter have any lift weight change attempt?" as AnyChangeAttemptAfterTimerCHC <<choice>>
 
 state "The lift was performed" as LiftWasPerformed
 state "The timer stopped" as TimerStopped
@@ -40,21 +40,21 @@ BarPendingToBeCharged --> ChargedBar
 ChargedBar --> NextAndFollowingLiftersAnnounced
 
 ''
-'' When athletes are announced:
+'' When lifters are announced:
 ''
 
 NextAndFollowingLiftersAnnounced --> ChangeInLiftWeightCHC
-ChangeInLiftWeightCHC --> AnyChangeAttemptCHC : The athlete tries to make\na lift weight change
-AnyChangeAttemptCHC --> IsLiftGoingToBeRejectedCHC : The athlete has no more attempts\nat lift weight change
-AnyChangeAttemptCHC --> AttemptsDecreased : The athlete still has any\nlift weight change attempt
+ChangeInLiftWeightCHC --> AnyChangeAttemptCHC : The lifter tries to make\na lift weight change
+AnyChangeAttemptCHC --> IsLiftGoingToBeRejectedCHC : The lifter has no more attempts\nat lift weight change
+AnyChangeAttemptCHC --> AttemptsDecreased : The lifter still has any\nlift weight change attempt
 
 AttemptsDecreased --> BarWeightRemainsCHC
 BarWeightRemainsCHC --> ChargedBar : The bar weight remains
 BarWeightRemainsCHC --> BarPendingToBeCharged : The bar weight changes
 
-ChangeInLiftWeightCHC --> IsLiftGoingToBeRejectedCHC : The athlete keeps\nits lift weight
-IsLiftGoingToBeRejectedCHC --> TimerStarted : The athlete decides to\nperform its lift
-IsLiftGoingToBeRejectedCHC --> RejectedLift : The athlete rejected its lift
+ChangeInLiftWeightCHC --> IsLiftGoingToBeRejectedCHC : The lifter keeps\nits lift weight
+IsLiftGoingToBeRejectedCHC --> TimerStarted : The lifter decides to\nperform its lift
+IsLiftGoingToBeRejectedCHC --> RejectedLift : The lifter rejected its lift
 RejectedLift --> [*]
 
 ''
@@ -62,15 +62,15 @@ RejectedLift --> [*]
 ''
 
 TimerStarted --> WasLiftPerformedCHC
-WasLiftPerformedCHC --> LiftWasPerformed : The athlete performed its lift
-WasLiftPerformedCHC --> TimerStopped : The athlete didn't\nperform its lift
-WasLiftPerformedCHC --> ChangeInLiftWeightAfterTimerCHC : The athlete tries to make\na lift weight change
+WasLiftPerformedCHC --> LiftWasPerformed : The lifter performed its lift
+WasLiftPerformedCHC --> TimerStopped : The lifter didn't\nperform its lift
+WasLiftPerformedCHC --> ChangeInLiftWeightAfterTimerCHC : The lifter tries to make\na lift weight change
 
 ChangeInLiftWeightAfterTimerCHC --> WasLiftPerformedCHC : The timer started more\nthan 30 seconds ago
 ChangeInLiftWeightAfterTimerCHC --> AnyChangeAttemptAfterTimerCHC : The timer started less\nthan 30 seconds ago
 
-AnyChangeAttemptAfterTimerCHC --> WasLiftPerformedCHC : The athlete has no more attempts\nat lift weight change
-AnyChangeAttemptAfterTimerCHC --> AttemptsDecreased : The athlete still has any\nlift weight change attempt
+AnyChangeAttemptAfterTimerCHC --> WasLiftPerformedCHC : The lifter has no more attempts\nat lift weight change
+AnyChangeAttemptAfterTimerCHC --> AttemptsDecreased : The lifter still has any\nlift weight change attempt
 
 LiftWasPerformed --> TimerStopped
 
