@@ -8,9 +8,9 @@ state "More Clean & Jerk iterations pending?" as MoreCleanAndJerkIteration <<cho
 state "Finalized batch iterations" as FinalizedBatchIterations
 
 [*] --> PendingWeighing
-PendingWeighing --> MoreWeighin : An athlete performs weigh-in
-MoreWeighin --> PendingWeighing : Athletes pending weigh-in
-MoreWeighin --> ReadyForSnatch : All athletes have weigh-in
+PendingWeighing --> MoreWeighin : A lifter performs weigh-in
+MoreWeighin --> PendingWeighing : Lifters pending weigh-in
+MoreWeighin --> ReadyForSnatch : All the lifters have weigh-in
 ReadyForSnatch --> MoreSnatchIteration : A Snatch lift iteration is performed
 MoreSnatchIteration --> ReadyForSnatch : Pending any Snatch lift iteration
 MoreSnatchIteration --> ReadyForCleanAndJerk : All Snatch lift iterations are performed
