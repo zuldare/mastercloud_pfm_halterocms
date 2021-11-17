@@ -13,21 +13,16 @@
 
 4. [Disciplina de requisitos](#requirements)
 
-    3.1 [Actores y casos de uso](#actors)
+    3.1 [Actores y casos de uso](#useCasesActors")
+ 
+    3.2 [Priorizar casos de uso](#useCasesPrioritize")
 
-    3.2 [Especificación de casos de uso](#useCases)
+    3.3 [Especificación de casos de uso](#useCasesSpecification")
+    
+    3.4 [Estructurar el modelo de casos de uso](#useCasesStructure")
+    
+    3.5 [Prototipado interfaz de usuario](#useCasesPrototype")
 
-    3.3 [Prototipado interfaz de usuario](#prototype)
-
-[comment]: <> (Encontrar Actores y Casos de Uso)
-
-[comment]: <> (Priorizar Casos de Uso)
-
-[comment]: <> (Detallar Caso de Uso)
-
-[comment]: <> (Estructurar Casos de Uso)
-
-[comment]: <> (PrototiparInterfaz de Usuario)
         
 6. [Disciplina de análisis](#analisis) 
 
@@ -141,9 +136,43 @@ diferentes disciplinas depende del momento del proyecto en el que estemos
 [Modelo del dominio](diagrams/modelDomain/competitionDomainModel.puml)
 
 ## 3. Disciplina de requisitos <a name="requirements"/>
-### 3.1 Actores y casos de uso <a name="actors"/>
-### 3.2 Especificación de casos de uso <a name="useCases"/>
-### 3.3 Prototipado interfaz de usuario <a name="prototype"/>
+
+La disciplina de requisitos es el flujo de trabajo (realización de casos de uso que incluye roles, actividades y artefactos)
+cuyo principal propósito es *dirigir el desarrollo hacia el sistema correcto* describiendo los requisitos del sistema
+de tal manera que se alcance un contrato entre cliente, usuarios y desarrolladores sobre lo que el sistema debe hacer.
+
+Objetivos:
+
+*   Establecer y mantener el acuerdo entre clientes y otros implicados sobre lo que el sistema debería hacer
+*   Proveer a los desarrolladores una mejor comprensión de los requisitos del sistema
+*   Definir los límites del sistema
+*   Proveer la base para planificar los contenidos técnicos de cada iteración
+
+Las actividades recomendadas por RUP en esta disciplina son las siguientes:
+
+1. Encontrar actores y casos de uso
+2. Priorizar casos de uso
+3. Especificación casos de uso
+4. Estructurar el modelo de casos de uso
+5. Prototipado de la interfaz de usuario 
+
+
+### 3.1 Actores y casos de uso <a name="useCasesActors"/>
+* Un actor especifica un rol que adopta una entidad externa cuando interactúa con el sistema **directamente** (no en respuesta)
+  Si se necesita modelar cosas que suceden en el sistema en un tiempo específico pero que parece que no lo lanza ningún actor, se puede introducir el **actor tiempo**
+
+* Un caso de uso es una **especificación de secuencias de acciones, incluyendo posibles variaciones, 
+que el sistema puede realizar y que dan un resultado observable de interés a un actor particular**
+
+
+    **INSERTAR CASOS DE USO**
+                           
+    **INSERTAR MODELO DE CONTEXTO**
+
+### 3.2 Priorizar casos de uso <a name="useCasesPrioritize">
+### 3.3 Especificación de casos de uso <a name="useCasesSpecification"/>
+### 3.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
+### 3.3 Prototipado interfaz de usuario <a name="useCasesPrototype"/>
 
 #### Vista de espectador
 ![Vista de espectador](diagrams/prototypes/competitionPlay/spectatorboutview.png)
