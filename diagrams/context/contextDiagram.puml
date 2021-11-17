@@ -27,9 +27,14 @@ end note
 OPENED_DASHBOARD --> OPENED_ORGANIZERS
 note on link
   showOrganizers
+end note
+
+OPENED_ORGANIZERS --> OPENED_ORGANIZERS
+note on link
   editOrganizer
   deleteOrganizer
 end note
+
 
 OPENED_DASHBOARD --> OPENED_INSCRIBERS
 note on link
@@ -45,11 +50,14 @@ end note
 OPENED_DASHBOARD --> OPENED_CATEGORIES
 note on link
   showCategories
+end note
+
+OPENED_CATEGORIES --> OPENED_CATEGORIES
+note on link
   editCategory
   deleteCategory
 end note
 
-OPENED_CLUBS --> [*] : logout
 
 OPENED_CLUBS --> OPENED_CLUBS
 note on link
@@ -57,15 +65,14 @@ note on link
   deleteClub
 end note
 
-OPENED_ORGANIZERS --> [*] : logout
-OPENED_INSCRIBERS --> [*] : logout
-OPENED_CATEGORIES --> [*] : logout
+OPENED_CLUBS ---> [*] : logout
+OPENED_ORGANIZERS ----> [*] : logout
+OPENED_INSCRIBERS ----> [*] : logout
+OPENED_CATEGORIES ----> [*] : logout
 
-OPENED_DASHBOARD --> OPENED_INSCRIPTIONS
-note on link
-  openInscriptions
-end note
 
+
+OPENED_INSCRIBERS --> OPENED_INSCRIPTIONS
 
 
 '[*] --> NotShooting
