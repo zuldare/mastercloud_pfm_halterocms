@@ -10,6 +10,7 @@
 2. [Proceso unificado de desarrollo (RUP)](#rup)
 
 3. [Modelo del dominio](#domainModel)
+
 4. [Disciplina de requisitos](#requirements)
 
     3.1 [Actores y casos de uso](#actors)
@@ -19,37 +20,56 @@
     3.3 [Prototipado interfaz de usuario](#prototype)
 
 [comment]: <> (Encontrar Actores y Casos de Uso)
+
 [comment]: <> (Priorizar Casos de Uso)
+
 [comment]: <> (Detallar Caso de Uso)
+
 [comment]: <> (Estructurar Casos de Uso)
+
 [comment]: <> (PrototiparInterfaz de Usuario)
         
 6. [Disciplina de análisis](#analisis) 
 
 [comment]: <> ( Análisis de la Arquitectura)
-[comment]: <> ( Análisis de Caso de Uso7. [Disciplina de diseño]&#40;#design&#41;)
-[comment]: <> ( Análisis de Clase8. [Disciplina de implementación]&#40;#implementation&#41;)
-[comment]: <> ( Análisis de Paquete9. [Disciplina de pruebas]&#40;#tests&#41;)
+
+[comment]: <> ( Análisis de Caso de Uso)
+
+[comment]: <> ( Análisis de Clases)
+
+[comment]: <> ( Análisis de Paquetes)
               
 7. Disciplina de Diseño
 [comment]: <> ( Diseño de la Arquitectura)
+
 [comment]: <> ( Diseño de Caso de Uso)
+
 [comment]: <> ( Diseño de Clase)
+
 [comment]: <> ( Diseño de Paquete)
 
 8. Disciplina de Implementación
 [comment]: <> ( Implementar la Arquitectura)
+
 [comment]: <> ( Integración de Sistemas)
+
 [comment]: <> ( Implementar Clase)
+
 [comment]: <> ( Pruebas Unitarias)
+
 [comment]: <> ( Implementar Subsistema)
 
 9. Disciplina de Pruebas
 [comment]: <> ( Planificar Pruebas)
+
 [comment]: <> ( Diseñar Pruebas)
+
 [comment]: <> ( Implementar Pruebas)
+
 [comment]: <> ( Realizar Pruebas de Integración)
+
 [comment]: <> ( Realizar Pruebas de Sistemas)
+
 [comment]: <> ( Evaluar Pruebas)
 
 

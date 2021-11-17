@@ -1,0 +1,90 @@
+@startuml
+title CONTEXT_DIAGRAM
+
+state INITIAL
+state OPENED_DASHBOARD
+state OPENED_CLUBS
+state OPENED_ORGANIZERS
+state OPENED_INSCRIBERS
+state OPENED_CATEGORIES
+state OPENED_INSCRIPTIONS
+
+state OPENED_COMPETION
+state OPENED_BATCH
+
+
+INITIAL --> OPENED_DASHBOARD
+note on link
+  login
+  signin
+end note
+
+OPENED_DASHBOARD --> OPENED_CLUBS
+note on link
+  showClubs
+end note
+
+OPENED_DASHBOARD --> OPENED_ORGANIZERS
+note on link
+  showOrganizers
+  editOrganizer
+  deleteOrganizer
+end note
+
+OPENED_DASHBOARD --> OPENED_INSCRIBERS
+note on link
+  showInscribers
+end note
+
+OPENED_INSCRIBERS --> OPENED_INSCRIBERS
+note on link
+  editInscriber
+  deleteInscriber
+end note
+
+OPENED_DASHBOARD --> OPENED_CATEGORIES
+note on link
+  showCategories
+  editCategory
+  deleteCategory
+end note
+
+OPENED_CLUBS --> [*] : logout
+
+OPENED_CLUBS --> OPENED_CLUBS
+note on link
+  editClub
+  deleteClub
+end note
+
+OPENED_ORGANIZERS --> [*] : logout
+OPENED_INSCRIBERS --> [*] : logout
+OPENED_CATEGORIES --> [*] : logout
+
+OPENED_DASHBOARD --> OPENED_INSCRIPTIONS
+note on link
+  openInscriptions
+end note
+
+
+
+'[*] --> NotShooting
+'
+'state NotShooting {
+'  [*] --> Idle
+'  Idle --> Configuring : EvConfig
+'  Configuring --> Idle : EvConfig
+'}
+'
+'state Configuring {
+'  [*] --> NewValueSelection
+'  NewValueSelection --> NewValuePreview : EvNewValue
+'  NewValuePreview --> NewValueSelection : EvNewValueRejected
+'  NewValuePreview --> NewValueSelection : EvNewValueSaved
+'
+'  state NewValuePreview {
+'     State1 -> State2
+'  }
+'
+'}
+@enduml
