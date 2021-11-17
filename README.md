@@ -169,7 +169,21 @@ que el sistema puede realizar y que dan un resultado observable de interés a un
                            
     **INSERTAR MODELO DE CONTEXTO**
 
+
 ### 3.2 Priorizar casos de uso <a name="useCasesPrioritize">
+
+
+Hay que **determinar qué casos de uso seran desarrollados** (analizados, diseñados, implementados y probados) en
+las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteraciones teniendo en cuenta factores como puedan ser aspectos técnicos (), aspectos económicos (), aspectos de negoio o cualquier tipo de riesgo
+
+
+
+
+
+
+
+
+
 ### 3.3 Especificación de casos de uso <a name="useCasesSpecification"/>
 ### 3.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
 ### 3.3 Prototipado interfaz de usuario <a name="useCasesPrototype"/>
