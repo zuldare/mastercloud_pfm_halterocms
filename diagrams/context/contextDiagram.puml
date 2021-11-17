@@ -1,6 +1,8 @@
 @startuml
 title CONTEXT_DIAGRAM
 
+
+
 state INITIAL
 state OPENED_DASHBOARD
 state CREATED_CLUBS
@@ -8,13 +10,13 @@ state CREATED_ORGANIZERS
 state CREATED_INSCRIBERS
 state CREATED_CATEGORIES
 state OPENED_INSCRIPTIONS
-state CREATED_COMPETIONS
+state CREATED_COMPETITIONS
 state CREATED_BATCHES
 
-state AreInscriptionsOpened <<choice>>
+state IsCompetitionCreated <<choice>>
 state INSCRIBED_LIFTERS
 
-
+[*] --> INITIAL
 INITIAL --> OPENED_DASHBOARD
 note on link
   login
@@ -102,6 +104,18 @@ note on link
   closeInscriptions
 end note
 
+
+OPENED_DASHBOARD --> CREATED_COMPETITIONS
+note on link
+  showCompetitions
+end note
+
+CREATED_COMPETITIONS --> OPENED_DASHBOARD
+CREATED_COMPETITIONS --> CREATED_COMPETITIONS
+note on link
+  editCompetition
+  deleteCompetition
+end note
 
 'OPENED_INSCRIPTIONS --> AreInscriptionsOpened : are inscriptions opened
 'AreInscriptionsOpened --> INSCRIBED_LIFTERS
