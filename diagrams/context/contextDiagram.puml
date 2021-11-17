@@ -3,14 +3,16 @@ title CONTEXT_DIAGRAM
 
 state INITIAL
 state OPENED_DASHBOARD
-state OPENED_CLUBS
-state OPENED_ORGANIZERS
-state OPENED_INSCRIBERS
-state OPENED_CATEGORIES
+state CREATED_CLUBS
+state CREATED_ORGANIZERS
+state CREATED_INSCRIBERS
+state CREATED_CATEGORIES
 state OPENED_INSCRIPTIONS
+state CREATED_COMPETIONS
+state CREATED_BATCHES
 
-state OPENED_COMPETION
-state OPENED_BATCH
+state AreInscriptionsOpened <<choice>>
+state INSCRIBED_LIFTERS
 
 
 INITIAL --> OPENED_DASHBOARD
@@ -19,79 +21,93 @@ note on link
   signin
 end note
 
-OPENED_DASHBOARD --> OPENED_CLUBS
+OPENED_DASHBOARD --> CREATED_CLUBS
 note on link
   showClubs
 end note
+CREATED_CLUBS --> OPENED_DASHBOARD
 
-OPENED_DASHBOARD --> OPENED_ORGANIZERS
+
+OPENED_DASHBOARD --> CREATED_ORGANIZERS
 note on link
   showOrganizers
 end note
 
-OPENED_ORGANIZERS --> OPENED_ORGANIZERS
+CREATED_ORGANIZERS --> CREATED_ORGANIZERS
 note on link
   editOrganizer
   deleteOrganizer
 end note
+CREATED_ORGANIZERS --> OPENED_DASHBOARD
 
 
-OPENED_DASHBOARD --> OPENED_INSCRIBERS
+OPENED_DASHBOARD --> CREATED_INSCRIBERS
 note on link
   showInscribers
 end note
+CREATED_INSCRIBERS --> OPENED_DASHBOARD
 
-OPENED_INSCRIBERS --> OPENED_INSCRIBERS
+CREATED_INSCRIBERS --> CREATED_INSCRIBERS
 note on link
   editInscriber
   deleteInscriber
 end note
 
-OPENED_DASHBOARD --> OPENED_CATEGORIES
+OPENED_DASHBOARD --> CREATED_CATEGORIES
 note on link
   showCategories
 end note
 
-OPENED_CATEGORIES --> OPENED_CATEGORIES
+CREATED_CATEGORIES --> CREATED_CATEGORIES
 note on link
   editCategory
   deleteCategory
 end note
+CREATED_CATEGORIES --> OPENED_DASHBOARD
 
 
-OPENED_CLUBS --> OPENED_CLUBS
+CREATED_CLUBS --> CREATED_CLUBS
 note on link
   editClub
   deleteClub
 end note
 
-OPENED_CLUBS ---> [*] : logout
-OPENED_ORGANIZERS ----> [*] : logout
-OPENED_INSCRIBERS ----> [*] : logout
-OPENED_CATEGORIES ----> [*] : logout
+
+INSCRIBED_LIFTERS --> INSCRIBED_LIFTERS
+note on link
+  inscribeLifter
+  uninscribeLifter
+end note
+
+'CREATED_CLUBS ---> [*] : logout
+'CREATED_ORGANIZERS ---> [*] : logout
+'CREATED_INSCRIBERS ---> [*] : logout
+'CREATED_CATEGORIES ---> [*] : logout
 
 
 
-OPENED_INSCRIBERS --> OPENED_INSCRIPTIONS
+CREATED_ORGANIZERS --> OPENED_INSCRIPTIONS
+note on link
+  openInscriptions
+end note
 
 
-'[*] --> NotShooting
-'
-'state NotShooting {
-'  [*] --> Idle
-'  Idle --> Configuring : EvConfig
-'  Configuring --> Idle : EvConfig
-'}
-'
-'state Configuring {
-'  [*] --> NewValueSelection
-'  NewValueSelection --> NewValuePreview : EvNewValue
-'  NewValuePreview --> NewValueSelection : EvNewValueRejected
-'  NewValuePreview --> NewValueSelection : EvNewValueSaved
-'
-'  state NewValuePreview {
-'     State1 -> State2
-'  }
-'
-'}
+OPENED_INSCRIPTIONS --> INSCRIBED_LIFTERS
+note on link
+  showInscribedLifters
+end note
+
+OPENED_INSCRIPTIONS --> CLOSED_INSCRIPTIONS
+note on link
+  closeInscriptions
+end note
+
+
+'OPENED_INSCRIPTIONS --> AreInscriptionsOpened : are inscriptions opened
+'AreInscriptionsOpened --> INSCRIBED_LIFTERS
+'note on link
+'  inscribeLifter
+'end note
+
+
 @enduml
