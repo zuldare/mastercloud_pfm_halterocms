@@ -1,6 +1,4 @@
 @startuml
-title CONTEXT_DIAGRAM
-
 state INITIAL
 state OPENED_DASHBOARD
 state CREATED_CLUBS
@@ -11,6 +9,9 @@ state OPENED_INSCRIPTIONS
 state CREATED_COMPETITIONS
 state INSCRIBED_LIFTERS
 state CREATED_BATCH
+state BATCH_IN_PLAY
+state FINISHED_BATCH
+state OPENED_SPECTATOR_DASHBOARD
 
 [*] --> INITIAL
 INITIAL --> OPENED_DASHBOARD
@@ -126,7 +127,6 @@ note on link
   introduceWeighinData
 end note
 
-state BATCH_IN_PLAY
 
 CREATED_BATCH --> BATCH_IN_PLAY
 note on link
@@ -145,7 +145,6 @@ note on link
   stopTimer
 end note
 
-state FINISHED_BATCH
 BATCH_IN_PLAY --> FINISHED_BATCH
 note on link
   finishPlay
@@ -159,9 +158,6 @@ note on link
  downloadClassifications
 end note
 
-
-
-state OPENED_SPECTATOR_DASHBOARD
 
 [*] --> OPENED_SPECTATOR_DASHBOARD
 note on link
