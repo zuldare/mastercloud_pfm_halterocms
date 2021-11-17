@@ -1,4 +1,13 @@
 @startuml
+state "Competition pending\nto be edited" as PedingCompetition
+state "Competition edited, pending\nto assign all the batches" as PedingAssignBatches
+state "Competition edited with all\nthe batches assigned" as CompetitionEdited
+
+state "Age categories pending\nto be edited" as PendingCategories
+state "All the age categories edited" as CategoriesEdited
+
+state MoreCategoriesToEditCHC <<choice>>
+
 state "Pending new lifters to register" as PendingLiftersToRegister
 state "Is the registration time still open?" as IsRegistrationOpenCHC <<choice>>
 state "More lifters to register pending?" as MoreLiftersToRegisterCHC <<choice>>
@@ -14,7 +23,16 @@ state "Classification completed" as CompletedClassification
 state "More batches from other categories pending?" as MoreBatchesCHC <<choice>>
 state "All batches are completed" as CompletedBatches
 
-[*] --> PendingLiftersToRegister
+[*] --> PedingCompetition
+[*] --> PendingCategories
+PendingCategories --> CategoriesEdited
+PedingCompetition --> PedingAssignBatches
+PedingAssignBatches --> CompetitionEdited
+CompetitionEdited --> MoreCategoriesToEditCHC
+MoreCategoriesToEditCHC --> PendingLiftersToRegister : All the categories\nwere edited
+MoreCategoriesToEditCHC --> PendingCategories : Categories remain\nto be edited
+CategoriesEdited --> PendingLiftersToRegister
+
 PendingLiftersToRegister --> IsRegistrationOpenCHC : A new lifter tries\nto be registered
 IsRegistrationOpenCHC --> RegistrationTimeOver : Registration time\nran out
 IsRegistrationOpenCHC --> NewLifterRegistered : The registration period\nis still open
