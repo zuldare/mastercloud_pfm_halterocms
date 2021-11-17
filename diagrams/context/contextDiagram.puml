@@ -1,8 +1,6 @@
 @startuml
 title CONTEXT_DIAGRAM
 
-
-
 state INITIAL
 state OPENED_DASHBOARD
 state CREATED_CLUBS
@@ -11,10 +9,8 @@ state CREATED_INSCRIBERS
 state CREATED_CATEGORIES
 state OPENED_INSCRIPTIONS
 state CREATED_COMPETITIONS
-state CREATED_BATCHES
-
-state IsCompetitionCreated <<choice>>
 state INSCRIBED_LIFTERS
+state CREATED_BATCH
 
 [*] --> INITIAL
 INITIAL --> OPENED_DASHBOARD
@@ -81,12 +77,6 @@ note on link
   uninscribeLifter
 end note
 
-'CREATED_CLUBS ---> [*] : logout
-'CREATED_ORGANIZERS ---> [*] : logout
-'CREATED_INSCRIBERS ---> [*] : logout
-'CREATED_CATEGORIES ---> [*] : logout
-
-
 
 CREATED_ORGANIZERS --> OPENED_INSCRIPTIONS
 note on link
@@ -104,6 +94,11 @@ note on link
   closeInscriptions
 end note
 
+CLOSED_INSCRIPTIONS --> CLOSED_INSCRIPTIONS
+note on link
+  draw_lifters
+end note
+
 
 OPENED_DASHBOARD --> CREATED_COMPETITIONS
 note on link
@@ -117,11 +112,109 @@ note on link
   deleteCompetition
 end note
 
-'OPENED_INSCRIPTIONS --> AreInscriptionsOpened : are inscriptions opened
-'AreInscriptionsOpened --> INSCRIBED_LIFTERS
-'note on link
-'  inscribeLifter
-'end note
+CREATED_COMPETITIONS --> CREATED_BATCH
+note on link
+  showBatches
+end note
+
+CREATED_BATCH --> CREATED_BATCH
+note on link
+  editBatch
+  deleteBatch
+  assignLifterToBatch
+  unassignLifterToBatch
+  introduceWeighinData
+end note
+
+state BATCH_IN_PLAY
+
+CREATED_BATCH --> BATCH_IN_PLAY
+note on link
+  initPlay
+end note
+
+BATCH_IN_PLAY --> BATCH_IN_PLAY
+note on link
+  editLiftValue
+  editWeightChange
+  showLifterCategory
+  startTimer
+  pauseTimer
+  resumeTimer
+  setDurationTimer
+  stopTimer
+end note
+
+state FINISHED_BATCH
+BATCH_IN_PLAY --> FINISHED_BATCH
+note on link
+  finishPlay
+end note
+
+FINISHED_BATCH --> FINISHED_BATCH
+note on link
+ generateAct
+ downloadAct
+ createClassifications
+ downloadClassifications
+end note
 
 
+
+state OPENED_SPECTATOR_DASHBOARD
+
+[*] --> OPENED_SPECTATOR_DASHBOARD
+note on link
+  showCompetitions
+  showBatchInscriptions
+  showBatchWeightins
+  showFinishedBatches
+  showLiveBatchInPlay
+  showResults
+  downloadResults
+end note
+
+
+
+CREATED_CLUBS ---> [*]
+note on link
+ logout
+end note
+CREATED_ORGANIZERS ---> [*]
+note on link
+ logout
+end note
+CREATED_INSCRIBERS ---> [*]
+note on link
+ logout
+end note
+CREATED_CATEGORIES ---> [*]
+note on link
+ logout
+end note
+
+OPENED_INSCRIPTIONS ---> [*]
+note on link
+ logout
+end note
+INSCRIBED_LIFTERS ---> [*]
+note on link
+ logout
+end note
+CLOSED_INSCRIPTIONS ---> [*]
+note on link
+ logout
+end note
+CREATED_BATCH ---> [*]
+note on link
+ logout
+end note
+BATCH_IN_PLAY ---> [*]
+note on link
+ logout
+end note
+FINISHED_BATCH ---> [*]
+note on link
+ logout
+end note
 @enduml
