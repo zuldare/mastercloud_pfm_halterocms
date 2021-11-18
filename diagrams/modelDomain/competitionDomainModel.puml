@@ -8,28 +8,39 @@ class CompetitionType {
   name
 }
 
-Competition --> CompetitionType
 object "Inscription" as Inscription {
   Date
   Place
 }
 
 object CompetitionDraw
-object Batch
+
+object Batch {
+  location
+  name
+  time
+}
+
 object Weighing {
+  time
   Lifter identification
   LifterBodyWeight
   SnatchOpener
   CleanJerkOpener
 }
+
 object ClassificationAct
+
 object CategoryClassification
+
 object SinclairClassification {
   coefficient: SinclairCoefficient
 }
+
 object SinclairMaloneClassification {
   coefficient: SinclairMaloneCoefficient
 }
+
 object EliteClassification {
   coefficientsMales: [EliteCoefficientMale]
   coefficientsMales: [EliteCoefficientFemale]
@@ -38,6 +49,7 @@ object EliteClassification {
 object Platform {
   name
 }
+object BarLoaders
 
 object Club
 
@@ -51,34 +63,44 @@ enum Gender {
   FEMALE(F)
 }
 
-object "Technical officers" as TC
+
+
 object Judge
+
 object Marshall
+
 object CompetitionSecretary
+
 object Timekeeper
+
 object Lift
+
 enum Type {
   SNATCH
   CLEAN_&_JERK
 }
+
 enum LiftStatus {
   PENDING
   VALID
   NULL
   REJECTED
 }
+
 enum Countdown {
   1_MINUTES(1)
   2_MINUTES(2)
 }
+
 object BarSet
+
 enum Bar {
   FEMALE (15kg)
   MALE (20kg)
 }
 
-
 object Plates
+
 enum Plate {
   BIG_RED (25KG)
   BIG_BLUE (20KG)
@@ -97,62 +119,14 @@ enum Collar {
 }
 
 object Iteration
+
 object Announcement
-
-Competition *-- Inscription
-Inscription "1..*"  *-- Lifter
-Lifter *--> Gender
-Club "1..*" o-- Lifter
-Competition *-- CompetitionDraw
-Competition "1..*" *--  Batch
-Competition *-- ClassificationAct
-ClassificationAct <|-- CategoryClassification
-ClassificationAct <|-- SinclairClassification
-ClassificationAct <|-- SinclairMaloneClassification
-ClassificationAct <|-- EliteClassification
-
-
-Batch "next" --> ClassificationAct
-Inscription --> "next" CompetitionDraw
-CompetitionDraw --> "next" Batch
-
-Batch *-- Weighing
-Batch o-- "1..2" Platform
-Batch "1..*" *---  Lifter
-Batch *--- TC
-
-TC *-- "3..6" Judge
-TC *-- CompetitionSecretary
-TC *-- "0..1" Marshall
-TC *-- "0..1" Timekeeper
-
-Platform "1..*" *---  Iteration
-Iteration "1..*" *--  Announcement
-Announcement -- Lifter : next
-Announcement -- Lifter : following
-
-Lifter o---> Lift
-
-
-Lift *-- Type
-Lift *-- LiftStatus
-Lift *-- Countdown
-Lift o-- BarSet
-BarSet *-- Bar
-BarSet *-- Plates
-BarSet *-- "2" Collar
-Plates *-- Plate
-
-Lifter *-- Category
-
 
 object Category {
   minAge
   maxAge
   gender: Gender
 }
-
-Category -> Gender
 
 object AgeRange {
   min
@@ -166,12 +140,68 @@ object BodyWeightRange {
   max
 }
 
-Lifter *----- Category
+object "Technical officers" as TC
+
+
+Competition --> CompetitionType
+Competition *-- Inscription
+Inscription *-- "1..*" Lifter
+
+Club o-- "1..*" Lifter
+Competition *-- CompetitionDraw
+Competition *-- "1..*" Batch
+Competition *-- ClassificationAct
+ClassificationAct <|-- CategoryClassification
+ClassificationAct <|-- SinclairClassification
+ClassificationAct <|-- SinclairMaloneClassification
+ClassificationAct <|-- EliteClassification
+
+Batch "next" --> ClassificationAct
+Inscription --> "next" CompetitionDraw
+CompetitionDraw --> "next" Batch
+
+Batch *-- Weighing
+Batch o-- "1..2" Platform
+Batch "1..*" *--  Lifter
+
+Batch *--- TC
+TC <|-- "3..6" Judge
+TC <|-- CompetitionSecretary
+TC <|-- "0..1" Marshall
+TC <|-- "0..1" Timekeeper
+TC <|-- "1..*" BarLoaders
+
+Platform  *-  "1..*" Iteration
+Iteration *-- "1..*"  Announcement
+
+Announcement -- Lifter : next
+Announcement -- Lifter : following
+
+Lift *-- Type
+Lift *-- LiftStatus
+Lift *-- Countdown
+Lift o-- BarSet
+
+BarSet *-- Bar
+BarSet *-- Plates
+BarSet *-- "2" Collar
+Plates *-- Plate
+
+Lifter o---> Lift
+Lifter *--> Gender
+Lifter *-- Category
+Lifter *-- Category
+
+Category -> Gender
 Category o-- "1..*" BodyWeightRange
 
+CompetitionSecretary --> ClassificationAct
+CompetitionSecretary --> Announcement
+Timekeeper --> Lifter
+Marshall --> Lifter
+BarLoaders --> BarSet
+Judge --> LiftStatus
+Judge --> Weighing
 
-
-
-' 'TODO USAR CLASES EN VEZ DE OBJECTS CUANDO CORRESPONDA
 
 @enduml
