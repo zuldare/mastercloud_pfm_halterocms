@@ -9,24 +9,30 @@ actor Spectator as Spectator
 actor CompetitionSecretary as CompetitionSecretary
 actor User
 
+
+
+
 package Log {
   usecase login
   usecase logout
 }
 
-footer FOOTER TEXT EXAMPLE
+
+usecase launch
 
 
+User --> launch
+launch --> login
+launch --> logout
 
-User -> login
-User --> logout
 
-User <|--- Organizer
-User <|--- OrganizationSecretary
-User <|--- CompetitionSecretary
-User <|--- Spectator
-CompetitionSecretary <|--- TimeKeeper
-Organizer <|--- Inscriber
+User <|-- OrganizationSecretary
+User <|-- TimeKeeper
+User <|-- Spectator
+User <|-- Inscriber
+
+TimeKeeper <|-- CompetitionSecretary
+Inscriber <|--- Organizer
 
 newpage
 left to right direction
@@ -94,7 +100,6 @@ package COMPETITION_BUREAUCRACY {
 }
 
 Time --> closeInscriptions
-Organizer --> closeInscriptions
 Organizer --> openInscriptions
 Organizer --> drawLifters
 Organizer --> deleteCompetition
