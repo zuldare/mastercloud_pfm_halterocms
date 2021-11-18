@@ -19,5 +19,5 @@ Spectator --> showLiveBatchInPlay
 Spectator --> showResults
 Spectator --> downloadResults
 
-footer \n\n Casos de uso relacionados con el actor espectador
+footer \n\nFigura 7. Casos de uso relacionados con el actor espectador
 @enduml

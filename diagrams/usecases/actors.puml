@@ -28,5 +28,5 @@ User <|-- Inscriber
 TimeKeeper <|-- CompetitionSecretary
 Inscriber <|--- Organizer
 
-footer \n\nActores del sistema
+footer \n\nFigura 3. Actores del sistema
 @enduml

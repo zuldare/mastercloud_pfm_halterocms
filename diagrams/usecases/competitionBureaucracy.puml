@@ -35,5 +35,5 @@ Inscriber --> inscribeLifter
 Inscriber --> uninscribeLifter
 Inscriber --> showInscribedLifters
 
-footer \n\n Casos de uso relacionados con la competición
+footer \n\nFigura 6. Casos de uso relacionados con la competición
 @enduml

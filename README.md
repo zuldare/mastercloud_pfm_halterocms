@@ -13,62 +13,63 @@
 
 4. [Disciplina de requisitos](#requirements)
 
-    3.1 [Actores y casos de uso](#useCasesActors")
+    4.1 [Actores y casos de uso](#useCasesActors")
  
-    3.2 [Priorizar casos de uso](#useCasesPrioritize")
+    4.2 [Priorizar casos de uso](#useCasesPrioritize")
 
-    3.3 [Especificación de casos de uso](#useCasesSpecification")
+    4.3 [Especificación de casos de uso](#useCasesSpecification")
     
-    3.4 [Estructurar el modelo de casos de uso](#useCasesStructure")
+    4.4 [Estructurar el modelo de casos de uso](#useCasesStructure")
     
-    3.5 [Prototipado interfaz de usuario](#useCasesPrototype")
+    4.5 [Prototipado interfaz de usuario](#useCasesPrototype")
+ 
+5. [Disciplina de análisis](#analisis) 
 
-        
-6. [Disciplina de análisis](#analisis) 
+    5.1 [Análisis de la Arquitectura](#architectureAnalisys)
 
-[comment]: <> ( Análisis de la Arquitectura)
+    5.2 [Análisis de Caso de Uso](#usecaseAnalisys)
 
-[comment]: <> ( Análisis de Caso de Uso)
+    5.3 [Análisis de Clases](#classesAnalisys)
 
-[comment]: <> ( Análisis de Clases)
-
-[comment]: <> ( Análisis de Paquetes)
+    5.4 [Análisis de Paquetes](#packageAnalisys)
               
-7. Disciplina de Diseño
-[comment]: <> ( Diseño de la Arquitectura)
+6. [Disciplina de Diseño](#design)
 
-[comment]: <> ( Diseño de Caso de Uso)
+    6.1 [Diseño de la Arquitectura](#architectureDesign)
+   
+    6.2 [Diseño de Caso de Uso](#useCasesDesign)
 
-[comment]: <> ( Diseño de Clase)
+    6.3 [Diseño de Clase](#classesDesign)
 
-[comment]: <> ( Diseño de Paquete)
+    6.4 [Diseño de Paquete](#packageDesign)
 
-8. Disciplina de Implementación
-[comment]: <> ( Implementar la Arquitectura)
+7. [Disciplina de Implementación](#implementation)
+    
+    7.1 [Implementar la Arquitectura](#Implementation)
 
-[comment]: <> ( Integración de Sistemas)
+    7.2 [Integración de Sistemas](#Implementation)
 
-[comment]: <> ( Implementar Clase)
+    7.3 [Implementar Clase](#Implementation)
 
-[comment]: <> ( Pruebas Unitarias)
+    7.4 [Pruebas Unitarias](#Implementation)
 
-[comment]: <> ( Implementar Subsistema)
+    7.5 [Implementar Subsistema](#Implementation)
 
-9. Disciplina de Pruebas
-[comment]: <> ( Planificar Pruebas)
+8. [Disciplina de Pruebas](#tests)
 
-[comment]: <> ( Diseñar Pruebas)
+    8.1 [Planificar Pruebas](#planTests)
 
-[comment]: <> ( Implementar Pruebas)
+    8.2 [Diseñar Pruebas](#designTests)
 
-[comment]: <> ( Realizar Pruebas de Integración)
+    8.3 [Implementar Pruebas](#implementTests)
 
-[comment]: <> ( Realizar Pruebas de Sistemas)
+    8.4 [Realizar Pruebas de Integración](#integrationTests)
 
-[comment]: <> ( Evaluar Pruebas)
+    8.5 [Realizar Pruebas de Sistemas](#systemTests)
 
+    8.6 [Evaluar Pruebas](#evalTests)
 
-8. [Bibliografía](#biblio)
+9. [Bibliografía](#biblio)
 
 ## 1. Introducción<a name="intro"/>
 
@@ -181,28 +182,30 @@ Las actividades recomendadas por RUP en esta disciplina son las siguientes:
 * Un caso de uso es una **especificación de secuencias de acciones, incluyendo posibles variaciones, 
 que el sistema puede realizar y que dan un resultado observable de interés a un actor particular**
 
+En la Figura 3 podemos ver los actores que se han identificado, mientras que en el resto de figuras se representan los casos de uso identificados y los actores que los realizan
+![actors](images/usecases/actors.png)
 
-    **INSERTAR CASOS DE USO**
-                           
-    **INSERTAR MODELO DE CONTEXTO**
+![organizationSecretary](images/usecases/organizationSecretary.png)
+
+![batchesBureaucrazy](images/usecases/batchesBureaucrazy.png)
+
+![competitionBureaucrazy](images/usecases/competitionBureaucracy.png)
+
+![spectators](images/usecases/spectators.png)            
+
+![timer](images/usecases/timer.png)
 
 
-### 3.2 Priorizar casos de uso <a name="useCasesPrioritize">
-
-
+### 3.2 Priorizar casos de uso <a name="useCasePrioritize"/>
 Hay que **determinar qué casos de uso seran desarrollados** (analizados, diseñados, implementados y probados) en
-las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteraciones teniendo en cuenta factores como puedan ser aspectos técnicos (), aspectos económicos (), aspectos de negoio o cualquier tipo de riesgo
-
-
-
-
-
-
+las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteraciones teniendo en cuenta factores como puedan ser aspectos técnicos, aspectos económicos, aspectos de negocio o cualquier tipo de riesgo
 
 
 
 ### 3.3 Especificación de casos de uso <a name="useCasesSpecification"/>
+
 ### 3.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
+
 ### 3.3 Prototipado interfaz de usuario <a name="useCasesPrototype"/>
 
 #### Vista de espectador
@@ -250,9 +253,4 @@ las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteracione
 
 [1] Pencil [herramienta]. Available: [https://pencil.evolus.vn/](https://pencil.evolus.vn/)
 
------------------------------------------------------------------
-## Nivel de compromiso:
 
-Jaime: yo hasta fin de año le puedo dedicar 3-4 horas diarias.
-
-Natalia: entre 6 y 8 horas semanales.
