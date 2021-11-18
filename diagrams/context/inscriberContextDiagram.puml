@@ -1,0 +1,57 @@
+@startuml
+state LAUNCHED
+state SPECTATOR_DASHBOARD
+state OPENED_DASHBOARD
+state OPENED_INSCRIPTIONS
+state LIFTERS_INSCRIPTIONS_MANAGEMENT
+
+state logoutChoice <<choice>>
+state inscriptionsAreOpen <<choice>>
+
+[*] --> LAUNCHED
+note on link
+  launch
+end note
+
+LAUNCHED --> SPECTATOR_DASHBOARD
+note on link
+  showCompetitions
+  showBatchInscriptions
+  showBatchWeightins
+  showFinishedBatches
+  showLiveBatchInPlay
+  showResults
+  downloadResults
+end note
+
+SPECTATOR_DASHBOARD --> OPENED_DASHBOARD
+note on link
+  login
+end note
+
+
+LIFTERS_INSCRIPTIONS_MANAGEMENT --> LIFTERS_INSCRIPTIONS_MANAGEMENT
+note on link
+  inscribeLifter
+  uninscribeLifter
+end note
+
+
+OPENED_INSCRIPTIONS --> LIFTERS_INSCRIPTIONS_MANAGEMENT
+note on link
+  showInscribedLifters
+end note
+
+OPENED_DASHBOARD --> inscriptionsAreOpen
+inscriptionsAreOpen --> OPENED_INSCRIPTIONS : [inscriptions are open]
+inscriptionsAreOpen --> SPECTATOR_DASHBOARD : [inscriptions are closed]
+
+OPENED_INSCRIPTIONS ---> logoutChoice
+LIFTERS_INSCRIPTIONS_MANAGEMENT ---> logoutChoice
+
+logoutChoice --> [*]
+note on link
+ logout
+end note
+
+@enduml

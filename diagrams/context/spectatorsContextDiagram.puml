@@ -1,0 +1,28 @@
+@startuml
+state LAUNCHED
+state INITIAL
+
+
+[*] --> LAUNCHED
+note on link
+  launch
+end note
+
+LAUNCHED --> INITIAL
+note on link
+  showCompetitions
+  showBatchInscriptions
+  showBatchWeightins
+  showFinishedBatches
+  showLiveBatchInPlay
+  showResults
+  downloadResults
+end note
+
+INITIAL --> [*]
+note on link
+  exit
+end note
+
+footer \n\n\n Diagrama de contexto para el actor espectador
+@enduml

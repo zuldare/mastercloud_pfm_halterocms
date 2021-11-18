@@ -1,6 +1,6 @@
 @startuml
 state LAUNCHED
-state INITIAL
+state SPECTATOR_DASHBOARD
 state OPENED_DASHBOARD
 state CLUBS_MANAGEMENT
 state ORGANIZERS_MANAGEMENT
@@ -8,7 +8,7 @@ state INSCRIBERS_MANAGEMENT
 state CATEGORIES_MANAGEMENT
 state OPENED_INSCRIPTIONS
 state COMPETITIONS_MANAGEMENT
-state INSCRIBED_LIFTERS
+state LIFTERS_MANAGEMENT
 state BATCH_MANAGEMENT
 state BATCH_IN_PLAY
 state FINISHED_BATCH
@@ -20,7 +20,7 @@ note on link
   launch
 end note
 
-LAUNCHED --> INITIAL
+LAUNCHED --> SPECTATOR_DASHBOARD
 note on link
   showCompetitions
   showBatchInscriptions
@@ -31,7 +31,7 @@ note on link
   downloadResults
 end note
 
-INITIAL --> OPENED_DASHBOARD
+SPECTATOR_DASHBOARD --> OPENED_DASHBOARD
 note on link
   login
 end note
@@ -88,7 +88,7 @@ note on link
 end note
 
 
-INSCRIBED_LIFTERS --> INSCRIBED_LIFTERS
+LIFTERS_MANAGEMENT --> LIFTERS_MANAGEMENT
 note on link
   inscribeLifter
   uninscribeLifter
@@ -101,7 +101,7 @@ note on link
 end note
 
 
-OPENED_INSCRIPTIONS --> INSCRIBED_LIFTERS
+OPENED_INSCRIPTIONS --> LIFTERS_MANAGEMENT
 note on link
   showInscribedLifters
 end note
@@ -181,7 +181,7 @@ ORGANIZERS_MANAGEMENT ---> logoutChoice
 INSCRIBERS_MANAGEMENT ---> logoutChoice
 CATEGORIES_MANAGEMENT ---> logoutChoice
 OPENED_INSCRIPTIONS ---> logoutChoice
-INSCRIBED_LIFTERS ---> logoutChoice
+LIFTERS_MANAGEMENT ---> logoutChoice
 CLOSED_INSCRIPTIONS ---> logoutChoice
 BATCH_MANAGEMENT ---> logoutChoice
 BATCH_IN_PLAY ---> logoutChoice
