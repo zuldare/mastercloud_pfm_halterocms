@@ -203,5 +203,4 @@ BarLoaders --> BarSet
 Judge --> LiftStatus
 Judge --> Weighing
 
-
 @enduml

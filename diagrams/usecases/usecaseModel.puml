@@ -16,6 +16,8 @@ package Log {
 
 footer FOOTER TEXT EXAMPLE
 
+
+
 User -> login
 User --> logout
 
@@ -185,5 +187,8 @@ Spectator --> showFinishedBatchs
 Spectator --> showLiveBatchInPlay
 Spectator --> showResults
 Spectator --> downloadResults
+
+
+
 
 @enduml
