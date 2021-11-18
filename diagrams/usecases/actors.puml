@@ -1,0 +1,32 @@
+@startuml
+
+actor Organizer as Organizer
+actor Inscriber as Inscriber
+actor OrganizationSecretary as OrganizationSecretary
+actor Time as Time
+actor TimeKeeper as TimeKeeper
+actor Spectator as Spectator
+actor CompetitionSecretary as CompetitionSecretary
+actor User
+
+
+package Log {
+  usecase login
+  usecase logout
+}
+
+usecase launch
+
+User --> launch
+launch --> login
+launch --> logout
+
+User <|-- OrganizationSecretary
+User <|-- TimeKeeper
+User <|-- Spectator
+User <|-- Inscriber
+TimeKeeper <|-- CompetitionSecretary
+Inscriber <|--- Organizer
+
+footer \n\nActores del sistema
+@enduml

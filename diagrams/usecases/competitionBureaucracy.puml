@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+
+package COMPETITION_BUREAUCRACY {
+ usecase openInscriptions
+ usecase closeInscriptions
+
+ usecase deleteCompetition
+ usecase editCompetition
+ usecase showCompetitions
+
+ usecase drawLifters
+ usecase inscribeLifter
+ usecase uninscribeLifter
+ usecase showInscribedLifters
+
+ usecase createClassifications
+ usecase downloadClassifications
+ usecase showClassifications
+}
+
+Time --> closeInscriptions
+Organizer --> openInscriptions
+Organizer --> drawLifters
+Organizer --> deleteCompetition
+Organizer --> editCompetition
+Organizer --> showCompetitions
+Organizer --> createClassifications
+Organizer --> showClassifications
+Organizer --> downloadClassifications
+
+Inscriber --> inscribeLifter
+Inscriber --> uninscribeLifter
+Inscriber --> showInscribedLifters
+
+footer \n\n Casos de uso relacionados con la competición
+@enduml

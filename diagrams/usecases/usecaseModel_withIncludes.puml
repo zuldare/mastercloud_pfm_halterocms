@@ -1,0 +1,20 @@
+@startuml
+
+!include actors.puml
+
+newpage
+!include organizationSecretary.puml
+
+newpage
+!include competitionBureaucracy.puml
+
+newpage
+!include batchesBureaucrazy.puml
+
+newpage
+!include timer.puml
+
+newpage
+!include spectators.puml
+
+@enduml

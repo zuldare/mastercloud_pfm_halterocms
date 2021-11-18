@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+
+package SPECTATOR_VIEW {
+  usecase showCompetition
+  usecase showBatchInscriptions
+  usecase showBatchWeighins
+  usecase showFinishedBatchs
+  usecase showLiveBatchInPlay
+  usecase showResults
+  usecase downloadResults
+}
+
+Spectator --> showCompetition
+Spectator --> showBatchInscriptions
+Spectator --> showBatchWeighins
+Spectator --> showFinishedBatchs
+Spectator --> showLiveBatchInPlay
+Spectator --> showResults
+Spectator --> downloadResults
+
+footer \n\n Casos de uso relacionados con el actor espectador
+@enduml

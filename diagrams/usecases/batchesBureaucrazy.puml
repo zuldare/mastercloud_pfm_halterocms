@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+package BATCHES_BUREAUCRACY {
+  usecase showBatches
+  usecase editBatch
+
+  usecase deleteBatch
+  usecase assignLifterToBatch
+  usecase unassignLifterToBatch
+
+  usecase showLifterCategory
+  usecase editLiftStatus
+  usecase editLiftValue
+
+  usecase editLiftWeightChange
+  usecase generateAct
+  usecase downloadAct
+  usecase introduceWeighinData
+
+  usecase initPlay
+  usecase finishPlay
+}
+
+Organizer --> showBatches
+Organizer --> editBatch
+Organizer --> assignLifterToBatch
+Organizer --> unassignLifterToBatch
+Organizer --> deleteBatch
+Organizer --> introduceWeighinData
+Organizer --> downloadAct
+
+CompetitionSecretary --> editLiftStatus
+CompetitionSecretary --> editLiftValue
+CompetitionSecretary --> generateAct
+CompetitionSecretary --> editLiftWeightChange
+CompetitionSecretary --> showLifterCategory
+CompetitionSecretary --> initPlay
+CompetitionSecretary --> finishPlay
+
+footer \n\nCasos de uso relacionados con tandas
+
+@enduml

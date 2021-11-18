@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+package TIMER {
+  usecase start
+  usecase pause
+  usecase resume
+  usecase setDuration
+  usecase stop
+}
+
+TimeKeeper --> start
+TimeKeeper --> pause
+TimeKeeper --> resume
+TimeKeeper --> stop
+TimeKeeper --> setDuration
+Time --> stop
+
+footer \n\n Casos de uso relacionados con el timer
+@enduml
