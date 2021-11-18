@@ -2,7 +2,8 @@
 left to right direction
 
 package COMPETITION_BUREAUCRACY {
- usecase openInscriptions
+ usecase openInscriptionsPeriod
+ usecase showInscriptions
  usecase closeInscriptions
 
  usecase deleteCompetition
@@ -20,7 +21,8 @@ package COMPETITION_BUREAUCRACY {
 }
 
 Time --> closeInscriptions
-Organizer --> openInscriptions
+Organizer --> openInscriptionsPeriod
+Organizer --> showInscriptions
 Organizer --> drawLifters
 Organizer --> deleteCompetition
 Organizer --> editCompetition

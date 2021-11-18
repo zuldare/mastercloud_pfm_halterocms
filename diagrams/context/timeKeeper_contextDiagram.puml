@@ -1,0 +1,64 @@
+@startuml
+state LAUNCHED
+state SPECTATOR_DASHBOARD
+state OPENED_DASHBOARD
+state COMPETITIONS_MANAGEMENT
+state BATCH_MANAGEMENT
+state BATCH_IN_PLAY
+
+state logoutChoice <<choice>>
+
+[*] --> LAUNCHED
+note on link
+  launch
+end note
+
+LAUNCHED --> SPECTATOR_DASHBOARD
+note on link
+  showCompetitions
+  showBatchInscriptions
+  showBatchWeightins
+  showFinishedBatches
+  showLiveBatchInPlay
+  showResults
+  downloadResults
+end note
+
+SPECTATOR_DASHBOARD --> OPENED_DASHBOARD
+note on link
+  login
+end note
+
+
+OPENED_DASHBOARD --> COMPETITIONS_MANAGEMENT
+note on link
+  showCompetitions
+end note
+
+COMPETITIONS_MANAGEMENT --> OPENED_DASHBOARD
+
+COMPETITIONS_MANAGEMENT --> BATCH_MANAGEMENT
+note on link
+  showBatches
+end note
+
+BATCH_IN_PLAY --> BATCH_IN_PLAY
+note on link
+  startTimer
+  pauseTimer
+  resumeTimer
+  setDurationTimer
+  stopTimer
+end note
+
+BATCH_MANAGEMENT --> BATCH_IN_PLAY
+BATCH_MANAGEMENT ---> logoutChoice
+BATCH_IN_PLAY ---> logoutChoice
+
+logoutChoice --> [*]
+note on link
+ logout
+end note
+
+footer Diagrama de contexto del actor cronometrador
+@enduml

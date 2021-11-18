@@ -1,0 +1,106 @@
+@startuml
+state LAUNCHED
+state SPECTATOR_DASHBOARD
+state OPENED_DASHBOARD
+state OPENED_INSCRIPTIONS
+state COMPETITIONS_MANAGEMENT
+state LIFTERS_MANAGEMENT
+state BATCH_MANAGEMENT
+state FINISHED_BATCH
+state logoutChoice <<choice>>
+state areInscriptionsClosed <<choice>>
+
+[*] --> LAUNCHED
+note on link
+  launch
+end note
+
+LAUNCHED --> SPECTATOR_DASHBOARD
+note on link
+  showCompetitions
+  showBatchInscriptions
+  showBatchWeightins
+  showFinishedBatches
+  showLiveBatchInPlay
+  showResults
+  downloadResults
+end note
+
+SPECTATOR_DASHBOARD --> OPENED_DASHBOARD
+note on link
+  login
+end note
+
+
+LIFTERS_MANAGEMENT --> LIFTERS_MANAGEMENT
+note on link
+  inscribeLifter
+  uninscribeLifter
+end note
+
+
+OPENED_INSCRIPTIONS --> LIFTERS_MANAGEMENT
+note on link
+  showInscribedLifters
+end note
+
+CLOSED_INSCRIPTIONS --> CLOSED_INSCRIPTIONS
+note on link
+  draw_lifters
+end note
+
+
+OPENED_DASHBOARD --> COMPETITIONS_MANAGEMENT
+note on link
+  showCompetitions
+end note
+
+COMPETITIONS_MANAGEMENT --> OPENED_DASHBOARD
+COMPETITIONS_MANAGEMENT --> COMPETITIONS_MANAGEMENT
+note on link
+  editCompetition
+  deleteCompetition
+end note
+
+COMPETITIONS_MANAGEMENT --> BATCH_MANAGEMENT
+note on link
+  showBatches
+end note
+
+BATCH_MANAGEMENT --> BATCH_MANAGEMENT
+note on link
+  editBatch
+  deleteBatch
+  assignLifterToBatch
+  unassignLifterToBatch
+end note
+
+FINISHED_BATCH --> FINISHED_BATCH
+note on link
+ createAct
+ downloadAct
+ createClassifications
+ downloadClassifications
+end note
+
+BATCH_MANAGEMENT --> FINISHED_BATCH
+
+OPENED_INSCRIPTIONS ---> logoutChoice
+LIFTERS_MANAGEMENT ---> logoutChoice
+CLOSED_INSCRIPTIONS ---> logoutChoice
+BATCH_MANAGEMENT ---> logoutChoice
+FINISHED_BATCH ---> logoutChoice
+
+OPENED_DASHBOARD --> areInscriptionsClosed
+areInscriptionsClosed --> CLOSED_INSCRIPTIONS : [inscriptions are closed]
+areInscriptionsClosed --> OPENED_INSCRIPTIONS : [inscriptions are open]
+
+
+logoutChoice --> [*]
+note on link
+ logout
+end note
+
+
+footer \n\n\n Diagrama de contexto del actor organizador
+@enduml

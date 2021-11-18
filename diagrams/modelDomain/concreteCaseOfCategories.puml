@@ -132,4 +132,5 @@ Master --> MasterAgeLimits
 Master --> Common_M
 Master --> Common_W
 
+footer Figura 2. Caso concreto de categorias de una competición
 @enduml

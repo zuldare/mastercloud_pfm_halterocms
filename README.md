@@ -134,6 +134,23 @@ diferentes disciplinas depende del momento del proyecto en el que estemos
 
 ## 3. Modelo de dominio <a name="domainModel"/>
 [Modelo del dominio](diagrams/modelDomain/competitionDomainModel.puml)
+ 
+El modelo del dominio describre los conceptos más importantes del contexto del sistema como son:
+* Objetos de negocio
+* Objetos del mundo real y conceptos que un sistema necesita hacer un seguimiento
+* Eventos que suceden o que sucederán en el sistema
+
+El modelo del dominio también es importante, ya que nos ayuda a tener y consensuar un vocabulario común.
+
+Para obtener el modelo del dominio se ha tenido en cuenta las necesidades actuales de la Federación Madrileña de Halterofilia
+a la hora de realizar la gestión integral de una competición de halterofilia. Para ello se ha hablado con distintas personas de la federación 
+para conocer los requisitos necesarios para cada uno de ellos.
+
+En la Figura 1 se puede observar los objetos del dominio, sus relaciones y el vocabulario consensuado por el cliente.
+![competitionDomainModel](images/modelDomain/competitionDomainModel.png)
+
+El modelo de dominio nos puede ayudar también a tener una mejor comprensión de la organización destino. Un ejemplo de esto podría ser una muestra real de como se distribuyen las categorías oficiales en la halterofilia, tal y como se puede ver en la Figura 2.
+![concreteCaseOfCategories](images/modelDomain/concreteCaseOfCategories.png)
 
 ## 3. Disciplina de requisitos <a name="requirements"/>
 

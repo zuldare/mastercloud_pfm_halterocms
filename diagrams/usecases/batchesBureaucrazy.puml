@@ -13,7 +13,7 @@ package BATCHES_BUREAUCRACY {
   usecase editLiftValue
 
   usecase editLiftWeightChange
-  usecase generateAct
+  usecase createAct
   usecase downloadAct
   usecase introduceWeighinData
 
@@ -26,12 +26,12 @@ Organizer --> editBatch
 Organizer --> assignLifterToBatch
 Organizer --> unassignLifterToBatch
 Organizer --> deleteBatch
-Organizer --> introduceWeighinData
 Organizer --> downloadAct
 
+CompetitionSecretary --> introduceWeighinData
 CompetitionSecretary --> editLiftStatus
 CompetitionSecretary --> editLiftValue
-CompetitionSecretary --> generateAct
+CompetitionSecretary --> createAct
 CompetitionSecretary --> editLiftWeightChange
 CompetitionSecretary --> showLifterCategory
 CompetitionSecretary --> initPlay

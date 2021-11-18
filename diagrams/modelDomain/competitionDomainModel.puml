@@ -203,4 +203,5 @@ BarLoaders --> BarSet
 Judge --> LiftStatus
 Judge --> Weighing
 
+footer Figura 1.  Modelo del dominio
 @enduml
