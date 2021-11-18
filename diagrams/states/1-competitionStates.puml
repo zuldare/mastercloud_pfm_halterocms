@@ -23,36 +23,36 @@ state "Classification completed" as CompletedClassification
 state "More batches from other categories pending?" as MoreBatchesCHC <<choice>>
 state "All batches are completed" as CompletedBatches
 
-[*] --> PedingCompetition
-[*] --> PendingCategories
-PendingCategories --> CategoriesEdited
-PedingCompetition --> PedingAssignBatches
-PedingAssignBatches --> CompetitionEdited
-CompetitionEdited --> MoreCategoriesToEditCHC
-MoreCategoriesToEditCHC --> PendingLiftersToRegister : All the categories\nwere edited
-MoreCategoriesToEditCHC --> PendingCategories : Categories remain\nto be edited
-CategoriesEdited --> PendingLiftersToRegister
+[*] --> PedingCompetition : Creating a new\ncompetition
+[*] --> PendingCategories : We prepare to create\nnew categories
+PendingCategories --> CategoriesEdited : Editing the last\nage category
+PedingCompetition --> PedingAssignBatches : Editing the competition\ndata
+PedingAssignBatches --> CompetitionEdited : Assigning batches to\nthe competition
+CompetitionEdited --> MoreCategoriesToEditCHC : Are there any categories\nleft to edit?
+MoreCategoriesToEditCHC --> PendingLiftersToRegister : [All the categories\nwere edited]
+MoreCategoriesToEditCHC --> PendingCategories : [Categories remain\nto be edited]
+CategoriesEdited --> PendingLiftersToRegister : Opening inscriptions
 
 PendingLiftersToRegister --> IsRegistrationOpenCHC : A new lifter tries\nto be registered
-IsRegistrationOpenCHC --> RegistrationTimeOver : Registration time\nran out
-IsRegistrationOpenCHC --> NewLifterRegistered : The registration period\nis still open
-NewLifterRegistered --> MoreLiftersToRegisterCHC
-MoreLiftersToRegisterCHC --> PendingLiftersToRegister : Lifters remain to\nbe registered
-MoreLiftersToRegisterCHC --> RegistrationTimeOver : All lifters are\nregistered
+IsRegistrationOpenCHC --> RegistrationTimeOver : [Registration time\nran out]
+IsRegistrationOpenCHC --> NewLifterRegistered : [The registration period\nis still open]
+NewLifterRegistered --> MoreLiftersToRegisterCHC : Are there any lifters left\nto be registered?
+MoreLiftersToRegisterCHC --> PendingLiftersToRegister : [Lifters remain to\nbe registered]
+MoreLiftersToRegisterCHC --> RegistrationTimeOver : [All lifters are\nregistered]
 PendingLiftersToRegister --> RegistrationTimeOver : Registration time\nran out
-RegistrationTimeOver --> AnyLiftersRegisteredCHC
-AnyLiftersRegisteredCHC --> CompetitionOrderDrawn : The draw takes place
-AnyLiftersRegisteredCHC --> [*] : No lifter has signed up
+RegistrationTimeOver --> AnyLiftersRegisteredCHC : Does the competition have\nregistered lifters?
+AnyLiftersRegisteredCHC --> CompetitionOrderDrawn : [Yes, so the draw\ntakes place]
+AnyLiftersRegisteredCHC --> [*] : [No lifter has\nsigned up]
 CompetitionOrderDrawn --> PendingNewBatch : The development of the\ncompetition begins
 
-PendingNewBatch --> StartedNewBatchCategory
-StartedNewBatchCategory --> MoreCategoryBatchesCHC : New category for a certain\nbatch is completed
+PendingNewBatch --> StartedNewBatchCategory : A new batch related to a\ncertain category starts
+StartedNewBatchCategory --> MoreCategoryBatchesCHC : New batch related to certain\ncategory is completed
 
-MoreCategoryBatchesCHC --> PendingNewBatch : Some batches from the\nsame category have not\nbeen classified yet
-MoreCategoryBatchesCHC --> OpenClassification : All batches from a the same\ncategory are completed
+MoreCategoryBatchesCHC --> PendingNewBatch : [Some batches from the\nsame category have not\nbeen classified yet]
+MoreCategoryBatchesCHC --> OpenClassification : [All batches from a the same\ncategory are completed]
 OpenClassification --> CompletedClassification : Score is calculated and\nwinner is determined
-CompletedClassification --> MoreBatchesCHC
-MoreBatchesCHC --> PendingNewBatch : Some categories have not\nbeen classified yet
-MoreBatchesCHC --> CompletedBatches : All batches have been\nclassified
-CompletedBatches --> [*]
+CompletedClassification --> MoreBatchesCHC : Are there any categories\nleft to classify?
+MoreBatchesCHC --> PendingNewBatch : [Yes, some categories have not\nbeen classified yet]
+MoreBatchesCHC --> CompletedBatches : [No, all batches have been\nclassified]
+CompletedBatches --> [*] : Competition is finished
 @enduml
