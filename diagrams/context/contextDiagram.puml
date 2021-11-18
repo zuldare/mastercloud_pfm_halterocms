@@ -1,71 +1,87 @@
 @startuml
+state LAUNCHED
 state INITIAL
 state OPENED_DASHBOARD
-state CREATED_CLUBS
-state CREATED_ORGANIZERS
-state CREATED_INSCRIBERS
-state CREATED_CATEGORIES
+state CLUBS_MANAGEMENT
+state ORGANIZERS_MANAGEMENT
+state INSCRIBERS_MANAGEMENT
+state CATEGORIES_MANAGEMENT
 state OPENED_INSCRIPTIONS
-state CREATED_COMPETITIONS
+state COMPETITIONS_MANAGEMENT
 state INSCRIBED_LIFTERS
-state CREATED_BATCH
+state BATCH_MANAGEMENT
 state BATCH_IN_PLAY
 state FINISHED_BATCH
-state OPENED_SPECTATOR_DASHBOARD
 
-[*] --> INITIAL
+state logoutChoice <<choice>>
+
+[*] --> LAUNCHED
+note on link
+  launch
+end note
+
+LAUNCHED --> INITIAL
+note on link
+  showCompetitions
+  showBatchInscriptions
+  showBatchWeightins
+  showFinishedBatches
+  showLiveBatchInPlay
+  showResults
+  downloadResults
+end note
+
 INITIAL --> OPENED_DASHBOARD
 note on link
   login
-  signin
 end note
 
-OPENED_DASHBOARD --> CREATED_CLUBS
+OPENED_DASHBOARD --> CLUBS_MANAGEMENT
 note on link
   showClubs
 end note
-CREATED_CLUBS --> OPENED_DASHBOARD
+CLUBS_MANAGEMENT --> OPENED_DASHBOARD
 
 
-OPENED_DASHBOARD --> CREATED_ORGANIZERS
+OPENED_DASHBOARD --> ORGANIZERS_MANAGEMENT
 note on link
   showOrganizers
 end note
 
-CREATED_ORGANIZERS --> CREATED_ORGANIZERS
+ORGANIZERS_MANAGEMENT --> ORGANIZERS_MANAGEMENT
 note on link
   editOrganizer
   deleteOrganizer
 end note
-CREATED_ORGANIZERS --> OPENED_DASHBOARD
+ORGANIZERS_MANAGEMENT --> OPENED_DASHBOARD
 
 
-OPENED_DASHBOARD --> CREATED_INSCRIBERS
+OPENED_DASHBOARD --> INSCRIBERS_MANAGEMENT
 note on link
   showInscribers
 end note
-CREATED_INSCRIBERS --> OPENED_DASHBOARD
+INSCRIBERS_MANAGEMENT --> OPENED_DASHBOARD
 
-CREATED_INSCRIBERS --> CREATED_INSCRIBERS
+INSCRIBERS_MANAGEMENT --> INSCRIBERS_MANAGEMENT
 note on link
   editInscriber
   deleteInscriber
 end note
 
-OPENED_DASHBOARD --> CREATED_CATEGORIES
+OPENED_DASHBOARD --> CATEGORIES_MANAGEMENT
 note on link
   showCategories
 end note
 
-CREATED_CATEGORIES --> CREATED_CATEGORIES
+CATEGORIES_MANAGEMENT --> CATEGORIES_MANAGEMENT
 note on link
   editCategory
   deleteCategory
 end note
-CREATED_CATEGORIES --> OPENED_DASHBOARD
+CATEGORIES_MANAGEMENT --> OPENED_DASHBOARD
 
 
-CREATED_CLUBS --> CREATED_CLUBS
+CLUBS_MANAGEMENT --> CLUBS_MANAGEMENT
 note on link
   editClub
   deleteClub
@@ -79,7 +95,7 @@ note on link
 end note
 
 
-CREATED_ORGANIZERS --> OPENED_INSCRIPTIONS
+ORGANIZERS_MANAGEMENT --> OPENED_INSCRIPTIONS
 note on link
   openInscriptions
 end note
@@ -101,24 +117,24 @@ note on link
 end note
 
 
-OPENED_DASHBOARD --> CREATED_COMPETITIONS
+OPENED_DASHBOARD --> COMPETITIONS_MANAGEMENT
 note on link
   showCompetitions
 end note
 
-CREATED_COMPETITIONS --> OPENED_DASHBOARD
-CREATED_COMPETITIONS --> CREATED_COMPETITIONS
+COMPETITIONS_MANAGEMENT --> OPENED_DASHBOARD
+COMPETITIONS_MANAGEMENT --> COMPETITIONS_MANAGEMENT
 note on link
   editCompetition
   deleteCompetition
 end note
 
-CREATED_COMPETITIONS --> CREATED_BATCH
+COMPETITIONS_MANAGEMENT --> BATCH_MANAGEMENT
 note on link
   showBatches
 end note
 
-CREATED_BATCH --> CREATED_BATCH
+BATCH_MANAGEMENT --> BATCH_MANAGEMENT
 note on link
   editBatch
   deleteBatch
@@ -128,7 +144,7 @@ note on link
 end note
 
 
-CREATED_BATCH --> BATCH_IN_PLAY
+BATCH_MANAGEMENT --> BATCH_IN_PLAY
 note on link
   initPlay
 end note
@@ -159,61 +175,21 @@ note on link
 end note
 
 
-[*] --> OPENED_SPECTATOR_DASHBOARD
-note on link
-  showCompetitions
-  showBatchInscriptions
-  showBatchWeightins
-  showFinishedBatches
-  showLiveBatchInPlay
-  showResults
-  downloadResults
-end note
 
+CLUBS_MANAGEMENT ---> logoutChoice
+ORGANIZERS_MANAGEMENT ---> logoutChoice
+INSCRIBERS_MANAGEMENT ---> logoutChoice
+CATEGORIES_MANAGEMENT ---> logoutChoice
+OPENED_INSCRIPTIONS ---> logoutChoice
+INSCRIBED_LIFTERS ---> logoutChoice
+CLOSED_INSCRIPTIONS ---> logoutChoice
+BATCH_MANAGEMENT ---> logoutChoice
+BATCH_IN_PLAY ---> logoutChoice
+FINISHED_BATCH ---> logoutChoice
 
-
-CREATED_CLUBS ---> [*]
+logoutChoice --> [*]
 note on link
  logout
 end note
-CREATED_ORGANIZERS ---> [*]
-note on link
- logout
-end note
-CREATED_INSCRIBERS ---> [*]
-note on link
- logout
-end note
-CREATED_CATEGORIES ---> [*]
-note on link
- logout
-end note
-
-OPENED_INSCRIPTIONS ---> [*]
-note on link
- logout
-end note
-INSCRIBED_LIFTERS ---> [*]
-note on link
- logout
-end note
-CLOSED_INSCRIPTIONS ---> [*]
-note on link
- logout
-end note
-CREATED_BATCH ---> [*]
-note on link
- logout
-end note
-BATCH_IN_PLAY ---> [*]
-note on link
- logout
-end note
-FINISHED_BATCH ---> [*]
-note on link
- logout
-end note
-
-
 
 @enduml
