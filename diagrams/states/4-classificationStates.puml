@@ -1,17 +1,17 @@
 @startuml
 state "Classification is open" as OpenClassification
-state "Calculated new athlete score" as CalculatedAthleteScore
+state "Calculated new lifter score" as CalculatedLifterScore
 state "Are there any scores pending to be calculated?" as AnyScoresPendingCHC <<choice>>
 state "All scores have been calculated" as AllScoresCalculated
 
 state "Classification completed" as CompletedClassification
 
-[*] --> OpenClassification
-OpenClassification --> CalculatedAthleteScore
-CalculatedAthleteScore --> AnyScoresPendingCHC : Are there any scores pending\nto be calculated?
-AnyScoresPendingCHC --> OpenClassification : Some score remains\nto be calculated
-AnyScoresPendingCHC --> AllScoresCalculated : The last of the athlete\nscores is calculated
+[*] --> OpenClassification : A category completes\nall its batches
+OpenClassification --> CalculatedLifterScore : A lifter's score is\ncalculated
+CalculatedLifterScore --> AnyScoresPendingCHC : Are there any scores pending\nto be calculated?
+AnyScoresPendingCHC --> OpenClassification : [Some score remains\nto be calculated]
+AnyScoresPendingCHC --> AllScoresCalculated : [The last of the lifter\nscores is calculated]
 
 AllScoresCalculated --> CompletedClassification : Determined the winner of\nthe batch category
-CompletedClassification --> [*]
+CompletedClassification --> [*] : The classification phase\nends
 @enduml
