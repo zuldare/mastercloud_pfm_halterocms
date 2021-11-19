@@ -34,55 +34,55 @@ state "Null lift" as NullLift
 '' TRANSITIONS
 ''
 
-[*] --> BarPendingToBeCharged
+[*] --> BarPendingToBeCharged : Starts a new iteration\nwithin a round
 
-BarPendingToBeCharged --> ChargedBar
-ChargedBar --> NextAndFollowingLiftersAnnounced
+BarPendingToBeCharged --> ChargedBar : The bar is charged with the\ncorresponding weight
+ChargedBar --> NextAndFollowingLiftersAnnounced : The next and following\nlifters are announced
 
 ''
 '' When lifters are announced:
 ''
 
-NextAndFollowingLiftersAnnounced --> ChangeInLiftWeightCHC
-ChangeInLiftWeightCHC --> AnyChangeAttemptCHC : The lifter tries to make\na lift weight change
-AnyChangeAttemptCHC --> IsLiftGoingToBeRejectedCHC : The lifter has no more attempts\nat lift weight change
-AnyChangeAttemptCHC --> AttemptsDecreased : The lifter still has any\nlift weight change attempt
+NextAndFollowingLiftersAnnounced --> ChangeInLiftWeightCHC : Does the lifter want to keep\nthe announced weight?
+ChangeInLiftWeightCHC --> AnyChangeAttemptCHC : [No, the lifter tries to make\na lift weight change]\n\nDoes the lifter have more\nweight changes?
+AnyChangeAttemptCHC --> IsLiftGoingToBeRejectedCHC : [No, the lifter has no more attempts\nat lift weight change]\n\nDoes the lifter decide to\nperform the lift?
+AnyChangeAttemptCHC --> AttemptsDecreased : [Yes, the lifter still has any\nlift weight change attempt]
 
-AttemptsDecreased --> BarWeightRemainsCHC
-BarWeightRemainsCHC --> ChargedBar : The bar weight remains
-BarWeightRemainsCHC --> BarPendingToBeCharged : The bar weight changes
+AttemptsDecreased --> BarWeightRemainsCHC : Does the weight of the\nbar change?
+BarWeightRemainsCHC --> ChargedBar : [No, the bar weight remains]
+BarWeightRemainsCHC --> BarPendingToBeCharged : [Yes, the bar weight changes]
 
-ChangeInLiftWeightCHC --> IsLiftGoingToBeRejectedCHC : The lifter keeps\nits lift weight
-IsLiftGoingToBeRejectedCHC --> TimerStarted : The lifter decides to\nperform its lift
-IsLiftGoingToBeRejectedCHC --> RejectedLift : The lifter rejected its lift
-RejectedLift --> [*]
+ChangeInLiftWeightCHC --> IsLiftGoingToBeRejectedCHC : [Yes, the lifter keeps\nits lift weight]\n\nDoes the lifter decide to\nperform the lift?
+IsLiftGoingToBeRejectedCHC --> TimerStarted : [Yes, the lifter decides to\nperform its lift]
+IsLiftGoingToBeRejectedCHC --> RejectedLift : [No, the lifter rejected its lift]
+RejectedLift --> [*] : The iteration\nends
 
 ''
 '' When timer started:
 ''
 
-TimerStarted --> WasLiftPerformedCHC
-WasLiftPerformedCHC --> LiftWasPerformed : The lifter performed its lift
-WasLiftPerformedCHC --> TimerStopped : The lifter didn't\nperform its lift
-WasLiftPerformedCHC --> ChangeInLiftWeightAfterTimerCHC : The lifter tries to make\na lift weight change
+TimerStarted --> WasLiftPerformedCHC : Is the lift performed after\nthe start of time?
+WasLiftPerformedCHC --> LiftWasPerformed : [Yes, the lifter performed\nits lift]
+WasLiftPerformedCHC --> TimerStopped : [No, the lifter didn't\nperform its lift]
+WasLiftPerformedCHC --> ChangeInLiftWeightAfterTimerCHC : [No, but the lifter tries to make\na lift weight change]\n\nDoes it have time to make\na weight change?
 
-ChangeInLiftWeightAfterTimerCHC --> WasLiftPerformedCHC : The timer started more\nthan 30 seconds ago
-ChangeInLiftWeightAfterTimerCHC --> AnyChangeAttemptAfterTimerCHC : The timer started less\nthan 30 seconds ago
+ChangeInLiftWeightAfterTimerCHC --> WasLiftPerformedCHC : [No, the timer started more\nthan 30 seconds ago]
+ChangeInLiftWeightAfterTimerCHC --> AnyChangeAttemptAfterTimerCHC : [Yes, the timer started less\nthan 30 seconds ago]\n\nDoes the lifter have more\nweight changes?
 
-AnyChangeAttemptAfterTimerCHC --> WasLiftPerformedCHC : The lifter has no more attempts\nat lift weight change
-AnyChangeAttemptAfterTimerCHC --> AttemptsDecreased : The lifter still has any\nlift weight change attempt
+AnyChangeAttemptAfterTimerCHC --> WasLiftPerformedCHC : [No, the lifter has no more attempts\nat lift weight change]
+AnyChangeAttemptAfterTimerCHC --> AttemptsDecreased : [Yes, the lifter still has any\nlift weight change attempt]
 
-LiftWasPerformed --> TimerStopped
+LiftWasPerformed --> TimerStopped : The rest of the time\npasses
 
 ''
 '' When time is over:
 ''
 
-TimerStopped --> WasLiftValidCHC
-WasLiftValidCHC --> ValidLift : The lift was judged\nas valid
-WasLiftValidCHC --> NullLift : The lift was judged\nas null
+TimerStopped --> WasLiftValidCHC : Was the lift valid?
+WasLiftValidCHC --> ValidLift : [The lift was judged\nas valid]
+WasLiftValidCHC --> NullLift : [The lift was judged\nas null]
 
-ValidLift --> [*]
-NullLift --> [*]
+ValidLift --> [*] : The iteration\nends
+NullLift --> [*]: The iteration\nends
 
 @enduml
