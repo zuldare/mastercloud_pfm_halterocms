@@ -43,7 +43,7 @@ ChargedBar --> NextAndFollowingLiftersAnnounced : The next and following\nlifter
 '' When lifters are announced:
 ''
 
-NextAndFollowingLiftersAnnounced --> ChangeInLiftWeightCHC : Does the lifter want to keep\nthe announced weight?
+NextAndFollowingLiftersAnnounced --> ChangeInLiftWeightCHC : Does the next lifter want to\nkeep the announced weight?
 ChangeInLiftWeightCHC --> AnyChangeAttemptCHC : [No, the lifter tries to make\na lift weight change]\n\nDoes the lifter have more\nweight changes?
 AnyChangeAttemptCHC --> IsLiftGoingToBeRejectedCHC : [No, the lifter has no more attempts\nat lift weight change]\n\nDoes the lifter decide to\nperform the lift?
 AnyChangeAttemptCHC --> AttemptsDecreased : [Yes, the lifter still has any\nlift weight change attempt]
