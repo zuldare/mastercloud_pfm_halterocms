@@ -1,0 +1,58 @@
+@startuml
+state LOGED_IN
+state SHOWED_LIVE_BATCH_IN_PLAY
+state SHOWED_FINISHED_BATCHES
+state SHOWED_BATCH_INSCRIPTIONS
+state SHOWED_BATCH_WEIGHINS
+state SHOWED_RESULTS
+state showCompetitions {
+  [*] --> [*]
+  note on link
+    System shows:
+    * available competitions
+
+    System allows:
+    * showLiveBatchInPlay
+    * showFinishedBatches
+    * showBatchInscriptions
+    * showBatchWeighins
+    * showResults
+    * logout
+  end note
+}
+state SHOWED_COMPETITIONS
+
+LOGED_IN --> showCompetitions
+note on link
+  User requests to:
+  * showCompetitions
+end note
+SHOWED_LIVE_BATCH_IN_PLAY --> showCompetitions
+note on link
+  User requests to:
+  * showCompetitions
+end note
+SHOWED_FINISHED_BATCHES --> showCompetitions
+note on link
+  User requests to:
+  * showCompetitions
+end note
+SHOWED_BATCH_INSCRIPTIONS --> showCompetitions
+note on link
+  User requests to:
+  * showCompetitions
+end note
+SHOWED_BATCH_WEIGHINS --> showCompetitions
+note on link
+  User requests to:
+  * showCompetitions
+end note
+SHOWED_RESULTS --> showCompetitions
+note on link
+  User requests to:
+  * showCompetitions
+end note
+showCompetitions --> SHOWED_COMPETITIONS
+
+footer \n\n\n Especificación del caso de uso "showCompetitions"
+@enduml
