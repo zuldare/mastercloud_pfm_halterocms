@@ -1,0 +1,21 @@
+@startuml
+state SHOWED_RESULTS
+state DOWNLOADED_RESULTS
+state downloadResults {
+  [*] --> [*]
+  note on link
+    System allows to:
+    * showResults
+  end note
+}
+
+SHOWED_RESULTS --> downloadResults
+note on link
+  User requests to:
+  * downloadResults
+end note
+downloadResults --> DOWNLOADED_RESULTS
+DOWNLOADED_RESULTS --> SHOWED_RESULTS : The system shows\nthe results again
+
+footer \n\n\n Especificación del caso de uso "downloadResults"
+@enduml
