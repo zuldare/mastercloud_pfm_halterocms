@@ -1,0 +1,21 @@
+@startuml
+state launch {
+  [*] --> [*]
+  note on link
+    System shows:
+    * landing window
+    System allows:
+    * login
+  end note
+}
+state LAUNCHED
+
+[*] --> launch
+note on link
+  User requests to:
+  * launch
+end note
+launch --> LAUNCHED
+
+footer \n\n\n Especificación del caso de uso "launch"
+@enduml
