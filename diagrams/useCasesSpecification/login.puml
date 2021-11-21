@@ -1,0 +1,47 @@
+@startuml
+state login {
+
+  state " " as start
+  state " " as requiredData
+  state " " as wrongData
+  state " " as isValidDataCHC <<choice>>
+  [*] --> start
+  start --> requiredData
+  note on link
+    System requires:
+    * username
+    * password
+    System allows:
+    * cancel
+  end note
+  requiredData -->  isValidDataCHC
+  note on link
+    User provides:
+    * username
+    * password
+  end note
+  isValidDataCHC --> wrongData : Wrong data\nprovided
+  wrongData --> requiredData
+  note on link
+    System shows:
+    * error message
+  end note
+  isValidDataCHC --> [*] : Right data\nprovided
+  requiredData --> [*]
+  note on link
+    User requires:
+    * cancel
+  end note
+
+}
+state LOGED_IN
+
+LAUNCHED --> login
+note on link
+  User requests to:
+  * login
+end note
+login --> LOGED_IN
+
+footer \n\n\n Especificación del caso de uso "login"
+@enduml
