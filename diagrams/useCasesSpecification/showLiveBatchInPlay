@@ -1,0 +1,40 @@
+@startuml
+state SHOWED_COMPETITIONS
+state SHOWED_FINISHED_BATCHES
+state SHOWED_RESULTS
+state SHOWED_LIVE_BATCH_IN_PLAY
+state showLiveBatchInPlay {
+  [*] --> [*]
+  note on link
+    System shows:
+    * live scores and weight changes 
+    of the current batch
+
+    System allows to:
+    * showResults
+    * showFinishedBatches
+    * showCompetitions
+    * logout
+  end note
+}
+state SHOWED_COMPETITIONS
+
+SHOWED_COMPETITIONS --> showLiveBatchInPlay
+note on link
+  User requests to:
+  * showLiveBatchInPlay
+end note
+SHOWED_RESULTS --> showLiveBatchInPlay
+note on link
+  User requests to:
+  * showLiveBatchInPlay
+end note
+SHOWED_FINISHED_BATCHES --> showLiveBatchInPlay
+note on link
+  User requests to:
+  * showLiveBatchInPlay
+end note
+showLiveBatchInPlay --> SHOWED_LIVE_BATCH_IN_PLAY
+
+footer \n\n\n Especificación del caso de uso "showLiveBatchInPlay"
+@enduml
