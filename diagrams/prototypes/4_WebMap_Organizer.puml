@@ -34,11 +34,11 @@ end note
 showCompetitions --> editCompetition
 note on link
   editCompetition
-  showBatches
 end note
 
 editCompetition --> editCompetition
 note on link
+  showBatches
   deleteBatch
 end note
 
@@ -49,6 +49,13 @@ editCompetition --> editBatch
 note on link
   editBatch
 end note
+
+editBatch --> editBatch
+note on link
+  assignLifterToBatch
+  unassignLifterToBatch
+end note
+
 
 
 'state " " as editBatch
