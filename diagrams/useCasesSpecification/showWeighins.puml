@@ -1,6 +1,6 @@
 @startuml
 state SHOWED_COMPETITION
-state showWeighins {
+state showBatchWeighins {
   state " " as pendingBatch
   state " " as providedBatch
   [*] --> pendingBatch
@@ -25,13 +25,13 @@ state showWeighins {
 }
 state SHOWED_BATCH_WEIGHINS
 
-SHOWED_COMPETITION --> showWeighins
+SHOWED_COMPETITION --> showBatchWeighins
 note on link
   User requests to:
   * showWeighins
 end note
 
-showWeighins --> SHOWED_BATCH_WEIGHINS
+showBatchWeighins --> SHOWED_BATCH_WEIGHINS
 
-footer \n\n\n Especificación del caso de uso "showWeighins"
+footer \n\n\n Especificación del caso de uso "showBatchWeighins"
 @enduml
