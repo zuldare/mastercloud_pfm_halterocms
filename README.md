@@ -199,7 +199,6 @@ Hay que **determinar qué casos de uso seran desarrollados** (analizados, diseñ
 las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteraciones teniendo en cuenta factores como puedan ser aspectos técnicos, aspectos económicos, aspectos de negocio o cualquier tipo de riesgo
 
 
-
 ### 4.3 Especificación de casos de uso <a name="useCasesSpecification"/>
 
 ### 4.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
