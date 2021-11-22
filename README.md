@@ -1,4 +1,4 @@
-# mastercloud_pfm_halterocms
+# HalteroCMS - Haltero Championship Management System
 
 # Índice
 1. [Introducción](#intro)
@@ -13,15 +13,15 @@
 
 4. [Disciplina de requisitos](#requirements)
 
-    4.1 [Actores y casos de uso](#useCasesActors")
+    4.1 [Actores y casos de uso](#useCasesActors)
  
-    4.2 [Priorizar casos de uso](#useCasesPrioritize")
+    4.2 [Priorizar casos de uso](#useCasesPrioritize)
 
-    4.3 [Especificación de casos de uso](#useCasesSpecification")
+    4.3 [Especificación de casos de uso](#useCasesSpecification)
     
-    4.4 [Estructurar el modelo de casos de uso](#useCasesStructure")
+    4.4 [Estructurar el modelo de casos de uso](#useCasesStructure)
     
-    4.5 [Prototipado interfaz de usuario](#useCasesPrototype")
+    4.5 [Prototipado interfaz de usuario](#useCasesPrototype)
  
 5. [Disciplina de análisis](#analisis) 
 
@@ -203,7 +203,7 @@ las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteracione
 
 ### 4.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
 
-### 4.5 Prototipado interfaz de usuario <a name="useCasesPrototype"/>
+### 4.5 Prototipado interfaz de usuario   <a name="useCasesPrototype"/>
 
 A continuación se detallan los prototipos de las interfaces del usuario que permiten el intercambio de información detallado en los diagramas de especificación
 de casos de uso. 
