@@ -23,6 +23,9 @@ showBatchInscriptions: <img:./images/1_2_1_1_showInscriptions.png>
 
 state showCompetitionChoice <<choice>>
 
+
+
+
 [*] --> spectatorMainView
 note on link
   launch
@@ -60,12 +63,6 @@ note on link
  showLiveBatchInPlay
 end note
 
-
-state " " as login
-spectatorMainView --> login
-note on link
-  login
-end note
 
 
 

@@ -153,7 +153,7 @@ En la Figura 1 se puede observar los objetos del dominio, sus relaciones y el vo
 El modelo de dominio nos puede ayudar también a tener una mejor comprensión de la organización destino. Un ejemplo de esto podría ser una muestra real de como se distribuyen las categorías oficiales en la halterofilia, tal y como se puede ver en la Figura 2.
 ![concreteCaseOfCategories](images/modelDomain/concreteCaseOfCategories.png)
 
-## 3. Disciplina de requisitos <a name="requirements"/>
+## 4. Disciplina de requisitos <a name="requirements"/>
 
 La disciplina de requisitos es el flujo de trabajo (realización de casos de uso que incluye roles, actividades y artefactos)
 cuyo principal propósito es *dirigir el desarrollo hacia el sistema correcto* describiendo los requisitos del sistema
@@ -175,7 +175,7 @@ Las actividades recomendadas por RUP en esta disciplina son las siguientes:
 5. Prototipado de la interfaz de usuario 
 
 
-### 3.1 Actores y casos de uso <a name="useCasesActors"/>
+### 4.1 Actores y casos de uso <a name="useCasesActors"/>
 * Un actor especifica un rol que adopta una entidad externa cuando interactúa con el sistema **directamente** (no en respuesta)
   Si se necesita modelar cosas que suceden en el sistema en un tiempo específico pero que parece que no lo lanza ningún actor, se puede introducir el **actor tiempo**
 
@@ -196,17 +196,19 @@ En la Figura 3 podemos ver los actores que se han identificado, mientras que en 
 ![timer](images/usecases/timer.png)
 
 
-### 3.2 Priorizar casos de uso <a name="useCasePrioritize"/>
+### 4.2 Priorizar casos de uso <a name="useCasePrioritize"/>
 Hay que **determinar qué casos de uso seran desarrollados** (analizados, diseñados, implementados y probados) en
 las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteraciones teniendo en cuenta factores como puedan ser aspectos técnicos, aspectos económicos, aspectos de negocio o cualquier tipo de riesgo
 
 
 
-### 3.3 Especificación de casos de uso <a name="useCasesSpecification"/>
+### 4.3 Especificación de casos de uso <a name="useCasesSpecification"/>
 
-### 3.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
+### 4.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
 
-### 3.3 Prototipado interfaz de usuario <a name="useCasesPrototype"/>
+### 4.5 Prototipado interfaz de usuario <a name="useCasesPrototype"/>
+
+
 
 #### Vista de espectador
 ![Vista de espectador](diagrams/prototypes/competitionPlay/spectatorboutview.png)
