@@ -56,42 +56,4 @@ note on link
   unassignLifterToBatch
 end note
 
-
-
-'state " " as editBatch
-'state " " as deleteBatch
-'state " " as assignLifterToBatch
-'state " " as unassignLifterToBatch
-'state " " as introduceWeighinData
-
-'state " " as downloadAct
-'state " " as downloadClassifications
-
-'
-'
-
-
-'
-'
-'state " " as showInscribedLifters
-'showInscribedLifters: <img:./images/3_1_showInscribedLifters.png>
-'
-'
-'login --> showInscribedLifters
-'note on link
-'  showInscribedLifters
-'end note
-'
-'state " " as inscribeLifter
-'inscribeLifter: <img:./images/3_1_1_inscribeLifter.png>
-'showInscribedLifters --> inscribeLifter
-'note on link
-'  inscribeLifter
-'end note
-'
-'showInscribedLifters --> showInscribedLifters
-'note on link
-'  uninscribeLifter
-'end note
-
 @enduml
