@@ -1,0 +1,41 @@
+@startuml
+state LOGED_IN
+state SHOWED_COMPETITIONS
+state SHOWED_COMPETITION
+state SHOWED_FINISHED_BATCHES
+state SHOWED_LIVE_BATCH_IN_PLAY
+state SHOWED_BATCH_INSCRIPTIONS
+state SHOWED_BATCH_WEIGHINS
+state SHOWED_RESULTS
+
+state enterLogoutCHC <<choice>>
+
+state logout {
+  [*] --> [*]
+  note on link
+    System shows:
+    * landing window
+
+    System allows to:
+    * login
+  end note
+}
+state LOGED_OUT
+
+LOGED_IN --> enterLogoutCHC
+SHOWED_COMPETITIONS --> enterLogoutCHC
+SHOWED_COMPETITION --> enterLogoutCHC
+SHOWED_FINISHED_BATCHES --> enterLogoutCHC
+SHOWED_LIVE_BATCH_IN_PLAY --> enterLogoutCHC
+SHOWED_BATCH_INSCRIPTIONS --> enterLogoutCHC
+SHOWED_BATCH_WEIGHINS --> enterLogoutCHC
+SHOWED_RESULTS --> enterLogoutCHC
+enterLogoutCHC --> logout
+note on link
+  User requests to:
+  * logout
+end note
+logout --> LOGED_OUT
+
+footer \n\n\n Especificación del caso de uso "logout"
+@enduml
