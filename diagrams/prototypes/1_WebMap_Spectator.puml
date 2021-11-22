@@ -1,0 +1,73 @@
+@startuml
+state " " as spectatorMainView
+spectatorMainView : <img:./images/1_spectatorMain.png>
+
+state " " as showCompetitions
+showCompetitions: <img:./images/1_2_showCompetitions.png>
+
+state " " as showCompetition
+showCompetition: <img:./images/1_2_1_showCompetition.png>
+
+state " " as showLiveBatchInPlay
+showLiveBatchInPlay: <img:./images/1_2_1_4_spectatorBatch.png>
+
+state " " as showBatchWeighins
+showBatchWeighins: <img:./images/1_2_1_3_showWeighin.png>
+
+state " " as showFinishedBatches
+showFinishedBatches: <img:./images/1_2_1_2_showFinishedBatch.png>
+
+state " " as showBatchInscriptions
+showBatchInscriptions: <img:./images/1_2_1_1_showInscriptions.png>
+
+
+state showCompetitionChoice <<choice>>
+
+[*] --> spectatorMainView
+note on link
+  launch
+end note
+
+spectatorMainView --> showCompetitions
+note on link
+ showCompetitions
+end note
+
+showCompetitions --> showCompetition
+note on link
+ showCompetition
+end note
+
+showCompetition -->  showCompetitionChoice
+
+showCompetitionChoice --> showBatchInscriptions
+note on link
+ showBatchInscriptions
+end note
+
+showCompetitionChoice --> showFinishedBatches
+note on link
+ showFinishedBatches
+end note
+
+showCompetitionChoice --> showBatchWeighins
+note on link
+ showBatchWeighins
+end note
+
+showCompetitionChoice --> showLiveBatchInPlay
+note on link
+ showLiveBatchInPlay
+end note
+
+
+state " " as login
+spectatorMainView --> login
+note on link
+  login
+end note
+
+
+
+
+@enduml
