@@ -1,4 +1,4 @@
-# mastercloud_pfm_halterocms
+# HalteroCMS - Haltero Championship Management System
 
 # Índice
 1. [Introducción](#intro)
@@ -203,7 +203,7 @@ las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteracione
 
 ### 4.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
 
-### 4.5 Prototipado interfaz de usuario <a name="useCasesPrototype"/>
+### 4.5 Prototipado interfaz de usuario   <a name="useCasesPrototype"/>
 
 A continuación se detallan los prototipos de las interfaces del usuario que permiten el intercambio de información detallado en los diagramas de especificación
 de casos de uso. 
