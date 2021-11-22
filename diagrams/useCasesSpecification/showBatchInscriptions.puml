@@ -1,6 +1,6 @@
 @startuml
 state SHOWED_COMPETITION
-state showInscriptions {
+state showBatchInscriptions {
   state " " as pendingBatch
   state " " as providedBatch
   [*] --> pendingBatch
@@ -25,13 +25,13 @@ state showInscriptions {
 }
 state SHOWED_BATCH_INSCRIPTIONS
 
-SHOWED_COMPETITION --> showInscriptions
+SHOWED_COMPETITION --> showBatchInscriptions
 note on link
   User requests to:
   * showInscriptions
 end note
 
-showInscriptions --> SHOWED_BATCH_INSCRIPTIONS
+showBatchInscriptions --> SHOWED_BATCH_INSCRIPTIONS
 
-footer \n\n\n Especificación del caso de uso "showInscriptions"
+footer \n\n\n Especificación del caso de uso "showBatchInscriptions"
 @enduml
