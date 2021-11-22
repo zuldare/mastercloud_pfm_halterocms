@@ -1,0 +1,36 @@
+@startuml
+state LOGED_IN
+state DELETED_INSCRIBERS
+state EDITED_INSCRIBERS
+
+state enterShowInscribersCHC <<choice>>
+
+state showInscribers {
+  [*] --> [*]
+  note on link
+    System shows:
+    * edited inscribers
+
+    System allows to:
+    * deleteInscriber
+    * editInscriber
+    * showCategories
+    * showClubs
+    * showOrganizers
+    * logout
+  end note
+}
+state SHOWED_INSCRIBERS
+
+LOGED_IN --> enterShowInscribersCHC
+DELETED_INSCRIBERS --> enterShowInscribersCHC
+EDITED_INSCRIBERS --> enterShowInscribersCHC
+enterShowInscribersCHC --> showInscribers
+note on link
+  User requests to:
+  * showInscribers
+end note
+showInscribers --> SHOWED_INSCRIBERS
+
+footer \n\n\n Especificación del caso de uso "showInscribers"
+@enduml
