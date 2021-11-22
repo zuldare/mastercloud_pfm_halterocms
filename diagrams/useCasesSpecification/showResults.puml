@@ -1,35 +1,37 @@
 @startuml
-state SHOWED_COMPETITIONS
 state SHOWED_FINISHED_BATCHES
-state SHOWED_LIVE_BATCH_IN_PLAY
-state SHOWED_RESULTS
+state DOWNLOADED_RESULTS
+state enterResultsCHC <<choice>>
+
 state showResults {
-  [*] --> [*]
+  state " " as pendingBatch
+  state " " as providedBatch
+  [*] --> pendingBatch
+  note on link
+    System requires:
+    * A specific batch
+  end note
+  pendingBatch --> providedBatch
+  note on link
+    User provides:
+    * A specific batch
+  end note
+  providedBatch --> [*]
   note on link
     System shows:
-    * results
-
+    * Selected batch results
+    
     System allows to:
+    * showCompetition
     * downloadResults
-    * showCompetitions
-    * showFinishedBatches
-    * showLiveBatchInPlay
     * logout
   end note
 }
-state SHOWED_COMPETITIONS
+state SHOWED_RESULTS
 
-SHOWED_COMPETITIONS --> showResults
-note on link
-  User requests to:
-  * showResults
-end note
-SHOWED_FINISHED_BATCHES --> showResults
-note on link
-  User requests to:
-  * showResults
-end note
-SHOWED_LIVE_BATCH_IN_PLAY --> showResults
+SHOWED_FINISHED_BATCHES --> enterResultsCHC
+DOWNLOADED_RESULTS --> enterResultsCHC
+enterResultsCHC --> showResults
 note on link
   User requests to:
   * showResults
