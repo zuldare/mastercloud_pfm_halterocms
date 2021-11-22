@@ -1,0 +1,56 @@
+@startuml
+state SHOWED_COMPETITIONS
+state SHOWED_BATCH_INSCRIPTIONS
+state SHOWED_BATCH_WEIGHINS
+state SHOWED_LIVE_BATCH_IN_PLAY
+
+state enterCompetition <<choice>>
+
+
+SHOWED_COMPETITIONS  --> enterCompetition
+SHOWED_BATCH_INSCRIPTIONS  --> enterCompetition
+SHOWED_BATCH_WEIGHINS  --> enterCompetition
+SHOWED_LIVE_BATCH_IN_PLAY  --> enterCompetition
+
+enterCompetition --> showCompetition
+note on link
+  User requests to:
+  * showCompetition
+end note
+
+state showCompetition {
+  state " " as availableCompetitions
+  state " " as providedCompetition
+  [*] --> availableCompetitions
+  note on link
+    System requires:
+    * to select a competition
+
+    System allows:
+    * logout
+  end note
+  availableCompetitions --> providedCompetition
+  note on link
+    User provides:
+    * an available competition
+  end note
+  providedCompetition --> [*]
+  note on link
+    System shows:
+    * The batches info
+
+    System allows to:
+    * showLiveBatchInPlay
+    * showFinishedBatches
+    * showBatchInscriptions
+    * showBatchWeighins
+    * downloadResults
+    * logout
+  end note
+}
+state SHOWED_COMPETITION
+
+showCompetition --> SHOWED_COMPETITION
+
+footer \n\n\n Especificación del caso de uso "showCompetition"
+@enduml
