@@ -1,8 +1,8 @@
 @startuml
 
 state "...." as launch
-state "Logged as organization secretary" as login
-login: <img:./images/2_organizationSecretaryMain.png>
+state "Logged as organizator" as login
+login: <img:./images/4_organizerMain.png>
 
 [*] --> launch
 note on link
@@ -14,26 +14,77 @@ note on link
   login
 end note
 
+state " " as showCompetitions
+showCompetitions: <img:./images/4_1_showCompetitions.png>
 
-state " " as showInscribedLifters
-showInscribedLifters: <img:./images/3_showInscribedLifters.png>
+state " " as editCompetition
+editCompetition: <img:./images/4_1_1_editCompetition.png>
 
 
-login --> showInscribedLifters
+login --> showCompetitions
 note on link
-  showInscribedLifters
+  showCompetitions
 end note
 
-state " " as inscribeLifter
-inscribeLifter: <img:./images/3_1_inscribeLifter.png>
-showInscribedLifters --> inscribeLifter
+showCompetitions --> showCompetitions
 note on link
-  inscribeLifter
+  deleteCompetition
 end note
 
-showInscribedLifters --> showInscribedLifters
+showCompetitions --> editCompetition
 note on link
-  uninscribeLifter
+  editCompetition
+  showBatches
 end note
+
+editCompetition --> editCompetition
+note on link
+  deleteBatch
+end note
+
+state " " as editBatch
+editBatch:  <img:./images/4_1_1_1_editBatch.png>
+
+editCompetition --> editBatch
+note on link
+  editBatch
+end note
+
+
+'state " " as editBatch
+'state " " as deleteBatch
+'state " " as assignLifterToBatch
+'state " " as unassignLifterToBatch
+'state " " as introduceWeighinData
+
+'state " " as downloadAct
+'state " " as downloadClassifications
+
+'
+'
+
+
+'
+'
+'state " " as showInscribedLifters
+'showInscribedLifters: <img:./images/3_1_showInscribedLifters.png>
+'
+'
+'login --> showInscribedLifters
+'note on link
+'  showInscribedLifters
+'end note
+'
+'state " " as inscribeLifter
+'inscribeLifter: <img:./images/3_1_1_inscribeLifter.png>
+'showInscribedLifters --> inscribeLifter
+'note on link
+'  inscribeLifter
+'end note
+'
+'showInscribedLifters --> showInscribedLifters
+'note on link
+'  uninscribeLifter
+'end note
 
 @enduml
