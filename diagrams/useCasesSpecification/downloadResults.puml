@@ -1,21 +1,27 @@
 @startuml
 state SHOWED_RESULTS
+state SHOWED_COMPETITION
+state enterDownloadCHC <<choice>>
 state DOWNLOADED_RESULTS
 state downloadResults {
   [*] --> [*]
   note on link
-    System allows to:
-    * showResults
+    System downloads a file
+    with the results
   end note
 }
 
-SHOWED_RESULTS --> downloadResults
+SHOWED_RESULTS --> enterDownloadCHC
+SHOWED_COMPETITION --> enterDownloadCHC
+
+enterDownloadCHC --> downloadResults
 note on link
   User requests to:
   * downloadResults
 end note
+
 downloadResults --> DOWNLOADED_RESULTS
-DOWNLOADED_RESULTS --> SHOWED_RESULTS : The system shows\nthe results again
+DOWNLOADED_RESULTS --> enterDownloadCHC : The system shows\nthe results again
 
 footer \n\n\n Especificación del caso de uso "downloadResults"
 @enduml
