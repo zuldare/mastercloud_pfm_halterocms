@@ -1,0 +1,39 @@
+@startuml
+
+state "...." as launch
+state "Logged as organization secretary" as login
+login: <img:./images/3_inscriberMain.png>
+
+[*] --> launch
+note on link
+  launch
+end note
+
+launch --> login
+note on link
+  login
+end note
+
+
+state " " as showInscribedLifters
+showInscribedLifters: <img:./images/3_showInscribedLifters.png>
+
+
+login --> showInscribedLifters
+note on link
+  showInscribedLifters
+end note
+
+state " " as inscribeLifter
+inscribeLifter: <img:./images/3_1_inscribeLifter.png>
+showInscribedLifters --> inscribeLifter
+note on link
+  inscribeLifter
+end note
+
+showInscribedLifters --> showInscribedLifters
+note on link
+  uninscribeLifter
+end note
+
+@enduml
