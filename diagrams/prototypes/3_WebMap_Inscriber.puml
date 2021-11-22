@@ -16,7 +16,7 @@ end note
 
 
 state " " as showInscribedLifters
-showInscribedLifters: <img:./images/3_showInscribedLifters.png>
+showInscribedLifters: <img:./images/3_1_showInscribedLifters.png>
 
 
 login --> showInscribedLifters
@@ -25,7 +25,7 @@ note on link
 end note
 
 state " " as inscribeLifter
-inscribeLifter: <img:./images/3_1_inscribeLifter.png>
+inscribeLifter: <img:./images/3_1_1_inscribeLifter.png>
 showInscribedLifters --> inscribeLifter
 note on link
   inscribeLifter
