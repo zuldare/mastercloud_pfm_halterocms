@@ -1,0 +1,36 @@
+@startuml
+state LOGED_IN
+state DELETED_ORGANIZERS
+state EDITED_ORGANIZERS
+
+state enterShowOrganizersCHC <<choice>>
+
+state showOrganizers {
+  [*] --> [*]
+  note on link
+    System shows:
+    * edited organizers
+
+    System allows to:
+    * deleteOrganizer
+    * editOrganizer
+    * showCategories
+    * showClubs
+    * showInscribers
+    * logout
+  end note
+}
+state SHOWED_ORGANIZERS
+
+LOGED_IN --> enterShowOrganizersCHC
+DELETED_ORGANIZERS --> enterShowOrganizersCHC
+EDITED_ORGANIZERS --> enterShowOrganizersCHC
+enterShowOrganizersCHC --> showOrganizers
+note on link
+  User requests to:
+  * showOrganizers
+end note
+showOrganizers --> SHOWED_ORGANIZERS
+
+footer \n\n\n Especificación del caso de uso "showOrganizers"
+@enduml
