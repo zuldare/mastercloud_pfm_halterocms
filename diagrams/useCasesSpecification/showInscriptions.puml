@@ -23,7 +23,7 @@ state showInscriptions {
     * logout
   end note
 }
-state SHOWED_INSCRIPTIONS
+state SHOWED_BATCH_INSCRIPTIONS
 
 SHOWED_COMPETITION --> showInscriptions
 note on link
@@ -31,7 +31,7 @@ note on link
   * showInscriptions
 end note
 
-showInscriptions --> SHOWED_INSCRIPTIONS
+showInscriptions --> SHOWED_BATCH_INSCRIPTIONS
 
 footer \n\n\n Especificación del caso de uso "showInscriptions"
 @enduml

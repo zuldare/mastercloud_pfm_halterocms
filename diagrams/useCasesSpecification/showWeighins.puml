@@ -23,7 +23,7 @@ state showWeighins {
     * logout
   end note
 }
-state SHOWED_WEIGHINS
+state SHOWED_BATCH_WEIGHINS
 
 SHOWED_COMPETITION --> showWeighins
 note on link
@@ -31,7 +31,7 @@ note on link
   * showWeighins
 end note
 
-showWeighins --> SHOWED_WEIGHINS
+showWeighins --> SHOWED_BATCH_WEIGHINS
 
 footer \n\n\n Especificación del caso de uso "showWeighins"
 @enduml
