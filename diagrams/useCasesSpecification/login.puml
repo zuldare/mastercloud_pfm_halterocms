@@ -26,7 +26,12 @@ state login {
     System shows:
     * error message
   end note
-  isValidDataCHC --> [*] : Right data\nprovided
+  isValidDataCHC --> [*] : Right data provided
+  note on link
+    System allows:
+    * showCompetitions
+    * logout
+  end note
   requiredData --> [*]
   note on link
     User requires:
