@@ -1,7 +1,7 @@
 @startuml
 state LOGED_IN
-state SHOWED_COMPETITIONS
-state SHOWED_COMPETITION
+state DELETED_CATEGORY
+state EDITED_CATEGORY
 
 state enterShowCategoriesCHC <<choice>>
 
@@ -23,8 +23,8 @@ state showCategories {
 state SHOWED_CATEGORIES
 
 LOGED_IN --> enterShowCategoriesCHC
-SHOWED_COMPETITIONS --> enterShowCategoriesCHC
-SHOWED_COMPETITION --> enterShowCategoriesCHC
+DELETED_CATEGORY --> enterShowCategoriesCHC
+EDITED_CATEGORY --> enterShowCategoriesCHC
 enterShowCategoriesCHC --> showCategories
 note on link
   User requests to:
