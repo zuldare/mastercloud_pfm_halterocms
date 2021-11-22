@@ -1,0 +1,33 @@
+@startuml
+state SHOWED_CLUBS
+state deleteClub {
+  state " " as pendingClub
+  state " " as providedClub
+  [*] --> pendingClub
+  note on link
+    System requires:
+    * A specific club
+  end note
+  pendingClub --> providedClub
+  note on link
+    User provides:
+    * A specific club
+  end note
+  providedClub --> [*]
+  note on link
+    System allows to:
+    * showClubs
+  end note
+}
+state DELETED_CLUB
+
+SHOWED_CLUBS --> deleteClub
+note on link
+  User requests to:
+  * deleteClub
+end note
+
+deleteClub --> DELETED_CLUB
+
+footer \n\n\n Especificación del caso de uso "deleteClub"
+@enduml
