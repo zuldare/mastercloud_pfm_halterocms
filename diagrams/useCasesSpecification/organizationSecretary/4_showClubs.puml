@@ -1,0 +1,36 @@
+@startuml
+state LOGED_IN
+state DELETED_CLUB
+state EDITED_CLUB
+
+state enterShowClubsCHC <<choice>>
+
+state showClubs {
+  [*] --> [*]
+  note on link
+    System shows:
+    * edited clubs
+
+    System allows to:
+    * deleteClub
+    * editClub
+    * showCategories
+    * showOrganizers
+    * showInscribers
+    * logout
+  end note
+}
+state SHOWED_CLUBS
+
+LOGED_IN --> enterShowClubsCHC
+DELETED_CLUB --> enterShowClubsCHC
+EDITED_CLUB --> enterShowClubsCHC
+enterShowClubsCHC --> showClubs
+note on link
+  User requests to:
+  * showClubs
+end note
+showClubs --> SHOWED_CLUBS
+
+footer \n\n\n Especificación del caso de uso "showClubs"
+@enduml
