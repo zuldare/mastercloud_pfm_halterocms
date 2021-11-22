@@ -133,9 +133,7 @@ y cada una se divide en 4 fases: Inicio, Elaboración, Construcción y Transici�
 diferentes disciplinas depende del momento del proyecto en el que estemos
 ![Phases](images/RUP_2.png)
 
-## 3. Modelo de dominio <a name="domainModel"/>
-[Modelo del dominio](diagrams/modelDomain/competitionDomainModel.puml)
- 
+## 3. Modelo de dominio <a name="domainModel"/> 
 El modelo del dominio describre los conceptos más importantes del contexto del sistema como son:
 * Objetos de negocio
 * Objetos del mundo real y conceptos que un sistema necesita hacer un seguimiento
