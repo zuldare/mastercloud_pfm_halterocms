@@ -1,0 +1,23 @@
+@startuml
+state SHOWED_COMPETITION
+state showFinishedBatches {
+  [*] --> [*]
+  note on link
+    System allows to:
+    * showResults
+    * showCompetition
+    * logout
+  end note
+}
+state SHOWED_FINISHED_BATCHES
+
+SHOWED_COMPETITION --> showFinishedBatches
+note on link
+  User requests to:
+  * showFinishedBatches
+end note
+
+showFinishedBatches --> SHOWED_FINISHED_BATCHES
+
+footer \n\n\n Especificación del caso de uso "showFinishedBatches"
+@enduml
