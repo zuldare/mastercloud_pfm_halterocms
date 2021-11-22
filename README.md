@@ -208,6 +208,26 @@ las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteracione
 
 ### 4.5 Prototipado interfaz de usuario <a name="useCasesPrototype"/>
 
+A continuación se detallan los prototipos de las interfaces del usuario que permiten el intercambio de información detallado en los diagramas de especificación
+de casos de uso. 
+
+Para cada uno de los actores del sistema se ha generado un web map donde se puede ver como se interconectan las distintas pantallas de prototipo y los casos de uso que se cubren.
+
+* Actor _spectator_
+![webMap_spectator](images/prototypes/1_WebMap_Spectator.png)
+
+* Actor _organization secretary_
+![webMap_organization_secretary](images/prototypes/2_WebMap_OrganizationSecretary.png)
+
+* Actor _inscriber_
+![webMap_inscriber](images/prototypes/3_WebMap_Inscriber.png)
+
+* Actor _organizer_
+![webMap_organizer](images/prototypes/4_WebMap_Organizer.png)
+
+* Actor _competition secretary_
+![webMap_competition_secretary](images/prototypes/5_WebMap_CompetitonSecretary.png)
+
 
 
 #### Vista de espectador
