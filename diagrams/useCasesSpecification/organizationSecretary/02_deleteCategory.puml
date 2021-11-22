@@ -1,19 +1,19 @@
 @startuml
 state SHOWED_CATEGORIES
 state deleteCategory {
-  state " " as pendingBatch
-  state " " as providedBatch
-  [*] --> pendingBatch
+  state " " as pendingCategory
+  state " " as providedCategory
+  [*] --> pendingCategory
   note on link
     System requires:
     * A specific category
   end note
-  pendingBatch --> providedBatch
+  pendingCategory --> providedCategory
   note on link
     User provides:
     * A specific category
   end note
-  providedBatch --> [*]
+  providedCategory --> [*]
   note on link
     System allows to:
     * showCategories
