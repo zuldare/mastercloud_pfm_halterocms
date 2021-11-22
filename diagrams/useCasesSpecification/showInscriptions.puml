@@ -1,0 +1,37 @@
+@startuml
+state SHOWED_COMPETITION
+state showInscriptions {
+  state " " as pendingBatch
+  state " " as providedBatch
+  [*] --> pendingBatch
+  note on link
+    System requires:
+    * A specific batch
+  end note
+  pendingBatch --> providedBatch
+  note on link
+    User provides:
+    * A specific batch
+  end note
+  providedBatch --> [*]
+  note on link
+    System shows:
+    * Inscripted lifters in batch
+    
+    System allows to:
+    * showCompetition
+    * logout
+  end note
+}
+state SHOWED_INSCRIPTIONS
+
+SHOWED_COMPETITION --> showInscriptions
+note on link
+  User requests to:
+  * showInscriptions
+end note
+
+showInscriptions --> SHOWED_INSCRIPTIONS
+
+footer \n\n\n Especificación del caso de uso "showInscriptions"
+@enduml
