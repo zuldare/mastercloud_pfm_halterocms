@@ -227,26 +227,6 @@ Para cada uno de los actores del sistema se ha generado un web map donde se pued
 ![webMap_competition_secretary](images/prototypes/5_WebMap_CompetitonSecretary.png)
 
 
-
-#### Vista de espectador
-![Vista de espectador](diagrams/prototypes/competitionPlay/spectatorboutview.png)
-
-#### Vista de secretario de competición
-![Vista de secretario de competición](diagrams/prototypes/competitionPlay/competitionsecretaryview.png)
-
-#### Vista de calentamiento
-![Vista área calentamiento](diagrams/prototypes/competitionPlay/athletewarmupareaview.png)
-
-#### Vista de levantamiento
-![Vista de secretario de levantamiento](diagrams/prototypes/competitionPlay/liftview.png)
-
-#### Vista de temporizador
-![Vista de secretario de temporizador](diagrams/prototypes/competitionPlay/timerview.png)
-
-#### Vista de organizador
-![Vista de secretario de organizador](diagrams/prototypes/manageCompetition/organizerview.png)
-
-
 ## 4. Disciplina de análisis <a name="analisis"/>
 
 ## 5. Disciplina de diseño <a name="design"/>
