@@ -210,7 +210,7 @@ A continuación se detallan los prototipos de las interfaces del usuario que per
 de casos de uso. 
 
 Para cada uno de los actores del sistema se ha generado un web map donde se puede ver como se interconectan las distintas pantallas de prototipo y los casos de uso que se cubren.
-
+ 
 * Actor _spectator_
 ![webMap_spectator](images/prototypes/1_WebMap_Spectator.png)
 
