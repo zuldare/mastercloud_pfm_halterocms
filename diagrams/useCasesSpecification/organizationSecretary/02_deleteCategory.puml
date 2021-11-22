@@ -1,0 +1,33 @@
+@startuml
+state SHOWED_CATEGORIES
+state deleteCategory {
+  state " " as pendingBatch
+  state " " as providedBatch
+  [*] --> pendingBatch
+  note on link
+    System requires:
+    * A specific category
+  end note
+  pendingBatch --> providedBatch
+  note on link
+    User provides:
+    * A specific category
+  end note
+  providedBatch --> [*]
+  note on link
+    System allows to:
+    * showCategories
+  end note
+}
+state DELETED_CATEGORY
+
+SHOWED_CATEGORIES --> deleteCategory
+note on link
+  User requests to:
+  * deleteCategory
+end note
+
+deleteCategory --> DELETED_CATEGORY
+
+footer \n\n\n Especificación del caso de uso "deleteCategory"
+@enduml
