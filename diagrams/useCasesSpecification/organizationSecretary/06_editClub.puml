@@ -12,8 +12,8 @@ state editClub {
   [*] --> pendingClub
   note on link
     System requires:
-    * A specific club
-    or a new club
+    * A specific or 
+    a new club
   end note
   pendingClub --> createOrModifyCHC
   createOrModifyCHC --> providedClub
