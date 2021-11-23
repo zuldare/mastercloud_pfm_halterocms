@@ -1,0 +1,71 @@
+@startuml
+state SHOWED_ORGANIZERS
+state enterCancelCHC <<choice>>
+state editOrganizer {
+  state " " as pendingOrganizer
+  state createOrModifyCHC <<choice>>
+  state " " as providedOrganizer
+  state " " as showedData
+  state createOrModifyCHC2 <<choice>>
+  state " " as pendingData
+  state " " as providedData
+  [*] --> pendingOrganizer
+  note on link
+    System requires:
+    * A specific organizer
+    or a new organizer
+  end note
+  pendingOrganizer --> createOrModifyCHC
+  createOrModifyCHC --> providedOrganizer
+  note on link
+    User provides:
+    * A specific organizer
+
+    System allows to:
+    * cancel
+  end note
+ createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new organizer
+  providedOrganizer --> showedData
+  note on link
+    System shows:
+    * Current organizer name
+  end note
+  showedData --> createOrModifyCHC2 : The user is modifying\na organizer
+  createOrModifyCHC2 --> pendingData
+  note on link
+    System requires:
+    * Name
+    System allows to:
+    * cancel
+  end note
+  pendingData -u-> enterCancelCHC
+  pendingData --> providedData
+  note on link
+    User provides:
+    * Name
+  end note
+  providedOrganizer -u-> enterCancelCHC
+  providedData --> [*]
+  note on link
+    System allows to:
+    * showOrganizers
+  end note
+}
+state EDITED_ORGANIZER
+
+SHOWED_ORGANIZERS -d-> editOrganizer
+note on link
+  User requests to:
+  * editOrganizer
+end note
+
+editOrganizer -d-> EDITED_ORGANIZER
+
+enterCancelCHC -u-> SHOWED_ORGANIZERS
+note on link
+  User requests to:
+  * cancel
+end note
+
+footer \n\n\n Especificación del caso de uso "editOrganizer"
+@enduml
