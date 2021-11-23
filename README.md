@@ -19,7 +19,7 @@
 
     4.3 [Especificación de casos de uso](#useCasesSpecification)
     
-    4.4 [Estructurar el modelo de casos de uso](#useCasesStructure)
+    4.4 [Estructurar el modelo de casos de uso](#useCasesStructure) 
     
     4.5 [Prototipado interfaz de usuario](#useCasesPrototype)
  
@@ -194,12 +194,17 @@ En la Figura 3 podemos ver los actores que se han identificado, mientras que en 
 ![timer](images/usecases/timer.png)
 
 
-### 4.2 Priorizar casos de uso <a name="useCasePrioritize"/>
+### 4.2 Priorizar casos de uso <a name="useCasesPrioritize"/>
 Hay que **determinar qué casos de uso seran desarrollados** (analizados, diseñados, implementados y probados) en
 las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteraciones teniendo en cuenta factores como puedan ser aspectos técnicos, aspectos económicos, aspectos de negocio o cualquier tipo de riesgo
 
+En nuestro caso hemos decidido que los casos de uso que nos interesaba terminar lo antes posible debido a factores de negocio y al tener una mayor complejidad en su lógica son los relacionados con "jugar la tanda". 
+A partir de ese primer hito, en sucesivas iteraciones se van a ir completando toda la gestión de tandas, competiciones, etc tal y como se muestran en la siguiente figura
+
+![useCasePriorization](images/usecases/useCasePriorization.png)
 
 ### 4.3 Especificación de casos de uso <a name="useCasesSpecification"/>
+*(WIP)*
 
 ### 4.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
 
