@@ -1,30 +1,50 @@
 @startuml
 state SHOWED_CATEGORIES
+state enterCancelCHC <<choice>>
 state editCategory {
   state " " as pendingCategory
+  state createOrModifyCHC <<choice>>
   state " " as providedCategory
+  state " " as showedData
+  state createOrModifyCHC2 <<choice>>
+  state " " as pendingData
   state " " as providedData
   [*] --> pendingCategory
   note on link
     System requires:
-    * A specific category
+    * A specific or a 
+    new category
   end note
-  pendingCategory --> providedCategory
+  pendingCategory --> createOrModifyCHC
+  createOrModifyCHC --> providedCategory
   note on link
     User provides:
     * A specific category
 
     System allows to:
     * cancel
-
+  end note
+ createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new category
+  providedCategory --> showedData
+  note on link
+    System shows:
+    * Current category data
+  end note
+  showedData --> createOrModifyCHC2 : The user is modifying\na category
+  createOrModifyCHC2 --> pendingData
+  note on link
     System requires:
     * The competition type
     * Minimum age (included)
     * Maximum age (included)
     * Gender
     * Bodyweight categories
+
+    System allows to:
+    * cancel
   end note
-  providedCategory --> providedData
+  pendingData -u-> enterCancelCHC
+  pendingData --> providedData
   note on link
     User provides:
     * The competition type
@@ -33,11 +53,7 @@ state editCategory {
     * Gender
     * Bodyweight categories
   end note
-  providedCategory -u-> SHOWED_CATEGORIES
-  note on link
-    User requests to:
-    * cancel
-  end note
+  providedCategory -u-> enterCancelCHC
   providedData --> [*]
   note on link
     System allows to:
@@ -53,6 +69,12 @@ note on link
 end note
 
 editCategory -d-> EDITED_CATEGORY
+
+enterCancelCHC -u-> SHOWED_CATEGORIES
+note on link
+  User requests to:
+  * cancel
+end note
 
 footer \n\n\n Especificación del caso de uso "editCategory"
 @enduml
