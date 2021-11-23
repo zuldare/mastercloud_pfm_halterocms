@@ -247,13 +247,26 @@ Para cada uno de los actores del sistema se ha generado un web map donde se pued
 ![webMap_competition_secretary](images/prototypes/5_WebMap_CompetitonSecretary.png)
 
 
-## 4. Disciplina de análisis <a name="analisis"/>
+## 5. Disciplina de análisis <a name="analisis"/>
 
-## 5. Disciplina de diseño <a name="design"/>
+La finalidad de la disciplina de análisis es el flujo de trabajo (realización de casos de uso que incluyen trabajadores, actividades y diagramas)
+cuyo propósito principal es analizar los requisitos de la captura de requisitos a través de su refinamiento y la estructura para lograr una comprensión más precisa de los
+requisitos, una descripción de los requisitos que es fácil de mantener y nos ayudan a estructurar el sistema.
 
-## 6. Disciplina de implementación <a name="implementation"/>
+### 5.1 Análisis de la arquitectura <a name="architectureAnalisys">
 
-## 7. Disciplina de pruebas <a name="tests"/>
+### 5.2 Análisis de casos de uso <a name="usecaseAnalisys">
+
+### 5.3 Análisis de clases <a name="classesAnalisys">
+
+### 5.4 Análisis de paquetes <a name="packageAnalisys">
+ 
+
+## 6. Disciplina de diseño <a name="design"/>
+
+## 7. Disciplina de implementación <a name="implementation"/>
+
+## 8. Disciplina de pruebas <a name="tests"/>
  
 
 ## Conclusiones <a name="conclusions"/>
