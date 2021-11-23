@@ -12,8 +12,8 @@ state editInscriber {
   [*] --> pendingInscriber
   note on link
     System requires:
-    * A specific inscriber
-    or a new inscriber
+    * A specific or 
+    a new inscriber
   end note
   pendingInscriber --> createOrModifyCHC
   createOrModifyCHC --> providedInscriber
