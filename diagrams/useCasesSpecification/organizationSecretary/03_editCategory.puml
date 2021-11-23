@@ -1,0 +1,58 @@
+@startuml
+state SHOWED_CATEGORIES
+state editCategory {
+  state " " as pendingCategory
+  state " " as providedCategory
+  state " " as providedData
+  [*] --> pendingCategory
+  note on link
+    System requires:
+    * A specific category
+  end note
+  pendingCategory --> providedCategory
+  note on link
+    User provides:
+    * A specific category
+
+    System allows to:
+    * cancel
+
+    System requires:
+    * The competition type
+    * Minimum age (included)
+    * Maximum age (included)
+    * Gender
+    * Bodyweight categories
+  end note
+  providedCategory --> providedData
+  note on link
+    User provides:
+    * The competition type
+    * Minimum age (included)
+    * Maximum age (included)
+    * Gender
+    * Bodyweight categories
+  end note
+  providedCategory -u-> SHOWED_CATEGORIES
+  note on link
+    User requests to:
+    * cancel
+  end note
+  providedData --> [*]
+  note on link
+    System allows to:
+    * showCategories
+  end note
+}
+state EDITED_CATEGORY
+
+SHOWED_CATEGORIES -d-> editCategory
+note on link
+  User requests to:
+  * editCategory
+end note
+
+editCategory -d-> EDITED_CATEGORY
+
+footer \n\n\n Especificación del caso de uso "editCategory"
+@enduml
