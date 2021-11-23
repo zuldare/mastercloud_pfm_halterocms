@@ -1,0 +1,71 @@
+@startuml
+state SHOWED_INSCRIBERS
+state enterCancelCHC <<choice>>
+state editInscriber {
+  state " " as pendingInscriber
+  state createOrModifyCHC <<choice>>
+  state " " as providedInscriber
+  state " " as showedData
+  state createOrModifyCHC2 <<choice>>
+  state " " as pendingData
+  state " " as providedData
+  [*] --> pendingInscriber
+  note on link
+    System requires:
+    * A specific inscriber
+    or a new inscriber
+  end note
+  pendingInscriber --> createOrModifyCHC
+  createOrModifyCHC --> providedInscriber
+  note on link
+    User provides:
+    * A specific inscriber
+
+    System allows to:
+    * cancel
+  end note
+ createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new inscriber
+  providedInscriber --> showedData
+  note on link
+    System shows:
+    * Current inscriber name
+  end note
+  showedData --> createOrModifyCHC2 : The user is modifying\na inscriber
+  createOrModifyCHC2 --> pendingData
+  note on link
+    System requires:
+    * Name
+    System allows to:
+    * cancel
+  end note
+  pendingData -u-> enterCancelCHC
+  pendingData --> providedData
+  note on link
+    User provides:
+    * Name
+  end note
+  providedInscriber -u-> enterCancelCHC
+  providedData --> [*]
+  note on link
+    System allows to:
+    * showInscribers
+  end note
+}
+state EDITED_INSCRIBER
+
+SHOWED_INSCRIBERS -d-> editInscriber
+note on link
+  User requests to:
+  * editInscriber
+end note
+
+editInscriber -d-> EDITED_INSCRIBER
+
+enterCancelCHC -u-> SHOWED_INSCRIBERS
+note on link
+  User requests to:
+  * cancel
+end note
+
+footer \n\n\n Especificación del caso de uso "editInscriber"
+@enduml
