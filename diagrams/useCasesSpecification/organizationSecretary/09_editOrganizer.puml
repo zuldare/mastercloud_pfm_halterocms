@@ -12,8 +12,8 @@ state editOrganizer {
   [*] --> pendingOrganizer
   note on link
     System requires:
-    * A specific organizer
-    or a new organizer
+    * A specific or 
+    a new organizer
   end note
   pendingOrganizer --> createOrModifyCHC
   createOrModifyCHC --> providedOrganizer
