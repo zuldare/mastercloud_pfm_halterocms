@@ -1,0 +1,50 @@
+@startuml
+state SHOWED_CLUBS
+state editClub {
+  state " " as pendingClub
+  state " " as providedClub
+  state " " as providedData
+  [*] --> pendingClub
+  note on link
+    System requires:
+    * A specific club
+  end note
+  pendingClub --> providedClub
+  note on link
+    User provides:
+    * A specific club
+
+    System allows to:
+    * cancel
+
+    System requires:
+    * Name
+  end note
+  providedClub --> providedData
+  note on link
+    User provides:
+    * Name
+  end note
+  providedClub -u-> SHOWED_CLUBS
+  note on link
+    User requests to:
+    * cancel
+  end note
+  providedData --> [*]
+  note on link
+    System allows to:
+    * showClubs
+  end note
+}
+state EDITED_CLUB
+
+SHOWED_CLUBS -d-> editClub
+note on link
+  User requests to:
+  * editClub
+end note
+
+editClub -d-> EDITED_CLUB
+
+footer \n\n\n Especificación del caso de uso "editClub"
+@enduml
