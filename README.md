@@ -94,7 +94,7 @@ Los subojetivos del proyecto son:
     * Github como repositorio (tanto de código como de artefactos)
     * Github project como administrador/organizador de tareas
     * Github Actions como herramienta de integración continua
-* Despliegue de una aplicación en la nube mediante el proveedor AWS/Heroku *(!! TO BE DECIDED )*
+
 
 ### 1.2 ¿Qué es la halterofilia? <a name="intro_haltero"/>
 La halterofilia es un deporte que consiste en el levantamiento del máximo peso posible de una barra a cuyos extremos se fijan varios discos de distinto peso.
