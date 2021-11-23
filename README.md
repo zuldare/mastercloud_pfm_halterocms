@@ -201,21 +201,22 @@ las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteracione
 En nuestro caso hemos decidido que los casos de uso que nos interesaba terminar lo antes posible debido a factores de negocio y al tener una mayor complejidad en su lógica son los relacionados con "jugar la tanda". 
 A partir de ese primer hito, en sucesivas iteraciones se van a ir completando toda la gestión de tandas, competiciones, etc tal y como se muestran en la siguiente figura
 
-![useCasePriorization1](images/usecases/useCasePriorization-2.png)
+![useCasePriorization1](images/usecases/useCasePriorization-1.png)
 
-![useCasePriorization2](images/usecases/useCasePriorization-3.png)
+![useCasePriorization2](images/usecases/useCasePriorization-2.png)
 
-![useCasePriorization3](images/usecases/useCasePriorization-4.png)
+![useCasePriorization3](images/usecases/useCasePriorization-3.png)
 
-![useCasePriorization4](images/usecases/useCasePriorization-5.png)
+![useCasePriorization4](images/usecases/useCasePriorization-4.png)
 
-![useCasePriorization5](images/usecases/useCasePriorization-6.png)
+![useCasePriorization5](images/usecases/useCasePriorization-5.png)
 
-![useCasePriorization6](images/usecases/useCasePriorization-7.png)
+![useCasePriorization6](images/usecases/useCasePriorization-6.png)
 
-![useCasePriorization7](images/usecases/useCasePriorization-8.png)
+![useCasePriorization7](images/usecases/useCasePriorization-7.png)
 
-![useCasePriorization8](images/usecases/useCasePriorization-1.png)
+![useCasePriorization8](images/usecases/useCasePriorization-8.png)
+
 
 ### 4.3 Especificación de casos de uso <a name="useCasesSpecification"/>
 *(WIP)*
