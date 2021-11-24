@@ -100,8 +100,8 @@ Los subojetivos del proyecto son:
 La halterofilia es un deporte que consiste en el levantamiento del máximo peso posible de una barra a cuyos extremos se fijan varios discos de distinto peso.
 Existen dos modalidades de competición *arrancada(snatch)* y *dos tiempos(clean&jerk)*
 
-![snatch](images/Snatch2.gif)
-![clean&jekr](images/Pscleanjerk.gif)
+![snatch](documentation/images/Snatch2.gif)
+![clean&jekr](documentation/images/Pscleanjerk.gif)
 
 Se divide en categoría masculina y femenina. A su vez, ambas se subdividen en distintas categorías de acuerdo a la masa corporal y edad del atleta.
 
@@ -128,10 +128,10 @@ Nos sirven para capturar los requisitos funcionales correctamente representados,
 (3) Iterativo implica que el proceso involucra un flujo de entregas ejecutables e incremental ya que con cada nueva entrega se proporciona un incremento respecto a la anterior
 
 Las 5 disciplinas o flujos de trabajo de RUP son Requisitos, Análisis, Diseño, Implementación y Pruebas
-![5_disciplines](images/RUP_1.png)
+![5_disciplines](documentation/images/RUP_1.png)
 y cada una se divide en 4 fases: Inicio, Elaboración, Construcción y Transición. El esfuerzo dedicado a la realización de las actividades de las 
 diferentes disciplinas depende del momento del proyecto en el que estemos
-![Phases](images/RUP_2.png)
+![Phases](documentation/images/RUP_2.png)
 
 ## 3. Modelo de dominio <a name="domainModel"/> 
 El modelo del dominio describre los conceptos más importantes del contexto del sistema como son:
@@ -146,10 +146,10 @@ a la hora de realizar la gestión integral de una competición de halterofilia. 
 para conocer los requisitos necesarios para cada uno de ellos.
 
 En la Figura 1 se puede observar los objetos del dominio, sus relaciones y el vocabulario consensuado por el cliente.
-![competitionDomainModel](images/modelDomain/competitionDomainModel.png)
+![competitionDomainModel](documentation/images/modelDomain/competitionDomainModel.png)
 
 El modelo de dominio nos puede ayudar también a tener una mejor comprensión de la organización destino. Un ejemplo de esto podría ser una muestra real de como se distribuyen las categorías oficiales en la halterofilia, tal y como se puede ver en la Figura 2.
-![concreteCaseOfCategories](images/modelDomain/concreteCaseOfCategories.png)
+![concreteCaseOfCategories](documentation/images/modelDomain/concreteCaseOfCategories.png)
 
 ## 4. Disciplina de requisitos <a name="requirements"/>
 
@@ -181,17 +181,17 @@ Las actividades recomendadas por RUP en esta disciplina son las siguientes:
 que el sistema puede realizar y que dan un resultado observable de interés a un actor particular**
 
 En la Figura 3 podemos ver los actores que se han identificado, mientras que en el resto de figuras se representan los casos de uso identificados y los actores que los realizan
-![actors](images/usecases/actors.png)
+![actors](documentation/images/usecases/actors.png)
 
-![organizationSecretary](images/usecases/organizationSecretary.png)
+![organizationSecretary](documentation/images/usecases/organizationSecretary.png)
 
-![batchesBureaucrazy](images/usecases/batchesBureaucrazy.png)
+![batchesBureaucrazy](documentation/images/usecases/batchesBureaucrazy.png)
 
-![competitionBureaucrazy](images/usecases/competitionBureaucracy.png)
+![competitionBureaucrazy](documentation/images/usecases/competitionBureaucracy.png)
 
-![spectators](images/usecases/spectators.png)            
+![spectators](documentation/images/usecases/spectators.png)            
 
-![timer](images/usecases/timer.png)
+![timer](documentation/images/usecases/timer.png)
 
 
 ### 4.2 Priorizar casos de uso <a name="useCasesPrioritize"/>
@@ -202,21 +202,21 @@ En nuestro caso hemos decidido que los casos de uso que nos interesaba terminar 
 A partir de ese primer hito, en sucesivas iteraciones se van a ir completando toda la gestión de tandas, competiciones, etc tal y como se muestran en la siguiente figura
 
 
-![useCasePriorization1](images/usecases/useCasePriorization-1.png)
+![useCasePriorization1](documentation/images/usecases/useCasePriorization-1.png)
 
-![useCasePriorization2](images/usecases/useCasePriorization-2.png)
+![useCasePriorization2](documentation/images/usecases/useCasePriorization-2.png)
 
-![useCasePriorization3](images/usecases/useCasePriorization-3.png)
+![useCasePriorization3](documentation/images/usecases/useCasePriorization-3.png)
 
-![useCasePriorization4](images/usecases/useCasePriorization-4.png)
+![useCasePriorization4](documentation/images/usecases/useCasePriorization-4.png)
 
-![useCasePriorization5](images/usecases/useCasePriorization-5.png)
+![useCasePriorization5](documentation/images/usecases/useCasePriorization-5.png)
 
-![useCasePriorization6](images/usecases/useCasePriorization-6.png)
+![useCasePriorization6](documentation/images/usecases/useCasePriorization-6.png)
 
-![useCasePriorization7](images/usecases/useCasePriorization-7.png)
+![useCasePriorization7](documentation/images/usecases/useCasePriorization-7.png)
 
-![useCasePriorization8](images/usecases/useCasePriorization-8.png)
+![useCasePriorization8](documentation/images/usecases/useCasePriorization-8.png)
 
 
 ### 4.3 Especificación de casos de uso <a name="useCasesSpecification"/>
@@ -232,19 +232,19 @@ de casos de uso.
 Para cada uno de los actores del sistema se ha generado un web map donde se puede ver como se interconectan las distintas pantallas de prototipo y los casos de uso que se cubren.
  
 * Actor _spectator_
-![webMap_spectator](images/prototypes/1_WebMap_Spectator.png)
+![webMap_spectator](documentation/images/prototypes/1_WebMap_Spectator.png)
 
 * Actor _organization secretary_
-![webMap_organization_secretary](images/prototypes/2_WebMap_OrganizationSecretary.png)
+![webMap_organization_secretary](documentation/images/prototypes/2_WebMap_OrganizationSecretary.png)
 
 * Actor _inscriber_
-![webMap_inscriber](images/prototypes/3_WebMap_Inscriber.png)
+![webMap_inscriber](documentation/images/prototypes/3_WebMap_Inscriber.png)
 
 * Actor _organizer_
-![webMap_organizer](images/prototypes/4_WebMap_Organizer.png)
+![webMap_organizer](documentation/images/prototypes/4_WebMap_Organizer.png)
 
 * Actor _competition secretary_
-![webMap_competition_secretary](images/prototypes/5_WebMap_CompetitonSecretary.png)
+![webMap_competition_secretary](documentation/images/prototypes/5_WebMap_CompetitonSecretary.png)
 
 
 ## 5. Disciplina de análisis <a name="analisis"/>
