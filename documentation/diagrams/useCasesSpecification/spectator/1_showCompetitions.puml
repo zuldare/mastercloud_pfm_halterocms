@@ -27,9 +27,13 @@ state showCompetitions {
     System shows:
     * available competitions
 
-    System allows:
+    For each competition, 
+    system allows:
     * showCompetition
+
+    Also, system allows:
     * logout
+
   end note
 }
 state SHOWED_COMPETITIONS
