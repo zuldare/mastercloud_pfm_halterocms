@@ -1,19 +1,8 @@
 @startuml
 state SHOWED_COMPETITION
+state CHOSEN_BATCH
 state showBatchWeighins {
-  state " " as pendingBatch
-  state " " as providedBatch
-  [*] --> pendingBatch
-  note on link
-    System requires:
-    * A specific batch
-  end note
-  pendingBatch --> providedBatch
-  note on link
-    User provides:
-    * A specific batch
-  end note
-  providedBatch --> [*]
+  [*] --> [*]
   note on link
     System shows:
     * All the weighins in batch
@@ -25,10 +14,17 @@ state showBatchWeighins {
 }
 state SHOWED_BATCH_WEIGHINS
 
-SHOWED_COMPETITION --> showBatchWeighins
+SHOWED_COMPETITION --> CHOSEN_BATCH
+note on link
+  User chooses a batch from
+  the not pending batches 
+  at showed competition
+end note
+
+CHOSEN_BATCH --> showBatchWeighins
 note on link
   User requests to:
-  * showWeighins
+  * showBatchWeighins
 end note
 
 showBatchWeighins --> SHOWED_BATCH_WEIGHINS
