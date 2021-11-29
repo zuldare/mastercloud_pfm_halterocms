@@ -36,6 +36,11 @@ note on link
   editCompetition
 end note
 
+editCompetition --> showCompetitions
+note on link
+  showCompetitions
+end note
+
 editCompetition --> editCompetition
 note on link
   showBatches
@@ -56,4 +61,8 @@ note on link
   unassignLifterToBatch
 end note
 
+editBatch --> editCompetition
+note on link
+  editCompetition
+end note
 @enduml
