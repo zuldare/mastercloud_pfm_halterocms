@@ -1,8 +1,9 @@
 @startuml
-state SHOWED_RESULTS
+state SHOWED_RESULTS : (Finished batch previously choosen)
 state SHOWED_COMPETITION
+state CHOSEN_BATCH
 state enterDownloadCHC <<choice>>
-state DOWNLOADED_RESULTS
+state enterFinalStateCHC <<choice>>
 state downloadResults {
   [*] --> [*]
   note on link
@@ -11,8 +12,18 @@ state downloadResults {
   end note
 }
 
+state "SHOWED_RESULTS" as SHOWED_RESULTS_F
+state "SHOWED_COMPETITION" as SHOWED_COMPETITION_F
+
 SHOWED_RESULTS --> enterDownloadCHC
-SHOWED_COMPETITION --> enterDownloadCHC
+SHOWED_COMPETITION --> CHOSEN_BATCH
+note on link
+  User chooses a 
+  finished batch from 
+  the showed batches
+end note
+
+CHOSEN_BATCH --> enterDownloadCHC
 
 enterDownloadCHC --> downloadResults
 note on link
@@ -20,8 +31,10 @@ note on link
   * downloadResults
 end note
 
-downloadResults --> DOWNLOADED_RESULTS
-DOWNLOADED_RESULTS --> enterDownloadCHC : The system shows\nthe results again
+downloadResults --> enterFinalStateCHC : From what state did\nthe user request to\ndownload results?
+
+enterFinalStateCHC --> SHOWED_RESULTS_F : [From\nSHOWED_RESULTS]
+enterFinalStateCHC --> SHOWED_COMPETITION_F : [From\nSHOWED_COMPETITION]
 
 footer \n\n\n Especificación del caso de uso "downloadResults"
 @enduml
