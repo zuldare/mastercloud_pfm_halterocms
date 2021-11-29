@@ -1,19 +1,8 @@
 @startuml
 state SHOWED_COMPETITION
+state CHOSEN_BATCH
 state showBatchInscriptions {
-  state " " as pendingBatch
-  state " " as providedBatch
-  [*] --> pendingBatch
-  note on link
-    System requires:
-    * A specific batch
-  end note
-  pendingBatch --> providedBatch
-  note on link
-    User provides:
-    * A specific batch
-  end note
-  providedBatch --> [*]
+  [*] --> [*]
   note on link
     System shows:
     * Inscripted lifters in batch
@@ -25,10 +14,17 @@ state showBatchInscriptions {
 }
 state SHOWED_BATCH_INSCRIPTIONS
 
-SHOWED_COMPETITION --> showBatchInscriptions
+SHOWED_COMPETITION --> CHOSEN_BATCH
+note on link
+  User chooses a batch
+  from the batches at 
+  showed competition
+end note
+
+CHOSEN_BATCH --> showBatchInscriptions
 note on link
   User requests to:
-  * showInscriptions
+  * showBatchInscriptions
 end note
 
 showBatchInscriptions --> SHOWED_BATCH_INSCRIPTIONS
