@@ -16,7 +16,7 @@ state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F
 SHOWED_CATEGORIES --> CHOSEN_CATEGORY
 note on link
   User chooses a category 
-  at showed categiries
+  at showed categories
 end note
 
 CHOSEN_CATEGORY --> deleteCategory
