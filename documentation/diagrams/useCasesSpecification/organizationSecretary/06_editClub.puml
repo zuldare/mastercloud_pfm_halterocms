@@ -1,30 +1,16 @@
 @startuml
 state SHOWED_CLUBS
-state enterCancelCHC <<choice>>
+state CHOSEN_CLUB
 state editClub {
-  state " " as pendingClub
   state createOrModifyCHC <<choice>>
   state " " as providedClub
   state " " as showedData
   state createOrModifyCHC2 <<choice>>
   state " " as pendingData
   state " " as providedData
-  [*] --> pendingClub
-  note on link
-    System requires:
-    * A specific or 
-    a new club
-  end note
-  pendingClub --> createOrModifyCHC
-  createOrModifyCHC --> providedClub
-  note on link
-    User provides:
-    * A specific club
-
-    System allows to:
-    * cancel
-  end note
- createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new club
+  [*] --> createOrModifyCHC
+  createOrModifyCHC --> providedClub : There is a chosen club
+  createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new club
   providedClub --> showedData
   note on link
     System shows:
@@ -35,16 +21,21 @@ state editClub {
   note on link
     System requires:
     * Name
+
     System allows to:
     * cancel
   end note
-  pendingData -u-> enterCancelCHC
-  pendingData --> providedData
+  pendingData --> showClubs
+  note on link
+    User requests to:
+    * cancel
+  end note
+  showClubs --> SHOWED_CLUBS_F
+  pendingData --> providedData 
   note on link
     User provides:
     * Name
   end note
-  providedClub -u-> enterCancelCHC
   providedData --> [*]
   note on link
     System allows to:
@@ -52,20 +43,22 @@ state editClub {
   end note
 }
 state EDITED_CLUB
+state showClubs
+state "SHOWED_CLUBS" as SHOWED_CLUBS_F
 
-SHOWED_CLUBS -d-> editClub
+SHOWED_CLUBS --> CHOSEN_CLUB
+note on link
+  User chooses a club 
+  at showed clubs
+end note
+
+CHOSEN_CLUB --> editClub
 note on link
   User requests to:
   * editClub
 end note
 
-editClub -d-> EDITED_CLUB
-
-enterCancelCHC -u-> SHOWED_CLUBS
-note on link
-  User requests to:
-  * cancel
-end note
+editClub --> EDITED_CLUB
 
 footer \n\n\n Especificación del caso de uso "editClub"
 @enduml
