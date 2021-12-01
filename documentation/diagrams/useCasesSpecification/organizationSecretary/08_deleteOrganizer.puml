@@ -1,33 +1,32 @@
 @startuml
 state SHOWED_ORGANIZERS
+state CHOSEN_ORGANIZER
+
 state deleteOrganizer {
-  state " " as pendingOrganizer
-  state " " as providedOrganizer
-  [*] --> pendingOrganizer
-  note on link
-    System requires:
-    * A specific organizer
-  end note
-  pendingOrganizer --> providedOrganizer
-  note on link
-    User provides:
-    * A specific organizer
-  end note
-  providedOrganizer --> [*]
+  [*] --> [*]
   note on link
     System allows to:
     * showOrganizers
   end note
 }
-state DELETED_ORGANIZER
 
-SHOWED_ORGANIZERS --> deleteOrganizer
+state showOrganizers
+state "SHOWED_ORGANIZERS" as SHOWED_ORGANIZERS_F
+
+SHOWED_ORGANIZERS --> CHOSEN_ORGANIZER
+note on link
+  User chooses a organizer 
+  at showed organizers
+end note
+
+CHOSEN_ORGANIZER --> deleteOrganizer
 note on link
   User requests to:
   * deleteOrganizer
 end note
 
-deleteOrganizer --> DELETED_ORGANIZER
+deleteOrganizer --> showOrganizers
+showOrganizer --> SHOWED_ORGANIZER_F
 
 footer \n\n\n Especificación del caso de uso "deleteOrganizer"
 @enduml
