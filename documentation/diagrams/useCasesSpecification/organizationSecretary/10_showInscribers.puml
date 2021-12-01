@@ -1,9 +1,11 @@
 @startuml
 state LOGED_IN
-state DELETED_INSCRIBERS
 state EDITED_INSCRIBERS
+state SHOWED_CATEGORIES
+state SHOWED_CLUBS
+state SHOWED_ORGANIZERS
 
-state enterShowInscribersCHC <<choice>>
+state enterShowInscriberCHC <<choice>>
 
 state showInscribers {
   [*] --> [*]
@@ -11,9 +13,12 @@ state showInscribers {
     System shows:
     * edited inscribers
 
-    System allows to:
+    For each showed inscriber, 
+    system allows to:
     * deleteInscriber
     * editInscriber
+
+    Also, system allows to:
     * showCategories
     * showClubs
     * showOrganizers
@@ -22,10 +27,13 @@ state showInscribers {
 }
 state SHOWED_INSCRIBERS
 
-LOGED_IN --> enterShowInscribersCHC
-DELETED_INSCRIBERS --> enterShowInscribersCHC
-EDITED_INSCRIBERS --> enterShowInscribersCHC
-enterShowInscribersCHC --> showInscribers
+LOGED_IN --> enterShowInscriberCHC
+EDITED_INSCRIBERS --> enterShowInscriberCHC
+SHOWED_CATEGORIES --> enterShowInscriberCHC
+SHOWED_CLUBS --> enterShowInscriberCHC
+SHOWED_ORGANIZERS --> enterShowInscriberCHC
+
+enterShowInscriberCHC --> showInscribers
 note on link
   User requests to:
   * showInscribers
