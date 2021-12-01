@@ -1,33 +1,32 @@
 @startuml
 state SHOWED_CATEGORIES
+state CHOSEN_CATEGORY
+
 state deleteCategory {
-  state " " as pendingCategory
-  state " " as providedCategory
-  [*] --> pendingCategory
-  note on link
-    System requires:
-    * A specific category
-  end note
-  pendingCategory --> providedCategory
-  note on link
-    User provides:
-    * A specific category
-  end note
-  providedCategory --> [*]
+  [*] --> [*]
   note on link
     System allows to:
     * showCategories
   end note
 }
-state DELETED_CATEGORY
 
-SHOWED_CATEGORIES --> deleteCategory
+state showCategories
+state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F
+
+SHOWED_CATEGORIES --> CHOSEN_CATEGORY
+note on link
+  User chooses a category 
+  at showed categiries
+end note
+
+CHOSEN_CATEGORY --> deleteCategory
 note on link
   User requests to:
   * deleteCategory
 end note
 
-deleteCategory --> DELETED_CATEGORY
+deleteCategory --> showCategories
+showCategories --> SHOWED_CATEGORIES_F
 
 footer \n\n\n Especificación del caso de uso "deleteCategory"
 @enduml
