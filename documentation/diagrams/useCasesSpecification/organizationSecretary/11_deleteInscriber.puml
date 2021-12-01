@@ -1,33 +1,32 @@
 @startuml
-state SHOWED_INSCRIBER
+state SHOWED_INSCRIBERS
+state CHOSEN_INSCRIBER
+
 state deleteInscriber {
-  state " " as pendingInscriber
-  state " " as providedInscriber
-  [*] --> pendingInscriber
-  note on link
-    System requires:
-    * A specific inscriber
-  end note
-  pendingInscriber --> providedInscriber
-  note on link
-    User provides:
-    * A specific inscriber
-  end note
-  providedInscriber --> [*]
+  [*] --> [*]
   note on link
     System allows to:
     * showInscribers
   end note
 }
-state DELETED_INSCRIBER
 
-SHOWED_INSCRIBER --> deleteInscriber
+state showInscribers
+state "SHOWED_INSCRIBERS" as SHOWED_INSCRIBERS_F
+
+SHOWED_INSCRIBERS --> CHOSEN_INSCRIBER
+note on link
+  User chooses a inscriber 
+  at showed inscribers
+end note
+
+CHOSEN_INSCRIBER --> deleteInscriber
 note on link
   User requests to:
   * deleteInscriber
 end note
 
-deleteInscriber --> DELETED_INSCRIBER
+deleteInscriber --> showInscribers
+showInscriber --> SHOWED_INSCRIBER_F
 
 footer \n\n\n Especificación del caso de uso "deleteInscriber"
 @enduml
