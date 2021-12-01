@@ -1,33 +1,32 @@
 @startuml
 state SHOWED_CLUBS
+state CHOSEN_CLUB
+
 state deleteClub {
-  state " " as pendingClub
-  state " " as providedClub
-  [*] --> pendingClub
-  note on link
-    System requires:
-    * A specific club
-  end note
-  pendingClub --> providedClub
-  note on link
-    User provides:
-    * A specific club
-  end note
-  providedClub --> [*]
+  [*] --> [*]
   note on link
     System allows to:
     * showClubs
   end note
 }
-state DELETED_CLUB
 
-SHOWED_CLUBS --> deleteClub
+state showClubs
+state "SHOWED_CLUBS" as SHOWED_CLUBS_F
+
+SHOWED_CLUBS --> CHOSEN_CLUB
+note on link
+  User chooses a club 
+  at showed clubs
+end note
+
+CHOSEN_CLUB --> deleteClub
 note on link
   User requests to:
   * deleteClub
 end note
 
-deleteClub --> DELETED_CLUB
+deleteClub --> showClubs
+showClubs --> SHOWED_CLUBS_F
 
 footer \n\n\n Especificación del caso de uso "deleteClub"
 @enduml
