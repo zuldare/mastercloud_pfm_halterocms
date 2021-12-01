@@ -1,30 +1,16 @@
 @startuml
 state SHOWED_CATEGORIES
-state enterCancelCHC <<choice>>
+state CHOSEN_CATEGORY
 state editCategory {
-  state " " as pendingCategory
   state createOrModifyCHC <<choice>>
   state " " as providedCategory
   state " " as showedData
   state createOrModifyCHC2 <<choice>>
   state " " as pendingData
   state " " as providedData
-  [*] --> pendingCategory
-  note on link
-    System requires:
-    * A specific or a 
-    new category
-  end note
-  pendingCategory --> createOrModifyCHC
-  createOrModifyCHC --> providedCategory
-  note on link
-    User provides:
-    * A specific category
-
-    System allows to:
-    * cancel
-  end note
- createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new category
+  [*] --> createOrModifyCHC
+  createOrModifyCHC --> providedCategory : There is a chosen category
+  createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new category
   providedCategory --> showedData
   note on link
     System shows:
@@ -43,7 +29,12 @@ state editCategory {
     System allows to:
     * cancel
   end note
-  pendingData -u-> enterCancelCHC
+  pendingData --> showCategories
+  note on link
+    User requests to:
+    * cancel
+  end note
+  showCategories --> SHOWED_CATEGORIES_F
   pendingData --> providedData
   note on link
     User provides:
@@ -53,7 +44,6 @@ state editCategory {
     * Gender
     * Bodyweight categories
   end note
-  providedCategory -u-> enterCancelCHC
   providedData --> [*]
   note on link
     System allows to:
@@ -61,20 +51,22 @@ state editCategory {
   end note
 }
 state EDITED_CATEGORY
+state showCategories
+state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F
 
-SHOWED_CATEGORIES -d-> editCategory
+SHOWED_CATEGORIES --> CHOSEN_CATEGORY
+note on link
+  User chooses a category 
+  at showed categories
+end note
+
+CHOSEN_CATEGORY --> editCategory
 note on link
   User requests to:
   * editCategory
 end note
 
-editCategory -d-> EDITED_CATEGORY
-
-enterCancelCHC -u-> SHOWED_CATEGORIES
-note on link
-  User requests to:
-  * cancel
-end note
+editCategory --> EDITED_CATEGORY
 
 footer \n\n\n Especificación del caso de uso "editCategory"
 @enduml
