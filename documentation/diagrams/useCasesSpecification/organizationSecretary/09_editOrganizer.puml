@@ -1,30 +1,16 @@
 @startuml
 state SHOWED_ORGANIZERS
-state enterCancelCHC <<choice>>
+state CHOSEN_ORGANIZER
 state editOrganizer {
-  state " " as pendingOrganizer
   state createOrModifyCHC <<choice>>
   state " " as providedOrganizer
   state " " as showedData
   state createOrModifyCHC2 <<choice>>
   state " " as pendingData
   state " " as providedData
-  [*] --> pendingOrganizer
-  note on link
-    System requires:
-    * A specific or 
-    a new organizer
-  end note
-  pendingOrganizer --> createOrModifyCHC
-  createOrModifyCHC --> providedOrganizer
-  note on link
-    User provides:
-    * A specific organizer
-
-    System allows to:
-    * cancel
-  end note
- createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new organizer
+  [*] --> createOrModifyCHC
+  createOrModifyCHC --> providedOrganizer : There is a chosen organizer
+  createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new organizer
   providedOrganizer --> showedData
   note on link
     System shows:
@@ -35,16 +21,21 @@ state editOrganizer {
   note on link
     System requires:
     * Name
+
     System allows to:
     * cancel
   end note
-  pendingData -u-> enterCancelCHC
-  pendingData --> providedData
+  pendingData --> showOrganizers
+  note on link
+    User requests to:
+    * cancel
+  end note
+  showOrganizers --> SHOWED_ORGANIZERS_F
+  pendingData --> providedData 
   note on link
     User provides:
     * Name
   end note
-  providedOrganizer -u-> enterCancelCHC
   providedData --> [*]
   note on link
     System allows to:
@@ -52,20 +43,22 @@ state editOrganizer {
   end note
 }
 state EDITED_ORGANIZER
+state showOrganizers
+state "SHOWED_ORGANIZERS" as SHOWED_ORGANIZERS_F
 
-SHOWED_ORGANIZERS -d-> editOrganizer
+SHOWED_ORGANIZERS --> CHOSEN_ORGANIZER
+note on link
+  User chooses a organizer 
+  at showed organizers
+end note
+
+CHOSEN_ORGANIZER --> editOrganizer
 note on link
   User requests to:
   * editOrganizer
 end note
 
-editOrganizer -d-> EDITED_ORGANIZER
-
-enterCancelCHC -u-> SHOWED_ORGANIZERS
-note on link
-  User requests to:
-  * cancel
-end note
+editOrganizer --> EDITED_ORGANIZER
 
 footer \n\n\n Especificación del caso de uso "editOrganizer"
 @enduml
