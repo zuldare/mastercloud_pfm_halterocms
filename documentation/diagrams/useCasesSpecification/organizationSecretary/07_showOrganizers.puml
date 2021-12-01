@@ -1,7 +1,9 @@
 @startuml
 state LOGED_IN
-state DELETED_ORGANIZERS
 state EDITED_ORGANIZERS
+state SHOWED_CATEGORIES
+state SHOWED_CLUBS
+state SHOWED_INSCRIBERS
 
 state enterShowOrganizersCHC <<choice>>
 
@@ -11,9 +13,12 @@ state showOrganizers {
     System shows:
     * edited organizers
 
-    System allows to:
+    For each showed organizer, 
+    system allows to:
     * deleteOrganizer
     * editOrganizer
+
+    Also, system allows to:
     * showCategories
     * showClubs
     * showInscribers
@@ -23,8 +28,11 @@ state showOrganizers {
 state SHOWED_ORGANIZERS
 
 LOGED_IN --> enterShowOrganizersCHC
-DELETED_ORGANIZERS --> enterShowOrganizersCHC
 EDITED_ORGANIZERS --> enterShowOrganizersCHC
+SHOWED_CATEGORIES --> enterShowOrganizersCHC
+SHOWED_CLUBS --> enterShowOrganizersCHC
+SHOWED_INSCRIBERS --> enterShowOrganizersCHC
+
 enterShowOrganizersCHC --> showOrganizers
 note on link
   User requests to:
