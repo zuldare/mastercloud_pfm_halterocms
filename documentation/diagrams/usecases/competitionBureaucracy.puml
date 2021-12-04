@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-package COMPETITION_BUREAUCRACY {
+package CompetitionManagement {
  usecase openInscriptionsPeriod
  usecase showInscriptions
  usecase closeInscriptions

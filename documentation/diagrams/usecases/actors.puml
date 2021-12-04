@@ -5,28 +5,33 @@ actor Inscriber as Inscriber
 actor OrganizationSecretary as OrganizationSecretary
 actor Time as Time
 actor TimeKeeper as TimeKeeper
-actor Spectator as Spectator
 actor CompetitionSecretary as CompetitionSecretary
 actor User
 
 
-package Log {
-  usecase login
-  usecase logout
-}
-
-usecase launch
-
-User --> launch
-launch --> login
-launch --> logout
+package OrganizationManagement
+package CompetitionManagement
+package BatchManagement
+package TimerManagement
+package SpectatorManagement
 
 User <|-- OrganizationSecretary
 User <|-- TimeKeeper
-User <|-- Spectator
 User <|-- Inscriber
 TimeKeeper <|-- CompetitionSecretary
 Inscriber <|--- Organizer
+
+Time --> TimerManagement
+Time --> CompetitionManagement
+
+OrganizationSecretary --> OrganizationManagement
+
+Organizer --> CompetitionManagement
+Inscriber --> CompetitionManagement
+
+Organizer  --> BatchManagement
+CompetitionSecretary --> CompetitionManagement
+User --> SpectatorManagement
 
 footer \n\nFigura 3. Actores del sistema
 @enduml

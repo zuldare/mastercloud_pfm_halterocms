@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-package TIMER {
+package TimerManagement {
   usecase start
   usecase pause
   usecase resume

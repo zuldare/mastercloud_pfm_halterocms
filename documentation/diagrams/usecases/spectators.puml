@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-package SPECTATOR_VIEW {
+package SpectatorManagement {
   usecase showCompetition
   usecase showBatchInscriptions
   usecase showBatchWeighins
@@ -9,15 +9,21 @@ package SPECTATOR_VIEW {
   usecase showLiveBatchInPlay
   usecase showResults
   usecase downloadResults
+  usecase launch
+  usecase login
+  usecase logout
 }
 
-Spectator --> showCompetition
-Spectator --> showBatchInscriptions
-Spectator --> showBatchWeighins
-Spectator --> showFinishedBatchs
-Spectator --> showLiveBatchInPlay
-Spectator --> showResults
-Spectator --> downloadResults
+User --> showCompetition
+User --> showBatchInscriptions
+User --> showBatchWeighins
+User --> showFinishedBatchs
+User --> showLiveBatchInPlay
+User --> showResults
+User --> downloadResults
+User --> launch
+User --> login
+User --> logout
 
-footer \n\nFigura 7. Casos de uso relacionados con el actor espectador
+footer \n\nFigura 7. Casos de uso relacionados con el actor
 @enduml
