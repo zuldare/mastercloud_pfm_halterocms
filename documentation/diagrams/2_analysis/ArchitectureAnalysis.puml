@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package views {
+}
+
+package controllers {
+}
+
+
+package models {
+}
+
+views ..> controllers
+views ..> models
+controllers ..> models
+
+
+@enduml

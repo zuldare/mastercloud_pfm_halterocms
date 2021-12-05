@@ -21,17 +21,19 @@ User <|-- Inscriber
 TimeKeeper <|-- CompetitionSecretary
 Inscriber <|--- Organizer
 
-Time --> TimerManagement
-Time --> CompetitionManagement
+Time ---> CompetitionManagement
+Organizer --> CompetitionManagement
+Inscriber ---> CompetitionManagement
+CompetitionSecretary --> CompetitionManagement
 
 OrganizationSecretary --> OrganizationManagement
 
-Organizer --> CompetitionManagement
-Inscriber --> CompetitionManagement
+Time --> TimerManagement
+TimeKeeper --> TimerManagement
 
 Organizer  --> BatchManagement
-CompetitionSecretary --> CompetitionManagement
 User --> SpectatorManagement
+
 
 footer \n\nFigura 3. Actores del sistema
 @enduml

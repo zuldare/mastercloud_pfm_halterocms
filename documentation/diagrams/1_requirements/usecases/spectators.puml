@@ -1,29 +1,30 @@
 @startuml
-left to right direction
+' left to right direction
 
 package SpectatorManagement {
   usecase showCompetition
   usecase showBatchInscriptions
   usecase showBatchWeighins
-  usecase showFinishedBatchs
+  usecase showFinishedBatches
   usecase showLiveBatchInPlay
   usecase showResults
   usecase downloadResults
   usecase launch
   usecase login
   usecase logout
+  usecase showCompetitions
 }
 
 User --> showCompetition
 User --> showBatchInscriptions
 User --> showBatchWeighins
-User --> showFinishedBatchs
+User --> showFinishedBatches
 User --> showLiveBatchInPlay
 User --> showResults
 User --> downloadResults
 User --> launch
 User --> login
 User --> logout
-
+User --> showCompetitions
 footer \n\nFigura 7. Casos de uso relacionados con el actor
 @enduml
