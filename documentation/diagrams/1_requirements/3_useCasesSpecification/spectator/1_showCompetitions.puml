@@ -1,5 +1,5 @@
 @startuml
-state LOGED_IN
+state LOGGED_IN
 state SHOWED_LIVE_BATCH_IN_PLAY
 state SHOWED_FINISHED_BATCHES
 state SHOWED_BATCH_INSCRIPTIONS
@@ -9,7 +9,7 @@ state SHOWED_RESULTS
 state enterCompetition <<choice>>
 
 
-LOGED_IN  --> enterCompetition
+LOGGED_IN  --> enterCompetition
 SHOWED_LIVE_BATCH_IN_PLAY  --> enterCompetition
 SHOWED_FINISHED_BATCHES  --> enterCompetition
 SHOWED_BATCH_INSCRIPTIONS  --> enterCompetition

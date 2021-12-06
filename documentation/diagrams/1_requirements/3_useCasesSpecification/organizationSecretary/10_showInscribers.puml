@@ -1,5 +1,5 @@
 @startuml
-state LOGED_IN
+state LOGGED_IN
 state EDITED_INSCRIBERS
 state SHOWED_CATEGORIES
 state SHOWED_CLUBS
@@ -27,7 +27,7 @@ state showInscribers {
 }
 state SHOWED_INSCRIBERS
 
-LOGED_IN --> enterShowInscriberCHC
+LOGGED_IN --> enterShowInscriberCHC
 EDITED_INSCRIBERS --> enterShowInscriberCHC
 SHOWED_CATEGORIES --> enterShowInscriberCHC
 SHOWED_CLUBS --> enterShowInscriberCHC

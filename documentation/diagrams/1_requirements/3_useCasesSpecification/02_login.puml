@@ -39,14 +39,14 @@ state login {
   end note
 
 }
-state LOGED_IN
+state LOGGED_IN
 
 LAUNCHED --> login
 note on link
   User requests to:
   * login
 end note
-login --> LOGED_IN
+login --> LOGGED_IN
 
 footer \n\n\n Especificación del caso de uso "login"
 @enduml

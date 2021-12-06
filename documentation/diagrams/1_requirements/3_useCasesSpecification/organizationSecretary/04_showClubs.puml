@@ -1,5 +1,5 @@
 @startuml
-state LOGED_IN
+state LOGGED_IN
 state EDITED_CLUB
 state SHOWED_CATEGORIES
 state SHOWED_ORGANIZERS
@@ -27,7 +27,7 @@ state showClubs {
 }
 state SHOWED_CLUBS
 
-LOGED_IN --> enterShowClubsCHC
+LOGGED_IN --> enterShowClubsCHC
 EDITED_CLUB --> enterShowClubsCHC
 SHOWED_CATEGORIES --> enterShowClubsCHC
 SHOWED_ORGANIZERS --> enterShowClubsCHC

@@ -1,5 +1,5 @@
 @startuml
-state LOGED_IN
+state LOGGED_IN
 state SHOWED_COMPETITIONS
 state SHOWED_COMPETITION
 state SHOWED_FINISHED_BATCHES
@@ -22,7 +22,7 @@ state logout {
 }
 state LOGED_OUT
 
-LOGED_IN --> enterLogoutCHC
+LOGGED_IN --> enterLogoutCHC
 SHOWED_COMPETITIONS --> enterLogoutCHC
 SHOWED_COMPETITION --> enterLogoutCHC
 SHOWED_FINISHED_BATCHES --> enterLogoutCHC
