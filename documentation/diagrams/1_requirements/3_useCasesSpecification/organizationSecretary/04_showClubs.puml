@@ -18,7 +18,7 @@ state showClubs {
     * deleteClub
     * editClub
 
-    Also, system allows to:
+    System allows to:
     * showCategories
     * showOrganizers
     * showInscribers

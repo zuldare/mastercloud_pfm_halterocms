@@ -43,7 +43,7 @@ state showCompetition {
     system allows to:
     * downloadResults
 
-    Also, system allows to:
+    System allows to:
     * showLiveBatchInPlay
     * logout
   end note

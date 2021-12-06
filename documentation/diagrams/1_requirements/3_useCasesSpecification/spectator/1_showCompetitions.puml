@@ -31,7 +31,7 @@ state showCompetitions {
     system allows:
     * showCompetition
 
-    Also, system allows:
+    System allows:
     * logout
 
   end note

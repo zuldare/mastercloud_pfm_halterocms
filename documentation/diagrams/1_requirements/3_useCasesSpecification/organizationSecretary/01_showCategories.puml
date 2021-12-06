@@ -18,7 +18,7 @@ state showCategories {
     * deleteCategory
     * editCategory
 
-    Also, system allows to:
+    System allows to:
     * showClubs
     * showOrganizers
     * showInscribers
