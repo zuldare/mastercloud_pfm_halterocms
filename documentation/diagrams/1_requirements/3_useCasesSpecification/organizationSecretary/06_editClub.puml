@@ -9,14 +9,14 @@ state editClub {
   state " " as pendingData
   state " " as providedData
   [*] --> createOrModifyCHC
-  createOrModifyCHC --> providedClub : There is a chosen club
-  createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new club
+  createOrModifyCHC --> providedClub : [club chosen]
+  createOrModifyCHC --> createOrModifyCHC2 : [create club]
   providedClub --> showedData
   note on link
     System shows:
     * Current club name
   end note
-  showedData --> createOrModifyCHC2 : The user is modifying\na club
+  showedData --> createOrModifyCHC2 : [modify club]
   createOrModifyCHC2 --> pendingData
   note on link
     System requires:

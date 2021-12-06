@@ -20,13 +20,13 @@ state login {
     * username
     * password
   end note
-  isValidDataCHC --> wrongData : Wrong data\nprovided
+  isValidDataCHC --> wrongData : [Wrong data\nprovided]
   wrongData --> requiredData
   note on link
     System shows:
     * error message
   end note
-  isValidDataCHC --> [*] : Right data provided
+  isValidDataCHC --> [*] : []Right data provided]
   note on link
     System allows:
     * showCompetitions

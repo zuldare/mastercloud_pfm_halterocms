@@ -9,7 +9,7 @@ state editCategory {
   state " " as pendingData
   state " " as providedData
   [*] --> createOrModifyCHC
-  createOrModifyCHC --> providedCategory : [category chosen]
+  createOrModifyCHC --> providedCategory : [chose category]
   createOrModifyCHC --> createOrModifyCHC2 : [create category]
   providedCategory --> showedData
   note on link

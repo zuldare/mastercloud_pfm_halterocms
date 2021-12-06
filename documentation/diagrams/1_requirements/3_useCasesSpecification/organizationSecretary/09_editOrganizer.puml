@@ -9,14 +9,14 @@ state editOrganizer {
   state " " as pendingData
   state " " as providedData
   [*] --> createOrModifyCHC
-  createOrModifyCHC --> providedOrganizer : There is a chosen organizer
-  createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new organizer
+  createOrModifyCHC --> providedOrganizer : [chose organizer]
+  createOrModifyCHC --> createOrModifyCHC2 : [create organizer]
   providedOrganizer --> showedData
   note on link
     System shows:
     * Current organizer name
   end note
-  showedData --> createOrModifyCHC2 : The user is modifying\na organizer
+  showedData --> createOrModifyCHC2 : [modify organizer]
   createOrModifyCHC2 --> pendingData
   note on link
     System requires:

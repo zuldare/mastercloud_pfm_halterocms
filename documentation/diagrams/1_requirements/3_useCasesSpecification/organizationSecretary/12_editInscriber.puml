@@ -9,14 +9,14 @@ state editInscriber {
   state " " as pendingData
   state " " as providedData
   [*] --> createOrModifyCHC
-  createOrModifyCHC --> providedInscriber : There is a chosen inscriber
-  createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new inscriber
+  createOrModifyCHC --> providedInscriber : [chose inscriber]
+  createOrModifyCHC --> createOrModifyCHC2 : [create inscriber]
   providedInscriber --> showedData
   note on link
     System shows:
     * Current inscriber name
   end note
-  showedData --> createOrModifyCHC2 : The user is modifying\na inscriber
+  showedData --> createOrModifyCHC2 : [modify inscriber]
   createOrModifyCHC2 --> pendingData
   note on link
     System requires:
