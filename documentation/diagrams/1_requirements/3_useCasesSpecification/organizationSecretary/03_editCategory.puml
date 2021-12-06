@@ -9,14 +9,14 @@ state editCategory {
   state " " as pendingData
   state " " as providedData
   [*] --> createOrModifyCHC
-  createOrModifyCHC --> providedCategory : There is a chosen category
-  createOrModifyCHC --> createOrModifyCHC2 : The user is creating\na new category
+  createOrModifyCHC --> providedCategory : [category chosen]
+  createOrModifyCHC --> createOrModifyCHC2 : [create category]
   providedCategory --> showedData
   note on link
     System shows:
     * Current category data
   end note
-  showedData --> createOrModifyCHC2 : The user is modifying\na category
+  showedData --> createOrModifyCHC2 : [modify category]
   createOrModifyCHC2 --> pendingData
   note on link
     System requires:
