@@ -123,9 +123,7 @@ object Iteration
 object Announcement
 
 object Category {
-  minAge
-  maxAge
-  gender: Gender
+
 }
 
 object AgeRange {
