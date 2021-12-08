@@ -11,7 +11,7 @@ state showCategories {
   [*] --> [*]
   note on link
     System shows:
-    * edited categories
+    * categories
 
     For each showed category, 
     system allows to:
