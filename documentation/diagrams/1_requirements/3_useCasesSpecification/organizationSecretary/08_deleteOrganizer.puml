@@ -1,6 +1,6 @@
 @startuml
 state SHOWED_ORGANIZERS
-
+state "SHOWED_ORGANIZERS" as SHOWED_ORGANIZERS_F
 state deleteOrganizer {
   state " " as SHOWED_ORGANIZERS_TO_BE_DELETED
   state " " as CHOSEN_ORGANIZER
@@ -10,11 +10,20 @@ state deleteOrganizer {
   note on link
     System shows:
     * organizers name
+
+    System allows to:
+    * cancel
   end note
   
   SHOWED_ORGANIZERS_TO_BE_DELETED --> CHOSEN_ORGANIZER
   note on link
     User chooses an organizer
+  end note
+
+  SHOWED_ORGANIZERS_TO_BE_DELETED --> SHOWED_ORGANIZERS_F
+  note on link
+    User requests to:
+    * cancel
   end note
 
   CHOSEN_ORGANIZER --> ORGANIZER_DELETED
@@ -38,8 +47,6 @@ state deleteOrganizer {
     * logout
   end note
 }
-
-state "SHOWED_ORGANIZERS" as SHOWED_ORGANIZERS_F
 
 SHOWED_ORGANIZERS --> deleteOrganizer
 note on link
