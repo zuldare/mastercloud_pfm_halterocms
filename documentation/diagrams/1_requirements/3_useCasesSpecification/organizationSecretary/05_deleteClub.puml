@@ -1,6 +1,6 @@
 @startuml
 state SHOWED_CLUBS
-
+state "SHOWED_CLUBS" as SHOWED_CLUBS_F
 state deleteClub {
   state " " as SHOWED_CLUBS_TO_BE_DELETED
   state " " as CHOSEN_CLUB
@@ -10,11 +10,20 @@ state deleteClub {
   note on link
     System shows:
     * clubs name
+
+    System allows to:
+    * cancel
   end note
   
   SHOWED_CLUBS_TO_BE_DELETED --> CHOSEN_CLUB
   note on link
-    User chooses a club
+    User chooses an club
+  end note
+
+  SHOWED_CLUBS_TO_BE_DELETED --> SHOWED_CLUBS_F
+  note on link
+    User requests to:
+    * cancel
   end note
 
   CHOSEN_CLUB --> CLUB_DELETED
@@ -33,13 +42,11 @@ state deleteClub {
     * deleteClub
     * editClub
     * showCategories
-    * showOrganizers
     * showInscribers
+    * showOrganizers
     * logout
   end note
 }
-
-state "SHOWED_CLUBS" as SHOWED_CLUBS_F
 
 SHOWED_CLUBS --> deleteClub
 note on link
