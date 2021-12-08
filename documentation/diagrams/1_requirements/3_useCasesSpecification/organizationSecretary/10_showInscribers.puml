@@ -11,7 +11,7 @@ state showInscribers {
   [*] --> [*]
   note on link
     System shows:
-    * edited inscribers
+    * inscribers
 
     For each showed inscriber, 
     system allows to:
