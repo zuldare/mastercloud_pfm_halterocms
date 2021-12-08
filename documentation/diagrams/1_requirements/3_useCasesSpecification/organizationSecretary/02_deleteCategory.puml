@@ -1,6 +1,6 @@
 @startuml
 state SHOWED_CATEGORIES
-
+state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F
 state deleteCategory {
   state " " as SHOWED_CATEGORIES_TO_BE_DELETED
   state " " as CHOSEN_CATEGORY
@@ -10,11 +10,20 @@ state deleteCategory {
   note on link
     System shows:
     * categories name
+
+    System allows to:
+    * cancel
   end note
   
   SHOWED_CATEGORIES_TO_BE_DELETED --> CHOSEN_CATEGORY
   note on link
-    User chooses a category
+    User chooses an category
+  end note
+
+  SHOWED_CATEGORIES_TO_BE_DELETED --> SHOWED_CATEGORIES_F
+  note on link
+    User requests to:
+    * cancel
   end note
 
   CHOSEN_CATEGORY --> CATEGORY_DELETED
@@ -38,13 +47,11 @@ state deleteCategory {
     * deleteCategory
     * editCategory
     * showClubs
-    * showOrganizers
     * showInscribers
+    * showOrganizers
     * logout
   end note
 }
-
-state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F
 
 SHOWED_CATEGORIES --> deleteCategory
 note on link
