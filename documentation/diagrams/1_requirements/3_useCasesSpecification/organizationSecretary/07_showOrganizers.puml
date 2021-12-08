@@ -11,14 +11,12 @@ state showOrganizers {
   [*] --> [*]
   note on link
     System shows:
-    * organizers
-
-    For each showed organizer, 
-    system allows to:
-    * deleteOrganizer
-    * editOrganizer
+    * active organizers indicator
+    * organizers name
 
     System allows to:
+    * deleteOrganizer
+    * editOrganizer
     * showCategories
     * showClubs
     * showInscribers
