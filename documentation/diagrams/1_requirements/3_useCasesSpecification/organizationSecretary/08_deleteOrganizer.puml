@@ -9,13 +9,12 @@ state deleteOrganizer {
   [*] --> SHOWED_ORGANIZERS_TO_BE_DELETED
   note on link
     System shows:
-    * categories to be deleted
+    * organizers name
   end note
   
   SHOWED_ORGANIZERS_TO_BE_DELETED --> CHOSEN_ORGANIZER
   note on link
-    User chooses an organizer 
-    to be deleted
+    User chooses an organizer
   end note
 
   CHOSEN_ORGANIZER --> ORGANIZER_DELETED
@@ -26,8 +25,17 @@ state deleteOrganizer {
 
   ORGANIZER_DELETED --> [*]
   note on link
-    System shows existing
-    organizers
+    System shows:
+    * active organizers indicator
+    * organizers name
+
+    System allows to:
+    * deleteOrganizer
+    * editOrganizer
+    * showCategories
+    * showClubs
+    * showInscribers
+    * logout
   end note
 }
 
