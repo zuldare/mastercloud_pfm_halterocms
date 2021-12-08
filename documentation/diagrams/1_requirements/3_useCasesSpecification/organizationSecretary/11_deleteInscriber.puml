@@ -9,13 +9,12 @@ state deleteInscriber {
   [*] --> SHOWED_INSCRIBERS_TO_BE_DELETED
   note on link
     System shows:
-    * categories to be deleted
+    * inscribers name
   end note
   
   SHOWED_INSCRIBERS_TO_BE_DELETED --> CHOSEN_INSCRIBER
   note on link
-    User chooses an inscriber 
-    to be deleted
+    User chooses an inscriber
   end note
 
   CHOSEN_INSCRIBER --> INSCRIBER_DELETED
@@ -26,8 +25,17 @@ state deleteInscriber {
 
   INSCRIBER_DELETED --> [*]
   note on link
-    System shows existing
-    inscribers
+    System shows:
+    * active inscribers indicator
+    * inscribers name
+
+    System allows to:
+    * deleteInscriber
+    * editInscriber
+    * showCategories
+    * showClubs
+    * showOrganizers
+    * logout
   end note
 }
 
