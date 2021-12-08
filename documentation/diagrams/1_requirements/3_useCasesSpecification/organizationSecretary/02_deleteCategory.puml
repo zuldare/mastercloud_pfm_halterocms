@@ -1,32 +1,45 @@
 @startuml
 state SHOWED_CATEGORIES
-state CHOSEN_CATEGORY
 
 state deleteCategory {
-  [*] --> [*]
+  state " " as SHOWED_CATEGORIES_TO_BE_DELETED
+  state " " as CHOSEN_CATEGORY
+  state " " as CATEGORY_DELETED
+
+  [*] --> SHOWED_CATEGORIES_TO_BE_DELETED
   note on link
-    System allows to:
-    * showCategories
+    System shows:
+    * categories to be deleted
+  end note
+  
+  SHOWED_CATEGORIES_TO_BE_DELETED --> CHOSEN_CATEGORY
+  note on link
+    User chooses a category 
+    to be deleted
+  end note
+
+  CHOSEN_CATEGORY --> CATEGORY_DELETED
+  note on link
+    System deletes the
+    chosen category
+  end note
+
+  CATEGORY_DELETED --> [*]
+  note on link
+    System shows existing
+    categories
   end note
 }
 
-state showCategories
 state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F
 
-SHOWED_CATEGORIES --> CHOSEN_CATEGORY
-note on link
-  User chooses a category 
-  at showed categories
-end note
-
-CHOSEN_CATEGORY --> deleteCategory
+SHOWED_CATEGORIES --> deleteCategory
 note on link
   User requests to:
   * deleteCategory
 end note
 
-deleteCategory --> showCategories
-showCategories --> SHOWED_CATEGORIES_F
+deleteCategory --> SHOWED_CATEGORIES_F
 
 footer \n\n\n Especificación del caso de uso "deleteCategory"
 @enduml
