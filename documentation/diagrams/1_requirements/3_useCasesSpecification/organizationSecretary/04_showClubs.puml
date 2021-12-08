@@ -11,7 +11,7 @@ state showClubs {
   [*] --> [*]
   note on link
     System shows:
-    * edited clubs
+    * clubs
 
     For each showed club, 
     system allows to:
