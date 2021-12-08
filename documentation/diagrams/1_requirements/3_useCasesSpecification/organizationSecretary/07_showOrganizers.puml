@@ -11,7 +11,7 @@ state showOrganizers {
   [*] --> [*]
   note on link
     System shows:
-    * edited organizers
+    * organizers
 
     For each showed organizer, 
     system allows to:
