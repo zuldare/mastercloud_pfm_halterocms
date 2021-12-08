@@ -1,6 +1,6 @@
 @startuml
 state SHOWED_INSCRIBERS
-
+state "SHOWED_INSCRIBERS" as SHOWED_INSCRIBERS_F
 state deleteInscriber {
   state " " as SHOWED_INSCRIBERS_TO_BE_DELETED
   state " " as CHOSEN_INSCRIBER
@@ -10,11 +10,20 @@ state deleteInscriber {
   note on link
     System shows:
     * inscribers name
+
+    System allows to:
+    * cancel
   end note
   
   SHOWED_INSCRIBERS_TO_BE_DELETED --> CHOSEN_INSCRIBER
   note on link
     User chooses an inscriber
+  end note
+
+  SHOWED_INSCRIBERS_TO_BE_DELETED --> SHOWED_INSCRIBERS_F
+  note on link
+    User requests to:
+    * cancel
   end note
 
   CHOSEN_INSCRIBER --> INSCRIBER_DELETED
@@ -38,8 +47,6 @@ state deleteInscriber {
     * logout
   end note
 }
-
-state "SHOWED_INSCRIBERS" as SHOWED_INSCRIBERS_F
 
 SHOWED_INSCRIBERS --> deleteInscriber
 note on link
