@@ -1,58 +1,85 @@
 @startuml
 state SHOWED_CLUBS
-state CHOSEN_CLUB
 state editClub {
+  state " " as SHOWED_CLUBS_TO_BE_EDITED
   state createOrModifyCHC <<choice>>
   state " " as providedClub
   state " " as showedData
   state createOrModifyCHC2 <<choice>>
   state " " as pendingData
   state " " as providedData
-  [*] --> createOrModifyCHC
-  createOrModifyCHC --> providedClub : [club chosen]
+  state " " as savedData
+  [*] --> SHOWED_CLUBS_TO_BE_EDITED
+  note on link
+    System shows:
+    * clubs name
+
+    System allows to:
+    * cancel
+  end note
+
+  SHOWED_CLUBS_TO_BE_EDITED --> createOrModifyCHC : Modify or create club?
+
+  SHOWED_CLUBS_TO_BE_EDITED --> SHOWED_CLUBS_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  createOrModifyCHC --> providedClub : [chose club]
   createOrModifyCHC --> createOrModifyCHC2 : [create club]
   providedClub --> showedData
   note on link
     System shows:
-    * Current club name
+    * club name
   end note
   showedData --> createOrModifyCHC2 : [modify club]
   createOrModifyCHC2 --> pendingData
   note on link
     System requires:
-    * Name
+    * name
 
     System allows to:
     * cancel
   end note
-  pendingData --> showClubs
+  pendingData --> SHOWED_CLUBS_F
   note on link
     User requests to:
     * cancel
   end note
-  showClubs --> SHOWED_CLUBS_F
-  pendingData --> providedData 
+
+  pendingData --> providedData
   note on link
     User provides:
-    * Name
+    * name
+
+    System allows to:
+    * cancel
   end note
-  providedData --> [*]
+
+  providedData --> savedData
+  note on link
+    User saves 
+    provided data
+  end note
+
+  providedData --> SHOWED_CLUBS_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  savedData --> [*]
   note on link
     System allows to:
     * showClubs
+    * editClub
   end note
 }
 state EDITED_CLUB
-state showClubs
-state "SHOWED_CLUBS" as SHOWED_CLUBS_F
+state "SHOWED_CLUBS" as SHOWED_CLUBS_F : State before the user\nrequired "editClub"
 
-SHOWED_CLUBS --> CHOSEN_CLUB
-note on link
-  User chooses a club 
-  at showed clubs
-end note
-
-CHOSEN_CLUB --> editClub
+SHOWED_CLUBS --> editClub
 note on link
   User requests to:
   * editClub
