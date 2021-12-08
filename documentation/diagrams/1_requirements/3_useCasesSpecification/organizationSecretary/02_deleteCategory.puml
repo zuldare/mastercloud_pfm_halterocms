@@ -9,13 +9,12 @@ state deleteCategory {
   [*] --> SHOWED_CATEGORIES_TO_BE_DELETED
   note on link
     System shows:
-    * categories to be deleted
+    * categories name
   end note
   
   SHOWED_CATEGORIES_TO_BE_DELETED --> CHOSEN_CATEGORY
   note on link
-    User chooses a category 
-    to be deleted
+    User chooses a category
   end note
 
   CHOSEN_CATEGORY --> CATEGORY_DELETED
@@ -26,8 +25,22 @@ state deleteCategory {
 
   CATEGORY_DELETED --> [*]
   note on link
-    System shows existing
-    categories
+    System shows:
+    * active categories indicator
+    * categories name
+    * categories competition type
+    * categories gender
+    * categories minimum age
+    * categories maximum age
+    * categories bodyweight categories
+
+    System allows to:
+    * deleteCategory
+    * editCategory
+    * showClubs
+    * showOrganizers
+    * showInscribers
+    * logout
   end note
 }
 
