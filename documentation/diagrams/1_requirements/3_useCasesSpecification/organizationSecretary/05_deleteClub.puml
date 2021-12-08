@@ -9,13 +9,12 @@ state deleteClub {
   [*] --> SHOWED_CLUBS_TO_BE_DELETED
   note on link
     System shows:
-    * categories to be deleted
+    * clubs name
   end note
   
   SHOWED_CLUBS_TO_BE_DELETED --> CHOSEN_CLUB
   note on link
-    User chooses a club 
-    to be deleted
+    User chooses a club
   end note
 
   CHOSEN_CLUB --> CLUB_DELETED
@@ -26,8 +25,17 @@ state deleteClub {
 
   CLUB_DELETED --> [*]
   note on link
-    System shows existing
-    clubs
+    System shows:
+    * active clubs indicator
+    * clubs name
+
+    System allows to:
+    * deleteClub
+    * editClub
+    * showCategories
+    * showOrganizers
+    * showInscribers
+    * logout
   end note
 }
 
