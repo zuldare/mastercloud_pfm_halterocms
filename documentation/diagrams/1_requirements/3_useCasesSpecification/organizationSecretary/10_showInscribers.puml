@@ -11,14 +11,12 @@ state showInscribers {
   [*] --> [*]
   note on link
     System shows:
-    * inscribers
-
-    For each showed inscriber, 
-    system allows to:
-    * deleteInscriber
-    * editInscriber
+    * active inscribers indicator
+    * inscribers name
 
     System allows to:
+    * deleteInscriber
+    * editInscriber
     * showCategories
     * showClubs
     * showOrganizers
