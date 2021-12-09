@@ -20,7 +20,7 @@ state deleteCategory {
     User chooses an category
   end note
 
-  SHOWED_CATEGORIES_TO_BE_DELETED --> SHOWED_CATEGORIES_F
+  SHOWED_CATEGORIES_TO_BE_DELETED -down-> SHOWED_CATEGORIES_F
   note on link
     User requests to:
     * cancel
@@ -59,7 +59,7 @@ note on link
   * deleteCategory
 end note
 
-deleteCategory --> SHOWED_CATEGORIES_F
+deleteCategory ------> SHOWED_CATEGORIES_F
 
 footer \n\n\n Especificación del caso de uso "deleteCategory"
 @enduml

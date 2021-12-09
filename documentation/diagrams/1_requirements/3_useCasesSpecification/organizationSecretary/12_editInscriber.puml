@@ -71,7 +71,7 @@ state editInscriber {
 
   savedData --> [*]
   note on link
-    System allows to:
+    System allows đto:
     * showInscribers
     * editInscriber
   end note

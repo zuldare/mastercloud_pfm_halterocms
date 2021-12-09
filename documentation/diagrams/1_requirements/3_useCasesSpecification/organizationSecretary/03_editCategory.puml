@@ -38,7 +38,7 @@ state editCategory {
     * category maximum age
     * category bodyweight categories
   end note
-  showedData --> createOrModifyCHC2 : [modify category]
+  showedData --> createOrModifyCHC2 : [modify category -- añadir el actor quiere modificar - (quitarla y dajarla al rombo)]
   createOrModifyCHC2 --> pendingData
   note on link
     System requires:
@@ -87,8 +87,8 @@ state editCategory {
   savedData --> [*]
   note on link
     System allows to:
-    * showCategories
-    * editCategory
+    * showCategories -> quitarla xq esto va automáticamente
+    * editCategories
   end note
 }
 state EDITED_CATEGORY
