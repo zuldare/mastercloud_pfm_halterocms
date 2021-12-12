@@ -61,10 +61,6 @@ state introduceWeighinData {
 
     System allows to:
     * introduceWeighinData
-    * editBatch
-    * deleteBatch
-    * assignLifterToBatch
-    * unassignLifterToBatch
     * initPlay
   end note
 
