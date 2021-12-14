@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 
-package SpectatorManagement {
+package UsersManagement {
   usecase showCompetition
   usecase showBatchInscriptions
   usecase showBatchWeighins
