@@ -1,13 +1,13 @@
 @startuml
 
-'left to right direction
+left to right direction
 
 package views {
 }
 
 package controllers {
 
-  package InPlayControllers {
+  package inPlayCompetition {
       control showBatchesController
       control editBatchController
       control deleteBatchController
@@ -15,7 +15,6 @@ package controllers {
       package "  " {
         control assignLifterToBatchController
         control unassignLifterToBatchController
-
         note bottom of assignLifterToBatchController: ¿Podría juntar los 2? \n LifterToBatchAssignmentController
       }
 
@@ -30,64 +29,68 @@ package controllers {
       control finishPlayController
   }
 
+  package inscriptions {
+    control openInscriptionsPeriodController
+    control showInscriptionsController
+    control closeInscriptionsController
+    control deleteCompetitionController
+    control editCompetitionController
+    control showCompetitionsController
+    control drawLiftersController
 
-  ' ------
-control openInscriptionsPeriodController
-control showInscriptionsController
-control closeInscriptionsController
-control deleteCompetitionController
-control editCompetitionController
-control showCompetitionsController
-control drawLiftersController
+    package " " {
+      control inscribeLifterController
+      control uninscribeLifterController
+      note bottom of inscribeLifterController: ¿Podría juntar estos 2 en LifterInscriptionController \n xq intuyo que va a ser 99% igual?
+    }
+    control showInscribedLiftersController
+  }
 
-package " " {
-  control inscribeLifterController
-  control uninscribeLifterController
-  note bottom of inscribeLifterController: ¿Podría juntar estos 2 en LifterInscriptionController \n xq intuyo que va a ser 99% igual?
-}
-control showInscribedLiftersController
-control createClassificationsController
-control downloadClassificationsController
-control showClassificationsController
-
-'-----
-control showClubsController
-control editClubController
-control deleteClubController
-control showOrganizersController
-control editOrganizerController
-control deleteOrganizerController
-control showInscribersController
-control deleteInscriberController
-control editInscriberController
-control deleteCategoryController
-control editCategoryController
-control showCategoriesController
-control editBodyWeightCategoryController
-control deleteBodyWeightCategoryController
-
-'------
-control showCompetitionController
-control showBatchInscriptionsController
-control showBatchWeighinsController
-control showFinishedBatchesController
-control showLiveBatchInPlayController
-control showResultsController
-control downloadResultsController
-control launchController
-control loginController
-control logoutController
-control showCompetitionsController
-
-
-
-   package timer {
+  package timer {
       control startController
       control pauseController
       control resumeController
       control setDurationController
       control stopController
    }
+
+  package organizationalManagement {
+    control showClubsController
+    control editClubController
+    control deleteClubController
+    control showOrganizersController
+    control editOrganizerController
+    control deleteOrganizerController
+    control showInscribersController
+    control deleteInscriberController
+    control editInscriberController
+    control deleteCategoryController
+    control editCategoryController
+    control showCategoriesController
+    control editBodyWeightCategoryController
+    control deleteBodyWeightCategoryController
+  }
+
+
+package general {
+  note right of general: Elegir un mejor nombre para paquete
+  control showCompetitionController
+  control showBatchInscriptionsController
+  control showBatchWeighinsController
+  control showFinishedBatchesController
+  control showLiveBatchInPlayController
+  control showResultsController
+  control downloadResultsController
+  control showCompetitionsController
+  control createClassificationsController
+  control downloadClassificationsController
+  control showClassificationsController
+}
+
+  control launchController
+  control loginController
+  control logoutController
+
 }
 
 
