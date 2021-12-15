@@ -1,10 +1,96 @@
 @startuml
-'https://plantuml.com/class-diagram
+
+left to right direction
 
 package views {
 }
 
 package controllers {
+
+  package inPlayCompetition {
+      control showBatchesController
+      control editBatchController
+      control deleteBatchController
+
+      package "  " {
+        control assignLifterToBatchController
+        control unassignLifterToBatchController
+        note bottom of assignLifterToBatchController: ¿Podría juntar los 2? \n LifterToBatchAssignmentController
+      }
+
+      control showLifterCategoryController
+      control editLiftStatusController
+      control editLiftValueController
+      control editLiftWeightChangeController
+      control createActController
+      control downloadActController
+      control introduceWeighinDataController
+      control initPlayController
+      control finishPlayController
+  }
+
+  package inscriptions {
+    control openInscriptionsPeriodController
+    control showInscriptionsController
+    control closeInscriptionsController
+    control deleteCompetitionController
+    control editCompetitionController
+    control showCompetitionsController
+    control drawLiftersController
+
+    package " " {
+      control inscribeLifterController
+      control uninscribeLifterController
+      note bottom of inscribeLifterController: ¿Podría juntar estos 2 en LifterInscriptionController \n xq intuyo que va a ser 99% igual?
+    }
+    control showInscribedLiftersController
+  }
+
+  package timer {
+      control startController
+      control pauseController
+      control resumeController
+      control setDurationController
+      control stopController
+   }
+
+  package organizationalManagement {
+    control showClubsController
+    control editClubController
+    control deleteClubController
+    control showOrganizersController
+    control editOrganizerController
+    control deleteOrganizerController
+    control showInscribersController
+    control deleteInscriberController
+    control editInscriberController
+    control deleteCategoryController
+    control editCategoryController
+    control showCategoriesController
+    control editBodyWeightCategoryController
+    control deleteBodyWeightCategoryController
+  }
+
+
+package general {
+  note right of general: Elegir un mejor nombre para paquete
+  control showCompetitionController
+  control showBatchInscriptionsController
+  control showBatchWeighinsController
+  control showFinishedBatchesController
+  control showLiveBatchInPlayController
+  control showResultsController
+  control downloadResultsController
+  control showCompetitionsController
+  control createClassificationsController
+  control downloadClassificationsController
+  control showClassificationsController
+}
+
+  control launchController
+  control loginController
+  control logoutController
+
 }
 
 

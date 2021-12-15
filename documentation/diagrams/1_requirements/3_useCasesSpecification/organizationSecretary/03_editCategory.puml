@@ -1,66 +1,100 @@
 @startuml
 state SHOWED_CATEGORIES
-state CHOSEN_CATEGORY
 state editCategory {
+  state " " as SHOWED_CATEGORIES_TO_BE_EDITED
   state createOrModifyCHC <<choice>>
   state " " as providedCategory
   state " " as showedData
   state createOrModifyCHC2 <<choice>>
   state " " as pendingData
   state " " as providedData
-  [*] --> createOrModifyCHC
+  state " " as savedData
+  [*] --> SHOWED_CATEGORIES_TO_BE_EDITED
+  note on link
+    System shows:
+    * categories name
+
+    System allows to:
+    * cancel
+  end note
+
+  SHOWED_CATEGORIES_TO_BE_EDITED --> createOrModifyCHC : Modify or create category?
+
+  SHOWED_CATEGORIES_TO_BE_EDITED --> SHOWED_CATEGORIES_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
   createOrModifyCHC --> providedCategory : [chose category]
   createOrModifyCHC --> createOrModifyCHC2 : [create category]
   providedCategory --> showedData
   note on link
     System shows:
-    * Current category data
+    * category name
+    * category competition type
+    * category gender
+    * category minimum age
+    * category maximum age
+    * category bodyweight categories
   end note
-  showedData --> createOrModifyCHC2 : [modify category]
+  showedData --> createOrModifyCHC2 : [modify category -- añadir el actor quiere modificar - (quitarla y dajarla al rombo)]
   createOrModifyCHC2 --> pendingData
   note on link
     System requires:
-    * The competition type
-    * Minimum age (included)
-    * Maximum age (included)
-    * Gender
-    * Bodyweight categories
+    * name
+    * competition type
+    * minimum age (included)
+    * maximum age (included)
+    * gender
+    * bodyweight categories
 
     System allows to:
     * cancel
   end note
-  pendingData --> showCategories
+  pendingData --> SHOWED_CATEGORIES_F
   note on link
     User requests to:
     * cancel
   end note
-  showCategories --> SHOWED_CATEGORIES_F
+
   pendingData --> providedData
   note on link
     User provides:
-    * The competition type
-    * Minimum age (included)
-    * Maximum age (included)
-    * Gender
-    * Bodyweight categories
+    * name
+    * competition type
+    * minimum age (included)
+    * maximum age (included)
+    * gender
+    * bodyweight categories
+
+    System allows to:
+    * cancel
   end note
-  providedData --> [*]
+
+  providedData --> savedData
+  note on link
+    User saves 
+    provided data
+  end note
+
+  providedData --> SHOWED_CATEGORIES_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  savedData --> [*]
   note on link
     System allows to:
-    * showCategories
+    * showCategories -> quitarla xq esto va automáticamente
+    * editCategories
   end note
 }
 state EDITED_CATEGORY
-state showCategories
-state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F
+state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F : State before the user\nrequired "editCategory"
 
-SHOWED_CATEGORIES --> CHOSEN_CATEGORY
-note on link
-  User chooses a category 
-  at showed categories
-end note
-
-CHOSEN_CATEGORY --> editCategory
+SHOWED_CATEGORIES --> editCategory
 note on link
   User requests to:
   * editCategory

@@ -1,0 +1,49 @@
+@startuml
+state BATCH_MANAGEMENT
+state BATCH_IN_PLAY
+state initPlay {
+  state " " as WEIGHINS_CHECKED
+  state allWeighinsPerformedCHC <<choice>>
+  state " " as MISSING_WEIGHINS
+
+  [*] --> WEIGHINS_CHECKED
+  note on link
+    System checks:
+    * all lifters weighins
+  end note
+  
+  WEIGHINS_CHECKED --> allWeighinsPerformedCHC : All weighins performed?
+
+  allWeighinsPerformedCHC -right-> MISSING_WEIGHINS : [Missing some weighin]
+
+  MISSING_WEIGHINS -up-> BATCH_MANAGEMENT
+  note on link
+    System cancels 
+    the operation
+  end note
+
+  allWeighinsPerformedCHC --> [*]: [Yes]
+  note on link
+    System allows to:
+    * editLiftValue
+    * editWeightChange
+    * showLifterCategory
+    * startTimer
+    * pauseTimer
+    * resumeTimer
+    * setDurationTimer
+    * stopTimer
+  end note
+
+}
+
+BATCH_MANAGEMENT --> initPlay
+note on link
+  User requests to:
+  * initPlay
+end note
+
+initPlay -down-----> BATCH_IN_PLAY
+
+footer \n\n\n Especificación del caso de uso "initPlay"
+@enduml

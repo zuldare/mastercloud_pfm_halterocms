@@ -11,14 +11,17 @@ state showCategories {
   [*] --> [*]
   note on link
     System shows:
-    * edited categories
-
-    For each showed category, 
-    system allows to:
-    * deleteCategory
-    * editCategory
+    * active categories indicator
+    * categories name
+    * categories competition type
+    * categories gender
+    * categories minimum age
+    * categories maximum age
+    * categories bodyweight categories
 
     System allows to:
+    * deleteCategory
+    * editCategory
     * showClubs
     * showOrganizers
     * showInscribers

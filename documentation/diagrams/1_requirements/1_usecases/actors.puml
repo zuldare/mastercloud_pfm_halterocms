@@ -9,11 +9,11 @@ actor CompetitionSecretary as CompetitionSecretary
 actor User
 
 
-package OrganizationManagement
-package CompetitionManagement
-package BatchManagement
-package TimerManagement
-package SpectatorManagement
+package organizationManagement
+package competitionManagement
+package batchManagement
+package timerManagement
+package userManagement
 
 User <|-- OrganizationSecretary
 User <|-- TimeKeeper
@@ -21,18 +21,18 @@ User <|-- Inscriber
 TimeKeeper <|-- CompetitionSecretary
 Inscriber <|--- Organizer
 
-Time ---> CompetitionManagement
-Organizer --> CompetitionManagement
-Inscriber ---> CompetitionManagement
-CompetitionSecretary --> CompetitionManagement
+Time ---> competitionManagement
+Organizer --> competitionManagement
+Inscriber ---> competitionManagement
+CompetitionSecretary --> competitionManagement
 
-OrganizationSecretary --> OrganizationManagement
+OrganizationSecretary --> organizationManagement
 
-Time --> TimerManagement
-TimeKeeper --> TimerManagement
+Time --> timerManagement
+TimeKeeper --> timerManagement
 
-Organizer  --> BatchManagement
-User --> SpectatorManagement
+Organizer  --> batchManagement
+User --> userManagement
 
 
 footer \n\nFigura 3. Actores del sistema

@@ -15,6 +15,6 @@ newpage
 !include timer.puml
 
 newpage
-!include spectators.puml
+!include users.puml
 
 @enduml

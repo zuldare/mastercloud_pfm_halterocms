@@ -1,0 +1,83 @@
+@startuml
+state BATCH_MANAGEMENT
+state "BATCH_MANAGEMENT" as BATCH_MANAGEMENT_F
+state introduceWeighinData {
+  state " " as SHOWED_LIFTERS
+  state " " as CHOSEN_LIFTER
+  state " " as REQUIRED_DATA
+  state " " as PROVIDED_DATA
+
+  [*] --> SHOWED_LIFTERS
+  note on link
+    System shows:
+    * lifters name
+
+    System allows to:
+    * cancel
+  end note
+  
+  SHOWED_LIFTERS --> CHOSEN_LIFTER
+  note on link
+    User chooses a lifter
+  end note
+
+  SHOWED_LIFTERS -down-> BATCH_MANAGEMENT_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  CHOSEN_LIFTER --> REQUIRED_DATA
+  note on link
+    System requires:
+    * corporal weight
+    * snatch opener weight
+    * clean & jerk opener weight
+
+    System allows to:
+    * cancel
+  end note
+
+  REQUIRED_DATA -down---> BATCH_MANAGEMENT_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  REQUIRED_DATA --> PROVIDED_DATA
+  note on link
+    User provides:
+    * corporal weight
+    * snatch opener weight
+    * clean & jerk opener weight
+
+    System allows to:
+    * cancel
+  end note
+
+  PROVIDED_DATA --> [*]
+  note on link
+    User saves the data.
+
+    System allows to:
+    * introduceWeighinData
+    * initPlay
+  end note
+
+  PROVIDED_DATA -down---> BATCH_MANAGEMENT_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+}
+
+BATCH_MANAGEMENT --> introduceWeighinData
+note on link
+  User requests to:
+  * introduceWeighinData
+end note
+
+introduceWeighinData ------> BATCH_MANAGEMENT_F
+
+footer \n\n\n Especificación del caso de uso "introduceWeighinData"
+@enduml

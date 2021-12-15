@@ -1,58 +1,85 @@
 @startuml
 state SHOWED_ORGANIZERS
-state CHOSEN_ORGANIZER
 state editOrganizer {
+  state " " as SHOWED_ORGANIZERS_TO_BE_EDITED
   state createOrModifyCHC <<choice>>
   state " " as providedOrganizer
   state " " as showedData
   state createOrModifyCHC2 <<choice>>
   state " " as pendingData
   state " " as providedData
-  [*] --> createOrModifyCHC
+  state " " as savedData
+  [*] --> SHOWED_ORGANIZERS_TO_BE_EDITED
+  note on link
+    System shows:
+    * organizers name
+
+    System allows to:
+    * cancel
+  end note
+
+  SHOWED_ORGANIZERS_TO_BE_EDITED --> createOrModifyCHC : Modify or create organizer?
+
+  SHOWED_ORGANIZERS_TO_BE_EDITED --> SHOWED_ORGANIZERS_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
   createOrModifyCHC --> providedOrganizer : [chose organizer]
   createOrModifyCHC --> createOrModifyCHC2 : [create organizer]
   providedOrganizer --> showedData
   note on link
     System shows:
-    * Current organizer name
+    * organizer name
   end note
   showedData --> createOrModifyCHC2 : [modify organizer]
   createOrModifyCHC2 --> pendingData
   note on link
     System requires:
-    * Name
+    * name
 
     System allows to:
     * cancel
   end note
-  pendingData --> showOrganizers
+  pendingData --> SHOWED_ORGANIZERS_F
   note on link
     User requests to:
     * cancel
   end note
-  showOrganizers --> SHOWED_ORGANIZERS_F
-  pendingData --> providedData 
+
+  pendingData --> providedData
   note on link
     User provides:
-    * Name
+    * name
+
+    System allows to:
+    * cancel
   end note
-  providedData --> [*]
+
+  providedData --> savedData
+  note on link
+    User saves 
+    provided data
+  end note
+
+  providedData --> SHOWED_ORGANIZERS_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  savedData --> [*]
   note on link
     System allows to:
     * showOrganizers
+    * editOrganizer
   end note
 }
 state EDITED_ORGANIZER
-state showOrganizers
-state "SHOWED_ORGANIZERS" as SHOWED_ORGANIZERS_F
+state "SHOWED_ORGANIZERS" as SHOWED_ORGANIZERS_F : State before the user\nrequired "editOrganizer"
 
-SHOWED_ORGANIZERS --> CHOSEN_ORGANIZER
-note on link
-  User chooses a organizer 
-  at showed organizers
-end note
-
-CHOSEN_ORGANIZER --> editOrganizer
+SHOWED_ORGANIZERS --> editOrganizer
 note on link
   User requests to:
   * editOrganizer

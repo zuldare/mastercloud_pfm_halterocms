@@ -1,32 +1,65 @@
 @startuml
 state SHOWED_CATEGORIES
-state CHOSEN_CATEGORY
-
+state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F
 state deleteCategory {
-  [*] --> [*]
+  state " " as SHOWED_CATEGORIES_TO_BE_DELETED
+  state " " as CHOSEN_CATEGORY
+  state " " as CATEGORY_DELETED
+
+  [*] --> SHOWED_CATEGORIES_TO_BE_DELETED
   note on link
+    System shows:
+    * categories name
+
     System allows to:
-    * showCategories
+    * cancel
+  end note
+  
+  SHOWED_CATEGORIES_TO_BE_DELETED --> CHOSEN_CATEGORY
+  note on link
+    User chooses an category
+  end note
+
+  SHOWED_CATEGORIES_TO_BE_DELETED -down-> SHOWED_CATEGORIES_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  CHOSEN_CATEGORY --> CATEGORY_DELETED
+  note on link
+    System deletes the
+    chosen category
+  end note
+
+  CATEGORY_DELETED --> [*]
+  note on link
+    System shows:
+    * active categories indicator
+    * categories name
+    * categories competition type
+    * categories gender
+    * categories minimum age
+    * categories maximum age
+    * categories bodyweight categories
+
+    System allows to:
+    * deleteCategory
+    * editCategory
+    * showClubs
+    * showInscribers
+    * showOrganizers
+    * logout
   end note
 }
 
-state showCategories
-state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F
-
-SHOWED_CATEGORIES --> CHOSEN_CATEGORY
-note on link
-  User chooses a category 
-  at showed categories
-end note
-
-CHOSEN_CATEGORY --> deleteCategory
+SHOWED_CATEGORIES --> deleteCategory
 note on link
   User requests to:
   * deleteCategory
 end note
 
-deleteCategory --> showCategories
-showCategories --> SHOWED_CATEGORIES_F
+deleteCategory ------> SHOWED_CATEGORIES_F
 
 footer \n\n\n Especificación del caso de uso "deleteCategory"
 @enduml

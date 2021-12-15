@@ -1,32 +1,60 @@
 @startuml
 state SHOWED_INSCRIBERS
-state CHOSEN_INSCRIBER
-
+state "SHOWED_INSCRIBERS" as SHOWED_INSCRIBERS_F
 state deleteInscriber {
-  [*] --> [*]
+  state " " as SHOWED_INSCRIBERS_TO_BE_DELETED
+  state " " as CHOSEN_INSCRIBER
+  state " " as INSCRIBER_DELETED
+
+  [*] --> SHOWED_INSCRIBERS_TO_BE_DELETED
   note on link
+    System shows:
+    * inscribers name
+
     System allows to:
-    * showInscribers
+    * cancel
+  end note
+  
+  SHOWED_INSCRIBERS_TO_BE_DELETED --> CHOSEN_INSCRIBER
+  note on link
+    User chooses an inscriber
+  end note
+
+  SHOWED_INSCRIBERS_TO_BE_DELETED --> SHOWED_INSCRIBERS_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  CHOSEN_INSCRIBER --> INSCRIBER_DELETED
+  note on link
+    System deletes the
+    chosen inscriber
+  end note
+
+  INSCRIBER_DELETED --> [*]
+  note on link
+    System shows:
+    * active inscribers indicator
+    * inscribers name
+
+    System allows to:
+    * deleteInscriber
+    * editInscriber
+    * showCategories
+    * showClubs
+    * showOrganizers
+    * logout
   end note
 }
 
-state showInscribers
-state "SHOWED_INSCRIBERS" as SHOWED_INSCRIBERS_F
-
-SHOWED_INSCRIBERS --> CHOSEN_INSCRIBER
-note on link
-  User chooses a inscriber 
-  at showed inscribers
-end note
-
-CHOSEN_INSCRIBER --> deleteInscriber
+SHOWED_INSCRIBERS --> deleteInscriber
 note on link
   User requests to:
   * deleteInscriber
 end note
 
-deleteInscriber --> showInscribers
-showInscriber --> SHOWED_INSCRIBER_F
+deleteInscriber --> SHOWED_INSCRIBERS_F
 
 footer \n\n\n Especificación del caso de uso "deleteInscriber"
 @enduml

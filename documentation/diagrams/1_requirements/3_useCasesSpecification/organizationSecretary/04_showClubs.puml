@@ -11,14 +11,12 @@ state showClubs {
   [*] --> [*]
   note on link
     System shows:
-    * edited clubs
-
-    For each showed club, 
-    system allows to:
-    * deleteClub
-    * editClub
+    * active clubs indicator
+    * clubs name
 
     System allows to:
+    * deleteClub
+    * editClub
     * showCategories
     * showOrganizers
     * showInscribers

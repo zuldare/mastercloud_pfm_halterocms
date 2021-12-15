@@ -1,6 +1,6 @@
 @startuml
-' left to right direction
-package BatchManagement {
+left to right direction
+package batchManagement {
   usecase showBatches
   usecase editBatch
 

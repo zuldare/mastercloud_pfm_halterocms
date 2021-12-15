@@ -1,58 +1,85 @@
 @startuml
 state SHOWED_INSCRIBERS
-state CHOSEN_INSCRIBER
 state editInscriber {
+  state " " as SHOWED_INSCRIBERS_TO_BE_EDITED
   state createOrModifyCHC <<choice>>
   state " " as providedInscriber
   state " " as showedData
   state createOrModifyCHC2 <<choice>>
   state " " as pendingData
   state " " as providedData
-  [*] --> createOrModifyCHC
+  state " " as savedData
+  [*] --> SHOWED_INSCRIBERS_TO_BE_EDITED
+  note on link
+    System shows:
+    * inscribers name
+
+    System allows to:
+    * cancel
+  end note
+
+  SHOWED_INSCRIBERS_TO_BE_EDITED --> createOrModifyCHC : Modify or create inscriber?
+
+  SHOWED_INSCRIBERS_TO_BE_EDITED --> SHOWED_INSCRIBERS_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
   createOrModifyCHC --> providedInscriber : [chose inscriber]
   createOrModifyCHC --> createOrModifyCHC2 : [create inscriber]
   providedInscriber --> showedData
   note on link
     System shows:
-    * Current inscriber name
+    * inscriber name
   end note
   showedData --> createOrModifyCHC2 : [modify inscriber]
   createOrModifyCHC2 --> pendingData
   note on link
     System requires:
-    * Name
+    * name
 
     System allows to:
     * cancel
   end note
-  pendingData --> showInscribers
+  pendingData --> SHOWED_INSCRIBERS_F
   note on link
     User requests to:
     * cancel
   end note
-  showInscribers --> SHOWED_INSCRIBERS_F
-  pendingData --> providedData 
+
+  pendingData --> providedData
   note on link
     User provides:
-    * Name
-  end note
-  providedData --> [*]
-  note on link
+    * name
+
     System allows to:
+    * cancel
+  end note
+
+  providedData --> savedData
+  note on link
+    User saves 
+    provided data
+  end note
+
+  providedData --> SHOWED_INSCRIBERS_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  savedData --> [*]
+  note on link
+    System allows đto:
     * showInscribers
+    * editInscriber
   end note
 }
 state EDITED_INSCRIBER
-state showInscribers
-state "SHOWED_INSCRIBERS" as SHOWED_INSCRIBERS_F
+state "SHOWED_INSCRIBERS" as SHOWED_INSCRIBERS_F : State before the user\nrequired "editInscriber"
 
-SHOWED_INSCRIBERS --> CHOSEN_INSCRIBER
-note on link
-  User chooses a inscriber 
-  at showed inscribers
-end note
-
-CHOSEN_INSCRIBER --> editInscriber
+SHOWED_INSCRIBERS --> editInscriber
 note on link
   User requests to:
   * editInscriber
