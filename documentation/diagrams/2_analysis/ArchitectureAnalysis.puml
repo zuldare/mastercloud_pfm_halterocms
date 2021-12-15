@@ -3,6 +3,25 @@
 left to right direction
 
 package views {
+  boundary showCompetitionsView
+  boundary showCompetitionView
+
+
+
+
+  boundary showInscriptionsView
+  boundary showFinishedBatchView
+  boundary showBatchWeighinView
+  boundary showLiveBatchInPlayView
+
+  boundary loginView
+
+  showCompetitionsView o-- showCompetitionView
+  note right of showInscriptionsView: ¿Estas asociaciones se tienen que hacer o basta con definir las vistas?
+  showCompetitionView o-- showInscriptionsView
+  showCompetitionView o-- showFinishedBatchView
+  showCompetitionView o-- showBatchWeighinView
+  showCompetitionView o-- showLiveBatchInPlayView
 }
 
 package controllers {
