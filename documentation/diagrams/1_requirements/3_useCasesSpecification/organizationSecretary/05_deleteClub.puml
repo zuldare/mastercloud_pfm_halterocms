@@ -20,7 +20,7 @@ state deleteClub {
     User chooses an club
   end note
 
-  SHOWED_CLUBS_TO_BE_DELETED --> SHOWED_CLUBS_F
+  SHOWED_CLUBS_TO_BE_DELETED -down-> SHOWED_CLUBS_F
   note on link
     User requests to:
     * cancel
@@ -54,7 +54,7 @@ note on link
   * deleteClub
 end note
 
-deleteClub --> SHOWED_CLUBS_F
+deleteClub ------> SHOWED_CLUBS_F
 
 footer \n\n\n Especificación del caso de uso "deleteClub"
 @enduml

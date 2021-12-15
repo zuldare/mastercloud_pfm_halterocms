@@ -20,7 +20,7 @@ state deleteInscriber {
     User chooses an inscriber
   end note
 
-  SHOWED_INSCRIBERS_TO_BE_DELETED --> SHOWED_INSCRIBERS_F
+  SHOWED_INSCRIBERS_TO_BE_DELETED -down-> SHOWED_INSCRIBERS_F
   note on link
     User requests to:
     * cancel
@@ -54,7 +54,7 @@ note on link
   * deleteInscriber
 end note
 
-deleteInscriber --> SHOWED_INSCRIBERS_F
+deleteInscriber ------> SHOWED_INSCRIBERS_F
 
 footer \n\n\n Especificación del caso de uso "deleteInscriber"
 @enduml

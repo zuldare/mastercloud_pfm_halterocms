@@ -20,7 +20,7 @@ state deleteOrganizer {
     User chooses an organizer
   end note
 
-  SHOWED_ORGANIZERS_TO_BE_DELETED --> SHOWED_ORGANIZERS_F
+  SHOWED_ORGANIZERS_TO_BE_DELETED -down-> SHOWED_ORGANIZERS_F
   note on link
     User requests to:
     * cancel
@@ -54,7 +54,7 @@ note on link
   * deleteOrganizer
 end note
 
-deleteOrganizer --> SHOWED_ORGANIZERS_F
+deleteOrganizer ------> SHOWED_ORGANIZERS_F
 
 footer \n\n\n Especificación del caso de uso "deleteOrganizer"
 @enduml
