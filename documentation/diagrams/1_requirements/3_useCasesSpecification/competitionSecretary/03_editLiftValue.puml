@@ -1,0 +1,126 @@
+@startuml
+state BATCH_IN_PLAY
+state "BATCH_IN_PLAY" as BATCH_IN_PLAY_F
+state editLiftValue {
+  state " " as SHOWED_LIFTS_VALUE
+  state " " as CHOSEN_LIFTER
+  state " " as REQUIRED_DATA
+  state " " as PROVIDED_DATA
+  state " " as SAVED_DATA
+  state wrongDataProvidedCHC <<choice>>
+  state allTypeLiftsPerformedCHC <<choice>>
+  state " " as CALCULATED_BEST
+
+  [*] --> SHOWED_LIFTS_VALUE
+  note on link
+    System shows:
+    * lifters name
+    * lifts type
+    * lifts order
+    * lifts value
+
+    System allows to:
+    * cancel
+  end note
+  
+  SHOWED_LIFTS_VALUE --> CHOSEN_LIFTER
+  note on link
+    User chooses:
+    * a lifter
+    * a lift type
+    * a lift order
+  end note
+
+  SHOWED_LIFTS_VALUE -down-> BATCH_IN_PLAY_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  CHOSEN_LIFTER --> REQUIRED_DATA
+  note on link
+    System requires:
+    * lift value
+
+    System allows to:
+    * cancel
+  end note
+
+  REQUIRED_DATA -down---> BATCH_IN_PLAY_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  REQUIRED_DATA --> PROVIDED_DATA
+  note on link
+    User provides:
+    * lift value
+
+    System allows to:
+    * cancel
+  end note
+
+  PROVIDED_DATA --> SAVED_DATA
+  note on link
+    User saves the data.
+
+    System allows to:
+    * editLiftValue
+    * initPlay
+  end note
+
+  SAVED_DATA --> wrongDataProvidedCHC : Right saved data?
+
+  wrongDataProvidedCHC --> allTypeLiftsPerformedCHC : [Right saved data]\n\nAll chosen type lifts by\nchosen lifter are performed? 
+
+  allTypeLiftsPerformedCHC --> CALCULATED_BEST : [Yes]
+  note on link
+    System calculates 
+    type best value
+    for chosen lifter.
+  end note
+
+  CALCULATED_BEST --> [*]
+  note on link
+    System allows to:
+    * editWeightChange
+    * showLifterCategory
+    * startTimer
+    * pauseTimer
+    * resumeTimer
+    * setDurationTimer
+    * stopTimer
+  end note
+
+  allTypeLiftsPerformedCHC --> [*] : [No]
+  note on link
+    System allows to:
+    * editWeightChange
+    * showLifterCategory
+    * startTimer
+    * pauseTimer
+    * resumeTimer
+    * setDurationTimer
+    * stopTimer
+  end note
+
+  wrongDataProvidedCHC --> REQUIRED_DATA : [Wrong saved data:\n\nLower value than previous lift/\nNegative value/\nNon-numeric value]
+
+  PROVIDED_DATA -down-------> BATCH_IN_PLAY_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+}
+
+BATCH_IN_PLAY --> editLiftValue
+note on link
+  User requests to:
+  * editLiftValue
+end note
+
+editLiftValue ------> BATCH_IN_PLAY_F
+
+footer \n\n\n Especificación del caso de uso "editLiftValue"
+@enduml
