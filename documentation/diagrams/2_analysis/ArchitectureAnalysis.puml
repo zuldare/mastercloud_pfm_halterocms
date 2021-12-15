@@ -6,9 +6,6 @@ package views {
   boundary showCompetitionsView
   boundary showCompetitionView
 
-
-
-
   boundary showInscriptionsView
   boundary showFinishedBatchView
   boundary showBatchWeighinView
@@ -22,6 +19,33 @@ package views {
   showCompetitionView o-- showFinishedBatchView
   showCompetitionView o-- showBatchWeighinView
   showCompetitionView o-- showLiveBatchInPlayView
+
+
+  boundary showCategoriesView
+  boundary editCategoryView
+
+  showCategoriesView -- editCategoryView
+
+  boundary showClubsView
+  boundary editClubView
+
+
+  boundary showOrganizersView
+  boundary editOrganizerView
+
+  boundary showInscribersView
+  boundary editInscriberView
+
+
+  boundary showInscribedLiftersView
+  boundary inscribeLifterView
+
+  boundary editCompetitionView
+  boundary editBatchView
+
+  boundary showLiftView
+  boundary timerView
+
 }
 
 package controllers {
