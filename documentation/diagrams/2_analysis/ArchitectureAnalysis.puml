@@ -13,12 +13,12 @@ package views {
 
   boundary loginView
 
-  showCompetitionsView o-- showCompetitionView
+  showCompetitionsView -- showCompetitionView
   note right of showInscriptionsView: ¿Estas asociaciones se tienen que hacer o basta con definir las vistas?
-  showCompetitionView o-- showInscriptionsView
-  showCompetitionView o-- showFinishedBatchView
-  showCompetitionView o-- showBatchWeighinView
-  showCompetitionView o-- showLiveBatchInPlayView
+  showCompetitionView -- showInscriptionsView
+  showCompetitionView -- showFinishedBatchView
+  showCompetitionView -- showBatchWeighinView
+  showCompetitionView -- showLiveBatchInPlayView
 
 
   boundary showCategoriesView
@@ -50,7 +50,7 @@ package views {
 
 package controllers {
 
-  package inPlayCompetition {
+  package competitionPlay {
       control showBatchesController
       control editBatchController
       control deleteBatchController
@@ -70,6 +70,14 @@ package controllers {
       control introduceWeighinDataController
       control initPlayController
       control finishPlayController
+
+
+            control startController
+            control pauseController
+            control resumeController
+            control setDurationController
+            control stopController
+
   }
 
   package inscriptions {
@@ -89,15 +97,9 @@ package controllers {
     control showInscribedLiftersController
   }
 
-  package timer {
-      control startController
-      control pauseController
-      control resumeController
-      control setDurationController
-      control stopController
-   }
 
-  package organizationalManagement {
+
+  package organizational {
     control showClubsController
     control editClubController
     control deleteClubController
@@ -115,8 +117,7 @@ package controllers {
   }
 
 
-package general {
-  note right of general: Elegir un mejor nombre para paquete
+package monitoring {
   control showCompetitionController
   control showBatchInscriptionsController
   control showBatchWeighinsController
@@ -128,11 +129,13 @@ package general {
   control createClassificationsController
   control downloadClassificationsController
   control showClassificationsController
+
+    control launchController
+    control loginController
+    control logoutController
 }
 
-  control launchController
-  control loginController
-  control logoutController
+
 
 }
 

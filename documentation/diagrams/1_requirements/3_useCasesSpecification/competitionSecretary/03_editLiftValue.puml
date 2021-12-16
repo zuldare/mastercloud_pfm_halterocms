@@ -25,7 +25,7 @@ state editLiftValue {
   
   SHOWED_LIFTS_VALUE --> CHOSEN_LIFTER
   note on link
-    User chooses:
+    User chooses one of each:
     * a lifter
     * a lift type
     * a lift order
