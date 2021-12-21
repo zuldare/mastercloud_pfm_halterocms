@@ -6,10 +6,7 @@ state editLiftValue {
   state " " as CHOSEN_LIFTER
   state " " as REQUIRED_DATA
   state " " as PROVIDED_DATA
-  state " " as SAVED_DATA
   state wrongDataProvidedCHC <<choice>>
-  state allTypeLiftsPerformedCHC <<choice>>
-  state " " as CALCULATED_BEST
 
   [*] --> SHOWED_LIFTS_VALUE
   note on link
@@ -61,27 +58,9 @@ state editLiftValue {
     * cancel
   end note
 
-  PROVIDED_DATA --> SAVED_DATA
-  note on link
-    User saves the data.
+  PROVIDED_DATA --> wrongDataProvidedCHC : Right provided data?
 
-    System allows to:
-    * editLiftValue
-    * initPlay
-  end note
-
-  SAVED_DATA --> wrongDataProvidedCHC : Right saved data?
-
-  wrongDataProvidedCHC --> allTypeLiftsPerformedCHC : [Right saved data]\n\nAll chosen type lifts by\nchosen lifter are performed? 
-
-  allTypeLiftsPerformedCHC --> CALCULATED_BEST : [Yes]
-  note on link
-    System calculates 
-    type best value
-    for chosen lifter.
-  end note
-
-  CALCULATED_BEST --> [*]
+  wrongDataProvidedCHC --> [*]
   note on link
     System allows to:
     * editWeightChange
@@ -93,21 +72,10 @@ state editLiftValue {
     * stopTimer
   end note
 
-  allTypeLiftsPerformedCHC --> [*] : [No]
-  note on link
-    System allows to:
-    * editWeightChange
-    * showLifterCategory
-    * startTimer
-    * pauseTimer
-    * resumeTimer
-    * setDurationTimer
-    * stopTimer
-  end note
 
-  wrongDataProvidedCHC --> REQUIRED_DATA : [Wrong saved data:\n\nLower value than previous lift/\nNegative value/\nNon-numeric value]
+  wrongDataProvidedCHC --> REQUIRED_DATA : [Wrong provided data:\n\nLower value than previous lift\nAND negative value\nAND non-numeric value]
 
-  PROVIDED_DATA -down-------> BATCH_IN_PLAY_F
+  PROVIDED_DATA -down---> BATCH_IN_PLAY_F
   note on link
     User requests to:
     * cancel
@@ -120,7 +88,7 @@ note on link
   * editLiftValue
 end note
 
-editLiftValue ------> BATCH_IN_PLAY_F
+editLiftValue ---> BATCH_IN_PLAY_F
 
 footer \n\n\n Especificación del caso de uso "editLiftValue"
 @enduml
