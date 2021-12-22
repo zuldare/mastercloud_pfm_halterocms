@@ -73,7 +73,7 @@ state editLiftValue {
   end note
 
 
-  wrongDataProvidedCHC --> REQUIRED_DATA : [Wrong provided data:\n\nLower value than previous lift\nAND negative value\nAND non-numeric value]
+  wrongDataProvidedCHC --> REQUIRED_DATA : [Wrong provided data:\n\nLower value than previous lift\nOR negative value\nOR non-numeric value]
 
   PROVIDED_DATA -down---> BATCH_IN_PLAY_F
   note on link
