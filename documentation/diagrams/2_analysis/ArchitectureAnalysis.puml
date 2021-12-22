@@ -1,6 +1,6 @@
 @startuml
 
-left to right direction
+top to bottom direction
 
 package views {
   boundary showCompetitionsView
@@ -14,7 +14,6 @@ package views {
   boundary loginView
 
   showCompetitionsView -- showCompetitionView
-  note right of showInscriptionsView: ¿Estas asociaciones se tienen que hacer o basta con definir las vistas?
   showCompetitionView -- showInscriptionsView
   showCompetitionView -- showFinishedBatchView
   showCompetitionView -- showBatchWeighinView
@@ -24,7 +23,6 @@ package views {
   boundary showCategoriesView
   boundary editCategoryView
 
-  showCategoriesView -- editCategoryView
 
   boundary showClubsView
   boundary editClubView
@@ -38,14 +36,54 @@ package views {
 
 
   boundary showInscribedLiftersView
-  boundary inscribeLifterView
 
   boundary editCompetitionView
+  note top of editCompetitionView: ¡raro! indicaría la opibilidad de llegar aquí solo desde organizer
+
   boundary editBatchView
 
   boundary showLiftView
   boundary timerView
 
+  boundary welcomeView
+
+  welcomeView -- showCompetitionsView
+
+  boundary loginView
+
+  welcomeView -- loginView
+
+  boundary secretaryOrganizationView
+
+  loginView -- secretaryOrganizationView
+
+  secretaryOrganizationView -- showInscribersView
+  secretaryOrganizationView -- showCategoriesView
+  secretaryOrganizationView -- showOrganizersView
+  secretaryOrganizationView -- showClubsView
+
+  showClubsView -- editClubView
+  showOrganizersView -- editOrganizerView
+  showInscribersView -- editInscriberView
+  showCategoriesView -- editCategoryView
+
+  boundary editInscribedLifterView
+  loginView -- showInscribedLiftersView
+  showInscribedLiftersView -- editInscribedLifterView
+
+
+  boundary organizerView
+  loginView -- organizerView
+  organizerView -- showInscribedLiftersView
+  organizerView -- showCompetitionsView
+  showCompetitionsView -- editCompetitionView
+
+
+  showLiveBatchInPlayView -- showLiftView
+  showLiveBatchInPlayView -- timerView
+
+
+showCompetitionView -- editBatchView
 }
 
 package controllers {
@@ -55,11 +93,7 @@ package controllers {
       control editBatchController
       control deleteBatchController
 
-      package "  " {
         control assignLifterToBatchController
-        control unassignLifterToBatchController
-        note bottom of assignLifterToBatchController: ¿Podría juntar los 2? \n LifterToBatchAssignmentController
-      }
 
       control showLifterCategoryController
       control editLiftStatusController
@@ -88,12 +122,7 @@ package controllers {
     control editCompetitionController
     control showCompetitionsController
     control drawLiftersController
-
-    package " " {
-      control inscribeLifterController
-      control uninscribeLifterController
-      note bottom of inscribeLifterController: ¿Podría juntar estos 2 en LifterInscriptionController \n xq intuyo que va a ser 99% igual?
-    }
+    control inscribeLifterController
     control showInscribedLiftersController
   }
 
