@@ -1,0 +1,89 @@
+@startuml
+
+top to bottom direction
+
+
+package controllers {
+
+  package competitionPlay {
+      control showBatchesController
+      control editBatchController
+      control deleteBatchController
+
+        control assignLifterToBatchController
+
+      control showLifterCategoryController
+      control editLiftStatusController
+      control editLiftValueController
+      control editLiftWeightChangeController
+      control createActController
+      control downloadActController
+      control introduceWeighinDataController
+      control initPlayController
+      control finishPlayController
+
+
+            control startController
+            control pauseController
+            control resumeController
+            control setDurationController
+            control stopController
+
+  }
+
+  package inscriptions {
+    control openInscriptionsPeriodController
+    control showInscriptionsController
+    control closeInscriptionsController
+    control deleteCompetitionController
+    control editCompetitionController
+    control showCompetitionsController
+    control drawLiftersController
+    control inscribeLifterController
+    control showInscribedLiftersController
+  }
+
+
+
+  package organizational {
+    control showClubsController
+    control editClubController
+    control deleteClubController
+    control showOrganizersController
+    control editOrganizerController
+    control deleteOrganizerController
+    control showInscribersController
+    control deleteInscriberController
+    control editInscriberController
+    control deleteCategoryController
+    control editCategoryController
+    control showCategoriesController
+    control editBodyWeightCategoryController
+    control deleteBodyWeightCategoryController
+  }
+
+
+package monitoring {
+  control showCompetitionController
+  control showBatchInscriptionsController
+  control showBatchWeighinsController
+  control showFinishedBatchesController
+  control showLiveBatchInPlayController
+  control showResultsController
+  control downloadResultsController
+  control showCompetitionsController
+  control createClassificationsController
+  control downloadClassificationsController
+  control showClassificationsController
+
+    control launchController
+    control loginController
+    control logoutController
+}
+
+
+
+}
+
+
+@enduml

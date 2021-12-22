@@ -1,0 +1,87 @@
+@startuml
+
+top to bottom direction
+
+package views {
+  boundary showCompetitionsView
+  boundary showCompetitionView
+
+  boundary showInscriptionsView
+  boundary showFinishedBatchView
+  boundary showBatchWeighinView
+  boundary showLiveBatchInPlayView
+
+  boundary loginView
+
+  showCompetitionsView -- showCompetitionView
+  showCompetitionView -- showInscriptionsView
+  showCompetitionView -- showFinishedBatchView
+  showCompetitionView -- showBatchWeighinView
+  showCompetitionView -- showLiveBatchInPlayView
+
+
+  boundary showCategoriesView
+  boundary editCategoryView
+
+
+  boundary showClubsView
+  boundary editClubView
+
+
+  boundary showOrganizersView
+  boundary editOrganizerView
+
+  boundary showInscribersView
+  boundary editInscriberView
+
+
+  boundary showInscribedLiftersView
+
+  boundary editCompetitionView
+  note top of editCompetitionView: ¡raro! indicaría la opibilidad de llegar aquí solo desde organizer
+
+  boundary editBatchView
+
+  boundary showLiftView
+  boundary timerView
+
+  boundary welcomeView
+
+  welcomeView -- showCompetitionsView
+
+  boundary loginView
+
+  welcomeView -- loginView
+
+  boundary secretaryOrganizationView
+
+  loginView -- secretaryOrganizationView
+
+  secretaryOrganizationView -- showInscribersView
+  secretaryOrganizationView -- showCategoriesView
+  secretaryOrganizationView -- showOrganizersView
+  secretaryOrganizationView -- showClubsView
+
+  showClubsView -- editClubView
+  showOrganizersView -- editOrganizerView
+  showInscribersView -- editInscriberView
+  showCategoriesView -- editCategoryView
+
+  boundary editInscribedLifterView
+  loginView -- showInscribedLiftersView
+  showInscribedLiftersView -- editInscribedLifterView
+
+
+  boundary organizerView
+  loginView -- organizerView
+  organizerView -- showInscribedLiftersView
+  organizerView -- showCompetitionsView
+  showCompetitionsView -- editCompetitionView
+
+  showLiveBatchInPlayView -- showLiftView
+  showLiveBatchInPlayView -- timerView
+
+  showCompetitionView -- editBatchView
+}
+
+@enduml

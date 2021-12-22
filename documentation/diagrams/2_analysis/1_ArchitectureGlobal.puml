@@ -1,0 +1,27 @@
+@startuml
+
+'
+
+package views {}
+
+package controllers {
+
+  package competitionPlay {}
+
+  package inscriptions {}
+
+  package organizational {}
+
+  package monitoring {}
+
+}
+
+
+package models {}
+
+views ...> controllers
+views ....> models
+controllers ....> models
+
+
+@enduml
