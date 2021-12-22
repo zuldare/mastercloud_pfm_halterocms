@@ -1,0 +1,91 @@
+@startuml
+state BATCH_IN_PLAY
+state "BATCH_IN_PLAY" as BATCH_IN_PLAY_F
+state editLiftStatus {
+  state " " as SHOWED_LIFTS_VALUE
+  state " " as CHOSEN_LIFTER
+  state " " as REQUIRED_DATA
+  state " " as PROVIDED_DATA
+
+  [*] --> SHOWED_LIFTS_VALUE
+  note on link
+    System shows:
+    * lifters name
+    * lifts type
+    * lifts order
+    * lifts value
+
+    System allows to:
+    * cancel
+  end note
+  
+  SHOWED_LIFTS_VALUE --> CHOSEN_LIFTER
+  note on link
+    User chooses one of each:
+    * a lifter
+    * a lift type
+    * a lift order
+  end note
+
+  SHOWED_LIFTS_VALUE -down-> BATCH_IN_PLAY_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  CHOSEN_LIFTER --> REQUIRED_DATA
+  note on link
+    System shows status 
+    to choose:
+    * Valid
+    * Null
+    * Rejected
+
+    System allows to:
+    * cancel
+  end note
+
+  REQUIRED_DATA -down--> BATCH_IN_PLAY_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  REQUIRED_DATA --> PROVIDED_DATA
+  note on link
+    User chooses a status:
+    Valid OR Null OR Rejected
+
+    System allows to:
+    * cancel
+  end note
+
+  PROVIDED_DATA --> [*]
+  note on link
+    System allows to:
+    * editWeightChange
+    * showLifterCategory
+    * startTimer
+    * pauseTimer
+    * resumeTimer
+    * setDurationTimer
+    * stopTimer
+  end note
+
+  PROVIDED_DATA -down--> BATCH_IN_PLAY_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+}
+
+BATCH_IN_PLAY --> editLiftStatus
+note on link
+  User requests to:
+  * editLiftStatus
+end note
+
+editLiftStatus ---> BATCH_IN_PLAY_F
+
+footer \n\n\n Especificación del caso de uso "editLiftStatus"
+@enduml
