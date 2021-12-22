@@ -1,0 +1,95 @@
+@startuml
+state BATCH_IN_PLAY
+state "BATCH_IN_PLAY" as BATCH_IN_PLAY_F
+state editWeightChange {
+  state " " as SHOWED_LIFTS_VALUE
+  state " " as CHOSEN_LIFTER
+  state " " as REQUIRED_DATA
+  state " " as PROVIDED_DATA
+  state wrongDataProvidedCHC <<choice>>
+
+  [*] --> SHOWED_LIFTS_VALUE
+  note on link
+    System shows:
+    * lifters name
+    * lifts type
+    * lifts order
+    * lifts weight changes
+
+    System allows to:
+    * cancel
+  end note
+  
+  SHOWED_LIFTS_VALUE --> CHOSEN_LIFTER
+  note on link
+    User chooses one of each:
+    * a lifter
+    * a lift type
+    * a lift order
+    * a weight change order
+  end note
+
+  SHOWED_LIFTS_VALUE -down-> BATCH_IN_PLAY_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  CHOSEN_LIFTER --> REQUIRED_DATA
+  note on link
+    System requires:
+    * lift weight change value
+
+    System allows to:
+    * cancel
+  end note
+
+  REQUIRED_DATA -down---> BATCH_IN_PLAY_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+
+  REQUIRED_DATA --> PROVIDED_DATA
+  note on link
+    User provides:
+    * lift weight change value
+
+    System allows to:
+    * cancel
+  end note
+
+  PROVIDED_DATA --> wrongDataProvidedCHC : Right provided data?
+
+  wrongDataProvidedCHC --> [*]
+  note on link
+    System allows to:
+    * editWeightChange
+    * showLifterCategory
+    * startTimer
+    * pauseTimer
+    * resumeTimer
+    * setDurationTimer
+    * stopTimer
+  end note
+
+
+  wrongDataProvidedCHC --> REQUIRED_DATA : [Wrong provided data:\n\nLower or equal to previous weight change\nOR higuer or equal to next weight change\nOR negative value\nOR non-numeric value]
+
+  PROVIDED_DATA -down---> BATCH_IN_PLAY_F
+  note on link
+    User requests to:
+    * cancel
+  end note
+}
+
+BATCH_IN_PLAY --> editWeightChange
+note on link
+  User requests to:
+  * editWeightChange
+end note
+
+editWeightChange ---> BATCH_IN_PLAY_F
+
+footer \n\n\n Especificación del caso de uso "editWeightChange"
+@enduml
