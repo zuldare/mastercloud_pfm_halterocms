@@ -75,7 +75,7 @@ object Timekeeper
 
 object Lift
 
-enum Type {
+enum LiftType {
   SNATCH
   CLEAN_&_JERK
 }
@@ -175,7 +175,7 @@ Iteration *-- "1..*"  Announcement
 Announcement -- Lifter : next
 Announcement -- Lifter : following
 
-Lift *-- Type
+Lift *-- LiftType
 Lift *-- LiftStatus
 Lift *-- Countdown
 Lift o-- BarSet

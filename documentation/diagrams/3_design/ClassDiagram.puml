@@ -1,0 +1,123 @@
+@startuml
+'
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+'
+'List <|-- AbstractList
+'Collection <|-- AbstractCollection
+'
+'Collection <|- List
+'AbstractCollection <|- AbstractList
+'AbstractList <|-- ArrayList
+'
+'class ArrayList {
+'Object[] elementData
+'size()
+'}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
+enum LiftStatus {
+  PENDING
+  VALID
+  NULL
+  REJECTED
+}
+
+enum LiftType {
+  SNATCH
+  CLEAN_JERK
+}
+
+enum Countdown {
+  1_MINUTES(60)
+  2_MINUTES(120)
+}
+
+enum Bar {
+  FEMALE(15kg)
+  MALE(20kg)
+}
+
+enum Plate {
+  BIG_RED (25KG)
+  BIG_BLUE (20KG)
+  BIG_YELLOW (15KG)
+  BIG_GREEN (10KG)
+  BIG_WHITE (5)
+  SMALL_RED (2.5KG)
+  SMALL_BLUE (2KG)
+  SMALL_YELLOW (1.5KG)
+  SMALL_GREEN (1KG)
+  SMALL_WHITE (0.5KG)
+}
+
+enum Collar {
+  COLLAR(2.5KG)
+}
+
+enum Gender {
+  MALE(M)
+  FEMALE(F)
+}
+
+class Judge {
+  judgeLift()
+}
+
+class Marshall {
+  setLiftChange()
+}
+
+class Timekeeper {
+  + setTimer()
+  + pauseTimer()
+  + startTimer()
+  + resetTimer()
+}
+
+class CompetitionSecretary {
+}
+
+class BarLoader {
+  loadBar()
+}
+
+abstract class TechnicalOfficer {
+  # String name
+}
+
+TechnicalOfficer <|-- CompetitionSecretary
+TechnicalOfficer <|-- Marshall
+TechnicalOfficer <|-- Judge
+TechnicalOfficer <|-- Timekeeper
+TechnicalOfficer <|-- BarLoader
+
+
+class BarSet {
+  Bar bar
+  List<Plate> plates
+  List<Collar> collars
+
+
+  loadBarsetWithKg(Integer kgs)
+}
+
+BarSet *--> Bar
+BarSet *--> Plate
+BarSet *--> Collar
+
+class Club {
+  String name
+}
+
+class Lifter {
+  String name
+}
+@enduml
