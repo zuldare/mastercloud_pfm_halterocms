@@ -1,28 +1,4 @@
 @startuml
-'
-'abstract class AbstractList
-'abstract AbstractCollection
-'interface List
-'interface Collection
-'
-'List <|-- AbstractList
-'Collection <|-- AbstractCollection
-'
-'Collection <|- List
-'AbstractCollection <|- AbstractList
-'AbstractList <|-- ArrayList
-'
-'class ArrayList {
-'Object[] elementData
-'size()
-'}
-
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
-
 enum LiftStatus {
   PENDING
   VALID
@@ -68,11 +44,11 @@ enum Gender {
 }
 
 class Judge {
-  judgeLift()
+
 }
 
 class Marshall {
-  setLiftChange()
+  changeLiftWeight(Integer newWeight)
 }
 
 class Timekeeper {
@@ -83,11 +59,15 @@ class Timekeeper {
 }
 
 class CompetitionSecretary {
+  changeLiftWeight(Integer newWeight)
+  setLiftStatus(LiftStatus liftStatus)
 }
 
 class BarLoader {
-  loadBar()
+'  loadBar()
 }
+note left of BarLoader : "tiene sentido en el dominio, pero no en clases"
+
 
 abstract class TechnicalOfficer {
   # String name
@@ -115,9 +95,105 @@ BarSet *--> Collar
 
 class Club {
   String name
+  List<Lifter> lifters
 }
+
+
+class Competition {
+  InscriptionPeriod inscription
+  List<Batch> batches
+}
+
+class Inscription {
+  LocalDateTime start
+  LocalDateTime close
+}
+
+Competition *--> Inscription
+
+class Batch {
+  String name
+  String location
+  LocalDateTime begining
+  List<Platform> platforms
+  List<Weighing> weighing
+}
+
+Competition *--> Batch
+Batch *--> Weighing
+
+class Platform {
+  name
+  List<Lifter> lifters
+}
+Platform o--> Lift
+Platform o--> Lifter
+
+class Weighing {
+  Judge judge
+  Lifter lifter
+  Float lifterBodyWeight
+  Float snatchOpener
+  Float cleanJerkOpener
+}
+
+Weighing *--> Lifter
 
 class Lifter {
   String name
+  Integer birthYear
+  Gender gender
+  Category category
+  Club club
+  List<Lift> lifts
 }
+
+Lifter *--> Gender
+
+class Category {
+   AgeRange ageRange
+   BodyWeightRange bodyWeightRange
+}
+
+Club o--> Lifter
+
+class AgeRange {
+  Integer min
+  Integer max
+}
+
+class BodyWeightRange {
+  Float min
+  Float max
+}
+
+Category *--> AgeRange
+Category o--> BodyWeightRange
+
+class Lift {
+  BarSet barset
+  LiftType liftType
+  Countdown countDown
+  LiftStatus liftStatus
+  Integer countDown
+}
+
+Lifter *--> Lift
+Lift *-- LiftType
+Lift *-- LiftStatus
+Lift *-- Countdown
+Lift o-- BarSet
+
+Batch o--> Platform
+Lifter *--> Category
+Batch o--> Lifter
+
+Judge --> Weighing
+
+CompetitionSecretary ..> Lift
+Marshall ..> Lift
+Timekeeper ..> Lift
+
+
+header NOTA !!!!!! Me falta añadir todo el tema de inscriptores, inscripciones, creación de competiciones, batches, etc \n me falta todo el tema de clasificaciones tb
 @enduml

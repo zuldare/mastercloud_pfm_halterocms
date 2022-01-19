@@ -1,16 +1,12 @@
 @startuml
 
 object Competition {
-   type: CompetitionType
 }
 
-class CompetitionType {
-  name
-}
 
 object "Inscription" as Inscription {
-  Date
-  Place
+  openInscriptionDate
+  closeInscriptionDate
 }
 
 object CompetitionDraw
@@ -141,7 +137,6 @@ object BodyWeightRange {
 object "Technical officers" as TC
 
 
-Competition --> CompetitionType
 Competition *-- Inscription
 Inscription *-- "1..*" Lifter
 
