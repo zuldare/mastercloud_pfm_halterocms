@@ -170,11 +170,28 @@ package monitoring {
 
 
 package models {
+    entity ageRange
+    entity barSet
+    entity batch
+    entity bodyWeightRange
+    entity category
+    entity club
+    entity competition
+    entity competitionSecretary
+    entity inscription
+    entity judge
+    entity lift
+    entity lifter
+    entity marshall
+    entity platform
+    entity technicalOfficer
+    entity timekeeper
+    entity weighin
 }
 
 views ..> controllers
 views ..> models
 controllers ..> models
 
-
+header NOTA !!!!!! Faltaría añadir las entidades correspondientes a las clases que faltan en el modelo\nTambién faltaría dividir las entidades en paquetes más pequeños si hiciese falta\n(No dividir hasta que estén todas las entidades aquí puestas)
 @enduml
