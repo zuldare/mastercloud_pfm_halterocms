@@ -6,7 +6,6 @@ state editWeightChange {
   state " " as CHOSEN_LIFTER
   state " " as REQUIRED_DATA
   state " " as PROVIDED_DATA
-  state wrongDataProvidedCHC <<choice>>
 
   [*] --> SHOWED_LIFTS_VALUE
   note on link
@@ -17,12 +16,15 @@ state editWeightChange {
     * lifts weight changes
 
     System allows to:
+    * choose a lifter, a lift type,
+      a lift order and a weight change order
     * cancel
   end note
   
   SHOWED_LIFTS_VALUE --> CHOSEN_LIFTER
   note on link
-    User chooses one of each:
+    Competition Secretary
+    chooses one of each:
     * a lifter
     * a lift type
     * a lift order
@@ -31,7 +33,8 @@ state editWeightChange {
 
   SHOWED_LIFTS_VALUE -down-> BATCH_IN_PLAY_F
   note on link
-    User requests to:
+    Competition Secretary
+    requests to:
     * cancel
   end note
 
@@ -41,27 +44,25 @@ state editWeightChange {
     * lift weight change value
 
     System allows to:
+    * provide required data
     * cancel
   end note
 
   REQUIRED_DATA -down---> BATCH_IN_PLAY_F
   note on link
-    User requests to:
+    Competition Secretary
+    requests to:
     * cancel
   end note
 
   REQUIRED_DATA --> PROVIDED_DATA
   note on link
-    User provides:
+    Competition Secretary
+    provides:
     * lift weight change value
-
-    System allows to:
-    * cancel
   end note
 
-  PROVIDED_DATA --> wrongDataProvidedCHC : Right provided data?
-
-  wrongDataProvidedCHC --> [*]
+  PROVIDED_DATA --> [*]
   note on link
     System allows to:
     * editWeightChange
@@ -74,18 +75,13 @@ state editWeightChange {
   end note
 
 
-  wrongDataProvidedCHC --> REQUIRED_DATA : [Wrong provided data:\n\nLower or equal to previous weight change\nOR higuer or equal to next weight change\nOR negative value\nOR non-numeric value]
-
-  PROVIDED_DATA -down---> BATCH_IN_PLAY_F
-  note on link
-    User requests to:
-    * cancel
-  end note
+  PROVIDED_DATA --> REQUIRED_DATA : Lower or equal to previous weight change\nOR higuer or equal to next weight change\nOR negative value\nOR non-numeric value
 }
 
 BATCH_IN_PLAY --> editWeightChange
 note on link
-  User requests to:
+  Competition Secretary
+  requests to:
   * editWeightChange
 end note
 

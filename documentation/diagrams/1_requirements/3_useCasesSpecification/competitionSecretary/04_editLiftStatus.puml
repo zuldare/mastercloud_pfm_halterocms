@@ -16,12 +16,14 @@ state editLiftStatus {
     * lifts value
 
     System allows to:
+    * choose a lifter, a lift type and a lift order
     * cancel
   end note
   
   SHOWED_LIFTS_VALUE --> CHOSEN_LIFTER
   note on link
-    User chooses one of each:
+    Competition Secretary
+    chooses one of each:
     * a lifter
     * a lift type
     * a lift order
@@ -29,7 +31,8 @@ state editLiftStatus {
 
   SHOWED_LIFTS_VALUE -down-> BATCH_IN_PLAY_F
   note on link
-    User requests to:
+    Competition Secretary
+    requests to:
     * cancel
   end note
 
@@ -42,22 +45,22 @@ state editLiftStatus {
     * Rejected
 
     System allows to:
+    * choose a status
     * cancel
   end note
 
   REQUIRED_DATA -down--> BATCH_IN_PLAY_F
   note on link
-    User requests to:
+    Competition Secretary
+    requests to:
     * cancel
   end note
 
   REQUIRED_DATA --> PROVIDED_DATA
   note on link
-    User chooses a status:
+    Competition Secretary
+    chooses a status:
     Valid OR Null OR Rejected
-
-    System allows to:
-    * cancel
   end note
 
   PROVIDED_DATA --> [*]
@@ -71,17 +74,12 @@ state editLiftStatus {
     * setDurationTimer
     * stopTimer
   end note
-
-  PROVIDED_DATA -down--> BATCH_IN_PLAY_F
-  note on link
-    User requests to:
-    * cancel
-  end note
 }
 
 BATCH_IN_PLAY --> editLiftStatus
 note on link
-  User requests to:
+  Competition Secretary
+  requests to:
   * editLiftStatus
 end note
 

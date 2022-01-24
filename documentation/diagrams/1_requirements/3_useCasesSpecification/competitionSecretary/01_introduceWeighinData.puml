@@ -13,17 +13,20 @@ state introduceWeighinData {
     * lifters name
 
     System allows to:
+    * choose a lifter
     * cancel
   end note
   
   SHOWED_LIFTERS --> CHOSEN_LIFTER
   note on link
-    User chooses a lifter
+    Competition Secretary
+    chooses a lifter
   end note
 
   SHOWED_LIFTERS -down-> BATCH_MANAGEMENT_F
   note on link
-    User requests to:
+    Competition Secretary
+    requests to:
     * cancel
   end note
 
@@ -35,45 +38,55 @@ state introduceWeighinData {
     * clean & jerk opener weight
 
     System allows to:
+    * provide required data
     * cancel
   end note
 
   REQUIRED_DATA -down---> BATCH_MANAGEMENT_F
   note on link
-    User requests to:
+    Competition Secretary
+    requests to:
     * cancel
   end note
 
   REQUIRED_DATA --> PROVIDED_DATA
   note on link
-    User provides:
+    Competition Secretary
+    provides:
     * corporal weight
     * snatch opener weight
     * clean & jerk opener weight
 
     System allows to:
+    * order to save the data
     * cancel
   end note
 
   PROVIDED_DATA --> [*]
   note on link
-    User saves the data.
+    Competition Secretary
+    orders to save the data.
 
     System allows to:
     * introduceWeighinData
+
+    If all weighins are performed,
+    system allows to:
     * initPlay
   end note
 
   PROVIDED_DATA -down---> BATCH_MANAGEMENT_F
   note on link
-    User requests to:
+    Competition Secretary
+    requests to:
     * cancel
   end note
 }
 
 BATCH_MANAGEMENT --> introduceWeighinData
 note on link
-  User requests to:
+  Competition Secretary
+  requests to:
   * introduceWeighinData
 end note
 

@@ -14,15 +14,14 @@ state initPlay {
     * resumeTimer
     * setDurationTimer
     * stopTimer
-
-    ... if all weighins are performed
   end note
 
 }
 
 BATCH_MANAGEMENT --> initPlay
 note on link
-  User requests to:
+  Competition Secretary
+  requests to:
   * initPlay
 end note
 
