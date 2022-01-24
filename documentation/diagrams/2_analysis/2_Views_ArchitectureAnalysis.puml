@@ -72,11 +72,26 @@ package views {
   showInscribedLiftersView -- editInscribedLifterView
 
 
+  boundary inscriberView
+  loginView -- inscriberView
+  inscriberView -- showInscribedLiftersView
+
   boundary organizerView
   loginView -- organizerView
-  organizerView -- showInscribedLiftersView
   organizerView -- showCompetitionsView
   showCompetitionsView -- editCompetitionView
+
+  boundary competitionSecretaryView
+  boundary competitionSecretaryEditBatchView
+  boundary competitionSecretaryPlayView
+
+  loginView -- competitionSecretaryView
+  competitionSecretaryView -- showCompetitionsView
+
+
+
+  showCompetitionsView -- competitionSecretaryEditBatchView
+  competitionSecretaryEditBatchView -- competitionSecretaryPlayView
 
   showLiveBatchInPlayView -- showLiftView
   showLiveBatchInPlayView -- timerView
