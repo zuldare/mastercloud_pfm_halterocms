@@ -43,10 +43,6 @@ enum Gender {
   FEMALE(F)
 }
 
-class Judge {
-
-}
-
 class Marshall {
   changeLiftWeight(Integer newWeight)
 }
@@ -63,11 +59,6 @@ class CompetitionSecretary {
   setLiftStatus(LiftStatus liftStatus)
 }
 
-class BarLoader {
-'  loadBar()
-}
-note left of BarLoader : "tiene sentido en el dominio, pero no en clases"
-
 
 abstract class TechnicalOfficer {
   # String name
@@ -75,16 +66,13 @@ abstract class TechnicalOfficer {
 
 TechnicalOfficer <|-- CompetitionSecretary
 TechnicalOfficer <|-- Marshall
-TechnicalOfficer <|-- Judge
 TechnicalOfficer <|-- Timekeeper
-TechnicalOfficer <|-- BarLoader
 
 
 class BarSet {
   Bar bar
   List<Plate> plates
   List<Collar> collars
-
 
   loadBarsetWithKg(Integer kgs)
 }
@@ -100,8 +88,9 @@ class Club {
 
 
 class Competition {
-  InscriptionPeriod inscription
+  Inscription inscription
   List<Batch> batches
+  ClassificationAct classification
 }
 
 class Inscription {
@@ -117,6 +106,7 @@ class Batch {
   LocalDateTime begining
   List<Platform> platforms
   List<Weighing> weighing
+  List<Lift> lifters
 }
 
 Competition *--> Batch
@@ -130,7 +120,7 @@ Platform o--> Lift
 Platform o--> Lifter
 
 class Weighing {
-  Judge judge
+  String judge
   Lifter lifter
   Float lifterBodyWeight
   Float snatchOpener
@@ -167,6 +157,23 @@ class BodyWeightRange {
   Float max
 }
 
+
+class CategoryClassification
+
+class SinclairClassification {
+  coefficient: SinclairCoefficient
+}
+
+class SinclairMaloneClassification {
+  coefficient: SinclairMaloneCoefficient
+}
+
+class EliteClassification {
+  coefficientsMales: [EliteCoefficientMale]
+  coefficientsMales: [EliteCoefficientFemale]
+}
+
+
 Category *--> AgeRange
 Category o--> BodyWeightRange
 
@@ -188,12 +195,25 @@ Batch o--> Platform
 Lifter *--> Category
 Batch o--> Lifter
 
-Judge --> Weighing
-
 CompetitionSecretary ..> Lift
 Marshall ..> Lift
 Timekeeper ..> Lift
 
+Abstract ClassificationAct {
+  OrderedList<Lifter> lifters
+
+  # generate()
+}
+
+
+
+Competition *--> ClassificationAct
+
+ClassificationAct *--> Lifter
+ClassificationAct <|-- CategoryClassification
+ClassificationAct <|-- SinclairClassification
+ClassificationAct <|-- SinclairMaloneClassification
+ClassificationAct <|-- EliteClassification
 
 header NOTA !!!!!! Me falta añadir todo el tema de inscriptores, inscripciones, creación de competiciones, batches, etc \n me falta todo el tema de clasificaciones tb
 @enduml

@@ -38,8 +38,6 @@ package views {
   boundary showInscribedLiftersView
 
   boundary editCompetitionView
-  note top of editCompetitionView: ¡raro! indicaría la opibilidad de llegar aquí solo desde organizer
-
   boundary editBatchView
 
   boundary showLiftView
