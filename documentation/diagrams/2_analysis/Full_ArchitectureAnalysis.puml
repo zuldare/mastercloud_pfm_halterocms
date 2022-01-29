@@ -189,8 +189,6 @@ package models {
     entity competition
     entity competitionSecretary
     entity inscription
-    entity judge
-    note left of judge: "yo la quitaria"
     entity lift
     entity lifter
     entity marshall
