@@ -4,7 +4,7 @@ actor user as "Competition\nSecretary"
 rectangle WelcomeView
 rectangle LoginView
 rectangle LoginController
-rectangle CompetitionSecretaryDAO
+rectangle UsersDAO
 rectangle CompetitionSecretary
 
 rectangle CompetitionSecretaryView
@@ -38,8 +38,12 @@ note on link
   login(username, password)
 end note
 
-LoginController -right-> CompetitionSecretaryDAO
-CompetitionSecretaryDAO .right. CompetitionSecretary
+LoginController -right-> UsersDAO
+note on link
+  findByUsernameAndPassword(username, password)
+end note
+
+UsersDAO .right. CompetitionSecretary
 
 LoginView --> CompetitionSecretaryView
 note on link
@@ -70,7 +74,7 @@ end note
 
 CompetitionSecretaryEditBatchView -right-> ShowBatchesController
 note on link
-  getBatchesByCompetition(competitionId)
+  getCompetitionBatches(competitionId)
 end note
 
 ShowBatchesController -right-> BatchesDAO
@@ -86,7 +90,15 @@ note on link
 end note
 
 CompetitionSecretaryPlayView -right-> ShowInscribedLiftersController
+note on link
+  getCompetitionLifters(competitionId)
+end note
+
 ShowInscribedLiftersController -right-> LiftersDAO
+note on link
+  findByCompetitionId(competitionId)
+end note
+
 LiftersDAO .right. Lifter
 
 CompetitionSecretaryPlayView --> IntroduceWeighinDataController
