@@ -102,7 +102,19 @@ end note
 LiftersDAO .right. Lifter
 
 CompetitionSecretaryPlayView --> IntroduceWeighinDataController
+note on link
+  weighin = new Weighin(
+      lifter, bodyWeight, 
+      snatchOpener, cleanAndJerkOpener
+  )
+  addWeighin(weighin)
+end note
+
 IntroduceWeighinDataController -right-> WeighinsDAO
+note on link
+  save(weighin)
+end note
+
 WeighinsDAO .right. Weighin
 
 @enduml
