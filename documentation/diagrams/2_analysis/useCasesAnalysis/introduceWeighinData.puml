@@ -1,0 +1,96 @@
+@startuml
+actor user as "Competition\nSecretary"
+
+rectangle WelcomeView
+rectangle LoginView
+rectangle LoginController
+rectangle CompetitionSecretaryDAO
+rectangle CompetitionSecretary
+
+rectangle CompetitionSecretaryView
+rectangle ShowCompetitionsView
+rectangle ShowCompetitionsController
+rectangle CompetitionsDAO
+rectangle Competition
+
+rectangle CompetitionSecretaryEditBatchView
+rectangle ShowBatchesController
+rectangle BatchesDAO
+rectangle Batch
+
+rectangle CompetitionSecretaryPlayView
+rectangle ShowInscribedLiftersController
+rectangle LiftersDAO
+rectangle Lifter
+rectangle IntroduceWeighinDataController
+rectangle WeighinsDAO
+rectangle Weighin
+
+user -right-> WelcomeView
+
+WelcomeView --> LoginView
+note on link
+  new LoginView()
+end note
+
+LoginView -right-> LoginController
+note on link
+  login(username, password)
+end note
+
+LoginController -right-> CompetitionSecretaryDAO
+CompetitionSecretaryDAO .right. CompetitionSecretary
+
+LoginView --> CompetitionSecretaryView
+note on link
+  new CompetitionSecretaryView()
+end note
+
+CompetitionSecretaryView --> ShowCompetitionsView
+note on link
+  new ShowCompetitionsView()
+end note
+
+ShowCompetitionsView -right-> ShowCompetitionsController
+note on link
+  getCompetitions()
+end note
+
+ShowCompetitionsController -right-> CompetitionsDAO
+note on link
+  findAll()
+end note
+
+CompetitionsDAO .right. Competition
+
+ShowCompetitionsView --> CompetitionSecretaryEditBatchView
+note on link
+  new CompetitionSecretaryEditBatchView(competitionId)
+end note
+
+CompetitionSecretaryEditBatchView -right-> ShowBatchesController
+note on link
+  getBatchesByCompetition(competitionId)
+end note
+
+ShowBatchesController -right-> BatchesDAO
+note on link
+  findByCompetitionId(competitionId)
+end note
+
+BatchesDAO .right. Batch
+
+CompetitionSecretaryEditBatchView --> CompetitionSecretaryPlayView
+note on link
+  new CompetitionSecretaryPlayView(competitionId, batchId)
+end note
+
+CompetitionSecretaryPlayView -right-> ShowInscribedLiftersController
+ShowInscribedLiftersController -right-> LiftersDAO
+LiftersDAO .right. Lifter
+
+CompetitionSecretaryPlayView --> IntroduceWeighinDataController
+IntroduceWeighinDataController -right-> WeighinsDAO
+WeighinsDAO .right. Weighin
+
+@enduml
