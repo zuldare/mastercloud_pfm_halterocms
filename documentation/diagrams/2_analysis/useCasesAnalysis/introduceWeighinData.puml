@@ -1,30 +1,30 @@
 @startuml
 actor user as "Competition\nSecretary"
 
-rectangle WelcomeView
-rectangle LoginView
-rectangle LoginController
-rectangle UsersDAO
-rectangle CompetitionSecretary
+boundary WelcomeView
+boundary LoginView
+control LoginController
+control UsersDAO
+entity CompetitionSecretary
 
-rectangle CompetitionSecretaryView
-rectangle ShowCompetitionsView
-rectangle ShowCompetitionsController
-rectangle CompetitionsDAO
-rectangle Competition
+boundary CompetitionSecretaryView
+boundary ShowCompetitionsView
+control ShowCompetitionsController
+control CompetitionsDAO
+entity Competition
 
-rectangle CompetitionSecretaryEditBatchView
-rectangle ShowBatchesController
-rectangle BatchesDAO
-rectangle Batch
+boundary CompetitionSecretaryEditBatchView
+control ShowBatchesController
+control BatchesDAO
+entity Batch
 
-rectangle CompetitionSecretaryPlayView
-rectangle ShowInscribedLiftersController
-rectangle LiftersDAO
-rectangle Lifter
-rectangle IntroduceWeighinDataController
-rectangle WeighinsDAO
-rectangle Weighin
+boundary CompetitionSecretaryPlayView
+control ShowInscribedLiftersController
+control LiftersDAO
+entity Lifter
+control IntroduceWeighinDataController
+control WeighinsDAO
+entity Weighin
 
 user -right-> WelcomeView
 
@@ -43,7 +43,7 @@ note on link
   findByUsernameAndPassword(username, password)
 end note
 
-UsersDAO .right. CompetitionSecretary
+UsersDAO .right. "0..1" CompetitionSecretary
 
 LoginView --> CompetitionSecretaryView
 note on link
@@ -65,7 +65,7 @@ note on link
   findAll()
 end note
 
-CompetitionsDAO .right. Competition
+CompetitionsDAO .right. "0..*" Competition
 
 ShowCompetitionsView --> CompetitionSecretaryEditBatchView
 note on link
@@ -82,7 +82,7 @@ note on link
   findByCompetitionId(competitionId)
 end note
 
-BatchesDAO .right. Batch
+BatchesDAO .right. "0..*" Batch
 
 CompetitionSecretaryEditBatchView --> CompetitionSecretaryPlayView
 note on link
@@ -99,7 +99,7 @@ note on link
   findByCompetitionId(competitionId)
 end note
 
-LiftersDAO .right. Lifter
+LiftersDAO .right. "0..*" Lifter
 
 CompetitionSecretaryPlayView --> IntroduceWeighinDataController
 note on link
@@ -115,6 +115,6 @@ note on link
   save(weighin)
 end note
 
-WeighinsDAO .right. Weighin
+WeighinsDAO .right. "1" Weighin
 
 @enduml
