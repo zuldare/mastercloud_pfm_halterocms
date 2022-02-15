@@ -3,11 +3,14 @@ node webClient
 node webServer
 node dataBaseServer
 component browser
+component halteroCmsClient
 component "webServer" as webServerComponent
 component Tomcat
 component halteroCmsService.war
 component dbServer
 component MySQL
+
+folder views
 
 folder rest
 folder controllers
@@ -16,6 +19,7 @@ folder models
 
 webClient -r- webServer : http
 webClient -[hidden]- browser
+webClient *-d- halteroCmsClient
 
 webServer -r- dataBaseServer : jdbc
 webServer *-- webServerComponent
@@ -26,7 +30,9 @@ webServer *-- halteroCmsService.war
 dataBaseServer *-- dbServer
 dbServer <|-- MySQL
 
-browser ..> webServerComponent : use
+browser ..> halteroCmsClient : use
+halteroCmsClient .r.> webServerComponent : use
+halteroCmsClient ..> views
 halteroCmsService.war .r.> dbServer : use
 
 halteroCmsService.war ..> rest
