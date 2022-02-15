@@ -1,0 +1,37 @@
+@startuml
+node webClient
+node webServer
+node dataBaseServer
+component browser
+component "webServer" as webServerComponent
+component Tomcat
+component halteroCmsService.war
+component dbServer
+component MySQL
+
+folder rest
+folder controllers
+folder daos
+folder models
+
+webClient -r- webServer : http
+webClient -[hidden]- browser
+
+webServer -r- dataBaseServer : jdbc
+webServer *-- webServerComponent
+webServerComponent .r.> halteroCmsService.war : use
+webServerComponent <|-- Tomcat
+webServer *-- halteroCmsService.war
+
+dataBaseServer *-- dbServer
+dbServer <|-- MySQL
+
+browser ..> webServerComponent : use
+halteroCmsService.war .r.> dbServer : use
+
+halteroCmsService.war ..> rest
+halteroCmsService.war ..> controllers
+halteroCmsService.war ..> daos
+halteroCmsService.war ..> models
+
+@enduml
