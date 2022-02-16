@@ -1,0 +1,58 @@
+@startuml
+'left to right direction
+
+boundary XView #skyblue
+control YController #olive
+entity ZEntities #orange
+
+boundary "XTemplate model <HTML templates>" as template #skyblue
+boundary "XStyle view <CSS>" as css #skyblue
+boundary "XBean presenter <Java Beans>" as javaBean #skyblue
+control "YGateway <API REST>" as apiRest #olive
+control "YApiController <Controller>" as apiController #olive
+control "YBusinessController <Service>" as service  #olive
+
+XView --right---> YController
+YController ---right--> ZEntities
+
+
+
+css <-left- template
+template -right-> javaBean
+
+
+YController <..down.. apiRest :<<trace>>
+
+XView <.... template : <<trace>>
+XView <.... css : <<trace>>
+XView <.... javaBean : <<trace>>
+
+javaBean -> apiRest
+
+YController <.... apiController : <<trace>>
+YController <.... service : <<trace>>
+
+apiRest ..right..> apiController : <<trace>>
+apiController -right--> service
+
+entity "ZModel <Java DTO>" as zModel #orange
+entity "ZDto <Java DTO>" as zDto #orange
+entity "ZDao <Java>" as zDao #orange
+entity "ZEntity <Java Entity>" as zEntity #orange
+
+XView -down-> zEntity
+YController -----> zEntity
+
+zModel ..up.> zEntity : <<trace>>
+zModel ..right.> zDto: <<trace>>
+'zDto ..up.> ZEntities: <<trace>>
+zEntity <-- zDto
+zDao --> zEntity
+service --> zDto
+
+apiRest --> zModel
+apiController --down-> zDto
+service --> zDao
+javaBean --> zModel
+
+@enduml

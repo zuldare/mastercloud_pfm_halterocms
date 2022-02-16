@@ -1,0 +1,10 @@
+Al ser spring boot valdría con poner que es la clase "Application"
+
+
+@SpringBootApplication(scanBasePackages = "com.pfm.halterocms")
+public class HalteroCMSApplication {
+
+    public static void main(String... args) {
+        SpringApplication.run(HalteroCMSApplication.class, args);
+    }
+}
