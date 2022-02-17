@@ -5,16 +5,37 @@ boundary XView #skyblue
 control YController #olive
 entity ZEntities #orange
 
-boundary "XTemplate model <HTML templates>" as template #skyblue
-boundary "XStyle view <CSS>" as css #skyblue
-boundary "XBean presenter <Java Beans>" as javaBean #skyblue
-control "YGateway <API REST>" as apiRest #olive
-control "YApiController <Controller>" as apiController #olive
-control "YBusinessController <Service>" as service  #olive
 
+package Thymeleaf {
+  entity "XTemplate <HTML templates>" as template #skyblue
+  boundary "XStyle <CSS>" as css #skyblue
+  control "XBean <Java Beans>" as javaBean #skyblue
+}
+
+package SpringBoot {
+
+  control "YResource <API REST>  HAY QUE BORRARLO" as apiRest #olive
+  control "YApiController <RestController>" as apiController #olive
+  control "YBusinessController <Service>" as service  #olive
+
+' AQUI HAY QUE MODIFICAR BIEN ¿Cúal es el dto de entrada
+  entity "ZModel <Java DTO>" as zModel #orange
+  entity "ZDto <Java DTO>" as zDto #orange
+  entity "ZDao <Repository>" as zDao #orange
+  entity "ZEntity <Java Entity>" as zEntity #orange
+}
+
+database db <<MySQL>>
+' añadirle propiedades de la base de datos pass, users, database name
+' pintar una request de entrada e
+' pintar una response de salida
+
+
+javaBean --> apiController
 XView --right---> YController
 YController ---right--> ZEntities
 
+zDao -right--> db
 
 
 css <-left- template
@@ -35,10 +56,7 @@ YController <.... service : <<trace>>
 apiRest ..right..> apiController : <<trace>>
 apiController -right--> service
 
-entity "ZModel <Java DTO>" as zModel #orange
-entity "ZDto <Java DTO>" as zDto #orange
-entity "ZDao <Java>" as zDao #orange
-entity "ZEntity <Java Entity>" as zEntity #orange
+
 
 XView -down-> zEntity
 YController -----> zEntity

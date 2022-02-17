@@ -1,11 +1,16 @@
 @startuml
+'REVISAR Y PONER DIRECCIONES EN LAS FLECHAS
+'OJO CON LOS NOMBRES
+' TENEMOS QUE REVISARLO MAS CONCIENZUDAMENTE
+
+
 node webClient
 node webServer
 node dataBaseServer
 component browser
 component halteroCmsClient
-component "webServer" as webServerComponent
-component Tomcat
+component "webServer" <<Tomcat>> as webServerComponent
+
 component halteroCmsService.war
 component dbServer
 component MySQL
@@ -17,21 +22,22 @@ folder controllers
 folder daos
 folder models
 
-webClient -r- webServer : http
+webClient -r-> webServer : http
 webClient -[hidden]- browser
-webClient *-d- halteroCmsClient
+webServer *-d-> halteroCmsClient
 
+
+webClient *--> browser
 webServer -r- dataBaseServer : jdbc
 webServer *-- webServerComponent
 webServerComponent .r.> halteroCmsService.war : use
-webServerComponent <|-- Tomcat
 webServer *-- halteroCmsService.war
 
 dataBaseServer *-- dbServer
 dbServer <|-- MySQL
 
 browser ..> halteroCmsClient : use
-halteroCmsClient .r.> webServerComponent : use
+halteroCmsClient <.r. webServerComponent : use
 halteroCmsClient ..> views
 halteroCmsService.war .r.> dbServer : use
 

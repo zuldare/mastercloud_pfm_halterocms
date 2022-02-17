@@ -8,3 +8,7 @@ public class HalteroCMSApplication {
         SpringApplication.run(HalteroCMSApplication.class, args);
     }
 }
+
+
+
+el api es justo lo que estabamos haciendo que mensajes le pasa la vista al controlador
