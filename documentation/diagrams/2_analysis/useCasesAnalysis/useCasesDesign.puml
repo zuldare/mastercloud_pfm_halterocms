@@ -18,7 +18,6 @@ package SpringBoot {
   control "YApiController <RestController>" as apiController #olive
   control "YBusinessController <Service>" as service  #olive
 
-' AQUI HAY QUE MODIFICAR BIEN ¿Cúal es el dto de entrada
   entity "ZModel <Java DTO>" as zModel #orange
   entity "ZDto <Java DTO>" as zDto #orange
   entity "ZDao <Repository>" as zDao #orange
@@ -26,6 +25,7 @@ package SpringBoot {
 }
 
 database db <<MySQL>>
+' PREGUNTAR A LUIS EL XQ PONERLO EN EL DIAGRAMA
 ' añadirle propiedades de la base de datos pass, users, database name
 ' pintar una request de entrada e
 ' pintar una response de salida
@@ -35,14 +35,12 @@ javaBean --> apiController
 XView --right---> YController
 YController ---right--> ZEntities
 
-zDao -right--> db
+zDao -right--> db : "mysql:://10.X.X.X:puerto/database?user=XX?password=xxx"
 
 apiController --> zModel
 
 css <-left- template
 template -right-> javaBean
-
-
 
 
 XView <.... template : <<trace>>
@@ -54,22 +52,19 @@ XView <.... javaBean : <<trace>>
 YController <.... apiController : <<trace>>
 YController <.... service : <<trace>>
 
-'apiRest ..right..> apiController : <<trace>>
 apiController -right--> service
 
 
 
 XView -down-> zEntity
-YController -----> zEntity
+YController -> zEntity
 
 zModel ..up.> zEntity : <<trace>>
 zModel ..right.> zDto: <<trace>>
-'zDto ..up.> ZEntities: <<trace>>
 zEntity <-- zDto
 zDao --> zEntity
 service --> zDto
 
-'apiRest --> zModel
 apiController --down-> zDto
 service --> zDao
 javaBean --> zModel
