@@ -14,7 +14,7 @@ package Thymeleaf {
 
 package SpringBoot {
 
-  control "YResource <API REST>  HAY QUE BORRARLO" as apiRest #olive
+'  control "YResource <API REST>  HAY QUE BORRARLO" as apiRest #olive
   control "YApiController <RestController>" as apiController #olive
   control "YBusinessController <Service>" as service  #olive
 
@@ -37,23 +37,24 @@ YController ---right--> ZEntities
 
 zDao -right--> db
 
+apiController --> zModel
 
 css <-left- template
 template -right-> javaBean
 
 
-YController <..down.. apiRest :<<trace>>
+
 
 XView <.... template : <<trace>>
 XView <.... css : <<trace>>
 XView <.... javaBean : <<trace>>
 
-javaBean -> apiRest
+
 
 YController <.... apiController : <<trace>>
 YController <.... service : <<trace>>
 
-apiRest ..right..> apiController : <<trace>>
+'apiRest ..right..> apiController : <<trace>>
 apiController -right--> service
 
 
@@ -68,7 +69,7 @@ zEntity <-- zDto
 zDao --> zEntity
 service --> zDto
 
-apiRest --> zModel
+'apiRest --> zModel
 apiController --down-> zDto
 service --> zDao
 javaBean --> zModel
