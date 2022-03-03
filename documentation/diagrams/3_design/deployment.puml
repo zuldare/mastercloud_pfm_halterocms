@@ -1,5 +1,8 @@
 @startuml
 
+'''NOTA:
+'''AÑADIR AQUÍ LOS DATOS DE CONEXIÓN, NO EN EL DIAGRAMA DE ANÁLISIS
+
 node webServer
 node dataBaseServer
 component browser
