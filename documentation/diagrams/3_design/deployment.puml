@@ -9,6 +9,8 @@ component "webServer" <<Tomcat>> as webServerComponent
 component halteroCmsService.war
 component dbServer <<MySQL>>
 
+file page.html
+
 folder views
 
 folder controllers
@@ -17,6 +19,7 @@ folder models
 
 browser --> webServer : http
 webServer *-d-> halteroCmsClient
+halteroCmsClient .l.> page.html
 
 webServer -r- dataBaseServer : jdbc
 webServer *--> webServerComponent
@@ -25,7 +28,7 @@ webServer *--> halteroCmsService.war
 
 dataBaseServer *--> dbServer
 
-browser ..> halteroCmsClient : renders
+browser ..> page.html : renders
 halteroCmsClient <.r. webServerComponent : uses
 halteroCmsClient ..> views
 halteroCmsService.war .r.> dbServer : uses
