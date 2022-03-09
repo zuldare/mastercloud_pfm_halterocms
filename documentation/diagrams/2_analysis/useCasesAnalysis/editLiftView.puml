@@ -1,0 +1,120 @@
+@startuml
+actor user as "Competition\nSecretary"
+
+boundary WelcomeView
+boundary LoginView
+control LoginController
+control UsersDAO
+entity CompetitionSecretary
+
+boundary CompetitionSecretaryView
+boundary ShowCompetitionsView
+control ShowCompetitionsController
+control CompetitionsDAO
+entity Competition
+
+boundary CompetitionSecretaryEditBatchView
+control ShowBatchesController
+control BatchesDAO
+entity Batch
+
+boundary CompetitionSecretaryPlayView
+control ShowInscribedLiftersController
+control LiftersDAO
+entity Lifter
+control IntroduceLiftDataController
+control LiftDAO
+entity Lift
+
+user -right-> WelcomeView
+
+WelcomeView --> LoginView
+note on link
+  new LoginView()
+end note
+
+LoginView -right-> LoginController
+note on link
+  login(username, password)
+end note
+
+LoginController -right-> UsersDAO
+note on link
+  findByUsernameAndPassword(username, password)
+end note
+
+UsersDAO .right. "0..1" CompetitionSecretary
+
+LoginView --> CompetitionSecretaryView
+note on link
+  new CompetitionSecretaryView()
+end note
+
+CompetitionSecretaryView --> ShowCompetitionsView
+note on link
+  new ShowCompetitionsView()
+end note
+
+ShowCompetitionsView -right-> ShowCompetitionsController
+note on link
+  getCompetitions()
+end note
+
+ShowCompetitionsController -right-> CompetitionsDAO
+note on link
+  findAll()
+end note
+
+CompetitionsDAO .right. "0..*" Competition
+
+ShowCompetitionsView --> CompetitionSecretaryEditBatchView
+note on link
+  new CompetitionSecretaryEditBatchView(competitionId)
+end note
+
+CompetitionSecretaryEditBatchView -right-> ShowBatchesController
+note on link
+  getCompetitionBatches(competitionId)
+end note
+
+ShowBatchesController -right-> BatchesDAO
+note on link
+  findByCompetitionId(competitionId)
+end note
+
+BatchesDAO .right. "0..*" Batch
+
+CompetitionSecretaryEditBatchView --> CompetitionSecretaryPlayView
+note on link
+  new CompetitionSecretaryPlayView(competitionId, batchId)
+end note
+
+CompetitionSecretaryPlayView -right-> ShowInscribedLiftersController
+note on link
+  getCompetitionLifters(competitionId)
+end note
+
+ShowInscribedLiftersController -right-> LiftersDAO
+note on link
+  findByCompetitionId(competitionId)
+end note
+
+LiftersDAO .right. "0..*" Lifter
+
+CompetitionSecretaryPlayView --> IntroduceLiftDataController
+note on link
+  lift = new Lift(
+      lifter, liftType,
+      liftOrder, liftValue
+  )
+  addLift(lift)
+end note
+
+IntroduceLiftDataController -right-> LiftDAO
+note on link
+  save(lift)
+end note
+
+LiftDAO .right. "1" Lift
+
+@enduml
