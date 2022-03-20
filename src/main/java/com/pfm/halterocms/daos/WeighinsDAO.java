@@ -1,9 +1,7 @@
 package com.pfm.halterocms.daos;
 
 import com.pfm.halterocms.models.Weighin;
+import org.springframework.data.repository.CrudRepository;
 
-public class WeighinsDAO {
-    public Weighin save(Weighin weighin) {
-        return weighin;
-    }
+public interface WeighinsDAO extends CrudRepository<Weighin, Integer> {
 }

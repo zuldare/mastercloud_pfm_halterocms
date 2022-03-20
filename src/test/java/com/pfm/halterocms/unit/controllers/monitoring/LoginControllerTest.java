@@ -23,11 +23,11 @@ public class LoginControllerTest {
         String password = "pass";
         User foundUser = new User(username, password);
 
-        when(usersDAO.findByUsernameAndPassword(username, password)).thenReturn(foundUser);
+        when(usersDAO.findOneByUsernameAndPassword(username, password)).thenReturn(foundUser);
 
         String targetView = sut.login(username, password);
 
         assertThat(targetView, is("competition-secretary"));
-        verify(usersDAO, times(1)).findByUsernameAndPassword(username, password);
+        verify(usersDAO, times(1)).findOneByUsernameAndPassword(username, password);
     }
 }

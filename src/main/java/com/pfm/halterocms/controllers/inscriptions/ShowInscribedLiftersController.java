@@ -16,7 +16,7 @@ public class ShowInscribedLiftersController {
 
     public String getCompetitionLifters(String competitionId, Model model) {
 
-        List<Lifter> competitionLifters = liftersDAO.findByCompetitionId(competitionId);
+        List<Lifter> competitionLifters = liftersDAO.findAllByCompetitionId(competitionId);
         model.addAttribute("lifters", competitionLifters);
 
         return "competition-secretary-play";

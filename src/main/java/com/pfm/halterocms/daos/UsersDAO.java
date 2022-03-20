@@ -1,9 +1,9 @@
 package com.pfm.halterocms.daos;
 
 import com.pfm.halterocms.models.User;
+import org.springframework.data.repository.CrudRepository;
 
-public class UsersDAO {
-    public User findByUsernameAndPassword(String username, String password) {
-        return null;
-    }
+public interface UsersDAO extends CrudRepository<User, Integer> {
+
+    User findOneByUsernameAndPassword(String username, String password);
 }

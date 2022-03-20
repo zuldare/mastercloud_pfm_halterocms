@@ -1,12 +1,8 @@
 package com.pfm.halterocms.daos;
 
 import com.pfm.halterocms.models.Competition;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+public interface CompetitionsDAO extends CrudRepository<Competition, Integer> {
 
-public class CompetitionsDAO {
-
-    public List<Competition> findAll() {
-        return null;
-    }
 }

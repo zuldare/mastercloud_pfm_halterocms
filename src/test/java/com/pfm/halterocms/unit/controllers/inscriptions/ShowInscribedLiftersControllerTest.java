@@ -29,12 +29,12 @@ public class ShowInscribedLiftersControllerTest {
 
         List<Lifter> lifters = Arrays.asList(new Lifter(), new Lifter(), new Lifter());
 
-        when(liftersDAO.findByCompetitionId(competitionId)).thenReturn(lifters);
+        when(liftersDAO.findAllByCompetitionId(competitionId)).thenReturn(lifters);
 
         String targetView = sut.getCompetitionLifters(competitionId, model);
 
         assertThat(targetView, is("competition-secretary-play"));
-        verify(liftersDAO, times(1)).findByCompetitionId(competitionId);
+        verify(liftersDAO, times(1)).findAllByCompetitionId(competitionId);
         verify(model).addAttribute("lifters", lifters);
     }
 

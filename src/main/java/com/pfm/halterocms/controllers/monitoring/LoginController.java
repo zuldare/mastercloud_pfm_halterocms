@@ -11,7 +11,7 @@ public class LoginController {
     }
 
     public String login(String username, String password) {
-        usersDAO.findByUsernameAndPassword(username, password);
+        usersDAO.findOneByUsernameAndPassword(username, password);
         return "competition-secretary";
     }
 }

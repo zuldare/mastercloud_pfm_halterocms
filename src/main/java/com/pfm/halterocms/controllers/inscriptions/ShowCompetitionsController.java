@@ -15,7 +15,7 @@ public class ShowCompetitionsController {
     }
 
     public String getCompetitions(Model model) {
-        List<Competition> competitions = competitionsDAO.findAll();
+        Iterable<Competition> competitions = competitionsDAO.findAll();
         model.addAttribute("competitions", competitions);
 
         return "show-competitions";
