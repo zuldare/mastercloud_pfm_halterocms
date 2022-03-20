@@ -16,5 +16,4 @@ public class IntroduceWeighinDataController {
         return "redirect:/competition-secretary-play";
     }
 
-
 }
