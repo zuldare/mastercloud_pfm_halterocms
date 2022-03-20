@@ -24,7 +24,7 @@ public class ShowInscribedLiftersControllerTest {
 
     @Test
     public void whenGetCompetitionLiftersThenShouldCallDAOAndRetrieveTheLifters() {
-        String competitionId = "123";
+        Integer competitionId = 123;
         Model model = mock(Model.class);
 
         List<Lifter> lifters = Arrays.asList(new Lifter(), new Lifter(), new Lifter());

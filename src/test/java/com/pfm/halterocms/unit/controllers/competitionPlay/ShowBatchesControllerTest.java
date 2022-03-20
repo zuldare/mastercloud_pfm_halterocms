@@ -23,7 +23,7 @@ public class ShowBatchesControllerTest {
 
     @Test
     public void whenGetCompetitionBatchesThenShouldCallDAOAndRetrieveTheBatches() {
-        String competitionId = "123";
+        Integer competitionId = 123;
         Model model = mock(Model.class);
 
         List<Batch> batches = Arrays.asList(new Batch(), new Batch(), new Batch());

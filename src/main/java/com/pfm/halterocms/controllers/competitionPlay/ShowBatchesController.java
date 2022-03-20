@@ -14,7 +14,7 @@ public class ShowBatchesController {
         this.batchesDAO = batchesDAO;
     }
 
-    public String getCompetitionBatches(String competitionId, Model model) {
+    public String getCompetitionBatches(Integer competitionId, Model model) {
         List<Batch> competitionBatches = batchesDAO.findByCompetitionId(competitionId);
         model.addAttribute("batches", competitionBatches);
 

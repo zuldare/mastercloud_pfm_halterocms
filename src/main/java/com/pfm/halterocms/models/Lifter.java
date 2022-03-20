@@ -10,5 +10,5 @@ public class Lifter {
     private Integer id;
 
     @Column
-    private String competitionId;
+    private Integer competitionId;
 }

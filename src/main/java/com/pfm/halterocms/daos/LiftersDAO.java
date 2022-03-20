@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface LiftersDAO extends CrudRepository<Lifter, Integer> {
 
-    List<Lifter> findAllByCompetitionId(String competitionId);
+    List<Lifter> findAllByCompetitionId(Integer competitionId);
 }

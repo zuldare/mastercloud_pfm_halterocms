@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface BatchesDAO extends CrudRepository<Batch, Integer> {
 
-    List<Batch> findByCompetitionId(String competitionId);
+    List<Batch> findByCompetitionId(Integer competitionId);
 }
