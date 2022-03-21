@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  mysql:
+    container_name: mysql
+    image: mysql/mysql-server:8.0.28-1.2.7-server
+    command: --default-authentication-plugin=mysql_native_password --sql_mode='NO_ENGINE_SUBSTITUTION'
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'halterocms'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
