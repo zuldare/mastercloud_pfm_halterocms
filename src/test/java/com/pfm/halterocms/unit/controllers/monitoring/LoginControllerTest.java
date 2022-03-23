@@ -14,20 +14,33 @@ import static org.mockito.Mockito.*;
 @ExtendWith(SpringExtension.class)
 public class LoginControllerTest {
 
+    private final String username = "user";
+    private final String password = "pass";
+    private final String encryptedPassword = "1a1dc91c907325c69271ddf0c944bc72";
+
     private final UsersDAO usersDAO = mock(UsersDAO.class);
     private final LoginController sut = new LoginController(usersDAO);
 
     @Test
-    public void whenLoginThenShouldCallDAOAndFindCompetitionSecretaryProperly() {
-        String username = "user";
-        String password = "pass";
-        User foundUser = new User(username, password);
+    public void whenLogin_ThenShouldCallDAO_AndFindCompetitionSecretary_AndReturnCompetitionSecretaryView() {
+        User foundUser = new User(username, encryptedPassword);
 
-        when(usersDAO.findOneByUsernameAndPassword(username, password)).thenReturn(foundUser);
+        when(usersDAO.findOneByUsernameAndPassword(username, encryptedPassword)).thenReturn(foundUser);
 
         String targetView = sut.login(username, password);
 
-        assertThat(targetView, is("competition-secretary"));
-        verify(usersDAO, times(1)).findOneByUsernameAndPassword(username, password);
+        assertThat(targetView, is("redirect:/competition-secretary"));
+        verify(usersDAO, times(1)).findOneByUsernameAndPassword(username, encryptedPassword);
+    }
+
+    @Test
+    public void whenLoginFails_ThenShouldCallDAOWithoutFindingAnyUser_AndReturnErrorView() {
+
+        when(usersDAO.findOneByUsernameAndPassword(username, encryptedPassword)).thenReturn(null);
+
+        String targetView = sut.login(username, password);
+
+        assertThat(targetView, is("login-error"));
+        verify(usersDAO, times(1)).findOneByUsernameAndPassword(username, encryptedPassword);
     }
 }
