@@ -29,7 +29,7 @@ public class LoginControllerTest {
 
         String targetView = sut.login(username, password);
 
-        assertThat(targetView, is("redirect:/competition-secretary"));
+        assertThat(targetView, is("redirect:/show-competitions"));
         verify(usersDAO, times(1)).findOneByUsernameAndPassword(username, encryptedPassword);
     }
 

@@ -11,4 +11,15 @@ public class Lifter {
 
     @Column
     private Integer competitionId;
+
+    public Lifter() {
+    }
+
+    public Lifter(Integer competitionId) {
+        this.competitionId = competitionId;
+    }
+
+    public Integer getCompetitionId(){
+        return this.competitionId;
+    }
 }

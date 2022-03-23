@@ -2,6 +2,7 @@ package com.pfm.halterocms.controllers.monitoring;
 
 import com.pfm.halterocms.daos.UsersDAO;
 import com.pfm.halterocms.models.User;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -15,6 +16,7 @@ public class LoginController {
         this.usersDAO = usersDAO;
     }
 
+    @GetMapping("/login")
     public String login(String username, String password) {
         try {
             User foundUser = usersDAO.findOneByUsernameAndPassword(username, getMd5(password));
@@ -25,7 +27,7 @@ public class LoginController {
             return "login-error";
         }
 
-        return "redirect:/competition-secretary";
+        return "redirect:/show-competitions";
     }
 
     private String getMd5(String input) {

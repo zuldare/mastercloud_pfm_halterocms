@@ -3,8 +3,7 @@ package com.pfm.halterocms.controllers.inscriptions;
 import com.pfm.halterocms.daos.CompetitionsDAO;
 import com.pfm.halterocms.models.Competition;
 import org.springframework.ui.Model;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
 
 public class ShowCompetitionsController {
 
@@ -14,6 +13,7 @@ public class ShowCompetitionsController {
         this.competitionsDAO = competitionsDAO;
     }
 
+    @GetMapping("/show-competitions")
     public String getCompetitions(Model model) {
         Iterable<Competition> competitions = competitionsDAO.findAll();
         model.addAttribute("competitions", competitions);

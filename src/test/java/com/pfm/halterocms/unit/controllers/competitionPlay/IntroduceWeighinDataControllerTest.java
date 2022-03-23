@@ -20,7 +20,9 @@ public class IntroduceWeighinDataControllerTest {
 
     @Test
     public void whenAddWeighinThenShouldCallDAOAndSaveTheNewWeighin() {
-        Lifter lifter = new Lifter();
+        Integer competitionId = 1234;
+        Lifter lifter = new Lifter(competitionId);
+
         double bodyWeight = 70.5;
         int snatchOpener = 90;
         int cleanAndJerkOpener = 85;
@@ -33,7 +35,7 @@ public class IntroduceWeighinDataControllerTest {
 
         String targetView = sut.addWeighin(weighinToBeAdded);
 
-        assertThat(targetView, is("redirect:/competition-secretary-play"));
+        assertThat(targetView, is("redirect:/show-inscribed-lifters/" + competitionId));
         verify(weighinsDAO, times(1)).save(weighinToBeAdded);
     }
 
