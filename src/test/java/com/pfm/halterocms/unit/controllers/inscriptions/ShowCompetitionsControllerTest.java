@@ -24,7 +24,8 @@ public class ShowCompetitionsControllerTest {
     @Test
     public void whenGetCompetitionsThenShouldCallDAOAndRetrieveTheCompetitions() {
         Model model = mock(Model.class);
-        List<Competition> competitions = Arrays.asList(new Competition(), new Competition(), new Competition());
+        Competition competition = new Competition();
+        List<Competition> competitions = Arrays.asList(competition, competition, competition);
 
         when(competitionsDAO.findAll()).thenReturn(competitions);
 

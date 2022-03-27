@@ -1,27 +1,34 @@
 package com.pfm.halterocms.controllers.competitionPlay;
 
 import com.pfm.halterocms.daos.BatchesDAO;
+import com.pfm.halterocms.daos.CompetitionsDAO;
 import com.pfm.halterocms.models.Batch;
+import com.pfm.halterocms.models.Competition;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-public class ShowBatchesController {
+public class ShowCompetitionBatchesController {
 
     private final BatchesDAO batchesDAO;
+    private final CompetitionsDAO competitionsDAO;
 
-    public ShowBatchesController(BatchesDAO batchesDAO) {
+    public ShowCompetitionBatchesController(BatchesDAO batchesDAO, CompetitionsDAO competitionsDAO) {
         this.batchesDAO = batchesDAO;
+        this.competitionsDAO = competitionsDAO;
     }
 
-    @GetMapping("/show-batches/{competitionId}")
+    @GetMapping("/show-competition-batches/{competitionId}")
     public String getCompetitionBatches(@PathVariable("competitionId") Integer competitionId, Model model) {
         List<Batch> competitionBatches = batchesDAO.findByCompetitionId(competitionId);
-        model.addAttribute("batches", competitionBatches);
+        Competition batchesCompetition = competitionsDAO.findById(competitionId).orElse(null);
 
-        return "competition-secretary-edit-batch";
+        model.addAttribute("batches", competitionBatches);
+        model.addAttribute("batchesCompetition", batchesCompetition);
+
+        return "show-competition-batches";
     }
 
 }
