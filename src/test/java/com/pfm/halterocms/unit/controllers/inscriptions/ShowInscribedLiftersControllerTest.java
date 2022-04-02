@@ -14,7 +14,6 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 @ExtendWith(SpringExtension.class)
 public class ShowInscribedLiftersControllerTest {
@@ -23,7 +22,7 @@ public class ShowInscribedLiftersControllerTest {
     private final ShowInscribedLiftersController sut = new ShowInscribedLiftersController(liftersDAO);
 
     @Test
-    public void whenGetCompetitionLiftersThenShouldCallDAOAndRetrieveTheLifters() {
+    public void whenShowInscribedLiftersThenShouldCallDAOAndRetrieveTheLiftersAndWeighins() {
         Integer competitionId = 123;
         Model model = mock(Model.class);
 
@@ -33,9 +32,8 @@ public class ShowInscribedLiftersControllerTest {
 
         String targetView = sut.getCompetitionLifters(competitionId, model);
 
-        assertThat(targetView, is("competition-secretary-play"));
+        assertThat(targetView, is("show-inscribed-lifters"));
         verify(liftersDAO, times(1)).findAllByCompetitionId(competitionId);
         verify(model).addAttribute("lifters", lifters);
     }
-
 }

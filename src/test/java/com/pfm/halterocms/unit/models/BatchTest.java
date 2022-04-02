@@ -1,7 +1,6 @@
 package com.pfm.halterocms.unit.models;
 
-import com.pfm.halterocms.models.Batch;
-import com.pfm.halterocms.models.Competition;
+import com.pfm.halterocms.models.*;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -9,6 +8,7 @@ import java.time.LocalTime;
 import java.time.Month;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 
 public class BatchTest {
@@ -39,6 +39,10 @@ public class BatchTest {
         assertThat(batchToVerify.getDate(), is(date));
         assertThat(batchToVerify.getWeighinTime(), is(weighinTime));
         assertThat(batchToVerify.getStartTime(), is(startTime));
+
+        assertThat(batchToVerify.getLifters(), is(empty()));
+        batchToVerify.getLifters().add(new BatchLifter());
+        assertThat(batchToVerify.getLifters().size(), is(1));
 
 
     }
