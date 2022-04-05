@@ -5,6 +5,7 @@ import com.pfm.halterocms.daos.WeighinsDAO;
 import com.pfm.halterocms.dtos.WeighinDataDto;
 import com.pfm.halterocms.models.BatchLifter;
 import com.pfm.halterocms.models.Weighin;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+@Controller
 public class CompetitionSecretaryPlayController {
 
     private final BatchLiftersDAO batchLiftersDAO;

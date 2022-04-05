@@ -2,12 +2,14 @@ package com.pfm.halterocms.controllers.inscriptions;
 
 import com.pfm.halterocms.daos.LiftersDAO;
 import com.pfm.halterocms.models.Lifter;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
+@Controller
 public class ShowInscribedLiftersController {
 
     private final LiftersDAO liftersDAO;

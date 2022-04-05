@@ -2,9 +2,11 @@ package com.pfm.halterocms.controllers.inscriptions;
 
 import com.pfm.halterocms.daos.CompetitionsDAO;
 import com.pfm.halterocms.models.Competition;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+@Controller
 public class ShowCompetitionsController {
 
     private final CompetitionsDAO competitionsDAO;

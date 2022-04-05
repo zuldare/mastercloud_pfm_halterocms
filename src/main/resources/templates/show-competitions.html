@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div>
+    <div class="col-12">
+        <h2>Competitions</h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="competition : ${competitions}">
+                <td th:text="${competition.name}"></td>
+                <td th:text="${competition.type}"></td>
+                <td th:text="${competition.startDate}"></td>
+                <td th:text="${competition.endDate}"></td>
+                <td>
+                    <a class="btn btn-warning" th:href="@{/show-competition-batches/} + ${competition.id}">Edit <i
+                            class="fa fa-edit"></i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

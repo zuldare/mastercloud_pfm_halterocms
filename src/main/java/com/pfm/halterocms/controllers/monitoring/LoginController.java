@@ -2,12 +2,14 @@ package com.pfm.halterocms.controllers.monitoring;
 
 import com.pfm.halterocms.daos.UsersDAO;
 import com.pfm.halterocms.models.User;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+@Controller
 public class LoginController {
 
     private final UsersDAO usersDAO;
