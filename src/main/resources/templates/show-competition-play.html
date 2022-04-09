@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div>
+    <a class="btn btn-warning" th:href="@{/show-competition-batches/} + ${batch.competition.id}">Back </a>
+    <h2>Competition play</h2>
+    <div>
+        <h3 th:text="'Batch ' + ${batch.id}"></h3>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Draw</th>
+                <th>Lifter</th>
+                <th>Club</th>
+                <th>Birth year</th>
+                <th>Body Weight</th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="batchLifter : ${batchLifters}">
+                <td th:text="${batchLifter.drawOrder}"></td>
+                <td th:text="${batchLifter.lifter.name}"></td>
+                <td th:text="${batchLifter.lifter.club}"></td>
+                <td th:text="${batchLifter.lifter.birthYear}"></td>
+                <td th:text="${batchLifter.weighin.bodyWeight}"></td> <!-- TODO: input -->
+                <td th:text="${batchLifter.lifter.category}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3>Lift Changes</h3>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Snatch #1</th>
+                <th>Clean & Jerk #1</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Opener</th>
+                <th>Opener</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="batchLifter : ${batchLifters}">
+                <td th:text="${batchLifter.lifter.name}"></td>
+                <td th:text="${batchLifter.weighin.snatchOpener}"></td> <!-- TODO: input -->
+                <td th:text="${batchLifter.weighin.cleanAndJerkOpener}"></td> <!-- TODO: input -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

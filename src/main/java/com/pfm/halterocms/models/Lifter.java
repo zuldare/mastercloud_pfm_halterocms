@@ -11,6 +11,18 @@ public class Lifter {
     private Integer id;
 
     @Column
+    private String name;
+
+    @Column
+    private String club;
+
+    @Column
+    private String birthYear;
+
+    @Column
+    private String category;
+
+    @Column
     private Integer competitionId;
 
     public Lifter() {
@@ -36,6 +48,22 @@ public class Lifter {
 
     public Integer getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getClub() {
+        return club;
+    }
+
+    public String getBirthYear() {
+        return birthYear;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public Integer getCompetitionId(){

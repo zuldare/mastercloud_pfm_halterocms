@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div>
+    <a class="btn btn-warning" th:href="@{/show-competitions}">Back</a>
+    <h2>Competition</h2>
+    <div>
+        Name: <p th:text=${batchesCompetition.name}></p>
+        Location: <p th:text=${batchesCompetition.location}></p>
+    </div>
+    <div>
+        Start date: <p th:text=${batchesCompetition.startDate}></p>
+        End date: <p th:text=${batchesCompetition.endDate}></p>
+    </div>
+    <div>
+        Inscription start date: <p th:text=${batchesCompetition.inscriptionStartDate}></p>
+        Inscription end date: <p th:text=${batchesCompetition.inscriptionEndDate}></p>
+    </div>
+    <div>
+        Organizer: <p th:text=${batchesCompetition.organizer}></p>
+        Type: <p th:text=${batchesCompetition.type}></p>
+    </div>
+    <div class="col-12">
+        <h3>Batches</h3>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Platform</th>
+                <th>Date</th>
+                <th>Weighin Time</th>
+                <th>Start Time</th>
+                <th>Gender</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="batch : ${batches}">
+                <td th:text="'Batch ' + ${batch.id}"></td>
+                <td th:text="${batch.platform}"></td>
+                <td th:text="${batch.date}"></td>
+                <td th:text="${batch.weighinTime}"></td>
+                <td th:text="${batch.startTime}"></td>
+                <td th:text="${batch.gender}"></td>
+                <td>
+                    <a class="btn btn-warning" th:href="@{/show-competition-play/} + ${batch.id}">Play </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

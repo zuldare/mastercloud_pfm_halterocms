@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <body>
 <div>
-    <div class="col-12">
+    <div>
         <h2>Competitions</h2>
         <table class="table table-bordered">
             <thead>
@@ -21,8 +21,7 @@
                 <td th:text="${competition.startDate}"></td>
                 <td th:text="${competition.endDate}"></td>
                 <td>
-                    <a class="btn btn-warning" th:href="@{/show-competition-batches/} + ${competition.id}">Edit <i
-                            class="fa fa-edit"></i></a>
+                    <a class="btn btn-warning" th:href="@{/show-competition-batches/} + ${competition.id}">Edit </a>
                 </td>
             </tr>
             </tbody>
