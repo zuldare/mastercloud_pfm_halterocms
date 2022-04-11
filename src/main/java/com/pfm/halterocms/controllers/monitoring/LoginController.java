@@ -20,6 +20,11 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(String username, String password) {
+
+        // TODO CHECK WITH NATALIA THE USE OF
+        //      Optional<User> = userDa.findOneBy.....
+        //      so we could transform this code to
+        //      usersDao.findOneByUs..() .orElse("login-error")
         try {
             User foundUser = usersDAO.findOneByUsernameAndPassword(username, getMd5(password));
             if(foundUser == null) {

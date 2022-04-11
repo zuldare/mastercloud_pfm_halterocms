@@ -73,7 +73,7 @@ object Lift
 
 enum LiftType {
   SNATCH
-  CLEAN_&_JERK
+  CLEAN_AND_JERK
 }
 
 enum LiftStatus {
