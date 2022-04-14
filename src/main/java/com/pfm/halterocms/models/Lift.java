@@ -1,8 +1,5 @@
 package com.pfm.halterocms.models;
 
-import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
-
 //TODO complete
 public class Lift {
 

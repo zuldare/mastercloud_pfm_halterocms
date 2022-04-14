@@ -1,6 +1,5 @@
 package com.pfm.halterocms.models;
 
-import javax.persistence.*;
 import java.util.List;
 
 //TODO complete
