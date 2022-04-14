@@ -27,37 +27,42 @@
             </tbody>
         </table>
         <h3>Lift Changes</h3>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th></th>
-                <th></th>
-                <th>Snatch #1</th>
-                <th>Clean & Jerk #1</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th>Body Weight</th>
-                <th>Opener</th>
-                <th>Opener</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="batchLifter : ${batchLifters}">
-                <td th:text="${batchLifter.lifter.name}"></td>
-                <td th:text="${batchLifter.weighin.bodyWeight}"></td> <!-- TODO: input -->
-                <td th:text="${batchLifter.weighin.snatchOpener}"></td> <!-- TODO: input -->
-                <td th:text="${batchLifter.weighin.cleanAndJerkOpener}"></td> <!-- TODO: input -->
-                <td>
-                    <form method="POST" th:action="@{/introduce-weighin-body-weight}">
-                        <input type="hidden" name="batchId" id="batchId" th:value="${batch.id}"/>
-                        <input type="hidden" name="bodyWeight" id="bodyWeight" th:value="${batchLifter.weighin.bodyWeight}"/>
-                        <button type="submit" name="submit" value="value" class="link-button">Update</button>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <form method="POST" th:action="@{/introduce-weighin-body-weight}">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Snatch #1</th>
+                    <th>Clean & Jerk #1</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Body Weight</th>
+                    <th>Opener</th>
+                    <th>Opener</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="batchLifter : ${batchLifters}">
+                    <td th:text="${batchLifter.lifter.name}"></td>
+                    <td>
+                        <input type="text" name="bodyWeight" id="bodyWeight" th:value="${batchLifter.weighin.bodyWeight}"/>
+                    </td>
+                    <td>
+                        <input type="text" name="snatchOpener" id="snatchOpener" th:value="${batchLifter.weighin.snatchOpener}"/>
+                    </td>
+                    <td>
+                        <input type="text" name="cleanAndJerkOpener" id="cleanAndJerkOpener" th:value="${batchLifter.weighin.cleanAndJerkOpener}"/>
+                    </td>
+                    <td>
+                            <input type="hidden" name="batchId" id="batchId" th:value="${batch.id}"/>
+                            <button type="submit" name="submit" value="value" class="link-button">Update</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
     </div>
 </div>
 </body>
