@@ -20,6 +20,8 @@ public class Batch {
     @Column
     private String platform;
 
+    //TODO refactor to Enum and use enumeration capabilities
+    // https://www.baeldung.com/jpa-persisting-enums-in-jpa
     @Column
     private String gender;
 
