@@ -61,9 +61,4 @@ public class CompetitionSecretaryPlayController {
         return "redirect:/show-competition-play/" + weighinDataDto.getBatchId();
     }
 
-    @PostMapping("/introduce-weighin-body-weight")
-    public String introduceWeighinBodyWeight(@ModelAttribute("weighinDataDto") WeighinDataDto weighinDataDto) {
-        return "redirect:/show-competition-play/" + weighinDataDto.getBatchId();
-    }
-
 }

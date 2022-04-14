@@ -57,8 +57,11 @@ public class CompetitionSecretaryPlayControllerTest {
 
         Lifter lifter = new Lifter();
         Batch batch = new Batch();
+        Weighin weighin = mock(Weighin.class);
+        when(weighin.getId()).thenReturn(20);
+
         BatchLifter foundBatchLifter = new BatchLifter(
-                batchLifterId, drawOrder, batch, lifter, null
+                batchLifterId, drawOrder, batch, lifter, weighin
         );
 
         WeighinDataDto weighinData = new WeighinDataDto(
