@@ -7,10 +7,7 @@ import com.pfm.halterocms.models.BatchLifter;
 import com.pfm.halterocms.models.Weighin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -59,6 +56,11 @@ public class CompetitionSecretaryPlayController {
         batchLifter.setWeighin(savedWeighin);
         batchLiftersDAO.save(batchLifter);
 
+        return "redirect:/show-competition-play/" + weighinDataDto.getBatchId();
+    }
+
+    @PostMapping("/introduce-weighin-body-weight")
+    public String introduceWeighinBodyWeight(@ModelAttribute("weighinDataDto") WeighinDataDto weighinDataDto) {
         return "redirect:/show-competition-play/" + weighinDataDto.getBatchId();
     }
 

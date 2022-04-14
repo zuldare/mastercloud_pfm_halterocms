@@ -52,4 +52,28 @@ public class WeighinDataDto {
     public LocalTime getTime() {
         return time;
     }
+
+    public void setBatchId(Integer batchId) {
+        this.batchId = batchId;
+    }
+
+    public void setDrawOrder(Integer drawOrder) {
+        this.drawOrder = drawOrder;
+    }
+
+    public void setBodyWeight(Double bodyWeight) {
+        this.bodyWeight = bodyWeight;
+    }
+
+    public void setSnatchOpener(Integer snatchOpener) {
+        this.snatchOpener = snatchOpener;
+    }
+
+    public void setCleanAndJerkOpener(Integer cleanAndJerkOpener) {
+        this.cleanAndJerkOpener = cleanAndJerkOpener;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
 }

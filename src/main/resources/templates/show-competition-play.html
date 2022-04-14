@@ -15,7 +15,6 @@
                 <th>Birth year</th>
                 <th>Body Weight</th>
                 <th>Category</th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -26,6 +25,13 @@
                 <td th:text="${batchLifter.lifter.birthYear}"></td>
                 <td th:text="${batchLifter.weighin.bodyWeight}"></td> <!-- TODO: input -->
                 <td th:text="${batchLifter.lifter.category}"></td>
+                <td>
+                    <form method="POST" th:action="@{/introduce-weighin-body-weight}">
+                        <input type="hidden" name="batchId" id="batchId" th:value="${batch.id}"/>
+                        <input type="hidden" name="bodyWeight" id="bodyWeight" th:value="${batchLifter.weighin.bodyWeight}"/>
+                        <button type="submit" name="submit" value="value" class="link-button">Update</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
