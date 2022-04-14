@@ -5,20 +5,20 @@
     <a class="btn btn-warning" th:href="@{/show-competitions}">Back</a>
     <h2>Competition</h2>
     <div>
-        Name: <p th:text=${batchesCompetition.name}></p>
-        Location: <p th:text=${batchesCompetition.location}></p>
+        <p th:text="'Name: ' + ${batchesCompetition.name}"></p>
+        <p th:text="'Location: ' + ${batchesCompetition.location}"></p>
     </div>
     <div>
-        Start date: <p th:text=${batchesCompetition.startDate}></p>
-        End date: <p th:text=${batchesCompetition.endDate}></p>
+        <p th:text="'Start date: ' + ${batchesCompetition.startDate}"></p>
+        <p th:text="'End date: ' + ${batchesCompetition.endDate}"></p>
     </div>
     <div>
-        Inscription start date: <p th:text=${batchesCompetition.inscriptionStartDate}></p>
-        Inscription end date: <p th:text=${batchesCompetition.inscriptionEndDate}></p>
+        <p th:text="'Inscription start date: ' + ${batchesCompetition.inscriptionStartDate}"></p>
+        <p th:text="'Inscription end date: ' + ${batchesCompetition.inscriptionEndDate}"></p>
     </div>
     <div>
-        Organizer: <p th:text=${batchesCompetition.organizer}></p>
-        Type: <p th:text=${batchesCompetition.type}></p>
+        <p th:text="'Organizer: ' + ${batchesCompetition.organizer}"></p>
+        <p th:text="'Type: ' + ${batchesCompetition.type}"></p>
     </div>
     <div class="col-12">
         <h3>Batches</h3>

@@ -72,7 +72,7 @@ public class CompetitionSecretaryPlayControllerTest {
                 .thenReturn(foundBatchLifter);
         when(weighinsDAO.save(any(Weighin.class))).thenReturn(weighinToBeAdded);
 
-        String targetView = sut.introduceWeighinData(weighinData);
+        String targetView = sut.introduceWeighinData(null, weighinData);
 
         assertThat(targetView, is("redirect:/show-competition-play/1234"));
         verify(batchLiftersDAO, times(1)).findOneByBatchIdAndDrawOrder(batchId, drawOrder);

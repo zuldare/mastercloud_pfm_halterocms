@@ -27,7 +27,7 @@
             </tbody>
         </table>
         <h3>Lift Changes</h3>
-        <form method="POST" th:action="@{/introduce-weighin-body-weight}">
+
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -44,10 +44,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="batchLifter : ${batchLifters}">
+                <tr th:each="batchLifter, itemStat : *{batchLifters}">
+                    <form method="POST" th:action="@{/introduce-weighin-data}">
                     <td th:text="${batchLifter.lifter.name}"></td>
                     <td>
-                        <input type="text" name="bodyWeight" id="bodyWeight" th:value="${batchLifter.weighin.bodyWeight}"/>
+                        <input type="text" name="bodyWeight" id="bodyWeight" th:value="*{batchLifters[__${itemStat.index}__].weighin.bodyWeight}"/>
                     </td>
                     <td>
                         <input type="text" name="snatchOpener" id="snatchOpener" th:value="${batchLifter.weighin.snatchOpener}"/>
@@ -56,13 +57,15 @@
                         <input type="text" name="cleanAndJerkOpener" id="cleanAndJerkOpener" th:value="${batchLifter.weighin.cleanAndJerkOpener}"/>
                     </td>
                     <td>
-                            <input type="hidden" name="batchId" id="batchId" th:value="${batch.id}"/>
-                            <button type="submit" name="submit" value="value" class="link-button">Update</button>
+                        <input type="hidden" name="drawOrder" id="drawOrder" th:value="${batchLifter.drawOrder}"/>
+                        <input type="hidden" name="batchId" id="batchId" th:value="${batch.id}"/>
+                        <button type="submit" name="submit" value="value" class="link-button">Update</button>
                     </td>
+                    </form>
                 </tr>
                 </tbody>
             </table>
-        </form>
+
     </div>
 </div>
 </body>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @Controller
@@ -38,18 +39,19 @@ public class CompetitionSecretaryPlayController {
     }
 
     @PostMapping("/introduce-weighin-data")
-    public String introduceWeighinData(@ModelAttribute WeighinDataDto weighinDataDto) {
+    public String introduceWeighinData(Model model, @ModelAttribute("weighinDataDto") WeighinDataDto weighinDataDto) {
 
         BatchLifter batchLifter = batchLiftersDAO.findOneByBatchIdAndDrawOrder(
                 weighinDataDto.getBatchId(), weighinDataDto.getDrawOrder()
         );
 
         Weighin weighin = new Weighin(
+                batchLifter.getWeighin().getId(),
                 batchLifter.getLifter(),
                 weighinDataDto.getBodyWeight(),
                 weighinDataDto.getSnatchOpener(),
                 weighinDataDto.getCleanAndJerkOpener(),
-                weighinDataDto.getTime()
+                LocalTime.now()
         );
 
         Weighin savedWeighin = weighinsDAO.save(weighin);
