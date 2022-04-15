@@ -1,10 +1,15 @@
 package com.pfm.halterocms.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 public class BatchLifter {
+
+    private static final int NUMBER_OF_LIFTS_BY_MOVEMENT = 3;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -22,16 +27,45 @@ public class BatchLifter {
     @OneToOne
     private Weighin weighin;
 
+    @OneToMany
+    @JsonManagedReference
+    private List<Lift> lifts;
+
     public BatchLifter(){}
 
     public BatchLifter(Integer id, Integer drawOrder,
-                       Batch batch, Lifter lifter, Weighin weighin) {
+        Batch batch, Lifter lifter, Weighin weighin, List<Lift> lifts) {
         this.id = id;
         this.drawOrder = drawOrder;
         this.batch = batch;
         this.lifter = lifter;
         this.weighin = weighin;
+        this.lifts = lifts;
     }
+
+    public BatchLifter(Integer id, Integer drawOrder, Batch batch, Lifter lifter, Weighin weighin) {
+        this.id = id;
+        this.drawOrder = drawOrder;
+        this.batch = batch;
+        this.lifter = lifter;
+        this.weighin = weighin;
+
+        this.lifts = initializeType(LiftType.SNATCH);
+        this.lifts.addAll(initializeType(LiftType.CLEAN_AND_JERK));
+    }
+
+    private List<Lift> initializeType(LiftType liftType){
+        List<Lift> lifts = new ArrayList<>();
+        for(int i=0;i< NUMBER_OF_LIFTS_BY_MOVEMENT;i++){
+            Lift lift = new Lift();
+            lift.setBatchLifterId(this.getId());
+            lift.setStatus(LiftStatus.PENDING.getValue());
+            lift.setType(liftType.getValue());
+            lifts.add(lift);
+        }
+        return lifts;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -72,5 +106,13 @@ public class BatchLifter {
 
     public void setWeighin(Weighin weighin) {
         this.weighin = weighin;
+    }
+
+    public List<Lift> getLifts() {
+        return lifts;
+    }
+
+    public void setLifts(List<Lift> lifts) {
+        this.lifts = lifts;
     }
 }
