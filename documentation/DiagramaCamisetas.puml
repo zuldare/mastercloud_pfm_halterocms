@@ -1,0 +1,14 @@
+@startuml
+
+object "¿?" as Something
+object "Elemento" as Element
+note "1" as N1
+object "Conjunto" as Set
+
+Something <|-- Element
+Something <|-- Set
+Set *--->  Something :"0..N"
+N1 -right-> Element
+
+
+@enduml
