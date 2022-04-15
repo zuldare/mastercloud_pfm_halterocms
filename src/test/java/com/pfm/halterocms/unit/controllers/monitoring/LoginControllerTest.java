@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Optional;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
@@ -25,7 +27,7 @@ public class LoginControllerTest {
     public void whenLogin_ThenShouldCallDAO_AndFindCompetitionSecretary_AndReturnCompetitionSecretaryView() {
         User foundUser = new User(username, encryptedPassword);
 
-        when(usersDAO.findOneByUsernameAndPassword(username, encryptedPassword)).thenReturn(foundUser);
+        when(usersDAO.findOneByUsernameAndPassword(username, encryptedPassword)).thenReturn(Optional.of(foundUser));
 
         String targetView = sut.login(username, password);
 
@@ -36,7 +38,7 @@ public class LoginControllerTest {
     @Test
     public void whenLoginFails_ThenShouldCallDAOWithoutFindingAnyUser_AndReturnErrorView() {
 
-        when(usersDAO.findOneByUsernameAndPassword(username, encryptedPassword)).thenReturn(null);
+        when(usersDAO.findOneByUsernameAndPassword(username, encryptedPassword)).thenReturn(Optional.empty());
 
         String targetView = sut.login(username, password);
 
