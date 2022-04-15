@@ -5,6 +5,7 @@ import com.pfm.halterocms.daos.BatchLiftersDAO;
 import com.pfm.halterocms.daos.WeighinsDAO;
 import com.pfm.halterocms.dtos.WeighinDataDto;
 import com.pfm.halterocms.models.*;
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -50,6 +51,8 @@ public class CompetitionSecretaryPlayControllerTest {
         Integer batchId = 1234;
         Integer batchLifterId = 4321;
         Integer drawOrder = 4;
+        List<Lift> lifts = new ArrayList<>();
+
 
         double bodyWeight = 70.5;
         int snatchOpener = 90;
@@ -61,15 +64,15 @@ public class CompetitionSecretaryPlayControllerTest {
         when(weighin.getId()).thenReturn(20);
 
         BatchLifter foundBatchLifter = new BatchLifter(
-                batchLifterId, drawOrder, batch, lifter, weighin
-        );
+                batchLifterId, drawOrder, batch, lifter, weighin,
+						lifts);
 
         WeighinDataDto weighinData = new WeighinDataDto(
                 batchId, drawOrder, bodyWeight, snatchOpener, cleanAndJerkOpener);
         Weighin weighinToBeAdded = new Weighin();
         BatchLifter expectedBatchLifterToBeUpdated = new BatchLifter(
-                batchLifterId, drawOrder, batch, lifter, weighinToBeAdded
-        );
+                batchLifterId, drawOrder, batch, lifter, weighinToBeAdded,
+						lifts);
 
         when(batchLiftersDAO.findOneByBatchIdAndDrawOrder(batchId, drawOrder))
                 .thenReturn(foundBatchLifter);
