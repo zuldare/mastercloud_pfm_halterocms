@@ -85,4 +85,44 @@ public class CompetitionSecretaryPlayControllerTest {
         verify(batchLiftersDAO, times(1)).save(expectedBatchLifterToBeUpdated);
     }
 
+    @Test
+    public void whenIntroduceWeighinDataWithWrongDataFormatThenShouldNotCallDAOs() {
+        Integer batchId = 1234;
+        Integer drawOrder = 4;
+
+        String bodyWeight = "70.5";
+        String snatchOpener = "90abc";
+        String cleanAndJerkOpener = "85";
+
+        WeighinDataDto weighinData = new WeighinDataDto(
+                batchId, drawOrder, bodyWeight, snatchOpener, cleanAndJerkOpener);
+
+        String targetView = sut.introduceWeighinData(mock(Model.class), weighinData);
+
+        assertThat(targetView, is("/error/competition-secreatary-play-error"));
+        verify(batchLiftersDAO, times(0)).findOneByBatchIdAndDrawOrder(any(), any());
+        verify(batchLiftersDAO, times(0)).save(any());
+        verify(weighinsDAO, times(0)).save(any());
+    }
+
+    @Test
+    public void whenIntroduceWeighinDataWithNegativeValuesThenShouldNotCallDAOs() {
+        Integer batchId = 1234;
+        Integer drawOrder = 4;
+
+        String bodyWeight = "-70.5";
+        String snatchOpener = "90";
+        String cleanAndJerkOpener = "85";
+
+        WeighinDataDto weighinData = new WeighinDataDto(
+                batchId, drawOrder, bodyWeight, snatchOpener, cleanAndJerkOpener);
+
+        String targetView = sut.introduceWeighinData(mock(Model.class), weighinData);
+
+        assertThat(targetView, is("/error/competition-secreatary-play-error"));
+        verify(batchLiftersDAO, never()).findOneByBatchIdAndDrawOrder(any(), any());
+        verify(batchLiftersDAO, never()).save(any());
+        verify(weighinsDAO, never()).save(any());
+    }
+
 }

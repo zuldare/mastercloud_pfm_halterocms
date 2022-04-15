@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class CompetitionSecretaryPlayController {
@@ -41,10 +42,6 @@ public class CompetitionSecretaryPlayController {
     @PostMapping("/introduce-weighin-data")
     public String introduceWeighinData(Model model, @ModelAttribute("weighinDataDto") WeighinDataDto weighinDataDto) {
 
-        BatchLifter batchLifter = batchLiftersDAO.findOneByBatchIdAndDrawOrder(
-                weighinDataDto.getBatchId(), weighinDataDto.getDrawOrder()
-        );
-
         Double bodyWeight;
         Integer snatchOpener;
         Integer cleanAndJerkOpener;
@@ -63,6 +60,17 @@ public class CompetitionSecretaryPlayController {
             model.addAttribute("batchId", weighinDataDto.getBatchId());
             return "/error/competition-secreatary-play-error";
         }
+
+        if ((Objects.nonNull(bodyWeight) && bodyWeight <= 0)
+                || (Objects.nonNull(snatchOpener) && snatchOpener <= 0)
+                || (Objects.nonNull(cleanAndJerkOpener) && cleanAndJerkOpener <= 0)) {
+            model.addAttribute("batchId", weighinDataDto.getBatchId());
+            return "/error/competition-secreatary-play-error";
+        }
+
+        BatchLifter batchLifter = batchLiftersDAO.findOneByBatchIdAndDrawOrder(
+                weighinDataDto.getBatchId(), weighinDataDto.getDrawOrder()
+        );
 
         Weighin weighin = new Weighin(
                 batchLifter.getWeighin().getId(),
