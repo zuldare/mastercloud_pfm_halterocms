@@ -1,9 +1,10 @@
 package com.pfm.halterocms.controllers.monitoring;
 
 import com.pfm.halterocms.daos.UsersDAO;
-import com.pfm.halterocms.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -19,12 +20,18 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String login(String username, String password) {
+    public String loginView() {
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestParam(required=false, name="username") String username,
+                        @RequestParam(required=false, name="password") String password) {
 
         try {
             usersDAO.findOneByUsernameAndPassword(username, getMd5(password)).orElseThrow();
         } catch (Exception e) {
-            return "login-error";
+            return "error/login-error";
         }
 
         return "redirect:/show-competitions";

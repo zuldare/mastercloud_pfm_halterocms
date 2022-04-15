@@ -42,7 +42,7 @@ public class LoginControllerTest {
 
         String targetView = sut.login(username, password);
 
-        assertThat(targetView, is("login-error"));
+        assertThat(targetView, is("error/login-error"));
         verify(usersDAO, times(1)).findOneByUsernameAndPassword(username, encryptedPassword);
     }
 }
