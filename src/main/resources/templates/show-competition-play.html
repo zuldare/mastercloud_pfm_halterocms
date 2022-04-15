@@ -3,9 +3,11 @@
 <body>
 <div>
     <a class="btn btn-warning" th:href="@{/show-competition-batches/} + ${batch.competition.id}">Back </a>
-    <h2>Competition play</h2>
+    <h2 th:text="${batch.competition.name}"></h2>
     <div>
+        <p th:text="${batch.competition.location} + ' - ' + ${batch.date} + ' - ' + ${batch.startTime}"></p>
         <h3 th:text="'Batch ' + ${batch.id}"></h3>
+        <p th:text="'Platform: ' + ${batch.platform}"></p>
         <table class="table table-bordered">
             <thead>
             <tr>
