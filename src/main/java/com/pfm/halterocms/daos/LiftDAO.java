@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LiftDAO extends CrudRepository<Lift, Integer> {
 
-	List<Lift> findAllByBatchLifter_Id(Integer batchLifterId);
+	List<Lift> findAllByBatchLifterId(Integer batchLifterId);
 
 }
