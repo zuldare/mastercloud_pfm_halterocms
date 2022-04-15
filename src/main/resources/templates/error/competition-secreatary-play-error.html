@@ -6,7 +6,6 @@
 </head>
 <body>
     <p>Invalid number format</p>
-    <!-- TODO: Catch here the passed batch id to build the target url -->
-    <a class="btn btn-warning" th:href="@{/show-competition-play/1}">Back </a>
+    <a class="btn btn-warning" th:href="@{/show-competition-play/} + ${batchId}">Back </a>
 </body>
 </html>

@@ -60,7 +60,7 @@ public class CompetitionSecretaryPlayController {
                     ? null : Integer.valueOf(weighinDataDto.getCleanAndJerkOpener());
 
         } catch (NumberFormatException e) {
-            // TODO: Pass batch id to error view
+            model.addAttribute("batchId", weighinDataDto.getBatchId());
             return "/error/competition-secreatary-play-error";
         }
 
