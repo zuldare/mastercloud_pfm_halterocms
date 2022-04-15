@@ -8,19 +8,19 @@ public class WeighinDataDto {
 
     private Integer drawOrder;
 
-    private Double bodyWeight;
+    private String bodyWeight;
 
-    private Integer snatchOpener;
+    private String snatchOpener;
 
-    private Integer cleanAndJerkOpener;
+    private String cleanAndJerkOpener;
 
     private LocalTime time;
 
     public WeighinDataDto(){}
 
     public WeighinDataDto(Integer batchId, Integer drawOrder,
-                          Double bodyWeight,
-                          Integer snatchOpener, Integer cleanAndJerkOpener) {
+                          String bodyWeight,
+                          String snatchOpener, String cleanAndJerkOpener) {
         this.batchId = batchId;
         this.drawOrder = drawOrder;
         this.bodyWeight = bodyWeight;
@@ -37,15 +37,15 @@ public class WeighinDataDto {
         return drawOrder;
     }
 
-    public Double getBodyWeight() {
+    public String getBodyWeight() {
         return bodyWeight;
     }
 
-    public Integer getSnatchOpener() {
+    public String getSnatchOpener() {
         return snatchOpener;
     }
 
-    public Integer getCleanAndJerkOpener() {
+    public String getCleanAndJerkOpener() {
         return cleanAndJerkOpener;
     }
 
@@ -61,15 +61,15 @@ public class WeighinDataDto {
         this.drawOrder = drawOrder;
     }
 
-    public void setBodyWeight(Double bodyWeight) {
+    public void setBodyWeight(String bodyWeight) {
         this.bodyWeight = bodyWeight;
     }
 
-    public void setSnatchOpener(Integer snatchOpener) {
+    public void setSnatchOpener(String snatchOpener) {
         this.snatchOpener = snatchOpener;
     }
 
-    public void setCleanAndJerkOpener(Integer cleanAndJerkOpener) {
+    public void setCleanAndJerkOpener(String cleanAndJerkOpener) {
         this.cleanAndJerkOpener = cleanAndJerkOpener;
     }
 

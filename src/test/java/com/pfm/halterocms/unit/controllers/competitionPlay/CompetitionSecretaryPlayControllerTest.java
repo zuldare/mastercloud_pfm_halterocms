@@ -54,9 +54,9 @@ public class CompetitionSecretaryPlayControllerTest {
         List<Lift> lifts = new ArrayList<>();
 
 
-        double bodyWeight = 70.5;
-        int snatchOpener = 90;
-        int cleanAndJerkOpener = 85;
+        String bodyWeight = "70.5";
+        String snatchOpener = "90";
+        String cleanAndJerkOpener = "85";
 
         Lifter lifter = new Lifter();
         Batch batch = new Batch();

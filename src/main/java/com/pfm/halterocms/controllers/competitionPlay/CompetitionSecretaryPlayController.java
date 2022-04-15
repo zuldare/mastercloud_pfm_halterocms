@@ -45,12 +45,30 @@ public class CompetitionSecretaryPlayController {
                 weighinDataDto.getBatchId(), weighinDataDto.getDrawOrder()
         );
 
+        Double bodyWeight;
+        Integer snatchOpener;
+        Integer cleanAndJerkOpener;
+
+        try {
+            bodyWeight = weighinDataDto.getBodyWeight().isBlank()
+                    ? null : Double.valueOf(weighinDataDto.getBodyWeight());
+
+            snatchOpener = weighinDataDto.getSnatchOpener().isBlank()
+                    ? null : Integer.valueOf(weighinDataDto.getSnatchOpener());
+
+            cleanAndJerkOpener = weighinDataDto.getCleanAndJerkOpener().isBlank()
+                    ? null : Integer.valueOf(weighinDataDto.getCleanAndJerkOpener());
+
+        } catch (NumberFormatException e) {
+            return "/error/competition-secreatary-play-error";
+        }
+
         Weighin weighin = new Weighin(
                 batchLifter.getWeighin().getId(),
                 batchLifter.getLifter(),
-                weighinDataDto.getBodyWeight(),
-                weighinDataDto.getSnatchOpener(),
-                weighinDataDto.getCleanAndJerkOpener(),
+                bodyWeight,
+                snatchOpener,
+                cleanAndJerkOpener,
                 LocalTime.now()
         );
 
