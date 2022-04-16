@@ -1,0 +1,26 @@
+@startuml
+
+actor user as "Competition\nSecretary"
+
+boundary CompetitionSecretaryPlayView as "show-competition-play.html"
+control CompetitionSecretaryPlayController as "CompetitionSecretaryPlayController.java"
+control WeighinsDAO as "WeighinsDAO.java"
+entity Weighin as "Weighin.java"
+database MySQL
+
+user -> CompetitionSecretaryPlayView : POST - /introduce-weighin-data
+CompetitionSecretaryPlayView -> CompetitionSecretaryPlayController : introduceWeighinData(model, weighinDataDto)
+CompetitionSecretaryPlayController -> WeighinsDAO : save(weighin)
+
+WeighinsDAO -> MySQL : UPDATE weighin \nSET bodyWeight = <weighin.bodyWeight> \n  , snatchOpener = <weighin.snatchOpener> \n  , cleanAndJerkOpener = <weighin.cleanAndJerkOpener> \n  , time = now() \nWHERE id = <weighin.id>
+WeighinsDAO <- MySQL : found weighin tuple
+
+WeighinsDAO -> Weighin : new Weighin(<found weighin tuple>)
+WeighinsDAO <- Weighin : Weighin builtWeighin
+CompetitionSecretaryPlayController <- WeighinsDAO : Weighin savedWeighin
+CompetitionSecretaryPlayView <- CompetitionSecretaryPlayController : "redirect:/show-competition-play/:batchId"
+CompetitionSecretaryPlayView -> CompetitionSecretaryPlayController : getBatchLiftersData(batchId, model)
+CompetitionSecretaryPlayView <- CompetitionSecretaryPlayController : "show-competition-play"
+user <- CompetitionSecretaryPlayView : rendered "show-competition-play" view
+
+@enduml
