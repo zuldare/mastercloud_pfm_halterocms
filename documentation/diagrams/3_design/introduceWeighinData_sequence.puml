@@ -13,9 +13,9 @@ CompetitionSecretaryPlayView -> CompetitionSecretaryPlayController : introduceWe
 CompetitionSecretaryPlayController -> WeighinsDAO : save(weighin)
 
 WeighinsDAO -> MySQL : UPDATE weighin \nSET bodyWeight = <weighin.bodyWeight> \n  , snatchOpener = <weighin.snatchOpener> \n  , cleanAndJerkOpener = <weighin.cleanAndJerkOpener> \n  , time = now() \nWHERE id = <weighin.id>
-WeighinsDAO <- MySQL : found weighin tuple
+WeighinsDAO <- MySQL : updated weighin tuple
 
-WeighinsDAO -> Weighin : new Weighin(<found weighin tuple>)
+WeighinsDAO -> Weighin : new Weighin(<updated weighin tuple>)
 WeighinsDAO <- Weighin : Weighin builtWeighin
 CompetitionSecretaryPlayController <- WeighinsDAO : Weighin savedWeighin
 CompetitionSecretaryPlayView <- CompetitionSecretaryPlayController : "redirect:/show-competition-play/:batchId"
