@@ -299,7 +299,25 @@ requisitos, una descripción de los requisitos que es fácil de mantener y nos a
 
 ### 6.1. Diseñar la arquitectura
 
+<<<<<<< WIP >>>>>>>
+
+![deployment](documentation/images/design/deployment.png)
+
 ### 6.2. Diseñar casos de uso
+
+<<<<<<< WIP >>>>>>>
+
+![competition-secretary-sequence](documentation/images/design/competition-secretary-sequence.png)
+
+#### 6.2.1. Diseño del caso de uso 'introduceWeighinData'
+
+<<<<<<< WIP >>>>>>>
+
+![introduceWeighinData_sequence](documentation/images/design/introduceWeighinData_sequence.png)
+
+#### 6.2.2. Diseño del caso de uso 'editLiftWeighinData'
+
+<<<<<<< WIP >>>>>>>
 
 ### 6.3. Diseñar clases
 
