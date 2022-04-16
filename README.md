@@ -267,6 +267,31 @@ requisitos, una descripción de los requisitos que es fácil de mantener y nos a
 ## 7. Disciplina de implementación <a name="implementation"/>
 
 ## 8. Disciplina de pruebas <a name="tests"/>
+
+La disciplina de pruebas, es el flujo de trabajo cuyo principal propósito es comprobar el resultado de la implementación probando cada construcción, incluyendo construcciones de versiones intermedias y final que se entregará.
+
+Los **objetivos** que esta disciplina persigue, consisten en la validación de la implementación llevada a cabo acerca del producto software, ya sea desde el lado funcional (es decir, que los requisitos se cumplen al 100%) como desde parte no funcional (la calidad que el sistema ofrece). Además, mediante las pruebas trataremos de localizar errores en nuestro desarrollo, documentándolos para poder solventarlos posteriormente.
+
+Las **actividades** recomendadas por RUP para esta disciplina son las siguientes:
+
+1. Planificación de las pruebas de software.
+2. Diseño de dichas pruebas.
+3. Implementación de las mismas.
+4. Realización de pruebas de integración.
+5. Realización de pruebas de sistema.
+6. Evaluación de las pruebas realizadas.
+
+Durante la ejecución de este proyecto no se ha podido llevar a cabo la Disciplina de Pruebas, pues necesitaríamos muchísimo más tiempo y experiencia para aplicar todas las disciplinas al completo.
+
+Pero no hemos querido prescindir de una mínima batería de pruebas, ya que para nosotros los tests son imprescindibles en cualquier tipo de proyecto software. Por tanto, durante la ejecución de la Disciplina de Implementación, hemos aplicado TDD.
+
+### 8.1. Desarrollo Dirigido mediante las Pruebas
+
+El desarrollo dirigido mediante las pruebas, o lo que es lo mismo "Test Driven Development" (TDD), consiste en implementar las pruebas de forma previa a la funcionalidad. Esta filosofía de desarrollo funciona bajo la premisa de que los tests son parte de la aplicación, no un añadido del que se pueda prescindir. Sin los tests, el código no está completo.
+
+La razón de más peso por la cuál hemos decidido hacer TDD, es que es una muy buena práctica para no desarrollar "código de más". De esta forma, aprovechando nuestra experiencia a la hora de hacer tests, se ha invertido mucho menos tiempo en implementar los casos de uso desarrollados que si hubiésemos programado el código funcional al principio del todo.
+
+Además, teniendo descrita la especificación de los casos de uso en la Disciplina de Requisitos, ha sido muy fácil enumerar los distintos tests que la plataforma debe pasar para dar por concluído el desarrollo. En este punto queremos indicar que los tests que se han llevado a cabo son los test unitarios, ya que entre todos los posibles tipos de tests que podíamos añadir para hacer TDD, estos nos parecían los más útiles para completar la implementación de nuestros casos de uso.
  
 
 ## Conclusiones <a name="conclusions"/>
