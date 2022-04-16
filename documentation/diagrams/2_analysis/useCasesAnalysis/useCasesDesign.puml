@@ -25,17 +25,12 @@ package SpringBoot {
 }
 
 database db <<MySQL>>
-' PREGUNTAR A LUIS EL XQ PONERLO EN EL DIAGRAMA
-' añadirle propiedades de la base de datos pass, users, database name
-' pintar una request de entrada e
-' pintar una response de salida
-
 
 javaBean --> apiController
 XView --right---> YController
 YController ---right--> ZEntities
 
-zDao -right--> db : "mysql:://10.X.X.X:puerto/database?user=XX?password=xxx"
+zDao -right--> db
 
 apiController --> zModel
 

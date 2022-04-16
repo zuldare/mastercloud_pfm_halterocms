@@ -1,8 +1,5 @@
 @startuml
 
-'''NOTA:
-'''AÑADIR AQUÍ LOS DATOS DE CONEXIÓN, NO EN EL DIAGRAMA DE ANÁLISIS
-
 node webServer
 node dataBaseServer
 component browser
@@ -34,7 +31,7 @@ dataBaseServer *--> dbServer
 browser ..> page.html : renders
 halteroCmsClient <.r. webServerComponent : uses
 halteroCmsClient ..> views
-halteroCmsService.war .r.> dbServer : uses
+halteroCmsService.war .r.> dbServer : uses\n''mysql:://10.X.X.X:puerto/database?user=XX?password=xxx''
 
 halteroCmsService.war ..> controllers
 halteroCmsService.war ..> daos
