@@ -266,9 +266,20 @@ requisitos, una descripción de los requisitos que es fácil de mantener y nos a
 
 ## 7. Disciplina de implementación <a name="implementation"/>
 
+La disciplina de implementación, es el flujo de trabajo cuyo propósito principal es implementar el sistema en términos de componentes, como pueden ser el código, los fichero binarios, ejecutables, vistas renderizadas, etc.
+
+El **objetivo** que se debe conseguir con esta disciplina es la generación del código necesario para la implementación de las clases y objetos en términos de componentes, definiéndose de forma previa su organización en términos de subsistemas divididos en capas, y cubriéndose esta implementación con las necesarias pruebas unitarias.
+
+Las **actividades** recomendadas por RUP para esta disciplina son las siguientes:
+1. Implementación de la arquitectura.
+2. Integración de los sistemas.
+3. Implementación de un subsistema.
+4. Implementación de una clase.
+5. Realización de las pruebas de unidad.
+
 <<<<< WIP >>>>>
 
-### 7.1. Desarrollo Dirigido mediante las Pruebas
+### 7.X. Desarrollo Dirigido mediante las Pruebas
 
 Para nosotros los tests son imprescindibles en cualquier tipo de proyecto software. Por tanto, durante la ejecución de la Disciplina de Implementación, hemos aplicado TDD. El desarrollo dirigido mediante las pruebas, o lo que es lo mismo "Test Driven Development", consiste en implementar las pruebas de forma previa a la funcionalidad. Esta filosofía de desarrollo funciona bajo la premisa de que los tests son parte de la aplicación, no un añadido del que se pueda prescindir. Sin los tests, el código no está completo.
 
