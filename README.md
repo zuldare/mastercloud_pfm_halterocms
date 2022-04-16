@@ -291,7 +291,7 @@ El desarrollo dirigido mediante las pruebas, o lo que es lo mismo "Test Driven D
 
 La razón de más peso por la cuál hemos decidido hacer TDD, es que es una muy buena práctica para no desarrollar "código de más". De esta forma, aprovechando nuestra experiencia a la hora de hacer tests, se ha invertido mucho menos tiempo en implementar los casos de uso desarrollados que si hubiésemos programado el código funcional al principio del todo.
 
-Además, teniendo descrita la especificación de los casos de uso en la Disciplina de Requisitos, ha sido muy fácil enumerar los distintos tests que la plataforma debe pasar para dar por concluído el desarrollo. En este punto queremos indicar que los tests que se han llevado a cabo son los test unitarios, ya que entre todos los posibles tipos de tests que podíamos añadir para hacer TDD, estos nos parecían los más útiles para completar la implementación de nuestros casos de uso.
+Además, teniendo descrita la especificación de los casos de uso en la Disciplina de Requisitos, ha sido muy fácil enumerar los distintos tests que la plataforma debe pasar para dar por concludo el desarrollo. En este punto queremos indicar que los tests que se han llevado a cabo son los test unitarios, ya que entre todos los posibles tipos de tests que podíamos añadir para hacer TDD, estos nos parecían los más útiles para completar la implementación de nuestros casos de uso.
  
 
 ## Conclusiones <a name="conclusions"/>
