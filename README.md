@@ -266,6 +266,18 @@ requisitos, una descripción de los requisitos que es fácil de mantener y nos a
 
 ## 7. Disciplina de implementación <a name="implementation"/>
 
+<<<<< WIP >>>>>
+
+### 7.1. Desarrollo Dirigido mediante las Pruebas
+
+Para nosotros los tests son imprescindibles en cualquier tipo de proyecto software. Por tanto, durante la ejecución de la Disciplina de Implementación, hemos aplicado TDD. El desarrollo dirigido mediante las pruebas, o lo que es lo mismo "Test Driven Development", consiste en implementar las pruebas de forma previa a la funcionalidad. Esta filosofía de desarrollo funciona bajo la premisa de que los tests son parte de la aplicación, no un añadido del que se pueda prescindir. Sin los tests, el código no está completo.
+
+La razón de más peso por la cuál hemos decidido hacer TDD, es que es una muy buena práctica para no desarrollar "código de más". De esta forma, aprovechando nuestra experiencia a la hora de hacer tests, se ha invertido mucho menos tiempo en implementar los casos de uso desarrollados que si hubiésemos programado el código funcional al principio del todo.
+
+Además, teniendo descrita la especificación de los casos de uso en la Disciplina de Requisitos, ha sido muy fácil enumerar los distintos tests que la plataforma debe pasar para dar por concludo el desarrollo. En este punto queremos indicar que los únicos tests que se han llevado a cabo son los test unitarios, que son los indicados por RUP en esta Disciplina.
+
+Siguiendo TDD se podría dirigir el desarrollo mediante tests _end to end_, aunque entre todos los posibles tipos de tests que se pueden añadir, los test unitarios son los que más útiles nos resultan para completar la implementación de nuestros casos de uso.
+
 ## 8. Disciplina de pruebas <a name="tests"/>
 
 La disciplina de pruebas, es el flujo de trabajo cuyo principal propósito es comprobar el resultado de la implementación probando cada construcción, incluyendo construcciones de versiones intermedias y final que se entregará.
@@ -281,18 +293,10 @@ Las **actividades** recomendadas por RUP para esta disciplina son las siguientes
 5. Realización de pruebas de sistema.
 6. Evaluación de las pruebas realizadas.
 
-Durante la ejecución de este proyecto no se ha podido llevar a cabo la Disciplina de Pruebas, pues necesitaríamos muchísimo más tiempo y experiencia para aplicar todas las disciplinas al completo.
+Durante la ejecución de este proyecto no se ha podido llevar a cabo la Disciplina de Pruebas de forma seria y procedimentada, pues necesitaríamos muchísimo más tiempo y experiencia para aplicar todas las disciplinas al completo.
 
-Pero no hemos querido prescindir de una mínima batería de pruebas, ya que para nosotros los tests son imprescindibles en cualquier tipo de proyecto software. Por tanto, durante la ejecución de la Disciplina de Implementación, hemos aplicado TDD.
+Aun así, hemos realizado algunas pruebas funcionales de forma manual, siguiendo los distintos caminos marcados en los diagramas de la especificación de los casos de uso que hemos implementado. Consideramos que el conjunto de estas pruebas sumadas a los test unitarios desarrollados en la Disciplina anterior, proporcionan una red de seguridad mínima con la que al menos nos sentimos cómodos al entregar este Proyecto.
 
-### 8.1. Desarrollo Dirigido mediante las Pruebas
-
-El desarrollo dirigido mediante las pruebas, o lo que es lo mismo "Test Driven Development" (TDD), consiste en implementar las pruebas de forma previa a la funcionalidad. Esta filosofía de desarrollo funciona bajo la premisa de que los tests son parte de la aplicación, no un añadido del que se pueda prescindir. Sin los tests, el código no está completo.
-
-La razón de más peso por la cuál hemos decidido hacer TDD, es que es una muy buena práctica para no desarrollar "código de más". De esta forma, aprovechando nuestra experiencia a la hora de hacer tests, se ha invertido mucho menos tiempo en implementar los casos de uso desarrollados que si hubiésemos programado el código funcional al principio del todo.
-
-Además, teniendo descrita la especificación de los casos de uso en la Disciplina de Requisitos, ha sido muy fácil enumerar los distintos tests que la plataforma debe pasar para dar por concludo el desarrollo. En este punto queremos indicar que los tests que se han llevado a cabo son los test unitarios, ya que entre todos los posibles tipos de tests que podíamos añadir para hacer TDD, estos nos parecían los más útiles para completar la implementación de nuestros casos de uso.
- 
 
 ## Conclusiones <a name="conclusions"/>
 ## Autores <a name="authors"/>
