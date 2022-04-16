@@ -151,6 +151,38 @@ En la Figura 1 se puede observar los objetos del dominio, sus relaciones y el vo
 El modelo de dominio nos puede ayudar también a tener una mejor comprensión de la organización destino. Un ejemplo de esto podría ser una muestra real de como se distribuyen las categorías oficiales en la halterofilia, tal y como se puede ver en la Figura 2.
 ![concreteCaseOfCategories](documentation/images/modelDomain/concreteCaseOfCategories.png)
 
+### 3.1. Estados en el dominio
+
+Otra forma muy interesante de modelar la realidad es mediante los estados que conforman los procesos involucrados en el dominio. Para ello se han realizado una serie de diagramas de estados, los cuales modelan la realidad correspondiente a los siguientes procesos:
+- La competición de principio a fin.
+- Cada ronda.
+- Cada iteración dentro de una ronda.
+- La fase de clasificación.
+
+#### 3.1.1. Estados de una competición
+
+En la siguiente figura se muestra el diagrama de estados para una competición:
+
+![competitionStates](documentation/images/modelDomain/states/1_competitionStates.png)
+
+#### 3.1.2. Estados de una ronda
+
+En la siguiente figura se muestra el diagrama de estados para una ronda:
+
+![batchStates](documentation/images/modelDomain/states/2_batchStates.png)
+
+#### 3.1.3. Estados de una iteración
+
+En la siguiente figura se muestra el diagrama de estados para una iteración dentro de una ronda:
+
+![iterationStates](documentation/images/modelDomain/states/3_iterationStates.png)
+
+#### 3.1.4. Estados de la fase de clasificación
+
+En la siguiente figura se muestra el diagrama de estados para la fase de clasificación:
+
+![classificationStates](documentation/images/modelDomain/states/4_classificationStates.png)
+
 ## 4. Disciplina de requisitos <a name="requirements"/>
 
 La disciplina de requisitos es el flujo de trabajo (realización de casos de uso que incluye roles, actividades y artefactos)
