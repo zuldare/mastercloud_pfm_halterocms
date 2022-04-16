@@ -4,7 +4,6 @@ state editCategory {
   state " " as SHOWED_CATEGORIES_TO_BE_EDITED
   state createOrModifyCHC <<choice>>
   state " " as providedCategory
-  state " " as showedData
   state createOrModifyCHC2 <<choice>>
   state " " as pendingData
   state " " as providedData
@@ -22,13 +21,14 @@ state editCategory {
 
   SHOWED_CATEGORIES_TO_BE_EDITED --> SHOWED_CATEGORIES_F
   note on link
-    User requests to:
+    Organization Secretary
+    requests to:
     * cancel
   end note
 
   createOrModifyCHC --> providedCategory : [chose category]
   createOrModifyCHC --> createOrModifyCHC2 : [create category]
-  providedCategory --> showedData
+  providedCategory --> createOrModifyCHC2
   note on link
     System shows:
     * category name
@@ -38,7 +38,6 @@ state editCategory {
     * category maximum age
     * category bodyweight categories
   end note
-  showedData --> createOrModifyCHC2 : [modify category -- añadir el actor quiere modificar - (quitarla y dajarla al rombo)]
   createOrModifyCHC2 --> pendingData
   note on link
     System requires:
@@ -54,13 +53,15 @@ state editCategory {
   end note
   pendingData --> SHOWED_CATEGORIES_F
   note on link
-    User requests to:
+    Organization Secretary
+    requests to:
     * cancel
   end note
 
   pendingData --> providedData
   note on link
-    User provides:
+    Organization Secretary
+    provides:
     * name
     * competition type
     * minimum age (included)
@@ -74,20 +75,20 @@ state editCategory {
 
   providedData --> savedData
   note on link
-    User saves 
-    provided data
+    Organization Secretary
+    saves provided data
   end note
 
   providedData --> SHOWED_CATEGORIES_F
   note on link
-    User requests to:
+    Organization Secretary
+    requests to:
     * cancel
   end note
 
   savedData --> [*]
   note on link
     System allows to:
-    * showCategories -> quitarla xq esto va automáticamente
     * editCategories
   end note
 }
@@ -96,7 +97,8 @@ state "SHOWED_CATEGORIES" as SHOWED_CATEGORIES_F : State before the user\nrequir
 
 SHOWED_CATEGORIES --> editCategory
 note on link
-  User requests to:
+  Organization Secretary
+  requests to:
   * editCategory
 end note
 

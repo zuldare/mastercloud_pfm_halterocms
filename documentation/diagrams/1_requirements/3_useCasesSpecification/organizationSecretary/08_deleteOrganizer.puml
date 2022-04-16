@@ -17,12 +17,14 @@ state deleteOrganizer {
   
   SHOWED_ORGANIZERS_TO_BE_DELETED --> CHOSEN_ORGANIZER
   note on link
-    User chooses an organizer
+    Organization Secreatary
+    chooses an organizer
   end note
 
   SHOWED_ORGANIZERS_TO_BE_DELETED -down-> SHOWED_ORGANIZERS_F
   note on link
-    User requests to:
+    Organization Secreatary
+    requests to:
     * cancel
   end note
 
@@ -50,7 +52,8 @@ state deleteOrganizer {
 
 SHOWED_ORGANIZERS --> deleteOrganizer
 note on link
-  User requests to:
+  Organization Secreatary
+  requests to:
   * deleteOrganizer
 end note
 

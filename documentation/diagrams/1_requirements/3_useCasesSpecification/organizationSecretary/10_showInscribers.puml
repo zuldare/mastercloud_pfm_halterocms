@@ -33,7 +33,8 @@ SHOWED_ORGANIZERS --> enterShowInscriberCHC
 
 enterShowInscriberCHC --> showInscribers
 note on link
-  User requests to:
+  Organization Secreatary
+  requests to:
   * showInscribers
 end note
 showInscribers --> SHOWED_INSCRIBERS

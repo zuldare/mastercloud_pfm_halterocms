@@ -33,7 +33,8 @@ SHOWED_INSCRIBERS --> enterShowClubsCHC
 
 enterShowClubsCHC --> showClubs
 note on link
-  User requests to:
+  Organization Secreatary
+  requests to:
   * showClubs
 end note
 showClubs --> SHOWED_CLUBS

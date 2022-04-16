@@ -38,7 +38,8 @@ SHOWED_INSCRIBERS --> enterShowCategoriesCHC
 
 enterShowCategoriesCHC --> showCategories
 note on link
-  User requests to:
+  Organization Secretary
+  requests to:
   * showCategories
 end note
 showCategories --> SHOWED_CATEGORIES

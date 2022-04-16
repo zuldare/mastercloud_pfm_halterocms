@@ -22,7 +22,8 @@ state editClub {
 
   SHOWED_CLUBS_TO_BE_EDITED --> SHOWED_CLUBS_F
   note on link
-    User requests to:
+    Organization Secreatary
+    requests to:
     * cancel
   end note
 
@@ -44,13 +45,15 @@ state editClub {
   end note
   pendingData --> SHOWED_CLUBS_F
   note on link
-    User requests to:
+    Organization Secreatary
+    requests to:
     * cancel
   end note
 
   pendingData --> providedData
   note on link
-    User provides:
+    Organization Secreatary
+    provides:
     * name
 
     System allows to:
@@ -59,13 +62,14 @@ state editClub {
 
   providedData --> savedData
   note on link
-    User saves 
-    provided data
+    Organization Secreatary
+    saves provided data
   end note
 
   providedData --> SHOWED_CLUBS_F
   note on link
-    User requests to:
+    Organization Secreatary
+    requests to:
     * cancel
   end note
 
@@ -81,7 +85,8 @@ state "SHOWED_CLUBS" as SHOWED_CLUBS_F : State before the user\nrequired "editCl
 
 SHOWED_CLUBS --> editClub
 note on link
-  User requests to:
+  Organization Secreatary
+  requests to:
   * editClub
 end note
 

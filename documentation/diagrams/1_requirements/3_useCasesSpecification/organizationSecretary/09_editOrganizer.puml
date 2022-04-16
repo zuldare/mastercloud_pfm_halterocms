@@ -22,7 +22,8 @@ state editOrganizer {
 
   SHOWED_ORGANIZERS_TO_BE_EDITED --> SHOWED_ORGANIZERS_F
   note on link
-    User requests to:
+    Organization Secreatary
+    requests to:
     * cancel
   end note
 
@@ -44,13 +45,15 @@ state editOrganizer {
   end note
   pendingData --> SHOWED_ORGANIZERS_F
   note on link
-    User requests to:
+    Organization Secreatary
+    requests to:
     * cancel
   end note
 
   pendingData --> providedData
   note on link
-    User provides:
+    Organization Secreatary
+    provides:
     * name
 
     System allows to:
@@ -59,13 +62,14 @@ state editOrganizer {
 
   providedData --> savedData
   note on link
-    User saves 
-    provided data
+    Organization Secreatary
+    saves provided data
   end note
 
   providedData --> SHOWED_ORGANIZERS_F
   note on link
-    User requests to:
+    Organization Secreatary
+    requests to:
     * cancel
   end note
 
@@ -81,7 +85,8 @@ state "SHOWED_ORGANIZERS" as SHOWED_ORGANIZERS_F : State before the user\nrequir
 
 SHOWED_ORGANIZERS --> editOrganizer
 note on link
-  User requests to:
+  Organization Secreatary
+  requests to:
   * editOrganizer
 end note
 

@@ -17,12 +17,14 @@ state deleteInscriber {
   
   SHOWED_INSCRIBERS_TO_BE_DELETED --> CHOSEN_INSCRIBER
   note on link
-    User chooses an inscriber
+    Organization Secreatary
+    chooses an inscriber
   end note
 
   SHOWED_INSCRIBERS_TO_BE_DELETED -down-> SHOWED_INSCRIBERS_F
   note on link
-    User requests to:
+    Organization Secreatary
+    requests to:
     * cancel
   end note
 
@@ -50,7 +52,8 @@ state deleteInscriber {
 
 SHOWED_INSCRIBERS --> deleteInscriber
 note on link
-  User requests to:
+  Organization Secreatary
+  requests to:
   * deleteInscriber
 end note
 

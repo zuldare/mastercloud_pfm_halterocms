@@ -17,12 +17,14 @@ state deleteCategory {
   
   SHOWED_CATEGORIES_TO_BE_DELETED --> CHOSEN_CATEGORY
   note on link
-    User chooses an category
+    Organization Secretary
+    chooses an category
   end note
 
   SHOWED_CATEGORIES_TO_BE_DELETED -down-> SHOWED_CATEGORIES_F
   note on link
-    User requests to:
+    Organization Secretary
+    requests to:
     * cancel
   end note
 
@@ -55,7 +57,8 @@ state deleteCategory {
 
 SHOWED_CATEGORIES --> deleteCategory
 note on link
-  User requests to:
+  Organization Secretary
+  requests to:
   * deleteCategory
 end note
 
