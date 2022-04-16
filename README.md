@@ -293,8 +293,15 @@ requisitos, una descripción de los requisitos que es fácil de mantener y nos a
 
 ### 5.4 Análisis de paquetes <a name="packageAnalisys">
  
-
 ## 6. Disciplina de diseño <a name="design"/>
+
+<<<<<<< WIP >>>>>>>
+
+### 6.1. Diseñar la arquitectura
+
+### 6.2. Diseñar casos de uso
+
+### 6.3. Diseñar clases
 
 ## 7. Disciplina de implementación <a name="implementation"/>
 
