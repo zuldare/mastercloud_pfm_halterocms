@@ -277,9 +277,11 @@ Las **actividades** recomendadas por RUP para esta disciplina son las siguientes
 4. Implementación de una clase.
 5. Realización de las pruebas de unidad.
 
+### 7.1. Casos de uso implementados
+
 <<<<< WIP >>>>>
 
-### 7.X. Desarrollo Dirigido mediante las Pruebas
+### 7.2. Desarrollo Dirigido mediante las Pruebas
 
 Para nosotros los tests son imprescindibles en cualquier tipo de proyecto software. Por tanto, durante la ejecución de la Disciplina de Implementación, hemos aplicado TDD. El desarrollo dirigido mediante las pruebas, o lo que es lo mismo "Test Driven Development", consiste en implementar las pruebas de forma previa a la funcionalidad. Esta filosofía de desarrollo funciona bajo la premisa de que los tests son parte de la aplicación, no un añadido del que se pueda prescindir. Sin los tests, el código no está completo.
 
