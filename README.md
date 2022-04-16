@@ -295,8 +295,6 @@ requisitos, una descripción de los requisitos que es fácil de mantener y nos a
  
 ## 6. Disciplina de diseño <a name="design"/>
 
-<<<<<<< WIP >>>>>>>
-
 ### 6.1. Diseñar la arquitectura
 
 <<<<<<< WIP >>>>>>>
@@ -320,6 +318,10 @@ requisitos, una descripción de los requisitos que es fácil de mantener y nos a
 <<<<<<< WIP >>>>>>>
 
 ### 6.3. Diseñar clases
+
+<<<<<<< WIP >>>>>>>
+
+![classDiagram](documentation/images/design/ClassDiagram.png)
 
 ## 7. Disciplina de implementación <a name="implementation"/>
 
