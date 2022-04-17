@@ -259,73 +259,73 @@ A nivel funcional, en lo que a un caso de uso se refiere, no nos dejaremos ning�
 
 - Introducir datos de un pesaje:
 
-![introduceWeighinData](documentation/images/usecasesSpecification/competitionSecretary/01_introduceWeighinData.png)
+![introduceWeighinData](documentation/images/useCasesSpecification/competitionSecretary/01_introduceWeighinData.png)
 
 - Iniciar una ronda:
 
-![initPlay](documentation/images/usecasesSpecification/competitionSecretary/02_initPlay.png)
+![initPlay](documentation/images/useCasesSpecification/competitionSecretary/02_initPlay.png)
 
 - Añadir o actualizar el peso de un levantamiento:
 
-![editLiftValue](documentation/images/usecasesSpecification/competitionSecretary/03_editLiftValue.png)
+![editLiftValue](documentation/images/useCasesSpecification/competitionSecretary/03_editLiftValue.png)
 
 - Añadir o actualizar el estado de un levantamiento:
 
-![editLiftStatus](documentation/images/usecasesSpecification/competitionSecretary/04_editLiftStatus.png)
+![editLiftStatus](documentation/images/useCasesSpecification/competitionSecretary/04_editLiftStatus.png)
 
 - Añadir o actualizar un cambio de peso:
 
-![editWeightChange](documentation/images/usecasesSpecification/competitionSecretary/05_editWeightChange.png)
+![editWeightChange](documentation/images/useCasesSpecification/competitionSecretary/05_editWeightChange.png)
 
 #### 4.3.2. Especificación de casos de uso del secretario de la organización
 
 - Mostrar categorías:
 
-![showCategories](documentation/images/usecasesSpecification/organizationSecretary/01_showCategories.png)
+![showCategories](documentation/images/useCasesSpecification/organizationSecretary/01_showCategories.png)
 
 - Eliminar una categoría:
 
-![deleteCategory](documentation/images/usecasesSpecification/organizationSecretary/02_deleteCategory.png)
+![deleteCategory](documentation/images/useCasesSpecification/organizationSecretary/02_deleteCategory.png)
 
 - Añadir o actualizar una categoría:
 
-![editCategory](documentation/images/usecasesSpecification/organizationSecretary/03_editCategory.png)
+![editCategory](documentation/images/useCasesSpecification/organizationSecretary/03_editCategory.png)
 
 - Mostrar clubs:
 
-![showClubs](documentation/images/usecasesSpecification/organizationSecretary/04_showClubs.png)
+![showClubs](documentation/images/useCasesSpecification/organizationSecretary/04_showClubs.png)
 
 - Eliminar un club:
 
-![deleteClub](documentation/images/usecasesSpecification/organizationSecretary/05_deleteClub.png)
+![deleteClub](documentation/images/useCasesSpecification/organizationSecretary/05_deleteClub.png)
 
 - Añadir o actualizar un club:
 
-![editClub](documentation/images/usecasesSpecification/organizationSecretary/06_editClub.png)
+![editClub](documentation/images/useCasesSpecification/organizationSecretary/06_editClub.png)
 
 - Mostrar organizadores:
 
-![showOrganizers](documentation/images/usecasesSpecification/organizationSecretary/07_showOrganizers.png)
+![showOrganizers](documentation/images/useCasesSpecification/organizationSecretary/07_showOrganizers.png)
 
 - Eliminar un organizador:
 
-![deleteOrganizer](documentation/images/usecasesSpecification/organizationSecretary/08_deleteOrganizer.png)
+![deleteOrganizer](documentation/images/useCasesSpecification/organizationSecretary/08_deleteOrganizer.png)
 
 - Añadir o actualizar un organizador:
 
-![editOrganizer](documentation/images/usecasesSpecification/organizationSecretary/09_editOrganizer.png)
+![editOrganizer](documentation/images/useCasesSpecification/organizationSecretary/09_editOrganizer.png)
 
 - Mostrar inscriptores:
 
-![showInscribers](documentation/images/usecasesSpecification/organizationSecretary/10_showInscribers.png)
+![showInscribers](documentation/images/useCasesSpecification/organizationSecretary/10_showInscribers.png)
 
 - Eliminar un inscriptor:
 
-![deleteInscriber](documentation/images/usecasesSpecification/organizationSecretary/11_deleteInscriber.png)
+![deleteInscriber](documentation/images/useCasesSpecification/organizationSecretary/11_deleteInscriber.png)
 
 - Añadir o actualizar un inscriptor:
 
-![editInscriber](documentation/images/usecasesSpecification/organizationSecretary/12_editInscriber.png)
+![editInscriber](documentation/images/useCasesSpecification/organizationSecretary/12_editInscriber.png)
 
 
 ### 4.4 Prototipado interfaz de usuario   <a name="useCasesPrototype"/>
