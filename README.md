@@ -19,9 +19,7 @@
 
     4.3 [Especificación de casos de uso](#useCasesSpecification)
     
-    4.4 [Estructurar el modelo de casos de uso](#useCasesStructure) 
-    
-    4.5 [Prototipado interfaz de usuario](#useCasesPrototype)
+    4.4 [Prototipado interfaz de usuario](#useCasesPrototype)
  
 5. [Disciplina de análisis](#analisis) 
 
@@ -259,15 +257,31 @@ A nivel funcional, en lo que a un caso de uso se refiere, no nos dejaremos ning�
 
 #### 4.3.1. Especificación de casos de uso del secretario de la competición
 
-<<<<<<< WIP >>>>>>>
+- Introducir datos de un pesaje:
+
+![introduceWeighinData](documentation/images/usecasesSpecification/competitionSecretary/01_introduceWeighinData.png)
+
+- Iniciar una ronda:
+
+![initPlay](documentation/images/usecasesSpecification/competitionSecretary/02_initPlay.png)
+
+- Añadir o actualizar el peso de un levantamiento:
+
+![editLiftValue](documentation/images/usecasesSpecification/competitionSecretary/03_editLiftValue.png)
+
+- Añadir o actualizar el estado de un levantamiento:
+
+![editLiftStatus](documentation/images/usecasesSpecification/competitionSecretary/04_editLiftStatus.png)
+
+- Añadir o actualizar un cambio de peso:
+
+![editWeightChange](documentation/images/usecasesSpecification/competitionSecretary/05_editWeightChange.png)
 
 #### 4.3.2. Especificación de casos de uso del secretario de la organización
 
 <<<<<<< WIP >>>>>>>
 
-### 4.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
-
-### 4.5 Prototipado interfaz de usuario   <a name="useCasesPrototype"/>
+### 4.4 Prototipado interfaz de usuario   <a name="useCasesPrototype"/>
 
 A continuación se detallan los prototipos de las interfaces del usuario que permiten el intercambio de información detallado en los diagramas de especificación
 de casos de uso. 
