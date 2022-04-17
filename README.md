@@ -26,10 +26,6 @@
     5.1 [Análisis de la Arquitectura](#architectureAnalisys)
 
     5.2 [Análisis de Caso de Uso](#usecaseAnalisys)
-
-    5.3 [Análisis de Clases](#classesAnalisys)
-
-    5.4 [Análisis de Paquetes](#packageAnalisys)
               
 6. [Disciplina de Diseño](#design)
 
@@ -359,11 +355,19 @@ requisitos, una descripción de los requisitos que es fácil de mantener y nos a
 
 ### 5.1 Análisis de la arquitectura <a name="architectureAnalisys">
 
+<<<<<<< TODO - Jaime >>>>>>>
+
 ### 5.2 Análisis de casos de uso <a name="usecaseAnalisys">
 
-### 5.3 Análisis de clases <a name="classesAnalisys">
+Tras realizar la actividad anterior, análisis de la arquitectura, podemos comenzar el análisis de los casos de uso. En esta actividad trataremos de recoger qué componentes de los que hemos obtenido en el análisis de la arquitectura están involucrados en cada caso de uso, y de qué forma se relacionan y a través de qué mensajes.
 
-### 5.4 Análisis de paquetes <a name="packageAnalisys">
+De ahora en adelante centraremos toda nuestra atención en dos casos de uso distintos: 'introduceWeighinData' y 'editLift', o lo que es lo mismo, añadir un nuevo pesaje y editar un levantamiento. Las figuras que se incluyen a continuación, muestran el análisis de estos dos casos de uso.
+
+- Análisis del caso de uso 'introduceWeighinData':
+![analysis_introduceWeighinData](documentation/images/analysis/useCases/introduceWeighinData.png)
+
+- Análisis del caso de uso 'editLift':
+![analysis_editLift](documentation/images/analysis/useCases/editLiftView.png)
  
 ## 6. Disciplina de diseño <a name="design"/>
 
