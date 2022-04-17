@@ -297,9 +297,15 @@ requisitos, una descripción de los requisitos que es fácil de mantener y nos a
 
 ### 6.1. Diseñar la arquitectura
 
-<<<<<<< WIP >>>>>>>
+En el diseño de la arquitectura, se han identificado los nodos y conexiones reflejados en la siguiente figura.
 
 ![deployment](documentation/images/design/deployment.png)
+
+En primer lugar, vemos que existe un **webServer** que se compone del cliente web (**halteroCmsClient**) y de los servicios del backend (**halteroCmsService.war**). Debido a nuestra escasa experiencia desarrollando con tecnologías front, hemos decidido utilizar un motor de plantillas (Thymeleaf en este caso), y por eso el servidor **Tomcat** usa ambos.
+
+El cliente renderiza las plantillas y genera una serie de páginas html, las cuáles son consumidas por el navegador web. Y por otro lado, el servidor se conecta con una base de datos MySQL.
+
+Por último, vemos que el cliente hace uso del paquete del código correspondiente a las vistas, y que el war de los servicios hace uso de los controladores, modelos y DAOs.
 
 ### 6.2. Diseñar casos de uso
 
