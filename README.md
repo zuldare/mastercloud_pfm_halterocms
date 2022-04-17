@@ -279,7 +279,54 @@ A nivel funcional, en lo que a un caso de uso se refiere, no nos dejaremos ning�
 
 #### 4.3.2. Especificación de casos de uso del secretario de la organización
 
-<<<<<<< WIP >>>>>>>
+- Mostrar categorías:
+
+![showCategories](documentation/images/usecasesSpecification/organizationSecretary/01_showCategories.png)
+
+- Eliminar una categoría:
+
+![deleteCategory](documentation/images/usecasesSpecification/organizationSecretary/02_deleteCategory.png)
+
+- Añadir o actualizar una categoría:
+
+![editCategory](documentation/images/usecasesSpecification/organizationSecretary/03_editCategory.png)
+
+- Mostrar clubs:
+
+![showClubs](documentation/images/usecasesSpecification/organizationSecretary/04_showClubs.png)
+
+- Eliminar un club:
+
+![deleteClub](documentation/images/usecasesSpecification/organizationSecretary/05_deleteClub.png)
+
+- Añadir o actualizar un club:
+
+![editClub](documentation/images/usecasesSpecification/organizationSecretary/06_editClub.png)
+
+- Mostrar organizadores:
+
+![showOrganizers](documentation/images/usecasesSpecification/organizationSecretary/07_showOrganizers.png)
+
+- Eliminar un organizador:
+
+![deleteOrganizer](documentation/images/usecasesSpecification/organizationSecretary/08_deleteOrganizer.png)
+
+- Añadir o actualizar un organizador:
+
+![editOrganizer](documentation/images/usecasesSpecification/organizationSecretary/09_editOrganizer.png)
+
+- Mostrar inscriptores:
+
+![showInscribers](documentation/images/usecasesSpecification/organizationSecretary/10_showInscribers.png)
+
+- Eliminar un inscriptor:
+
+![deleteInscriber](documentation/images/usecasesSpecification/organizationSecretary/11_deleteInscriber.png)
+
+- Añadir o actualizar un inscriptor:
+
+![editInscriber](documentation/images/usecasesSpecification/organizationSecretary/12_editInscriber.png)
+
 
 ### 4.4 Prototipado interfaz de usuario   <a name="useCasesPrototype"/>
 
