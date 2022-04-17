@@ -309,7 +309,9 @@ Por último, vemos que el cliente hace uso del paquete del código correspondien
 
 ### 6.2. Diseñar casos de uso
 
-<<<<<<< WIP >>>>>>>
+Para el desempeño de esta actividad, hemos seleccionado la herramienta de los diagramas de secuencia, especificando en ellos componentes concretos (vistas html, clases java, etc.) y los mensajes que éstos intercambiarán.
+
+Únicamente hemos diseñado dos casos de uso, pero si nos pusiésemos a diseñar más, los diagramas de secuencia serían bastante similares entre ellos. Por este motivo, incluímos a continuación un diagrama de secuencia genérico que podría aplicarse a cualquier diseño de caso de uso.
 
 ![competition-secretary-sequence](documentation/images/design/competition-secretary-sequence.png)
 
@@ -321,7 +323,7 @@ Por último, vemos que el cliente hace uso del paquete del código correspondien
 
 #### 6.2.2. Diseño del caso de uso 'editLiftWeighinData'
 
-<<<<<<< WIP >>>>>>>
+<<<<<<< TODO - Jaime >>>>>>>
 
 ### 6.3. Diseñar clases
 
