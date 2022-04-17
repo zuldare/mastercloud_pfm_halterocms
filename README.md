@@ -353,6 +353,14 @@ La finalidad de la disciplina de análisis es el flujo de trabajo (realización 
 cuyo propósito principal es analizar los requisitos de la captura de requisitos a través de su refinamiento y la estructura para lograr una comprensión más precisa de los
 requisitos, una descripción de los requisitos que es fácil de mantener y nos ayudan a estructurar el sistema.
 
+Las actividades que RUP recomienda para esta disciplina son las siguientes:
+- Análisis de la arquitectura.
+- Análisis de casos de uso.
+- Análisis de clases.
+- Análisis de paquetes.
+
+Nosotros, en este proyecto, hemos trabajado en las actividades de análisis de arquitectura y de análisis de casos de uso.
+
 ### 5.1 Análisis de la arquitectura <a name="architectureAnalisys">
 
 <<<<<<< TODO - Jaime >>>>>>>
