@@ -295,6 +295,18 @@ requisitos, una descripción de los requisitos que es fácil de mantener y nos a
  
 ## 6. Disciplina de diseño <a name="design"/>
 
+El principal propósito de la disciplina de diseño es desarrollar modelos enfocados sobre los requisitos no funcionales y el dominio de la solución, y prepararnos para la implementación y las pruebas del sistema.
+
+En esta fase, identificaremos los distintos subsistemas pero también dejaremos claro cómo se conectan entre sí, es decir, definiremos las posibles interfaces entre los mismos. Desgranaremos a su vez todo el trabajo de implementación en unidades más pequeñas, para que pueda ser asumida cada una por distintos equipos de trabajo. Y además profundizaremos en los requisitos no funcionales, detectando toda limitación que pueda existir en las tecnologías de las cuáles vayamos a hacer uso. 
+
+Las **actividades** recomendadas por RUP para esta disciplina son las siguientes:
+1. Diseñar la arquitectura.
+2. Diseñar casos de uso.
+3. Diseñar clases.
+4. Diseñar subsistemas.
+
+En este proyecto hemos trabajado en las tres primeras actividades, habiendo sido generados una serie de diagramas que vamos a explicar a continuación.
+
 ### 6.1. Diseñar la arquitectura
 
 En el diseño de la arquitectura, se han identificado los nodos y conexiones reflejados en la siguiente figura.
@@ -317,9 +329,11 @@ Para el desempeño de esta actividad, hemos seleccionado la herramienta de los d
 
 #### 6.2.1. Diseño del caso de uso 'introduceWeighinData'
 
-<<<<<<< WIP >>>>>>>
+En la siguiente figura se muestra el diagrama de secuencia para el caso de uso 'introduceWeighinData', correspondiente a la operación de introducir los datos de un pesaje (que son el peso corporal del levantador y los openers).
 
 ![introduceWeighinData_sequence](documentation/images/design/introduceWeighinData_sequence.png)
+
+El detonante de este caso de uso es el Secretario de la Competición, quien interactuará con la vista show-competition-play a través del navegador. Pero debemos hacer un apunte en este diagrama, y es que a la hora de implementar este caso de uso, gracias al framework de desarrollo, todo lo que haya a la derecha del componente WeighinsDAO será transparente al programador. El programador se encargará de definir una interfaz en WeighinsDAO.java y el framework hará el resto del trabajo (componer la query, consultar la query a MySQL, llamar al constructor de Weighin, etc.).
 
 #### 6.2.2. Diseño del caso de uso 'editLiftWeighinData'
 
