@@ -341,9 +341,11 @@ El detonante de este caso de uso es el Secretario de la Competición, quien inte
 
 ### 6.3. Diseñar clases
 
-<<<<<<< WIP >>>>>>>
+Inspirándonos principalmente en el modelo del dominio, y basándonos en todo el trabajo realizado en posteriores disciplinas, hemos diseñado las clases que formarán parte de nuestro desarrollo. Quedan recogidas en el siguiente diagrama de clases.
 
 ![classDiagram](documentation/images/design/ClassDiagram.png)
+
+Al contrario que en el modelo del dominio, esta división en clases ya está preparada para ser llevada directamente al código java, y cada una de ellas ya dispone de atributos tipados e incluso algunos métodos.
 
 ## 7. Disciplina de implementación <a name="implementation"/>
 
