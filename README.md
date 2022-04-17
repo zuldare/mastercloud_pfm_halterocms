@@ -252,7 +252,18 @@ A partir de ese primer hito, en sucesivas iteraciones se van a ir completando to
 
 
 ### 4.3 Especificación de casos de uso <a name="useCasesSpecification"/>
-*(WIP)*
+
+Durante esta actividad, nos hemos centrado en los casos de uso correspondientes al secretario de la competición y al secretario de la organización. Mediante la especificación de los casos de uso seleccionados, definiremos de manera minuciosa cada uno de los estados por los que pasa el caso de uso a especificar, y añadiremos los detalles sobre todas las transiciones de un estado a otro.
+
+A nivel funcional, en lo que a un caso de uso se refiere, no nos dejaremos ningún detalle fuera del diagrama de su especificación, y seremos capaces de saber cómo se comporta el sistema esté en el punto en el que esté.
+
+#### 4.3.1. Especificación de casos de uso del secretario de la competición
+
+<<<<<<< WIP >>>>>>>
+
+#### 4.3.2. Especificación de casos de uso del secretario de la organización
+
+<<<<<<< WIP >>>>>>>
 
 ### 4.4 Estructurar el modelo de casos de uso <a name="useCasesStructure"/>
 
