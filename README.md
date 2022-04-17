@@ -11,6 +11,8 @@
 
 3. [Modelo del dominio](#domainModel)
 
+    3.1. [Modelando los estados del dominio](#domainModelStates)
+
 4. [Disciplina de requisitos](#requirements)
 
     4.1 [Actores y casos de uso](#useCasesActors)
@@ -35,33 +37,13 @@
 
     6.3 [Diseño de Clase](#classesDesign)
 
-    6.4 [Diseño de Paquete](#packageDesign)
-
 7. [Disciplina de Implementación](#implementation)
     
-    7.1 [Implementar la Arquitectura](#Implementation)
+    7.1 [Casos de uso implementados](#useCasesImplementation)
 
-    7.2 [Integración de Sistemas](#Implementation)
-
-    7.3 [Implementar Clase](#Implementation)
-
-    7.4 [Pruebas Unitarias](#Implementation)
-
-    7.5 [Implementar Subsistema](#Implementation)
+    7.2 [Desarrollo Dirigido mediante las Pruebas](#tdd)
 
 8. [Disciplina de Pruebas](#tests)
-
-    8.1 [Planificar Pruebas](#planTests)
-
-    8.2 [Diseñar Pruebas](#designTests)
-
-    8.3 [Implementar Pruebas](#implementTests)
-
-    8.4 [Realizar Pruebas de Integración](#integrationTests)
-
-    8.5 [Realizar Pruebas de Sistemas](#systemTests)
-
-    8.6 [Evaluar Pruebas](#evalTests)
 
 9. [Bibliografía](#biblio)
 
@@ -145,7 +127,7 @@ En la Figura 1 se puede observar los objetos del dominio, sus relaciones y el vo
 El modelo de dominio nos puede ayudar también a tener una mejor comprensión de la organización destino. Un ejemplo de esto podría ser una muestra real de como se distribuyen las categorías oficiales en la halterofilia, tal y como se puede ver en la Figura 2.
 ![concreteCaseOfCategories](documentation/images/modelDomain/concreteCaseOfCategories.png)
 
-### 3.1. Estados en el dominio
+### 3.1. Modelando los estados del dominio <a name="domainModelStates"/>
 
 Otra forma muy interesante de modelar la realidad es mediante los estados que conforman los procesos involucrados en el dominio. Para ello se han realizado una serie de diagramas de estados, los cuales modelan la realidad correspondiente a los siguientes procesos:
 - La competición de principio a fin.
@@ -391,7 +373,7 @@ Las **actividades** recomendadas por RUP para esta disciplina son las siguientes
 
 En este proyecto hemos trabajado en las tres primeras actividades, habiendo sido generados una serie de diagramas que vamos a explicar a continuación.
 
-### 6.1. Diseñar la arquitectura
+### 6.1. Diseñar la arquitectura <a name="architectureDesign"/>
 
 En el diseño de la arquitectura, se han identificado los nodos y conexiones reflejados en la siguiente figura.
 
@@ -403,7 +385,7 @@ El cliente renderiza las plantillas y genera una serie de páginas html, las cu�
 
 Por último, vemos que el cliente hace uso del paquete del código correspondiente a las vistas, y que el war de los servicios hace uso de los controladores, modelos y DAOs.
 
-### 6.2. Diseñar casos de uso
+### 6.2. Diseñar casos de uso <a name="useCasesDesign"/>
 
 Para el desempeño de esta actividad, hemos seleccionado la herramienta de los diagramas de secuencia, especificando en ellos componentes concretos (vistas html, clases java, etc.) y los mensajes que éstos intercambiarán.
 
@@ -423,7 +405,7 @@ El detonante de este caso de uso es el Secretario de la Competición, quien inte
 
 <<<<<<< TODO - Jaime >>>>>>>
 
-### 6.3. Diseñar clases
+### 6.3. Diseñar clases <a name="classesDesign"/>
 
 Inspirándonos principalmente en el modelo del dominio, y basándonos en todo el trabajo realizado en posteriores disciplinas, hemos diseñado las clases que formarán parte de nuestro desarrollo. Quedan recogidas en el siguiente diagrama de clases.
 
@@ -444,11 +426,11 @@ Las **actividades** recomendadas por RUP para esta disciplina son las siguientes
 4. Implementación de una clase.
 5. Realización de las pruebas de unidad.
 
-### 7.1. Casos de uso implementados
+### 7.1. Casos de uso implementados <a name="useCasesImplementation"/>
 
 <<<<< WIP >>>>>
 
-### 7.2. Desarrollo Dirigido mediante las Pruebas
+### 7.2. Desarrollo Dirigido mediante las Pruebas <a name="tdd"/>
 
 Para nosotros los tests son imprescindibles en cualquier tipo de proyecto software. Por tanto, durante la ejecución de la Disciplina de Implementación, hemos aplicado TDD. El desarrollo dirigido mediante las pruebas, o lo que es lo mismo "Test Driven Development", consiste en implementar las pruebas de forma previa a la funcionalidad. Esta filosofía de desarrollo funciona bajo la premisa de que los tests son parte de la aplicación, no un añadido del que se pueda prescindir. Sin los tests, el código no está completo.
 
