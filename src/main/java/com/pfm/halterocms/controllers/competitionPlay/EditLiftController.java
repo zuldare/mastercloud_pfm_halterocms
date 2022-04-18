@@ -37,8 +37,7 @@ public class EditLiftController {
 						.collect(Collectors.toMap(BatchLifter::getLifter, BatchLifter::getLifts));
 
 				model.addAttribute("lifts", lifts);
-				//TODO => modify show-competition-play in order to add lift map
-				return "";
+				return "show-competition-batches-with-lifts";
 	}
 
 }
