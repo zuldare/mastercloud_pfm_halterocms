@@ -16,13 +16,13 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-public class ShowInscribedLiftersControllerTest {
+class ShowInscribedLiftersControllerTest {
 
     private final LiftersDAO liftersDAO = mock(LiftersDAO.class);
     private final ShowInscribedLiftersController sut = new ShowInscribedLiftersController(liftersDAO);
 
     @Test
-    public void whenShowInscribedLiftersThenShouldCallDAOAndRetrieveTheLiftersAndWeighins() {
+    void whenShowInscribedLiftersThenShouldCallDAOAndRetrieveTheLiftersAndWeighins() {
         Integer competitionId = 123;
         Model model = mock(Model.class);
 

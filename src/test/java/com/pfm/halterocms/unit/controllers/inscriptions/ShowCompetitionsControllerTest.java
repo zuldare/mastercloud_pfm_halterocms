@@ -16,13 +16,13 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-public class ShowCompetitionsControllerTest {
+class ShowCompetitionsControllerTest {
 
     private final CompetitionsDAO competitionsDAO = mock(CompetitionsDAO.class);
     private final ShowCompetitionsController sut = new ShowCompetitionsController(competitionsDAO);
 
     @Test
-    public void whenGetCompetitionsThenShouldCallDAOAndRetrieveTheCompetitions() {
+    void whenGetCompetitionsThenShouldCallDAOAndRetrieveTheCompetitions() {
         Model model = mock(Model.class);
         Competition competition = new Competition();
         List<Competition> competitions = Arrays.asList(competition, competition, competition);

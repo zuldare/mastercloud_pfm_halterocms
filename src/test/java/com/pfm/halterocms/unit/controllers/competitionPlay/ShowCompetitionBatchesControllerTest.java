@@ -18,14 +18,14 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-public class ShowCompetitionBatchesControllerTest {
+class ShowCompetitionBatchesControllerTest {
 
     private final BatchesDAO batchesDAO = mock(BatchesDAO.class);
     private final CompetitionsDAO competitionsDAO = mock(CompetitionsDAO.class);
     private final ShowCompetitionBatchesController sut = new ShowCompetitionBatchesController(batchesDAO, competitionsDAO);
 
     @Test
-    public void whenGetCompetitionBatchesThenShouldCallDAOAndRetrieveTheBatches() {
+    void whenGetCompetitionBatchesThenShouldCallDAOAndRetrieveTheBatches() {
         Integer competitionId = 123;
         Model model = mock(Model.class);
 

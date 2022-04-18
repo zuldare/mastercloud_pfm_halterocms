@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-public class LoginControllerTest {
+class LoginControllerTest {
 
     private final String username = "user";
     private final String password = "pass";
@@ -24,7 +24,7 @@ public class LoginControllerTest {
     private final LoginController sut = new LoginController(usersDAO);
 
     @Test
-    public void whenLogin_ThenShouldCallDAO_AndFindCompetitionSecretary_AndReturnCompetitionSecretaryView() {
+    void whenLogin_ThenShouldCallDAO_AndFindCompetitionSecretary_AndReturnCompetitionSecretaryView() {
         User foundUser = new User(username, encryptedPassword);
 
         when(usersDAO.findOneByUsernameAndPassword(username, encryptedPassword)).thenReturn(Optional.of(foundUser));
@@ -36,7 +36,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void whenLoginFails_ThenShouldCallDAOWithoutFindingAnyUser_AndReturnErrorView() {
+    void whenLoginFails_ThenShouldCallDAOWithoutFindingAnyUser_AndReturnErrorView() {
 
         when(usersDAO.findOneByUsernameAndPassword(username, encryptedPassword)).thenReturn(Optional.empty());
 

@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-public class CompetitionSecretaryPlayControllerTest {
+class CompetitionSecretaryPlayControllerTest {
 
     private final BatchLiftersDAO batchLiftersDAO = mock(BatchLiftersDAO.class);
     private final WeighinsDAO weighinsDAO = mock(WeighinsDAO.class);
@@ -47,7 +47,7 @@ public class CompetitionSecretaryPlayControllerTest {
     }
 
     @Test
-    public void whenIntroduceWeighinDataThenShouldCallDAOsAndSaveItProperly() {
+    void whenIntroduceWeighinDataThenShouldCallDAOsAndSaveItProperly() {
         Integer batchId = 1234;
         Integer batchLifterId = 4321;
         Integer drawOrder = 4;
