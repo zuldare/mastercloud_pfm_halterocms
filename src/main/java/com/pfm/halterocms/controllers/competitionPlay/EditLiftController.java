@@ -31,10 +31,6 @@ public class EditLiftController {
 
 	@GetMapping("/show-batch-lifts/{batchId}")
 	public String getLiftsFromBatch(@PathVariable("batchId")Integer batchId, Model model){
-		    	batchLiftersDAO.findAllByBatchId(batchId)
-					.stream()
-					.map(batchLifter -> batchLifter.getLifts())
-					.collect(Collectors.toList());
 
 				Map<Lifter, List<Lift>> lifts = batchLiftersDAO.findAllByBatchId(batchId)
 					.stream()
