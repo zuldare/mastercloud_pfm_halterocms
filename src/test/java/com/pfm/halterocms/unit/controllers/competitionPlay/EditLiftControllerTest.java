@@ -20,6 +20,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -50,4 +54,30 @@ public class EditLiftControllerTest {
 		verify(model).addAttribute("lifts", Map.of());
 	}
 
+	@Test
+	void testEditLiftWhenThereAreLiftsInBatch_shouldReturnModelWithLifts(){
+		Model model = mock(Model.class);
+
+		Integer batchId = 999;
+
+		String targetView = sut.getLiftsFromBatch(batchId, model);
+
+		assertEquals(targetView, "show-competition-batches-with-lifts");
+		verify(batchLiftersDAO, times(1)).findAllByBatchId(batchId);
+		verify(model).addAttribute("lifts", Map.of());
+	}
+
+	private Lift getLifts(){
+		Lift lift = new Lift();
+
+		lift.setId();
+		lift.setBatchLifterId();	Integer barSetWeight;
+		lift.setStatus();	    String status;
+		lift.setType();	      String type;
+		lift.setCountdown();  Integer countdown;
+		lift.setBatchLifterId();	Integer batchLifterId;
+
+
+
+	}
 }
