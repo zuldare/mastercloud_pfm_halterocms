@@ -22,6 +22,7 @@ public class Lifter {
     @Column
     private String category;
 
+    // TODO check if relationship should not be with batch instead of competition
     @Column
     private Integer competitionId;
 
@@ -29,6 +30,15 @@ public class Lifter {
     }
 
     public Lifter(Integer competitionId) {
+        this.competitionId = competitionId;
+    }
+
+    public Lifter(Integer id, String name, String club, String birthYear, String category, Integer competitionId) {
+        this.id = id;
+        this.name = name;
+        this.club = club;
+        this.birthYear = birthYear;
+        this.category = category;
         this.competitionId = competitionId;
     }
 
