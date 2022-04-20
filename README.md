@@ -403,6 +403,8 @@ El detonante de este caso de uso es el Secretario de la Competición, quien inte
 
 #### 6.2.2. Diseño del caso de uso 'showBatchInPlay'
 
+<<<<<<<< TODO - JAIME: This one needs to be corrected >>>>>>>>
+
 ![showBatchinPlay.png](documentation/images/design/showBatchInPlay.png)
 
 El detonante de este caso de uso es el Secretario de Competición, que a través de la vista correspondiente solicita obtener los levantadores y levantamientos correspondientes a la tanda en juego. 
