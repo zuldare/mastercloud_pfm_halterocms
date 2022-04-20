@@ -1,0 +1,31 @@
+@startuml
+state BATCH_MANAGEMENT
+state "BATCH_MANAGEMENT" as BATCH_IN_MANAGEMENT_F
+state showBatchInPlay {
+
+  [*] --> [*]
+  note on link
+    System allows to:
+    * editLiftValue
+    * editWeightChange
+    * showLifterCategory
+    * startTimer
+    * pauseTimer
+    * resumeTimer
+    * setDurationTimer
+    * stopTimer
+  end note
+
+}
+
+BATCH_MANAGEMENT --> showBatchInPlay
+note on link
+  Competition Secretary
+  requests to:
+  * showBatchInPlay
+end note
+
+showBatchInPlay --> BATCH_IN_MANAGEMENT_F
+
+footer \n\n\n Especificación del caso de uso "initPlay"
+@enduml

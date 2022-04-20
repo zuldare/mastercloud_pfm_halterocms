@@ -19,6 +19,7 @@ package batchManagement {
 
   usecase initPlay
   usecase finishPlay
+  usecase showBatchInPlay
 }
 
 Organizer --> showBatches
@@ -31,6 +32,7 @@ Organizer --> downloadAct
 CompetitionSecretary --> introduceWeighinData
 CompetitionSecretary --> editLiftStatus
 CompetitionSecretary --> editLiftValue
+CompetitionSecretary --> showBatchInPlay
 CompetitionSecretary --> createAct
 CompetitionSecretary --> editLiftWeightChange
 CompetitionSecretary --> showLifterCategory

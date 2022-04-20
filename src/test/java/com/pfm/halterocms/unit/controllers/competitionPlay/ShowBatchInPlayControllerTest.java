@@ -9,7 +9,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.pfm.halterocms.controllers.competitionPlay.EditLiftController;
+import com.pfm.halterocms.controllers.competitionPlay.ShowBatchInPlayController;
 import com.pfm.halterocms.daos.BatchLiftersDAO;
 import com.pfm.halterocms.daos.BatchesDAO;
 import com.pfm.halterocms.daos.LiftDAO;
@@ -24,29 +24,21 @@ import com.pfm.halterocms.models.Lifter;
 import com.pfm.halterocms.models.Weighin;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.ui.Model;
 
 @ExtendWith(SpringExtension.class)
-public class EditLiftControllerTest {
+public class ShowBatchInPlayControllerTest {
 
 	private final BatchesDAO batchesDAO = mock(BatchesDAO.class);
 	private final LiftDAO liftDAO = mock(LiftDAO.class);
 	private final BatchLiftersDAO batchLiftersDAO = mock(BatchLiftersDAO.class);
 
-	private final EditLiftController sut = new EditLiftController(batchesDAO, liftDAO, batchLiftersDAO);
+	private final ShowBatchInPlayController sut = new ShowBatchInPlayController(batchesDAO, liftDAO, batchLiftersDAO);
 
 	@Test
 	void testEditLiftWhenThereAreNoLiftsInBatch_shouldReturnAnEmptyModel(){
@@ -56,30 +48,30 @@ public class EditLiftControllerTest {
 
 		String targetView = sut.getLiftsFromBatch(batchId, model);
 
-		assertEquals(targetView, "show-competition-batches-with-lifts");
+		assertEquals(targetView, "show-batch-in-play");
 		verify(batchLiftersDAO, times(1)).findAllByBatchId(batchId);
 		verify(model).addAttribute("lifts", Map.of());
 	}
 
 //	@Test
-//	void testEditLiftWhenThereAreLiftsInBatch_shouldReturnModelWithLifts(){
-//		Model model = mock(Model.class);
-//
-//		Integer batchId = 999;
-//
-//		Competition competition = generateCompetition();
-//
-//		Lifter lifter = getLifter();
-//		List<Lift> lifts = getLifts();
-//
-//		when(batchLiftersDAO.findAllByBatchId(999)).thenReturn(generateBatchLifters());
-//
-//		String targetView = sut.getLiftsFromBatch(batchId, model);
-//
-//		assertEquals(targetView, "show-competition-batches-with-lifts");
-//		verify(batchLiftersDAO, times(1)).findAllByBatchId(batchId);
-//		verify(model).addAttribute("lifts", Map.of());
-//	}
+	void testEditLiftWhenThereAreLiftsInBatch_shouldReturnModelWithLifts(){
+		Model model = mock(Model.class);
+
+		Integer batchId = 999;
+
+		Competition competition = generateCompetition();
+
+		Lifter lifter = getLifter();
+		List<Lift> lifts = getLifts();
+
+		when(batchLiftersDAO.findAllByBatchId(999)).thenReturn(generateBatchLifters());
+
+		String targetView = sut.getLiftsFromBatch(batchId, model);
+
+		assertEquals(targetView, "show-competition-batches-with-lifts");
+		verify(batchLiftersDAO, times(1)).findAllByBatchId(batchId);
+		verify(model).addAttribute("lifts", Map.of());
+	}
 
 
 	private Competition generateCompetition(){

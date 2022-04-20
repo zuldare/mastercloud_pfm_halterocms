@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 //TODO
 @Controller
-public class EditLiftController {
+public class ShowBatchInPlayController {
 
 	private final BatchesDAO batchesDAO;
 	private final LiftDAO liftDAO;
 	private final BatchLiftersDAO batchLiftersDAO;
 
 
-	public EditLiftController(BatchesDAO batchesDAO, LiftDAO liftDAO, BatchLiftersDAO batchLiftersDAO) {
+	public ShowBatchInPlayController(BatchesDAO batchesDAO, LiftDAO liftDAO, BatchLiftersDAO batchLiftersDAO) {
 		this.batchesDAO = batchesDAO;
 		this.liftDAO = liftDAO;
 		this.batchLiftersDAO = batchLiftersDAO;
@@ -33,11 +33,11 @@ public class EditLiftController {
 	public String getLiftsFromBatch(@PathVariable("batchId")Integer batchId, Model model){
 
 				Map<Lifter, List<Lift>> lifts = batchLiftersDAO.findAllByBatchId(batchId)
-					.stream()
+						.stream()
 						.collect(Collectors.toMap(BatchLifter::getLifter, BatchLifter::getLifts));
 
 				model.addAttribute("lifts", lifts);
-				return "show-competition-batches-with-lifts";
+				return "show-batch-in-play";
 	}
 
 }

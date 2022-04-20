@@ -1,0 +1,26 @@
+@startuml
+actor "Competition\nSecretary\nJaime" as cs
+
+control BatchLiftersDAO
+control ShowBatchInPlayController
+entity BatchLifter
+boundary EditLiftView
+
+cs -right-> EditLiftView
+EditLiftView -right-> ShowBatchInPlayController
+note on link
+  getLiftsFromBatch(batchId)
+end note
+
+ShowBatchInPlayController -right-> BatchLiftersDAO
+note on link
+  findAllByBatchId(batchId)
+end note
+
+BatchLiftersDAO .right. "0..*" BatchLifter
+
+
+
+
+
+@enduml
