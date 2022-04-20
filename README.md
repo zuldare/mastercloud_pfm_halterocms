@@ -351,13 +351,13 @@ Nosotros, en este proyecto, hemos trabajado en las actividades de análisis de a
 
 Tras realizar la actividad anterior, análisis de la arquitectura, podemos comenzar el análisis de los casos de uso. En esta actividad trataremos de recoger qué componentes de los que hemos obtenido en el análisis de la arquitectura están involucrados en cada caso de uso, y de qué forma se relacionan y a través de qué mensajes.
 
-De ahora en adelante centraremos toda nuestra atención en dos casos de uso distintos: 'introduceWeighinData' y 'editLift', o lo que es lo mismo, añadir un nuevo pesaje y editar un levantamiento. Las figuras que se incluyen a continuación, muestran el análisis de estos dos casos de uso.
+Nos hemos centrado en esta ocasión en dos casos de uso distintos: 'introduceWeighinData' y 'showBatchInPlay', o lo que es lo mismo, añadir un nuevo pesaje y mostrar la tanda en curso. Las figuras que se incluyen a continuación, muestran el análisis de estos dos casos de uso.
 
 - Análisis del caso de uso 'introduceWeighinData':
-![analysis_introduceWeighinData](documentation/images/analysis/useCases/introduceWeighinData.png)
+![analysis_introduceWeighinData](documentation/images/analysis/useCases/introduceWeighinData_v2.png)
 
-- Análisis del caso de uso 'editLift':
-![analysis_editLift](documentation/images/analysis/useCases/editLiftView.png)
+- Análisis del caso de uso 'showBatchInPlay':
+![analysis_showBatchInPlay](documentation/images/analysis/useCases/showBatchInPlay.png)
  
 ## 6. Disciplina de diseño <a name="design"/>
 
@@ -403,7 +403,7 @@ El detonante de este caso de uso es el Secretario de la Competición, quien inte
 
 #### 6.2.2. Diseño del caso de uso 'showBatchInPlay'
 
-<<<<<<<< TODO - JAIME: This one needs to be corrected >>>>>>>>
+<<<<<<<< TODO - JAIME: He movido ya este diagrama a la parte de análisis, y este debes modificarlo por uno que tenga los componentes >>>>>>>>
 
 ![showBatchinPlay.png](documentation/images/design/showBatchInPlay.png)
 

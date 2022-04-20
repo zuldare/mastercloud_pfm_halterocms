@@ -1,0 +1,27 @@
+@startuml
+actor user as "Competition\nSecretary"
+
+boundary CompetitionSecretaryPlayView
+control IntroduceWeighinDataController
+control WeighinsDAO
+entity Weighin
+
+user -right-> CompetitionSecretaryPlayView
+
+CompetitionSecretaryPlayView -right-> IntroduceWeighinDataController
+note on link
+  weighin = new Weighin(
+      lifter, bodyWeight, 
+      snatchOpener, cleanAndJerkOpener
+  )
+  addWeighin(weighin)
+end note
+
+IntroduceWeighinDataController -right-> WeighinsDAO
+note on link
+  save(weighin)
+end note
+
+WeighinsDAO .right. "1" Weighin
+
+@enduml
