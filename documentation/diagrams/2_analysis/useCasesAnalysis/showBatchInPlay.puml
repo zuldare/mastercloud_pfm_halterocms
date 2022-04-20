@@ -1,5 +1,5 @@
 @startuml
-actor "Competition\nSecretary\nJaime" as cs
+actor "Competition\nSecretary" as cs
 
 control BatchLiftersDAO
 control ShowBatchInPlayController
