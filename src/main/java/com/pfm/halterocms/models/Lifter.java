@@ -22,24 +22,19 @@ public class Lifter {
     @Column
     private String category;
 
-    // TODO check if relationship should not be with batch instead of competition
-    @Column
-    private Integer competitionId;
+    @ManyToOne
+    private Batch batch;
 
     public Lifter() {
     }
 
-    public Lifter(Integer competitionId) {
-        this.competitionId = competitionId;
-    }
-
-    public Lifter(Integer id, String name, String club, String birthYear, String category, Integer competitionId) {
+    public Lifter(Integer id, String name, String club, String birthYear, String category, Batch batch) {
         this.id = id;
         this.name = name;
         this.club = club;
         this.birthYear = birthYear;
         this.category = category;
-        this.competitionId = competitionId;
+        this.batch = batch;
     }
 
     @Override
@@ -47,13 +42,12 @@ public class Lifter {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Lifter lifter = (Lifter) o;
-        return Objects.equals(id, lifter.id) &&
-                Objects.equals(competitionId, lifter.competitionId);
+        return Objects.equals(id, lifter.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, competitionId);
+        return Objects.hash(id);
     }
 
     public Integer getId() {
@@ -76,7 +70,8 @@ public class Lifter {
         return category;
     }
 
-    public Integer getCompetitionId(){
-        return this.competitionId;
+    public Batch getBatch() {
+        return batch;
     }
+
 }

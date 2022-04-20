@@ -81,8 +81,8 @@ public class ShowBatchInPlayControllerTest {
 		Competition competition = new Competition(1, "Competititon Test", "Senior", "Madrid", "FEH", inscriptionStartDate, inscriptionStartDate.plusMonths(1), startDate, startDate.plusDays(1));
 		Batch batch = new Batch(2, competition, "A", "M", startDate, LocalTime.of(8,0), LocalTime.of(10,0));
 
-		Lifter anatoly = new Lifter(3, "Pisarenko", "URSS", "1985", "M019", competition.getId());
-		Lifter mata = new Lifter(3, "Mata", "Spain", "1980", "M019", competition.getId());
+		Lifter anatoly = new Lifter(3, "Pisarenko", "URSS", "1985", "M019", batch);
+		Lifter mata = new Lifter(3, "Mata", "Spain", "1980", "M019", batch);
 
 		// new BatchLifter(Integer id, Integer drawOrder, Batch batch, Lifter lifter, Weighin weighin);
 

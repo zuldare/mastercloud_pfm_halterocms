@@ -7,10 +7,10 @@ INSERT INTO halterocms.batch (id, `date`, gender, platform, start_time, weighin_
 VALUES(1, '2022-05-09', 'male', '1A', '10:05:00', '08:30:00', 1);
 
 -- Lifters
-INSERT INTO halterocms.lifter (id, competition_id, birth_year, category, club, name)
-VALUES(1, 1, '1981', '109', 'URSS', 'Anatoly Pisarenko');
-INSERT INTO halterocms.lifter (id, competition_id, birth_year, category, club, name)
-VALUES(2, 1, '1986', '109', 'USA', 'John Doe');
+INSERT INTO halterocms.lifter (id, birth_year, category, club, name, batch_id)
+VALUES(1, '1981', '109', 'URSS', 'Anatoly Pisarenko', 1);
+INSERT INTO halterocms.lifter (id, birth_year, category, club, name, batch_id)
+VALUES(2, '1986', '109', 'USA', 'John Doe', 1);
 
 -- Weighins
 INSERT INTO halterocms.weighin (id, body_weight, clean_and_jerk_opener, snatch_opener, `time`, lifter_id)
