@@ -4,10 +4,10 @@ actor "Competition\nSecretary" as cs
 control BatchLiftersDAO
 control ShowBatchInPlayController
 entity BatchLifter
-boundary EditLiftView
+boundary ShowBatchInPlayView
 
-cs -right-> EditLiftView
-EditLiftView -right-> ShowBatchInPlayController
+cs -right-> ShowBatchInPlayView
+ShowBatchInPlayView -right-> ShowBatchInPlayController
 note on link
   getLiftsFromBatch(batchId)
 end note

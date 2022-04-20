@@ -1,4 +1,6 @@
 @startuml
+
+'//TODO CHECK
 enum LiftStatus {
   PENDING
   VALID
@@ -42,10 +44,10 @@ enum Gender {
   MALE(M)
   FEMALE(F)
 }
-
-class Marshall {
-  changeLiftWeight(Integer newWeight)
-}
+'
+'class Marshall {
+'  changeLiftWeight(Integer newWeight)
+'}
 
 class Timekeeper {
   + setTimer()
@@ -54,19 +56,19 @@ class Timekeeper {
   + resetTimer()
 }
 
-class CompetitionSecretary {
-  changeLiftWeight(Integer newWeight)
-  setLiftStatus(LiftStatus liftStatus)
-}
+'class CompetitionSecretary {
+'  changeLiftWeight(Integer newWeight)
+'  setLiftStatus(LiftStatus liftStatus)
+'}
 
 
-abstract class TechnicalOfficer {
-  # String name
-}
-
-TechnicalOfficer <|-- CompetitionSecretary
-TechnicalOfficer <|-- Marshall
-TechnicalOfficer <|-- Timekeeper
+'abstract class TechnicalOfficer {
+'  # String name
+'}
+'
+'TechnicalOfficer <|-- CompetitionSecretary
+'TechnicalOfficer <|-- Marshall
+'TechnicalOfficer <|-- Timekeeper
 
 
 class BarSet {
@@ -120,11 +122,11 @@ Platform o--> Lift
 Platform o--> Lifter
 
 class Weighing {
-  String judge
   Lifter lifter
-  Float lifterBodyWeight
-  Float snatchOpener
-  Float cleanJerkOpener
+  Double lifterBodyWeight
+  Integer snatchOpener
+  Integer cleanJerkOpener
+  LocalTime time
 }
 
 Weighing *--> Lifter
@@ -196,8 +198,8 @@ Lifter *--> Category
 Batch o--> Lifter
 
 CompetitionSecretary ..> Lift
-Marshall ..> Lift
-Timekeeper ..> Lift
+'Marshall ..> Lift
+'Timekeeper ..> Lift
 
 Abstract ClassificationAct {
   OrderedList<Lifter> lifters
