@@ -44,8 +44,9 @@
     7.2 [Desarrollo Dirigido mediante las Pruebas](#tdd)
 
 8. [Disciplina de Pruebas](#tests)
+9. [Conclusiones](#conclusions)
 
-9. [Bibliografía](#biblio)
+10. [Bibliografía](#biblio)
 
 ## 1. Introducción<a name="intro"/>
 
@@ -69,7 +70,6 @@ Los subojetivos del proyecto son:
     * Git como gestor de versiones
     * Github como repositorio (tanto de código como de artefactos)
     * Github project como administrador/organizador de tareas
-    * Github Actions como herramienta de integración continua
 
 
 ### 1.2 ¿Qué es la halterofilia? <a name="intro_haltero"/>
@@ -464,6 +464,30 @@ Aun así, hemos realizado algunas pruebas funcionales de forma manual, siguiendo
 
 
 ## Conclusiones <a name="conclusions"/>
+<<WIP Jaime>>
+Se han cumplido los objetivos propuestos puesto que hemos aplicado RUP al desarrollo de un proyecto real, focalizandonos 
+en la fase de análisis y diseño. Se ha hecho menos hincapié en el carácter iterativo ya que no hemos dispuesto del tiempo necesario
+para realizar un mayor número de casos de uso. Este último punto también ha hecho que la fase de gestión
+también haya sido simple, aún así de cara a un futuro estas disciplinas se podrían retomar de una manera sencilla.
+
+* Puntos positivos que se han observado:
+  * Vocabulario común
+  * Requisitos + tdd <<WIP NATALIA>> --> como la toma de requisitos ha hecho que aplicando la técnica de TDD todas las pruebas estuviesen mucho más claras y saliesen de una manera más directa.
+  * Gracias a la documentación en forma de diagramas es muchísimo más fácil la entrada a un proyecto, ya que desde el día uno la gente dispone de un modelo de dominio y unas bases sobre las que seguir avanzando.
+  * La obtención y clasificación de casos de uso hacen que sea francamente fácil el asignar tareas a distintas personas del equipo con muy distinto nivel de experiencia, siendo muy fácil poder darle a perfiles junior o seniors tareas acordes.
+  * La partición en casos de uso y su posterior análisis han hecho que toda la "lógica" de la funcionalidad se haya pensado y analizado previa al desarrollo consiguiendo de esta manera que a la hora de hacer el código todos los esfuerzos vayan a generar un código de calidad
+  * La planificación una vez hechos los primeros casos de uso es muy sencilla y bastante aproximados los tiempos estimados con los tiempos en los que realmente se ha realizado la tarea
+  
+
+Líneas futuras y próximos pasos:
+* Acabar con la implementación de todos los casos de usos a los que se han llegado en el PFM
+* Realizar un análisis de como todo el proceso que se ha realizado se podría agilizar
+* Mejorar la disciplina de gestión
+
+
+
+
+====>  ESTAMOS USANDO UNA ARQUITECTURA MVP Controlador SUPERVISOR
 ## Autores <a name="authors"/>
 
 👤 **Natalia Roales**
