@@ -18,14 +18,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class ShowBatchInPlayController {
 
-	private final BatchesDAO batchesDAO;
-	private final LiftDAO liftDAO;
 	private final BatchLiftersDAO batchLiftersDAO;
 
 
-	public ShowBatchInPlayController(BatchesDAO batchesDAO, LiftDAO liftDAO, BatchLiftersDAO batchLiftersDAO) {
-		this.batchesDAO = batchesDAO;
-		this.liftDAO = liftDAO;
+	public ShowBatchInPlayController(BatchLiftersDAO batchLiftersDAO) {
 		this.batchLiftersDAO = batchLiftersDAO;
 	}
 

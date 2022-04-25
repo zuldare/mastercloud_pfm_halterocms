@@ -38,7 +38,7 @@ public class ShowBatchInPlayControllerTest {
 	private final LiftDAO liftDAO = mock(LiftDAO.class);
 	private final BatchLiftersDAO batchLiftersDAO = mock(BatchLiftersDAO.class);
 
-	private final ShowBatchInPlayController sut = new ShowBatchInPlayController(batchesDAO, liftDAO, batchLiftersDAO);
+	private final ShowBatchInPlayController sut = new ShowBatchInPlayController(batchLiftersDAO);
 
 	@Test
 	void testEditLiftWhenThereAreNoLiftsInBatch_shouldReturnAnEmptyModel(){
