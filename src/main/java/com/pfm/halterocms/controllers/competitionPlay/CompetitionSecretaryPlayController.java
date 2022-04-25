@@ -2,6 +2,7 @@ package com.pfm.halterocms.controllers.competitionPlay;
 
 import com.pfm.halterocms.daos.BatchLiftersDAO;
 import com.pfm.halterocms.daos.WeighinsDAO;
+import com.pfm.halterocms.dtos.Openers;
 import com.pfm.halterocms.dtos.WeighinDataDto;
 import com.pfm.halterocms.models.BatchLifter;
 import com.pfm.halterocms.models.Weighin;
@@ -15,6 +16,9 @@ import java.util.Objects;
 
 @Controller
 public class CompetitionSecretaryPlayController {
+
+    private static final String ERROR_COMPETITION_SECRETARY_PLAY_ERROR = "/error/competition-secreatary-play-error";
+    private static final String SHOW_COMPETITION_PLAY_OK = "show-competition-play";
 
     private final BatchLiftersDAO batchLiftersDAO;
 
@@ -36,56 +40,71 @@ public class CompetitionSecretaryPlayController {
             model.addAttribute("batch", batchLifters.get(0).getBatch());
         }
 
-        return "show-competition-play";
+        return SHOW_COMPETITION_PLAY_OK;
     }
+
 
     @PostMapping("/introduce-weighin-data")
     public String introduceWeighinData(Model model, @ModelAttribute("weighinDataDto") WeighinDataDto weighinDataDto) {
 
-        Double bodyWeight;
-        Integer snatchOpener;
-        Integer cleanAndJerkOpener;
-
+        Openers openers;
         try {
-            bodyWeight = weighinDataDto.getBodyWeight().isBlank()
-                    ? null : Double.valueOf(weighinDataDto.getBodyWeight());
-
-            snatchOpener = weighinDataDto.getSnatchOpener().isBlank()
-                    ? null : Integer.valueOf(weighinDataDto.getSnatchOpener());
-
-            cleanAndJerkOpener = weighinDataDto.getCleanAndJerkOpener().isBlank()
-                    ? null : Integer.valueOf(weighinDataDto.getCleanAndJerkOpener());
-
-        } catch (NumberFormatException e) {
-            model.addAttribute("batchId", weighinDataDto.getBatchId());
-            return "/error/competition-secreatary-play-error";
+            openers = new Openers(weighinDataDto);
+        } catch (NumberFormatException e){
+            return getErrorPath(model, weighinDataDto);
         }
 
-        if ((Objects.nonNull(bodyWeight) && bodyWeight <= 0)
-                || (Objects.nonNull(snatchOpener) && snatchOpener <= 0)
-                || (Objects.nonNull(cleanAndJerkOpener) && cleanAndJerkOpener <= 0)) {
-            model.addAttribute("batchId", weighinDataDto.getBatchId());
-            return "/error/competition-secreatary-play-error";
+        if (checkIfOpenersAreWrong(openers)){
+            return getErrorPath(model, weighinDataDto);
         }
 
-        BatchLifter batchLifter = batchLiftersDAO.findOneByBatchIdAndDrawOrder(
-                weighinDataDto.getBatchId(), weighinDataDto.getDrawOrder()
-        );
+        saveBatchLifterWeighIn(weighinDataDto, openers);
 
+        return "redirect:/" + SHOW_COMPETITION_PLAY_OK + "/" + weighinDataDto.getBatchId();
+    }
+
+    private String getErrorPath(Model model, WeighinDataDto weighinDataDto) {
+        model.addAttribute("batchId", weighinDataDto.getBatchId());
+        return ERROR_COMPETITION_SECRETARY_PLAY_ERROR;
+    }
+
+    private void saveBatchLifterWeighIn(WeighinDataDto weighinDataDto, Openers openers) {
+        BatchLifter batchLifter = batchLiftersDAO
+                .findOneByBatchIdAndDrawOrder(weighinDataDto.getBatchId(), weighinDataDto.getDrawOrder());
+
+        Weighin weighin = getWeighin(openers, batchLifter);
+
+        Weighin savedWeighin = weighinsDAO.save(weighin);
+
+        batchLifter.setWeighin(savedWeighin);
+
+        batchLiftersDAO.save(batchLifter);
+    }
+
+    private Weighin getWeighin(Openers openers, BatchLifter batchLifter) {
         Weighin weighin = new Weighin(
                 batchLifter.getWeighin().getId(),
                 batchLifter.getLifter(),
-                bodyWeight,
-                snatchOpener,
-                cleanAndJerkOpener,
+                openers.getBodyWeight(),
+                openers.getSnatchOpener(),
+                openers.getCleanAndJerkOpener(),
                 LocalTime.now()
         );
+        return weighin;
+    }
 
-        Weighin savedWeighin = weighinsDAO.save(weighin);
-        batchLifter.setWeighin(savedWeighin);
-        batchLiftersDAO.save(batchLifter);
+    private boolean checkIfOpenersAreWrong(Openers openers) {
+        return lessThanZeroAndNotNull(openers.getBodyWeight())
+                || lessThanZeroAndNotNull(openers.getSnatchOpener())
+                || lessThanZeroAndNotNull(openers.getCleanAndJerkOpener());
+    }
 
-        return "redirect:/show-competition-play/" + weighinDataDto.getBatchId();
+    private Boolean lessThanZeroAndNotNull(Double value){
+        return Objects.nonNull(value) && value <= 0;
+    }
+
+    private Boolean lessThanZeroAndNotNull(Integer value){
+        return Objects.nonNull(value) && value <= 0;
     }
 
 }
