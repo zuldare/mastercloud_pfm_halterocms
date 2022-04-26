@@ -343,11 +343,18 @@ Las actividades que RUP recomienda para esta disciplina son las siguientes:
 
 Nosotros, en este proyecto, hemos trabajado en las actividades de análisis de arquitectura y de análisis de casos de uso.
 
-### 5.1 Análisis de la arquitectura <a name="architectureAnalisys">
+### 5.1 Análisis de la arquitectura <a name="architectureAnalisys"/>
 
-<<<<<<< TODO - Jaime >>>>>>>
+Esta aplicación se ha estructurado por capas de presentación, capa de negocio y datos.
 
-### 5.2 Análisis de casos de uso <a name="usecaseAnalisys">
+En este punto se organiza el sistema software, en clases modelo vista y controlador, se pintan algunas de las relaciones más importantes
+
+![analysis_architecture_global](documentation/images/analysis/architecture/1_ArchitectureGlobal.png)
+
+![full_architecture](documentation/images/analysis/architecture/Full_ArchitectureAnalysis.png)
+
+
+### 5.2 Análisis de casos de uso <a name="usecaseAnalisys"/>
 
 Tras realizar la actividad anterior, análisis de la arquitectura, podemos comenzar el análisis de los casos de uso. En esta actividad trataremos de recoger qué componentes de los que hemos obtenido en el análisis de la arquitectura están involucrados en cada caso de uso, y de qué forma se relacionan y a través de qué mensajes.
 
@@ -375,7 +382,13 @@ En este proyecto hemos trabajado en las tres primeras actividades, habiendo sido
 
 ### 6.1. Diseñar la arquitectura <a name="architectureDesign"/>
 
+Los objetivos del diseño de la arquitectura son identificar clases arquitectónicas significativas de diseño, subsistemas específicos de la aplicación e identificar el software y las tecnologías en las que se va a apoyar. Este software pueden ser servidores, navegadores web o componentes software, entre otros
+
 En el diseño de la arquitectura, se han identificado los nodos y conexiones reflejados en la siguiente figura.
+
+La aplicación está estructurada por capas y se organiza en una capa de presentación, una capa de negocio y una capa de datos. Se profundizará en ello más adelante. Además, es una aplicación multi-página, es decir, en la parte del cliente está el navegador y es el servidor el que se encarga de generar todas las vistas en html, css y javascript que manda posteriormente al cliente.
+
+Estamos usando una arquitectura MVP Controlador Supervisor
 
 ![deployment](documentation/images/design/deployment.png)
 
@@ -383,11 +396,19 @@ En primer lugar, vemos que existe un **webServer** que se compone del cliente we
 
 El cliente renderiza las plantillas y genera una serie de páginas html, las cuáles son consumidas por el navegador web. Y por otro lado, el servidor se conecta con una base de datos MySQL.
 
-Por último, vemos que el cliente hace uso del paquete del código correspondiente a las vistas, y que el war de los servicios hace uso de los controladores, modelos y DAOs.
+Vemos que el cliente hace uso del paquete del código correspondiente a las vistas, y que el war de los servicios hace uso de los controladores, modelos y DAOs.
 
+Por último, tenemos que añadir que la aplicación se trata de un monolíto y que por tanto, se genera un único artefacto que contiene la aplicación. Este tipo de aplicación tiene como ventajas principales su facilidad a la hora de gestionar versiones y despliegues. 
 ### 6.2. Diseñar casos de uso <a name="useCasesDesign"/>
 
 Para el desempeño de esta actividad, hemos seleccionado la herramienta de los diagramas de secuencia, especificando en ellos componentes concretos (vistas html, clases java, etc.) y los mensajes que éstos intercambiarán.
+
+![introduceWeighinData_sequence](documentation/images/design/useCasesDesign.png)
+
+- Clases View: se corresponden con una clase Template, Style y Bean. La relación que hay entre estas clases de diseño se podría ver como las relaciones entre clases que hay en un patrón MVP (Modelo Vista Presentador) en la capa de presentación: donde las clases Template serían el modelo, las clases CSS, serían la Vista o
+  representación visual de los modelos, y los Beans, los presentadores encargados de presentar los modelos.
+- Clases Controller: estas clases se encargan de desacoplar las clases de negocio de las clases de presentación, de esta manera, es muy fácil cambiar de tecnologías ya que la lógica de negocio se ve impactada a muy bajo nivel.
+- Clases Entity: la funcionalidad de estas clases es conectarse con la base de datos y realizar todas las consultas necesarias para recuperar las entidades persistidas.
 
 Únicamente hemos diseñado dos casos de uso, pero si nos pusiésemos a diseñar más, los diagramas de secuencia serían bastante similares entre ellos. Por este motivo, incluímos a continuación un diagrama de secuencia genérico que podría aplicarse a cualquier diseño de caso de uso.
 
@@ -395,6 +416,7 @@ Para el desempeño de esta actividad, hemos seleccionado la herramienta de los d
 
 #### 6.2.1. Diseño del caso de uso 'introduceWeighinData'
 
+Esta disciplina nos ayuda a identificar las clases de diseño y subsistemas necesarios para realizar el caso de uso.
 En la siguiente figura se muestra el diagrama de secuencia para el caso de uso 'introduceWeighinData', correspondiente a la operación de introducir los datos de un pesaje (que son el peso corporal del levantador y los openers).
 
 ![introduceWeighinData_sequence](documentation/images/design/introduceWeighinData_sequence.png)
@@ -464,7 +486,7 @@ Aun así, hemos realizado algunas pruebas funcionales de forma manual, siguiendo
 
 
 ## Conclusiones <a name="conclusions"/>
-<<WIP Jaime>>
+ 
 Se han cumplido los objetivos propuestos puesto que hemos aplicado RUP al desarrollo de un proyecto real, focalizandonos 
 en la fase de análisis y diseño. Se ha hecho menos hincapié en el carácter iterativo ya que no hemos dispuesto del tiempo necesario
 para realizar un mayor número de casos de uso. Este último punto también ha hecho que la fase de gestión
@@ -472,7 +494,7 @@ también haya sido simple, aún así de cara a un futuro estas disciplinas se po
 
 * Puntos positivos que se han observado:
   * Vocabulario común
-  * Requisitos + tdd <<WIP NATALIA>> --> como la toma de requisitos ha hecho que aplicando la técnica de TDD todas las pruebas estuviesen mucho más claras y saliesen de una manera más directa.
+  * El haber hecho un análisis de los casos de uso ha hecho que aplicar la técnica de TDD sea realmente sencillo ya que los casos a probar han salido de una manera mucho más natural y sencilla.
   * Gracias a la documentación en forma de diagramas es muchísimo más fácil la entrada a un proyecto, ya que desde el día uno la gente dispone de un modelo de dominio y unas bases sobre las que seguir avanzando.
   * La obtención y clasificación de casos de uso hacen que sea francamente fácil el asignar tareas a distintas personas del equipo con muy distinto nivel de experiencia, siendo muy fácil poder darle a perfiles junior o seniors tareas acordes.
   * La partición en casos de uso y su posterior análisis han hecho que toda la "lógica" de la funcionalidad se haya pensado y analizado previa al desarrollo consiguiendo de esta manera que a la hora de hacer el código todos los esfuerzos vayan a generar un código de calidad
@@ -483,11 +505,9 @@ Líneas futuras y próximos pasos:
 * Acabar con la implementación de todos los casos de usos a los que se han llegado en el PFM
 * Realizar un análisis de como todo el proceso que se ha realizado se podría agilizar
 * Mejorar la disciplina de gestión
+* A medida que se vayan desarrollando nuevas funcionalidades se podría realizar un estudio de como llevarlo a microservicios si se diesen las condiciones necesarias para su cumplimiento.
 
 
-
-
-====>  ESTAMOS USANDO UNA ARQUITECTURA MVP Controlador SUPERVISOR
 ## Autores <a name="authors"/>
 
 👤 **Natalia Roales**
