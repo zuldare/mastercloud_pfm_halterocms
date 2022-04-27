@@ -188,7 +188,7 @@ Las actividades recomendadas por RUP en esta disciplina son las siguientes:
 * Un caso de uso es una **especificación de secuencias de acciones, incluyendo posibles variaciones, 
 que el sistema puede realizar y que dan un resultado observable de interés a un actor particular**
 
-En la Figura 3 podemos ver los actores que se han identificado, mientras que en el resto de figuras se representan los casos de uso identificados y los actores que los realizan
+En la Figura 3 podemos ver los actores que se han identificado, mientras que en el resto de figuras se representan los casos de uso identificados y los actores que los realizan.
 ![actors](documentation/images/usecases/actors.png)
 
 ![organizationSecretary](documentation/images/usecases/organizationSecretary.png)
@@ -204,10 +204,10 @@ En la Figura 3 podemos ver los actores que se han identificado, mientras que en 
 
 ### 4.2 Priorizar casos de uso <a name="useCasesPrioritize"/>
 Hay que **determinar qué casos de uso seran desarrollados** (analizados, diseñados, implementados y probados) en
-las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteraciones teniendo en cuenta factores como puedan ser aspectos técnicos, aspectos económicos, aspectos de negocio o cualquier tipo de riesgo
+las primeras iteraciones y cuáles se pueden desarrollar en sucesivas iteraciones teniendo en cuenta factores como puedan ser aspectos técnicos, aspectos económicos, aspectos de negocio o cualquier tipo de riesgo.
 
 En nuestro caso hemos decidido que los casos de uso que nos interesaba terminar lo antes posible debido a factores de negocio y al tener una mayor complejidad en su lógica son los relacionados con "jugar la tanda". 
-A partir de ese primer hito, en sucesivas iteraciones se van a ir completando toda la gestión de tandas, competiciones, etc tal y como se muestran en la siguiente figura
+A partir de ese primer hito, en sucesivas iteraciones se van a ir completando toda la gestión de tandas, competiciones, etc tal y como se muestran en la siguiente figura.
 
 
 ![useCasePriorization1](documentation/images/usecases/useCasePriorization-1.png)
@@ -347,7 +347,7 @@ Nosotros, en este proyecto, hemos trabajado en las actividades de análisis de a
 
 Esta aplicación se ha estructurado por capas de presentación, capa de negocio y datos.
 
-En este punto se organiza el sistema software, en clases modelo vista y controlador, se pintan algunas de las relaciones más importantes
+En este punto se organiza el sistema software, en clases modelo vista y controlador, se pintan algunas de las relaciones más importantes.
 
 ![analysis_architecture_global](documentation/images/analysis/architecture/1_ArchitectureGlobal.png)
 
@@ -382,13 +382,13 @@ En este proyecto hemos trabajado en las tres primeras actividades, habiendo sido
 
 ### 6.1. Diseñar la arquitectura <a name="architectureDesign"/>
 
-Los objetivos del diseño de la arquitectura son identificar clases arquitectónicas significativas de diseño, subsistemas específicos de la aplicación e identificar el software y las tecnologías en las que se va a apoyar. Este software pueden ser servidores, navegadores web o componentes software, entre otros
+Los objetivos del diseño de la arquitectura son identificar clases arquitectónicas significativas de diseño, subsistemas específicos de la aplicación e identificar el software y las tecnologías en las que se va a apoyar. Este software pueden ser servidores, navegadores web o componentes software, entre otros.
 
 En el diseño de la arquitectura, se han identificado los nodos y conexiones reflejados en la siguiente figura.
 
 La aplicación está estructurada por capas y se organiza en una capa de presentación, una capa de negocio y una capa de datos. Se profundizará en ello más adelante. Además, es una aplicación multi-página, es decir, en la parte del cliente está el navegador y es el servidor el que se encarga de generar todas las vistas en html, css y javascript que manda posteriormente al cliente.
 
-Estamos usando una arquitectura MVP Controlador Supervisor
+Estamos usando una arquitectura MVP Controlador Supervisor:
 
 ![deployment](documentation/images/design/deployment.png)
 
@@ -449,9 +449,13 @@ Las **actividades** recomendadas por RUP para esta disciplina son las siguientes
 4. Implementación de una clase.
 5. Realización de las pruebas de unidad.
 
+Tras todo el trabajo realizado en disciplinas anteriores, el cometido de esta disciplina resulta bastante mecánico e instantáneo. Simplemente, basta con plasmar en el código las interacciones definidas en los diagramas de diseño esbozados en la disciplina anterior, siguiendo unas buenas prácticas de desarrollo para que el código quede lo más limpio posible. 
+
 ### 7.1. Casos de uso implementados <a name="useCasesImplementation"/>
 
-<<<<< WIP >>>>>
+Puesto que en la disciplina de diseño nos hemos centrado en los casos de uso 'introduceWeighinData' y 'showBatchInPlay', hemos querido cubrirlos también desde el punto de vista de la disciplina de desarrollo. Es la primera vez que hacemos un análisis tan exhaustivo del proyecto de forma previa a la implementación, por lo que nos ha sorprendido bastante la rapidez con la que hemos conseguido completar los desarrollos.
+
+Apenas hemos necesitado invertir tiempo en pensar mucho, porque la gran mayoría de los problemas que podrían surgir ya fueron planteados previamente.
 
 ### 7.2. Desarrollo Dirigido mediante las Pruebas <a name="tdd"/>
 
@@ -491,18 +495,18 @@ para realizar un mayor número de casos de uso. Este último punto también ha h
 también haya sido simple, aún así de cara a un futuro estas disciplinas se podrían retomar de una manera sencilla.
 
 * Puntos positivos que se han observado:
-  * Vocabulario común
+  * Vocabulario común.
   * El haber hecho un análisis de los casos de uso ha hecho que aplicar la técnica de TDD sea realmente sencillo ya que los casos a probar han salido de una manera mucho más natural y sencilla.
   * Gracias a la documentación en forma de diagramas es muchísimo más fácil la entrada a un proyecto, ya que desde el día uno la gente dispone de un modelo de dominio y unas bases sobre las que seguir avanzando.
   * La obtención y clasificación de casos de uso hacen que sea francamente fácil el asignar tareas a distintas personas del equipo con muy distinto nivel de experiencia, siendo muy fácil poder darle a perfiles junior o seniors tareas acordes.
-  * La partición en casos de uso y su posterior análisis han hecho que toda la "lógica" de la funcionalidad se haya pensado y analizado previa al desarrollo consiguiendo de esta manera que a la hora de hacer el código todos los esfuerzos vayan a generar un código de calidad
-  * La planificación una vez hechos los primeros casos de uso es muy sencilla y bastante aproximados los tiempos estimados con los tiempos en los que realmente se ha realizado la tarea
+  * La partición en casos de uso y su posterior análisis han hecho que toda la "lógica" de la funcionalidad se haya pensado y analizado previa al desarrollo consiguiendo de esta manera que a la hora de hacer el código todos los esfuerzos vayan a generar un código de calidad.
+  * La planificación una vez hechos los primeros casos de uso es muy sencilla y bastante aproximados los tiempos estimados con los tiempos en los que realmente se ha realizado la tarea.
   
 
 Líneas futuras y próximos pasos:
-* Acabar con la implementación de todos los casos de usos a los que se han llegado en el PFM
-* Realizar un análisis de como todo el proceso que se ha realizado se podría agilizar
-* Mejorar la disciplina de gestión
+* Acabar con la implementación de todos los casos de usos a los que se han llegado en el PFM.
+* Realizar un análisis de como todo el proceso que se ha realizado se podría agilizar.
+* Mejorar la disciplina de gestión.
 * A medida que se vayan desarrollando nuevas funcionalidades se podría realizar un estudio de como llevarlo a microservicios si se diesen las condiciones necesarias para su cumplimiento.
 
 
@@ -511,6 +515,10 @@ Líneas futuras y próximos pasos:
 👤 **Natalia Roales**
 
 👤 **Jaime Hernández** 
+
+### Tutor de este proyecto
+
+👤 **Luis Fernández Muñoz**
 
 ## Bibliografía <a name="biblio"/>
 
