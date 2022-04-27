@@ -1,0 +1,22 @@
+@startuml
+
+actor user as "Competition\nSecretary"
+
+boundary ShowBatchInPlayView as "show-batch-in-play.html"
+control ShowBatchInPlayController as "ShowBatchInPlayController.java"
+control BatchLiftersDAO as "BatchLiftersDAO.java"
+entity BatchLifter as "BatchLifter.java"
+database MySQL
+
+user -> ShowBatchInPlayView : GET - /show-batch-in-play
+ShowBatchInPlayView -> ShowBatchInPlayController : getLiftsFromBatch(batchId, model)
+ShowBatchInPlayController -> BatchLiftersDAO : findAllByBatchId(batchId)
+
+BatchLiftersDAO -> MySQL : SELECT batchLifter \nWHERE batchId = <batch.id>
+BatchLiftersDAO <- MySQL : batchLifters from demanded batch id
+
+ShowBatchInPlayController <- BatchLiftersDAO : batchLifters from demanded batch id
+ShowBatchInPlayView <- ShowBatchInPlayController : "show-batch-in-play"
+user <- ShowBatchInPlayView : rendered "show-batch-in-play" view
+
+@enduml

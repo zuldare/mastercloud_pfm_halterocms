@@ -425,9 +425,7 @@ El detonante de este caso de uso es el Secretario de la Competición, quien inte
 
 #### 6.2.2. Diseño del caso de uso 'showBatchInPlay'
 
-<<<<<<<< TODO - JAIME: He movido ya este diagrama a la parte de análisis, y este debes modificarlo por uno que tenga los componentes >>>>>>>>
-
-![showBatchinPlay.png](documentation/images/design/showBatchInPlay.png)
+![showBatchinPlay.png](documentation/images/design/showBatchInPlay_sequence.png)
 
 El detonante de este caso de uso es el Secretario de Competición, que a través de la vista correspondiente solicita obtener los levantadores y levantamientos correspondientes a la tanda en juego. 
 ### 6.3. Diseñar clases <a name="classesDesign"/>
