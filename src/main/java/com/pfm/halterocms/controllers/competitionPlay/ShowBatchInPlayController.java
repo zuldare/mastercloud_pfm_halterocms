@@ -25,7 +25,7 @@ public class ShowBatchInPlayController {
 		this.batchLiftersDAO = batchLiftersDAO;
 	}
 
-	@GetMapping("/show-batch-lifts/{batchId}")
+	@GetMapping("/show-batch-in-play/{batchId}")
 	public String getLiftsFromBatch(@PathVariable("batchId")Integer batchId, Model model){
 
 				Map<Lifter, List<Lift>> lifts = batchLiftersDAO.findAllByBatchId(batchId)
