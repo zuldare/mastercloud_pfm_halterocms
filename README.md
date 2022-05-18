@@ -51,19 +51,19 @@
 ## 1. Introducción<a name="intro"/>
 
 El objetivo principal de este proyecto es el desarrollo de una aplicación para la creación y gestión integral de una competición de halterofilia, 
-según la normativa de la Federación Española de Halterofilia (FEH), dirigido mediante el proceso de desarrollo RUP.
+según la normativa de la Federación Española de Halterofilia (FEH), mediante el proceso de desarrollo RUP.
 
 En los últimos años el deporte de la halterofilia ha crecido exponencialmente, debido a esto, es necesario que la gestión de competiciones se automatice
-y se facilite todo lo posible tanto a jueces, espectadores, levantadores, etc el seguimiento de la competición.
+y se facilite todo lo posible tanto a jueces, espectadores, levantadores, etc para el seguimiento de la competición.
 
 ### 1.1 Objetivos<a name="goals"/>
 
-El objetivo principal del proyecto es el desarrollo de una aplicación web para la gestión integral de una competición de halterofilia. Para llevar a cabo este proyecto se va a utilizar el proceso unificado de desarrollo  Rational Unified Process (RUP)
+El objetivo principal del proyecto es el desarrollo de una aplicación web para la gestión integral de una competición de halterofilia. Para llevar a cabo este proyecto se va a utilizar el proceso unificado de desarrollo, Rational Unified Process (RUP)
 
 Los subojetivos del proyecto son:
 * Profundizar en el proceso de desarrollo RUP aplicado a un proyecto real.
 * Realizar un proyecto focalizado en:  
-    * Afianzar el correcto análisis y diseño
+    * Afianzar el correcto requisitado, análisis y diseño
     * Aplicación correcta de diversos patrones
 * Aplicación de un modelo de desarrollo basado en *Gitflow*
 * Implementar un entorno de integración y despliegue continuos mediante el uso de:
@@ -188,7 +188,7 @@ Las actividades recomendadas por RUP en esta disciplina son las siguientes:
 * Un caso de uso es una **especificación de secuencias de acciones, incluyendo posibles variaciones, 
 que el sistema puede realizar y que dan un resultado observable de interés a un actor particular**
 
-En la Figura 3 podemos ver los actores que se han identificado, mientras que en el resto de figuras se representan los casos de uso identificados y los actores que los realizan.
+En la Figura 3 podemos ver los actores que se han identificado, mientras que en el resto de figuras se representan los casos de uso identificados y los actores que los realizan. LUIS: los enlaces de launch a login y logout están raros, deberían salir de algún actor!!!
 ![actors](documentation/images/usecases/actors.png)
 
 ![organizationSecretary](documentation/images/usecases/organizationSecretary.png)
@@ -360,6 +360,8 @@ Tras realizar la actividad anterior, análisis de la arquitectura, podemos comen
 
 Nos hemos centrado en esta ocasión en dos casos de uso distintos: 'introduceWeighinData' y 'showBatchInPlay', o lo que es lo mismo, añadir un nuevo pesaje y mostrar la tanda en curso. Las figuras que se incluyen a continuación, muestran el análisis de estos dos casos de uso.
 
+LUIS: esos DAO no deberían ser controladores, sino modelos!!! En éstos y posteriores diagramas!!!
+
 - Análisis del caso de uso 'introduceWeighinData':
 ![analysis_introduceWeighinData](documentation/images/analysis/useCases/introduceWeighinData_v2.png)
 
@@ -408,7 +410,7 @@ Para el desempeño de esta actividad, hemos seleccionado la herramienta de los d
 - Clases View: se corresponden con una clase Template, Style y Bean. La relación que hay entre estas clases de diseño se podría ver como las relaciones entre clases que hay en un patrón MVP (Modelo Vista Presentador) en la capa de presentación: donde las clases Template serían el modelo, las clases CSS, serían la Vista o
   representación visual de los modelos, y los Beans, los presentadores encargados de presentar los modelos.
 - Clases Controller: estas clases se encargan de desacoplar las clases de negocio de las clases de presentación, de esta manera, es muy fácil cambiar de tecnologías ya que la lógica de negocio se ve impactada a muy bajo nivel.
-- Clases Entity: la funcionalidad de estas clases es conectarse con la base de datos y realizar todas las consultas necesarias para recuperar las entidades persistidas.
+- Clases Entity: la funcionalidad de estas clases es conectarse con la base de datos y realizar todas las consultas necesarias para recuperar las entidades persistidas. LUIS: no creo, eso será el DAO ... devolviendo el Entity desacoplado!!!
 
 Únicamente hemos diseñado dos casos de uso, pero si nos pusiésemos a diseñar más, los diagramas de secuencia serían bastante similares entre ellos. Por este motivo, incluímos a continuación un diagrama de secuencia genérico que podría aplicarse a cualquier diseño de caso de uso.
 
@@ -459,6 +461,8 @@ Apenas hemos necesitado invertir tiempo en pensar mucho, porque la gran mayoría
 
 ### 7.2. Desarrollo Dirigido mediante las Pruebas <a name="tdd"/>
 
+LUIS: no, más bien será TFD, hablamos!!!
+
 Para nosotros los tests son imprescindibles en cualquier tipo de proyecto software. Por tanto, durante la ejecución de la Disciplina de Implementación, hemos aplicado TDD. El desarrollo dirigido mediante las pruebas, o lo que es lo mismo "Test Driven Development", consiste en implementar las pruebas de forma previa a la funcionalidad. Esta filosofía de desarrollo funciona bajo la premisa de que los tests son parte de la aplicación, no un añadido del que se pueda prescindir. Sin los tests, el código no está completo.
 
 La razón de más peso por la cuál hemos decidido hacer TDD, es que es una muy buena práctica para no desarrollar "código de más". De esta forma, aprovechando nuestra experiencia a la hora de hacer tests, se ha invertido mucho menos tiempo en implementar los casos de uso desarrollados que si hubiésemos programado el código funcional al principio del todo.
@@ -490,16 +494,16 @@ Aun así, hemos realizado algunas pruebas funcionales de forma manual, siguiendo
 ## Conclusiones <a name="conclusions"/>
  
 Se han cumplido los objetivos propuestos puesto que hemos aplicado RUP al desarrollo de un proyecto real, focalizandonos 
-en la fase de análisis y diseño. Se ha hecho menos hincapié en el carácter iterativo ya que no hemos dispuesto del tiempo necesario
+en las disciplinas de requisitos, análisis y diseño. Se ha hecho menos hincapié en el carácter iterativo ya que no hemos dispuesto del tiempo necesario
 para realizar un mayor número de casos de uso. Este último punto también ha hecho que la fase de gestión
 también haya sido simple, aún así de cara a un futuro estas disciplinas se podrían retomar de una manera sencilla.
 
 * Puntos positivos que se han observado:
-  * Vocabulario común.
-  * El haber hecho un análisis de los casos de uso ha hecho que aplicar la técnica de TDD sea realmente sencillo ya que los casos a probar han salido de una manera mucho más natural y sencilla.
-  * Gracias a la documentación en forma de diagramas es muchísimo más fácil la entrada a un proyecto, ya que desde el día uno la gente dispone de un modelo de dominio y unas bases sobre las que seguir avanzando.
+  * Vocabulario común. LUIS: enrollar
   * La obtención y clasificación de casos de uso hacen que sea francamente fácil el asignar tareas a distintas personas del equipo con muy distinto nivel de experiencia, siendo muy fácil poder darle a perfiles junior o seniors tareas acordes.
+  * El haber hecho un análisis de los casos de uso ha hecho que aplicar la técnica de TDD sea realmente sencillo ya que los casos a probar han salido de una manera mucho más natural y sencilla.
   * La partición en casos de uso y su posterior análisis han hecho que toda la "lógica" de la funcionalidad se haya pensado y analizado previa al desarrollo consiguiendo de esta manera que a la hora de hacer el código todos los esfuerzos vayan a generar un código de calidad.
+  * Gracias a la documentación en forma de diagramas es muchísimo más fácil la entrada a un proyecto, ya que desde el día uno la gente dispone de un modelo de dominio y unas bases sobre las que seguir avanzando.
   * La planificación una vez hechos los primeros casos de uso es muy sencilla y bastante aproximados los tiempos estimados con los tiempos en los que realmente se ha realizado la tarea.
   
 
