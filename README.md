@@ -410,7 +410,8 @@ Para el desempeño de esta actividad, hemos seleccionado la herramienta de los d
 - Clases View: se corresponden con una clase Template, Style y Bean. La relación que hay entre estas clases de diseño se podría ver como las relaciones entre clases que hay en un patrón MVP (Modelo Vista Presentador) en la capa de presentación: donde las clases Template serían el modelo, las clases CSS, serían la Vista o
   representación visual de los modelos, y los Beans, los presentadores encargados de presentar los modelos.
 - Clases Controller: estas clases se encargan de desacoplar las clases de negocio de las clases de presentación, de esta manera, es muy fácil cambiar de tecnologías ya que la lógica de negocio se ve impactada a muy bajo nivel.
-- Clases Entity: la funcionalidad de estas clases es conectarse con la base de datos y realizar todas las consultas necesarias para recuperar las entidades persistidas. LUIS: no creo, eso será el DAO ... devolviendo el Entity desacoplado!!!
+- Clases Entity: la funcionalidad de estas clases es conectarse con la base de datos y realizar todas las consultas necesarias para 
+recuperar las entidades persistidas. LUIS: no creo, eso será el DAO ... devolviendo el Entity desacoplado!!!
 
 Únicamente hemos diseñado dos casos de uso, pero si nos pusiésemos a diseñar más, los diagramas de secuencia serían bastante similares entre ellos. Por este motivo, incluímos a continuación un diagrama de secuencia genérico que podría aplicarse a cualquier diseño de caso de uso.
 
@@ -462,6 +463,7 @@ Apenas hemos necesitado invertir tiempo en pensar mucho, porque la gran mayoría
 ### 7.2. Desarrollo Dirigido mediante las Pruebas <a name="tdd"/>
 
 LUIS: no, más bien será TFD, hablamos!!!
+=> (incluir) no hemos hecho TDD xq con esta metodología hemos partido de un diseño previo ...
 
 Para nosotros los tests son imprescindibles en cualquier tipo de proyecto software. Por tanto, durante la ejecución de la Disciplina de Implementación, hemos aplicado TDD. El desarrollo dirigido mediante las pruebas, o lo que es lo mismo "Test Driven Development", consiste en implementar las pruebas de forma previa a la funcionalidad. Esta filosofía de desarrollo funciona bajo la premisa de que los tests son parte de la aplicación, no un añadido del que se pueda prescindir. Sin los tests, el código no está completo.
 
@@ -499,7 +501,12 @@ para realizar un mayor número de casos de uso. Este último punto también ha h
 también haya sido simple, aún así de cara a un futuro estas disciplinas se podrían retomar de una manera sencilla.
 
 * Puntos positivos que se han observado:
-  * Vocabulario común. LUIS: enrollar
+  * Vocabulario común. LUIS: enrollar 
+         => se podría  enganchar con DDD y la importancia que le hemos dado al dominio de la aplicación
+         => se cuidan los identificadores, que se usen en todos los sitios los mismos etc etc...
+  
+  otro punto => se podría relacionar con arquitectura hexagonal (cumple con la arq hexagonal con capas) Aunque no se ha respetado el vocabulario de arq. hexagonal xq la estructura sí que se ha usado
+
   * La obtención y clasificación de casos de uso hacen que sea francamente fácil el asignar tareas a distintas personas del equipo con muy distinto nivel de experiencia, siendo muy fácil poder darle a perfiles junior o seniors tareas acordes.
   * El haber hecho un análisis de los casos de uso ha hecho que aplicar la técnica de TDD sea realmente sencillo ya que los casos a probar han salido de una manera mucho más natural y sencilla.
   * La partición en casos de uso y su posterior análisis han hecho que toda la "lógica" de la funcionalidad se haya pensado y analizado previa al desarrollo consiguiendo de esta manera que a la hora de hacer el código todos los esfuerzos vayan a generar un código de calidad.
