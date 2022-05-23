@@ -440,10 +440,6 @@ Inspirándonos principalmente en el modelo del dominio, y basándonos en todo el
 
 Al contrario que en el modelo del dominio, esta división en clases ya está preparada para ser llevada directamente al código java, y cada una de ellas ya dispone de atributos tipados e incluso algunos métodos.
 
-### 6.4. Arquitectura por capas vs. arquitectura hexagonal <a name="hexArchitecture"/>
-
-<<<< TODO: Desarrollar este apartado >>>>
-
 ## 7. Disciplina de implementación <a name="implementation"/>
 
 La disciplina de implementación, es el flujo de trabajo cuyo propósito principal es implementar el sistema en términos de componentes, como pueden ser el código, los fichero binarios, ejecutables, vistas renderizadas, etc.
@@ -476,6 +472,17 @@ Además, teniendo descrita la especificación de los casos de uso en la Discipli
 Al haber utilizado RUP no hemos podido aplicar TDD, ya que TDD va un paso más allá e implica **diseñar** mediante los tests. Existiendo un diseño previo a la Disciplina de Implementación, TDD resulta totalmente incompatible con este proyecto, al contrario que TFD que no debe ser menospreciado en absoluto.
 
 Siguiendo TFD se podrían desarrollar de forma previa los test _end to end_, aunque entre todos los posibles tipos de tests que se pueden añadir, los test unitarios son los que más útiles nos resultan para completar la implementación de nuestros casos de uso.
+
+### 7.3. Arquitectura por capas vs. arquitectura hexagonal <a name="hexArchitecture"/>
+
+<<<< TODO: Desarrollar este apartado >>>>
+
+--> Nos hemos inspirado en la arquitectura hexagonal, y aunque no hemos empleado la terminología de la misma, sí que podemos intuir sus elementos principales en nuestro desarrollo.
+--> Aun así, como no la hemos seguido estrictamente, no podemos decir que la hayamos utilizado. 
+--> En las clases correspondientes al dominio, hemos tratado de ser lo más agnósticos posible a la tecnología. Ej: No hemos usado lombok.
+--> Pero el dominio está acoplado al modelo de base de datos, y depende del framework de persistencia. Esto no es arquitectura hexagonal. Para desacoplar esto, habría que utilizar adaptadores, pero no los hemos usado porque no nos aportaba ninguna ventaja, solo complejidad.
+--> Desde nuestro punto de vista, la arquitectura hexagonal puede considerarse una arquitectura por capas, pero dibujada de otra forma. Y debe utilizarse con cabeza, siempre que exista alguna razón de peso para ello.
+
 
 ## 8. Disciplina de pruebas <a name="tests"/>
 
