@@ -41,7 +41,7 @@
     
     7.1 [Casos de uso implementados](#useCasesImplementation)
 
-    7.2 [Desarrollo Dirigido mediante las Pruebas](#tdd)
+    7.2 [Test-First Development](#tfd)
 
 8. [Disciplina de Pruebas](#tests)
 9. [Conclusiones](#conclusions)
@@ -460,18 +460,17 @@ Puesto que en la disciplina de diseño nos hemos centrado en los casos de uso 'i
 
 Apenas hemos necesitado invertir tiempo en pensar mucho, porque la gran mayoría de los problemas que podrían surgir ya fueron planteados previamente.
 
-### 7.2. Desarrollo Dirigido mediante las Pruebas <a name="tdd"/>
+### 7.2. Test-First Development <a name="tfd"/>
 
-LUIS: no, más bien será TFD, hablamos!!!
-=> (incluir) no hemos hecho TDD xq con esta metodología hemos partido de un diseño previo ...
+Para nosotros los tests son imprescindibles en cualquier tipo de proyecto software. Por tanto, durante la ejecución de la Disciplina de Implementación hemos aplicado Test-First Development (TFD), que consiste en implementar las pruebas de forma previa a la funcionalidad. Esta filosofía de desarrollo funciona bajo la premisa de que los tests son parte de la aplicación, no un añadido del que se pueda prescindir. Sin los tests, el código no está completo.
 
-Para nosotros los tests son imprescindibles en cualquier tipo de proyecto software. Por tanto, durante la ejecución de la Disciplina de Implementación, hemos aplicado TDD. El desarrollo dirigido mediante las pruebas, o lo que es lo mismo "Test Driven Development", consiste en implementar las pruebas de forma previa a la funcionalidad. Esta filosofía de desarrollo funciona bajo la premisa de que los tests son parte de la aplicación, no un añadido del que se pueda prescindir. Sin los tests, el código no está completo.
-
-La razón de más peso por la cuál hemos decidido hacer TDD, es que es una muy buena práctica para no desarrollar "código de más". De esta forma, aprovechando nuestra experiencia a la hora de hacer tests, se ha invertido mucho menos tiempo en implementar los casos de uso desarrollados que si hubiésemos programado el código funcional al principio del todo.
+La razón de más peso por la cuál hemos decidido hacer TFD es que, al igual que TDD (Test Driven Development), es una muy buena práctica para no desarrollar "código de más". De esta forma, aprovechando nuestra experiencia a la hora de hacer tests, se ha invertido mucho menos tiempo en implementar los casos de uso desarrollados que si hubiésemos programado el código funcional al principio del todo.
 
 Además, teniendo descrita la especificación de los casos de uso en la Disciplina de Requisitos, ha sido muy fácil enumerar los distintos tests que la plataforma debe pasar para dar por concludo el desarrollo. En este punto queremos indicar que los únicos tests que se han llevado a cabo son los test unitarios, que son los indicados por RUP en esta Disciplina.
 
-Siguiendo TDD se podría dirigir el desarrollo mediante tests _end to end_, aunque entre todos los posibles tipos de tests que se pueden añadir, los test unitarios son los que más útiles nos resultan para completar la implementación de nuestros casos de uso.
+Al haber utilizado RUP no hemos podido aplicar TDD, ya que TDD va un paso más allá e implica **diseñar** mediante los tests. Existiendo un diseño previo a la Disciplina de Implementación, TDD resulta totalmente incompatible con este proyecto, al contrario que TFD que no debe ser menospreciado en absoluto.
+
+Siguiendo TFD se podrían desarrollar de forma previa los test _end to end_, aunque entre todos los posibles tipos de tests que se pueden añadir, los test unitarios son los que más útiles nos resultan para completar la implementación de nuestros casos de uso.
 
 ## 8. Disciplina de pruebas <a name="tests"/>
 
@@ -508,7 +507,7 @@ también haya sido simple, aún así de cara a un futuro estas disciplinas se po
   otro punto => se podría relacionar con arquitectura hexagonal (cumple con la arq hexagonal con capas) Aunque no se ha respetado el vocabulario de arq. hexagonal xq la estructura sí que se ha usado
 
   * La obtención y clasificación de casos de uso hacen que sea francamente fácil el asignar tareas a distintas personas del equipo con muy distinto nivel de experiencia, siendo muy fácil poder darle a perfiles junior o seniors tareas acordes.
-  * El haber hecho un análisis de los casos de uso ha hecho que aplicar la técnica de TDD sea realmente sencillo ya que los casos a probar han salido de una manera mucho más natural y sencilla.
+  * El haber hecho un análisis de los casos de uso ha hecho que aplicar la técnica de TFD sea realmente sencillo ya que los casos a probar han salido de una manera mucho más natural y sencilla.
   * La partición en casos de uso y su posterior análisis han hecho que toda la "lógica" de la funcionalidad se haya pensado y analizado previa al desarrollo consiguiendo de esta manera que a la hora de hacer el código todos los esfuerzos vayan a generar un código de calidad.
   * Gracias a la documentación en forma de diagramas es muchísimo más fácil la entrada a un proyecto, ya que desde el día uno la gente dispone de un modelo de dominio y unas bases sobre las que seguir avanzando.
   * La planificación una vez hechos los primeros casos de uso es muy sencilla y bastante aproximados los tiempos estimados con los tiempos en los que realmente se ha realizado la tarea.
