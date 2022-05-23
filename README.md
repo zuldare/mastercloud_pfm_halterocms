@@ -500,12 +500,7 @@ para realizar un mayor número de casos de uso. Este último punto también ha h
 también haya sido simple, aún así de cara a un futuro estas disciplinas se podrían retomar de una manera sencilla.
 
 * Puntos positivos que se han observado:
-  * Vocabulario común. LUIS: enrollar 
-         => se podría  enganchar con DDD y la importancia que le hemos dado al dominio de la aplicación
-         => se cuidan los identificadores, que se usen en todos los sitios los mismos etc etc...
-  
-  otro punto => se podría relacionar con arquitectura hexagonal (cumple con la arq hexagonal con capas) Aunque no se ha respetado el vocabulario de arq. hexagonal xq la estructura sí que se ha usado
-
+  * Uso de vocabulario común, otorgando la importancia que se merece al dominio de la aplicación. Si bien es cierto que no hemos aplicado DDD, el lenguaje ubicuo ha estado presente de principio a fin durante todas las fases del proyecto, cuidándose al máximo la definición y el uso de cada uno de los identificadores empleados. Aunque en un primer momento no fue una tarea del todo sencilla, ya que no estamos acostumbrados a poner tanto detalle en el dominio, nos ha resultado muy beneficioso a la hora de hacernos entender plasmando nuestras ideas tanto en la documentación como en las distintas conversaciones entabladas.
   * La obtención y clasificación de casos de uso hacen que sea francamente fácil el asignar tareas a distintas personas del equipo con muy distinto nivel de experiencia, siendo muy fácil poder darle a perfiles junior o seniors tareas acordes.
   * El haber hecho un análisis de los casos de uso ha hecho que aplicar la técnica de TFD sea realmente sencillo ya que los casos a probar han salido de una manera mucho más natural y sencilla.
   * La partición en casos de uso y su posterior análisis han hecho que toda la "lógica" de la funcionalidad se haya pensado y analizado previa al desarrollo consiguiendo de esta manera que a la hora de hacer el código todos los esfuerzos vayan a generar un código de calidad.
