@@ -43,6 +43,8 @@
 
     7.2 [Test-First Development](#tfd)
 
+    7.3. [Arquitectura por capas vs. arquitectura hexagonal](#hexArchitecture)
+
 8. [Disciplina de Pruebas](#tests)
 9. [Conclusiones](#conclusions)
 
@@ -475,13 +477,15 @@ Siguiendo TFD se podrían desarrollar de forma previa los test _end to end_, aun
 
 ### 7.3. Arquitectura por capas vs. arquitectura hexagonal <a name="hexArchitecture"/>
 
-<<<< TODO: Desarrollar este apartado >>>>
+Aunque el framework de desarrollo RUP no establece ninguna pauta acerca de cómo estructurar el código, hemos querido dedicar en este punto algunas breves líneas a la arquitectura hexagonal, que aunque está muy de moda y se ofrece como algo novedoso, bajo nuestro punto de vista es algo que ya existía desde hace mucho tiempo.
 
---> Nos hemos inspirado en la arquitectura hexagonal, y aunque no hemos empleado la terminología de la misma, sí que podemos intuir sus elementos principales en nuestro desarrollo.
---> Aun así, como no la hemos seguido estrictamente, no podemos decir que la hayamos utilizado. 
---> En las clases correspondientes al dominio, hemos tratado de ser lo más agnósticos posible a la tecnología. Ej: No hemos usado lombok.
---> Pero el dominio está acoplado al modelo de base de datos, y depende del framework de persistencia. Esto no es arquitectura hexagonal. Para desacoplar esto, habría que utilizar adaptadores, pero no los hemos usado porque no nos aportaba ninguna ventaja, solo complejidad.
---> Desde nuestro punto de vista, la arquitectura hexagonal puede considerarse una arquitectura por capas, pero dibujada de otra forma. Y debe utilizarse con cabeza, siempre que exista alguna razón de peso para ello.
+Para estructurar el código de la aplicación, nosotros hemos elegido hacerlo a través un modelo por capas. Pero a la vez, nos hemos inspirado en algunos elementos de la arquitectura hexagonal, y aunque no hemos sido fieles a la terminología de la misma, sí que podemos intuir algunos de sus elementos principales. Aun así, como no la hemos seguido estrictamente no podemos decir que la hayamos utilizado.
+
+Para empezar, en las clases correspondientes al dominio, hemos tratado de ser lo más agnósticos posible a la tecnología. Un ejemplo de esto es que no hemos usado Lombok, una tecnología que se utiliza mucho para generar código (getters, setters, builders, etc.). Pero el dominio está acoplado al modelo de base de datos, y depende del framework de persistencia, por tanto no podemos decir que esto se trate de una arquitectura hexagonal. Para desacoplar esto, habría que utilizar adaptadores, pero no los hemos implementado porque no nos aportaba ninguna ventaja, solo complejidad.
+
+Pueden distinguirse, por el contrario, adaptadores primarios en la capa controlador y puertos secundarios en la capa DAO.
+
+Desde nuestro punto de vista, la arquitectura hexagonal puede considerarse una arquitectura por capas algo vitaminada, pero dibujada de otra forma. Por esta razón enunciamos que no es algo novedoso. Debe utilizarse con criterio y siempre que exista alguna razón de peso para ello, pues de no ser así el código de nuestro proyecto podría convertirse en algo muy complejo innecesariamente. Sigamos la regla _KISS_ siempre que podamos.
 
 
 ## 8. Disciplina de pruebas <a name="tests"/>
