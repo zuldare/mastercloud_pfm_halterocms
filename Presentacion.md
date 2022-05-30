@@ -27,3 +27,29 @@
     - Diagrama de estados de la ronda (de este podemos pasar por encima diciendo que es el mismo proceso que el anterior pero centrado en una ronda)
 
 
+- Casos de uso
+  - (Jaime) Actores y división de casos de uso: explicar los actores que hemos sacado y el xq hemos paquetizado (por el tema que nos comenta Luis de hablar de volúmenes)
+  - (Jaime) Hemos sacado 14 + 15 + 13 + 12 + 16 = 70 casos de uso
+  - (Jaime) Comentar de pasada por la priorización
+  - (Nat) Comentar la espcificación de un caso de uso grande
+  En todos estos comentar que nos ha costado un trabajo importante estar pensando bien que casos de uso sacar, como especificarlos y que nos hemos estado ciñendo a la frasecita de "esto es una conversación entre el actor y el sistema donde el actor pide y el sistema provee/pide "
+  comentar que haciendo esta división por casos de uso se iba viendo la manera en la que se iban dividiendo responsabilidades y como eso en estapas finales podría ir diseñandose, etc , etc
+
+- Prototipado  => nos ha permitido sobre el trabajo de los casos de uso hacernos un esquema mental de como van a ser las pantallas y que necesidades especiales nos podríamos encontrar
+
+
+- Análisis de la arquitectura 
+  - (Jaime) División en capas, con cada capa pendiente de una responsabilidad muy concreta . División en vistas modelos y controladores
+  - (Nat) Análisis de un caso del caso de uso introduceWeighData
+
+- Diseño 
+  - (Nat) Explicación de la arquitectura MVP Controlador Supervisor que hemos usado
+  - (Jaime) Exposición del diseño de casos de uso (general) y si quieren nos metemos a ver un diagrama de secuencia del introduce weigh in
+
+- Implementación: 
+  - hemos hecho TFD y xq no hemos hecho TDD (lo del diseño emergente )
+  - hexagonal vs capas
+
+- Comentario rápido sobre las pruebas
+
+- Conclusiones
