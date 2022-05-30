@@ -71,7 +71,6 @@ Los subojetivos del proyecto son:
 * Implementar un entorno de integración y despliegue continuos mediante el uso de:
     * Git como gestor de versiones
     * Github como repositorio (tanto de código como de artefactos)
-    * Github project como administrador/organizador de tareas
 
 
 ### 1.2 ¿Qué es la halterofilia? <a name="intro_haltero"/>
