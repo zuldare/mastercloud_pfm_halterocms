@@ -190,18 +190,18 @@ Las actividades recomendadas por RUP en esta disciplina son las siguientes:
 * Un caso de uso es una **especificación de secuencias de acciones, incluyendo posibles variaciones, 
 que el sistema puede realizar y que dan un resultado observable de interés a un actor particular**
 
-En la Figura 3 podemos ver los actores que se han identificado, mientras que en el resto de figuras se representan los casos de uso identificados y los actores que los realizan. LUIS: los enlaces de launch a login y logout están raros, deberían salir de algún actor!!!
-![actors](documentation/images/usecases/actors.png)
+En la Figura 3 podemos ver los actores que se han identificado, mientras que en el resto de figuras se representan los casos de uso identificados y los actores que los realizan.
+![actors](documentation/images/usecases/actorsNew.png)
 
-![organizationSecretary](documentation/images/usecases/organizationSecretary.png)
+![organizationSecretary](documentation/images/usecases/organizationSecretaryNew.png)
 
-![batchesBureaucrazy](documentation/images/usecases/batchesBureaucrazy.png)
+![batchesBureaucrazy](documentation/images/usecases/batchesBureaucrazyNew.png)
 
-![competitionBureaucrazy](documentation/images/usecases/competitionBureaucracy.png)
+![competitionBureaucrazy](documentation/images/usecases/competitionBureaucracyNew.png)
 
-![spectators](documentation/images/usecases/spectators.png)            
+![spectators](documentation/images/usecases/spectatorsNew.png)            
 
-![timer](documentation/images/usecases/timer.png)
+![timer](documentation/images/usecases/timerNew.png)
 
 
 ### 4.2 Priorizar casos de uso <a name="useCasesPrioritize"/>
@@ -362,13 +362,11 @@ Tras realizar la actividad anterior, análisis de la arquitectura, podemos comen
 
 Nos hemos centrado en esta ocasión en dos casos de uso distintos: 'introduceWeighinData' y 'showBatchInPlay', o lo que es lo mismo, añadir un nuevo pesaje y mostrar la tanda en curso. Las figuras que se incluyen a continuación, muestran el análisis de estos dos casos de uso.
 
-LUIS: esos DAO no deberían ser controladores, sino modelos!!! En éstos y posteriores diagramas!!!
-
 - Análisis del caso de uso 'introduceWeighinData':
-![analysis_introduceWeighinData](documentation/images/analysis/useCases/introduceWeighinData_v2.png)
+![analysis_introduceWeighinData](documentation/images/analysis/useCases/introduceWeighinData_v2_new.png)
 
 - Análisis del caso de uso 'showBatchInPlay':
-![analysis_showBatchInPlay](documentation/images/analysis/useCases/showBatchInPlay.png)
+![analysis_showBatchInPlay](documentation/images/analysis/useCases/showBatchInPlayNew.png)
  
 ## 6. Disciplina de diseño <a name="design"/>
 
@@ -412,8 +410,9 @@ Para el desempeño de esta actividad, hemos seleccionado la herramienta de los d
 - Clases View: se corresponden con una clase Template, Style y Bean. La relación que hay entre estas clases de diseño se podría ver como las relaciones entre clases que hay en un patrón MVP (Modelo Vista Presentador) en la capa de presentación: donde las clases Template serían el modelo, las clases CSS, serían la Vista o
   representación visual de los modelos, y los Beans, los presentadores encargados de presentar los modelos.
 - Clases Controller: estas clases se encargan de desacoplar las clases de negocio de las clases de presentación, de esta manera, es muy fácil cambiar de tecnologías ya que la lógica de negocio se ve impactada a muy bajo nivel.
-- Clases Entity: la funcionalidad de estas clases es conectarse con la base de datos y realizar todas las consultas necesarias para 
-recuperar las entidades persistidas. LUIS: no creo, eso será el DAO ... devolviendo el Entity desacoplado!!!
+- Clases DAO: la funcionalidad de estas clases es conectarse con la base de datos y realizar todas las consultas necesarias para 
+recuperar las entidades. 
+- Clases Entity: se corresponden con el objeto de base de datos desacoplado de cualquier tecnología. 
 
 Únicamente hemos diseñado dos casos de uso, pero si nos pusiésemos a diseñar más, los diagramas de secuencia serían bastante similares entre ellos. Por este motivo, incluímos a continuación un diagrama de secuencia genérico que podría aplicarse a cualquier diseño de caso de uso.
 

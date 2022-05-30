@@ -3,7 +3,7 @@ actor user as "Competition\nSecretary"
 
 boundary CompetitionSecretaryPlayView
 control IntroduceWeighinDataController
-control WeighinsDAO
+entity WeighinsDAO
 entity Weighin
 
 user -right-> CompetitionSecretaryPlayView

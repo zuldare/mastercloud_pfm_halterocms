@@ -16,5 +16,4 @@ TimeKeeper --> stop
 TimeKeeper --> setDuration
 Time --> stop
 
-footer \n\nFigure 8. Casos de uso relacionados con el timer
 @enduml

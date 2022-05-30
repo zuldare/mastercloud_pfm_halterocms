@@ -39,6 +39,5 @@ CompetitionSecretary --> showLifterCategory
 CompetitionSecretary --> initPlay
 CompetitionSecretary --> finishPlay
 
-footer \n\nFigura 5. Casos de uso relacionados con tandas
 
 @enduml

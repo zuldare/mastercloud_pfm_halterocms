@@ -1,7 +1,7 @@
 @startuml
 actor "Competition\nSecretary" as cs
 
-control BatchLiftersDAO
+entity BatchLiftersDAO
 control ShowBatchInPlayController
 entity BatchLifter
 boundary ShowBatchInPlayView
